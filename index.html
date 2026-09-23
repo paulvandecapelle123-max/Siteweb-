@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paul V. · AI Ads</title>
+<meta name="description" content="Monteur vidéo spécialisé IA : pubs style Zack D. Films, singing ads, cartoon ads, skeleton ads, UGC IA. Créas DTC qui arrêtent le scroll. FR / EN.">
+<meta property="og:title" content="Paul V. · Monteur vidéo IA">
+<meta property="og:description" content="Pubs IA qui arrêtent le scroll : Zack D. Films style, singing ads, cartoon, skeleton ads, UGC.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E0C16">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<header class="nav" id="top">
+  <a class="brand" href="#top" aria-label="Accueil">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32"><rect x="2" y="6" width="28" height="20" rx="6" fill="#FFD23F" stroke="#0E0C16" stroke-width="2.5"/><path d="M13 11.5v9l8-4.5z" fill="#0E0C16"/></svg>
+    </span>
+    <span class="brand-name" data-config="brand">Paul V.</span>
+    <span class="rec" aria-hidden="true"><i></i>REC</span>
+  </a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#work" data-i18n="nav.work">Réalisations</a>
+    <a href="#skills" data-i18n="nav.skills">Savoir-faire</a>
+    <a href="#process" data-i18n="nav.process">Méthode</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Langue / Language">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-small" href="#contact" data-i18n="nav.cta">Me contacter</a>
+  </div>
+</header>
+
+<main>
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <canvas id="scene" class="hero-scene" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow tc"><span class="tc-num" id="tc">00:00:00:00</span><span data-i18n="hero.eyebrow">Monteur vidéo IA · Ads DTC · FR / EN</span></p>
+    <h1 class="hero-title">
+      <span class="line"><span data-i18n="hero.title1">Des pubs IA</span></span>
+      <span class="line"><span class="hl" data-i18n="hero.title2">qui arrêtent</span></span>
+      <span class="line"><span data-i18n="hero.title3">le scroll.</span></span>
+    </h1>
+    <p class="hero-lead" data-i18n="hero.lead">Je conçois et monte des créas publicitaires générées par IA : style Zack D. Films, singing ads, cartoons, skeleton ads, UGC… Chaque seconde est pensée pour accrocher, convaincre et convertir.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#work"><span data-i18n="hero.cta1">Zapper les chaînes</span> <span aria-hidden="true">↓</span></a>
+      <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">Lancer un projet</a>
+    </div>
+    <dl class="hero-stats">
+      <div><dt id="stat-cats">8</dt><dd data-i18n="hero.stat1">formats créatifs IA</dd></div>
+      <div><dt>3 s</dt><dd data-i18n="hero.stat2">pour accrocher</dd></div>
+      <div><dt>48–72 h</dt><dd data-i18n="hero.stat3">livraison type</dd></div>
+    </dl>
+  </div>
+  <p class="hero-hint" data-i18n="hero.hint">Fais glisser pour faire tourner les objets</p>
+</section>
+
+<!-- Bande défilante des catégories -->
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+<!-- ==================== WORK ==================== -->
+<section class="section work" id="work">
+  <div class="section-head">
+    <p class="eyebrow" data-i18n="work.eyebrow">Portfolio</p>
+    <h2 class="h2" data-i18n="work.title">Choisis ta chaîne.</h2>
+    <p class="lead" data-i18n="work.lead">Chaque catégorie est une chaîne. Zappe sur la télé ou filtre la grille : toutes les réalisations sont classées par type de créa.</p>
+  </div>
+
+  <div class="studio">
+    <!-- TV rétro 3D -->
+    <div class="tv-stage" id="tvStage">
+      <div class="tv" id="tv">
+        <div class="tv-antenna" aria-hidden="true"><i></i><i></i></div>
+        <div class="tv-body">
+          <div class="tv-screen-wrap">
+            <div class="tv-screen" id="tvScreen">
+              <div class="tv-channel" id="tvChannel"></div>
+              <canvas class="tv-static" id="tvStatic" aria-hidden="true"></canvas>
+              <div class="tv-osd" aria-live="polite">
+                <span class="osd-ch" id="osdCh">CH 01</span>
+                <span class="osd-live"><i></i><span data-i18n="tv.live">EN DIRECT</span></span>
+              </div>
+              <div class="tv-scan" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="tv-panel">
+            <div class="tv-dial" id="tvDial" aria-hidden="true"><span></span></div>
+            <div class="tv-btns">
+              <button type="button" class="tv-btn" id="tvPrev" data-i18n-aria="tv.prev" aria-label="Chaîne précédente">▲</button>
+              <button type="button" class="tv-btn" id="tvNext" data-i18n-aria="tv.next" aria-label="Chaîne suivante">▼</button>
+            </div>
+            <div class="tv-grille" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
+      </div>
+      <div class="tv-shadow" aria-hidden="true"></div>
+    </div>
+
+    <!-- Guide des chaînes = filtres -->
+    <div class="guide">
+      <div class="guide-list" id="guide" role="tablist" aria-label="Catégories"></div>
+    </div>
+  </div>
+
+  <div class="grid-head">
+    <h3 class="grid-title" id="gridTitle">Tout</h3>
+    <span class="grid-count" id="gridCount"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- ==================== SKILLS ==================== -->
+<section class="section skills" id="skills">
+  <div class="section-head">
+    <p class="eyebrow" data-i18n="skills.eyebrow">Savoir-faire</p>
+    <h2 class="h2" data-i18n="skills.title">Monteur d'abord. IA ensuite.</h2>
+    <p class="lead" data-i18n="skills.lead">Générer un plan joli, tout le monde sait faire. Ce qui fait vendre, c'est le montage.</p>
+  </div>
+  <div class="timeline" aria-hidden="true">
+    <div class="tl-ruler" id="ruler"></div>
+    <div class="tl-track v"><span style="--s:0;--w:18">HOOK</span><span style="--s:18;--w:34">PROBLÈME / SOLUTION</span><span style="--s:52;--w:30">PREUVE</span><span style="--s:82;--w:18">CTA</span></div>
+    <div class="tl-track a"><span style="--s:0;--w:100">VO · ELEVENLABS</span></div>
+    <div class="tl-track m"><span style="--s:0;--w:100">MUSIC · BEAT 120 BPM</span></div>
+    <div class="tl-head"></div>
+  </div>
+  <div class="skills-grid">
+    <article class="skill"><h3 data-i18n="skills.1.t">Hooks en 3 secondes</h3><p data-i18n="skills.1.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.2.t">Rythme & storytelling</h3><p data-i18n="skills.2.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.3.t">Son propre & sound design</h3><p data-i18n="skills.3.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.4.t">Sous-titres lisibles</h3><p data-i18n="skills.4.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.5.t">Cohérence des personnages</h3><p data-i18n="skills.5.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.6.t">Nettoyage des artefacts</h3><p data-i18n="skills.6.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.7.t">Variantes pour tester</h3><p data-i18n="skills.7.d"></p></article>
+    <article class="skill"><h3 data-i18n="skills.8.t">Direct response DTC</h3><p data-i18n="skills.8.d"></p></article>
+  </div>
+  <div class="stack">
+    <h3 class="stack-title" data-i18n="tools.title">Ma stack</h3>
+    <ul class="stack-list">
+      <li><b>Kling</b><small>video</small></li><li><b>Veo</b><small>video</small></li><li><b>Seedance</b><small>video</small></li><li><b>Higgsfield</b><small>video</small></li><li><b>Runway</b><small>video</small></li><li><b>Hailuo</b><small>video</small></li>
+      <li><b>Midjourney</b><small>image</small></li><li><b>Flux</b><small>image</small></li><li><b>Nano Banana</b><small>image</small></li>
+      <li><b>ElevenLabs</b><small>voice</small></li><li><b>Suno</b><small>music</small></li><li><b>Hedra</b><small>lip-sync</small></li><li><b>HeyGen</b><small>avatar</small></li>
+      <li><b>Premiere Pro</b><small>edit</small></li><li><b>After Effects</b><small>motion</small></li><li><b>DaVinci Resolve</b><small>grade</small></li><li><b>CapCut</b><small>captions</small></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== PROCESS ==================== -->
+<section class="section process" id="process">
+  <div class="section-head">
+    <p class="eyebrow" data-i18n="process.eyebrow">Méthode</p>
+    <h2 class="h2" data-i18n="process.title">Du brief à la pub prête à diffuser.</h2>
+  </div>
+  <ol class="steps">
+    <li class="step"><span class="step-tc">00:00</span><h3 data-i18n="process.1.t">Brief & angle</h3><p data-i18n="process.1.d"></p></li>
+    <li class="step"><span class="step-tc">00:03</span><h3 data-i18n="process.2.t">Script & hooks</h3><p data-i18n="process.2.d"></p></li>
+    <li class="step"><span class="step-tc">00:08</span><h3 data-i18n="process.3.t">Génération</h3><p data-i18n="process.3.d"></p></li>
+    <li class="step"><span class="step-tc">00:20</span><h3 data-i18n="process.4.t">Montage & son</h3><p data-i18n="process.4.d"></p></li>
+    <li class="step"><span class="step-tc">00:28</span><h3 data-i18n="process.5.t">Livraison & variantes</h3><p data-i18n="process.5.d"></p></li>
+  </ol>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="section faq" id="faq">
+  <div class="section-head">
+    <p class="eyebrow" data-i18n="faq.eyebrow">FAQ technique</p>
+    <h2 class="h2" data-i18n="faq.title">Les questions qu'on me pose.</h2>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="section contact" id="contact">
+  <div class="contact-card">
+    <div class="contact-copy">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+      <h2 class="h2" data-i18n="contact.title">On fait ta prochaine pub gagnante ?</h2>
+      <p class="lead" data-i18n="contact.lead"></p>
+      <div class="email-row">
+        <span class="email" id="email" data-config="email">contact@tondomaine.fr</span>
+        <button type="button" class="btn btn-small" id="copyEmail" data-i18n="contact.copy">Copier l'e-mail</button>
+      </div>
+    </div>
+    <form class="form" id="contactForm" novalidate>
+      <label for="f-name"><span data-i18n="contact.name">Ton nom</span><input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-email"><span data-i18n="contact.email">Ton e-mail</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+      <label for="f-brand"><span data-i18n="contact.brand">Marque / produit</span><input id="f-brand" name="brand"></label>
+      <label for="f-type"><span data-i18n="contact.type">Format souhaité</span><select id="f-type" name="type"></select></label>
+      <label for="f-msg" class="full"><span data-i18n="contact.msg">Ton projet en quelques lignes</span><textarea id="f-msg" name="message" rows="4" required></textarea></label>
+      <button class="btn btn-primary full" type="submit" data-i18n="contact.send">Envoyer la demande</button>
+      <p class="form-note full" id="formNote" hidden data-i18n="contact.sent"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year">2026</span> <span data-config="brand">Paul V.</span></span>
+  <span data-i18n="footer.made">Site conçu et monté image par image.</span>
+</footer>
+
+<!-- Lecteur vidéo -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-box">
+    <button type="button" class="modal-close" data-close data-i18n-aria="modal.close" aria-label="Fermer">✕</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-info">
+      <p class="eyebrow" id="modalCat"></p>
+      <h3 id="modalTitle"></h3>
+      <p class="modal-meta" id="modalMeta"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Réglages du site : change ici ton nom et ton e-mail. */
+  window.SITE = {
+    brand: "Paul V.",
+    email: "contact@tondomaine.fr"
+  };
+</script>
+<script src="assets/js/projects.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/scene3d.js"></script>
+</body>
+</html>
