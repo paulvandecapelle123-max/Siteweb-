@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NMcars · Aubel</title>
+<meta name="description" content="NMcars à Aubel : detailing et esthétique automobile (polissage, céramique, nettoyage intérieur) et import de véhicules depuis l'Allemagne et les Pays-Bas.">
+<meta property="og:title" content="NMcars · Detailing & Import · Aubel">
+<meta property="og:description" content="Votre voiture comme au premier jour, ou la voiture de vos rêves importée clé en main.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0C0F">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="logo" href="#top" aria-label="NMcars, accueil">
+    <span class="logo-plate"><b>NM</b>cars</span>
+  </a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#detailing">Detailing</a>
+    <a href="#polish">Essai polish</a>
+    <a href="#import">Import</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-red btn-sm" href="#contact">Demander un devis</a>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="kicker"><span class="dot"></span>Aubel · Pays de Herve · Belgique</p>
+    <h1 class="hero-title">
+      <span class="ht-line">Brillance</span>
+      <span class="ht-line ht-outline">miroir.</span>
+      <span class="ht-line">Import</span>
+      <span class="ht-line ht-red">clé en main.</span>
+    </h1>
+    <p class="hero-lead">NMcars redonne à votre voiture l'éclat du premier jour et vous trouve la suivante en Allemagne ou aux Pays-Bas, à quelques kilomètres de chez nous.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-red" href="#contact">Demander un devis</a>
+      <a class="btn btn-ghost" href="#import">Faire importer une voiture</a>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="car3d" aria-label="Voiture 3D : faites-la tourner, cliquez pour changer la teinte"></canvas>
+    <div class="stage-ui">
+      <span class="spec" id="paintName">Rosso Corsa</span>
+      <div class="swatches" id="swatches" role="group" aria-label="Couleur de la carrosserie"></div>
+    </div>
+    <p class="stage-hint"><span aria-hidden="true">⟲</span> Glissez pour tourner · Touchez pour changer la teinte</p>
+  </div>
+</section>
+
+<!-- bande -->
+<div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
+
+<!-- ================= DETAILING ================= -->
+<section class="section" id="detailing">
+  <header class="sec-head">
+    <p class="kicker">01 — Esthétique automobile</p>
+    <h2 class="h2">Chaque centimètre traité à la main.</h2>
+    <p class="lead">Du lavage minutieux à la protection céramique, on adapte chaque prestation à l'état réel de votre carrosserie et de votre habitacle. Diagnostic sous lumière, devis clair, résultat photographié.</p>
+  </header>
+  <div class="services" id="services"></div>
+</section>
+
+<!-- ================= POLISH GAME ================= -->
+<section class="section polish" id="polish">
+  <div class="polish-copy">
+    <p class="kicker">Essai en direct</p>
+    <h2 class="h2">Polissez-la vous-même.</h2>
+    <p class="lead">Ce capot est terne, rayé par les rouleaux de station et couvert de traces. Frottez avec la souris ou le doigt pour faire ce qu'on fait en atelier : décontaminer, corriger, faire briller.</p>
+    <div class="gauge" aria-live="polite">
+      <div class="gauge-top"><span>Correction</span><b id="polishPct">0 %</b></div>
+      <div class="gauge-bar"><i id="polishBar"></i></div>
+      <p class="gauge-state" id="polishState">Surface : voilée, micro-rayures</p>
+    </div>
+    <button type="button" class="btn btn-ghost btn-sm" id="polishReset">Resalir le capot</button>
+  </div>
+  <div class="panel-wrap">
+    <canvas id="polishCanvas" class="panel" aria-label="Capot à polir : frottez pour révéler la brillance"></canvas>
+    <div class="pad" id="pad" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ================= IMPORT ================= -->
+<section class="section" id="import">
+  <header class="sec-head">
+    <p class="kicker">02 — Import de véhicules</p>
+    <h2 class="h2">L'Allemagne est à 20 minutes. On y va pour vous.</h2>
+    <p class="lead">Aubel est collée aux frontières allemande et néerlandaise, où l'offre est plus large et souvent mieux équipée. On cherche, on vérifie, on rapatrie et on s'occupe de la paperasse belge. Vous, vous récupérez les clés.</p>
+  </header>
+
+  <div class="import-grid">
+    <div class="map" id="map">
+      <svg viewBox="0 0 600 460" role="img" aria-labelledby="mapTitle">
+        <title id="mapTitle">Schéma des trajets d'import vers Aubel (pas à l'échelle)</title>
+        <defs>
+          <radialGradient id="glow"><stop offset="0" stop-color="#E8362D" stop-opacity=".55"/><stop offset="1" stop-color="#E8362D" stop-opacity="0"/></radialGradient>
+        </defs>
+        <g class="borders">
+          <path d="M40 300 C 140 280, 180 250, 250 262 S 330 300, 360 360 L 380 450" />
+          <path d="M250 262 C 270 200, 300 150, 300 20" />
+          <text x="120" y="400">BELGIQUE</text><text x="120" y="120">PAYS-BAS</text><text x="440" y="200">ALLEMAGNE</text>
+        </g>
+        <g id="routes"></g>
+        <circle cx="230" cy="300" r="60" fill="url(#glow)"/>
+        <g id="nodes"></g>
+      </svg>
+      <div class="map-card" id="mapCard">
+        <span class="mc-k">Origine</span>
+        <b id="mcCity">Aachen</b>
+        <span id="mcInfo"></span>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li><h3>Votre cahier des charges</h3><p>Modèle, budget, kilométrage, options, couleur. On vous dit franchement ce qui est réaliste.</p></li>
+      <li><h3>Recherche & sélection</h3><p>On compare les annonces en Allemagne et aux Pays-Bas et on vous présente les meilleures, avec historique et prix total rendu Belgique.</p></li>
+      <li><h3>Vérification sur place</h3><p>Contrôle du carnet d'entretien, du kilométrage, de la carrosserie à l'épaisseur-mètre et essai routier avant tout paiement.</p></li>
+      <li><h3>Achat & rapatriement</h3><p>Plaques de transit, assurance et trajet jusqu'à Aubel, ou transport par camion selon le véhicule.</p></li>
+      <li><h3>Formalités belges</h3><p>Certificat de conformité (COC), contrôle technique « import », demande d'immatriculation à la DIV et calcul de la taxe de mise en circulation.</p></li>
+      <li><h3>Remise des clés, préparée</h3><p>La voiture passe par l'atelier detailing avant la livraison. Elle vous arrive comme sortie d'usine.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= WHY / NUMBERS ================= -->
+<section class="section why">
+  <div class="why-grid">
+    <div class="why-item"><b data-count="20">0</b><span>min de la frontière allemande</span></div>
+    <div class="why-item"><b data-count="25">0</b><span>min de Maastricht</span></div>
+    <div class="why-item"><b data-count="100" data-suffix=" %">0</b><span>des prestations réalisées à la main</span></div>
+    <div class="why-item"><b>1</b><span>interlocuteur, de la recherche à la remise des clés</span></div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section" id="realisations">
+  <header class="sec-head row">
+    <div>
+      <p class="kicker">Réalisations</p>
+      <h2 class="h2">Le travail parle de lui-même.</h2>
+    </div>
+    <a class="btn btn-ghost btn-sm" id="igLink" href="https://www.instagram.com/nmcars.be/" target="_blank" rel="noopener">Voir @nmcars.be sur Instagram ↗</a>
+  </header>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <header class="sec-head">
+    <p class="kicker">Questions fréquentes</p>
+    <h2 class="h2">Avant de nous confier votre voiture.</h2>
+  </header>
+  <div class="faq" id="faqList"></div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact">
+  <div class="contact-box">
+    <div class="contact-info">
+      <p class="kicker">Contact</p>
+      <h2 class="h2">Parlons de votre voiture.</h2>
+      <p class="lead">Envoyez-nous quelques photos et ce que vous souhaitez. On vous répond avec un avis honnête et un devis.</p>
+      <ul class="coords" id="coords"></ul>
+      <p class="zone"><b>Zone :</b> Aubel, Plombières, Welkenraedt, Herve, Thimister-Clermont, Dison, Verviers, Visé, Eupen, Liège et au-delà sur rendez-vous.</p>
+    </div>
+    <form class="form" id="form" novalidate>
+      <fieldset class="choice">
+        <legend>Votre demande</legend>
+        <label><input type="radio" name="kind" value="Detailing" checked><span>Detailing</span></label>
+        <label><input type="radio" name="kind" value="Import"><span>Import</span></label>
+        <label><input type="radio" name="kind" value="Les deux"><span>Les deux</span></label>
+      </fieldset>
+      <label for="f-name">Nom<input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-phone">GSM ou e-mail<input id="f-phone" name="contact" autocomplete="tel" required></label>
+      <label for="f-car" class="full">Véhicule (marque, modèle, année)<input id="f-car" name="car" placeholder="ex. Audi A4 Avant 2019"></label>
+      <label for="f-msg" class="full">Votre message<textarea id="f-msg" name="message" rows="4" required placeholder="Ce que vous souhaitez, l'état actuel, vos disponibilités…"></textarea></label>
+      <button class="btn btn-red full" type="submit">Envoyer la demande</button>
+      <p class="form-note full" id="formNote" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <span class="logo-plate small"><b>NM</b>cars</span>
+  <span id="legal">Aubel, Belgique</span>
+  <span>© <span id="year">2026</span> NMcars</span>
+</footer>
+
+<script>
+  /* ====== INFOS DE L'ENTREPRISE — à compléter ======
+     Les champs laissés vides ne s'affichent pas sur le site. */
+  window.NM = {
+    instagram: "https://www.instagram.com/nmcars.be/",
+    phone: "",        // ex. "+32 470 00 00 00"
+    whatsapp: "",     // numéro au format international sans + ni espaces, ex. "32470000000"
+    email: "",        // ex. "contact@nmcars.be"
+    address: "Aubel, Belgique",
+    hours: "",        // ex. "Lun–Sam · sur rendez-vous"
+    bce: ""           // numéro d'entreprise, ex. "BE 0123.456.789"
+  };
+</script>
+<script src="assets/js/content.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/car3d.js"></script>
+</body>
+</html>
