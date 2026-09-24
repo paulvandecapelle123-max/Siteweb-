@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chapiteau'bel</title>
+<meta name="description" content="Location de chapiteaux 6 × 6 m et 6 × 12 m à Aubel et en province de Liège. Livraison et montage compris. Configurez votre chapiteau en 3D.">
+<meta property="og:title" content="Chapiteau'bel · Location & montage">
+<meta property="og:description" content="Chapiteaux 6 × 6 et 6 × 12 m, montage compris. Configurez le vôtre en 3D.">
+<meta name="theme-color" content="#F6F8FC">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top">
+    <span class="brand-logo" aria-hidden="true"><svg viewBox="96 40 240 226"><path d="M107 48 L325 122 L325 228 L272 228 L272 260 C 205 240 122 165 107 48 Z" fill="currentColor"/></svg></span>
+    <span class="brand-name" data-site="name">Chapiteau'bel</span>
+  </a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="#configurateur">Configurateur 3D</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-blue btn-sm" href="#reserver">Réserver</a>
+</header>
+
+<main>
+<!-- ============ HERO (parallaxe à la souris) ============ -->
+<section class="hero" id="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="pin"></span><span data-site="city">Aubel</span> · <span data-site="region">Province de Liège</span></p>
+    <h1 class="hero-title">Votre fête,<br><span class="u">à l'abri</span> du ciel belge.</h1>
+    <p class="hero-lead">Location de chapiteaux 6 × 6 m et 6 × 12 m. On livre, on monte, on démonte. Vous n'avez plus qu'à faire la fête, qu'il pleuve ou non.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-blue" href="#configurateur">Composer mon chapiteau en 3D</a>
+      <a class="btn btn-line" href="#tarifs">Voir les tarifs</a>
+    </div>
+    <ul class="hero-facts">
+      <li><b>36 m² → 72 m²</b><span>2 chapiteaux</span></li>
+      <li><b>Montage compris</b><span>autour d'<span data-site="city">Aubel</span></span></li>
+      <li><b>Bâches amovibles</b><span>ouvert ou fermé</span></li>
+    </ul>
+  </div>
+
+  <div class="scene" id="scene" aria-hidden="true">
+    <div class="layer l-sun" data-depth="6"><i></i></div>
+    <div class="layer l-cloud c1" data-depth="14"></div>
+    <div class="layer l-cloud c2" data-depth="22"></div>
+    <div class="layer l-hills-back" data-depth="10"></div>
+    <div class="layer l-hills" data-depth="18"></div>
+    <div class="layer l-tent" data-depth="30">
+      <svg viewBox="0 0 520 300">
+        <defs>
+          <linearGradient id="roofL" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4EAF5"/></linearGradient>
+          <linearGradient id="roofR" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#D9E1EF"/><stop offset="1" stop-color="#C3CEE2"/></linearGradient>
+        </defs>
+        <!-- toit -->
+        <path d="M60 120 L200 40 L460 60 L470 130 Z" fill="url(#roofR)"/>
+        <path d="M40 130 L200 40 L230 150 Z" fill="url(#roofL)"/>
+        <path d="M200 40 L460 60" stroke="#9AA9C4" stroke-width="3"/>
+        <!-- pignon -->
+        <path d="M40 130 L200 40 L230 150 Z" fill="#fff" stroke="#9AA9C4" stroke-width="2"/>
+        <!-- mur long à fenêtres -->
+        <rect x="230" y="138" width="240" height="120" fill="#FFFFFF" stroke="#9AA9C4" stroke-width="2"/>
+        <g fill="#CFE0FF" stroke="#9AA9C4" stroke-width="1.5">
+          <path d="M250 230v-55a15 15 0 0 1 30 0v55z"/><path d="M300 230v-55a15 15 0 0 1 30 0v55z"/>
+          <path d="M360 230v-55a15 15 0 0 1 30 0v55z"/><path d="M410 230v-55a15 15 0 0 1 30 0v55z"/>
+        </g>
+        <!-- façade ouverte -->
+        <path d="M40 130 L230 150 L230 258 L40 250 Z" fill="#FFE7A6" opacity=".55"/>
+        <g class="guests">
+          <rect x="80" y="205" width="110" height="10" rx="3" fill="#2B59C3"/>
+          <circle cx="100" cy="190" r="8" fill="#0F1E3A"/><rect x="93" y="198" width="14" height="22" rx="6" fill="#0F1E3A"/>
+          <circle cx="160" cy="188" r="8" fill="#0F1E3A"/><rect x="153" y="196" width="14" height="24" rx="6" fill="#0F1E3A"/>
+        </g>
+        <!-- poteaux -->
+        <g stroke="#7C8BA8" stroke-width="4"><path d="M40 130v120M230 150v108M470 130v128"/></g>
+        <!-- guirlande -->
+        <path class="garland" d="M44 150 Q 135 185 226 162" fill="none" stroke="#0F1E3A" stroke-width="1.2"/>
+        <g class="bulbs"><circle cx="70" cy="161" r="4"/><circle cx="100" cy="170" r="4"/><circle cx="130" cy="174" r="4"/><circle cx="160" cy="173" r="4"/><circle cx="190" cy="168" r="4"/><circle cx="215" cy="163" r="4"/></g>
+      </svg>
+    </div>
+    <div class="layer l-grass" data-depth="40"></div>
+    <div class="layer l-flag" data-depth="34"><span data-site="name">Chapiteau'bel</span></div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+<!-- ============ CONFIGURATEUR 3D ============ -->
+<section class="section config" id="configurateur">
+  <header class="sec-head">
+    <p class="eyebrow">Configurateur 3D</p>
+    <h2 class="h2">Montez votre chapiteau avant qu'on le monte.</h2>
+    <p class="lead">Choisissez la taille, retirez ou ajoutez les bâches côté par côté, passez en mode soirée. Touchez un panneau dans la 3D pour l'enrouler.</p>
+  </header>
+
+  <div class="cfg">
+    <div class="viewer" id="viewer">
+      <canvas id="tent3d" aria-label="Chapiteau en 3D : faites glisser pour tourner, touchez une bâche pour l'ouvrir ou la fermer"></canvas>
+      <div class="viewer-top">
+        <div class="seg" role="group" aria-label="Taille du chapiteau" id="sizeSeg">
+          <button type="button" data-size="6x6" aria-pressed="false">6 × 6 m</button>
+          <button type="button" data-size="6x12" aria-pressed="true">6 × 12 m</button>
+        </div>
+        <button type="button" class="chip" id="nightBtn" aria-pressed="false"><span class="moon" aria-hidden="true"></span><span>Mode soirée</span></button>
+      </div>
+      <p class="viewer-hint">Glisser pour tourner · Molette / pincer pour zoomer · Toucher une bâche pour l'enrouler</p>
+      <div class="dims" id="dims"></div>
+    </div>
+
+    <aside class="panel">
+      <div class="panel-block">
+        <h3>Bâches</h3>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="closed">Tout fermé</button>
+          <button type="button" data-preset="open">Tout ouvert</button>
+          <button type="button" data-preset="front">Façade ouverte</button>
+          <button type="button" data-preset="half">Un côté sur deux</button>
+        </div>
+        <div class="plan" id="plan" aria-label="Plan vu du dessus : cliquez un panneau pour l'ouvrir ou le fermer"></div>
+        <p class="plan-legend"><span class="lg solid"></span>Pleine <span class="lg clear"></span>Fenêtre <span class="lg arch"></span>Arcades <span class="lg open"></span>Enroulée</p>
+      </div>
+      <div class="panel-block">
+        <h3>Aménagement</h3>
+        <div class="seg small" role="group" aria-label="Aménagement" id="layoutSeg">
+          <button type="button" data-layout="empty" aria-pressed="false">Vide</button>
+          <button type="button" data-layout="banquet" aria-pressed="true">Banquet</button>
+          <button type="button" data-layout="cocktail" aria-pressed="false">Cocktail</button>
+        </div>
+      </div>
+      <div class="panel-block summary" id="summary">
+        <div class="sum-row"><span>Surface</span><b id="sSurface">72 m²</b></div>
+        <div class="sum-row"><span>Capacité</span><b id="sCap">60 assis</b></div>
+        <div class="sum-row"><span>Week-end · montage compris</span><b id="sWeekend">350 €</b></div>
+        <div class="sum-row"><span>Semaine · montage compris</span><b id="sWeek">1 000 €</b></div>
+        <a class="btn btn-blue full" href="#reserver" id="cfgCta">Réserver ce chapiteau</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section class="section" id="tarifs">
+  <header class="sec-head">
+    <p class="eyebrow">Tarifs</p>
+    <h2 class="h2">Des prix simples, montage compris.</h2>
+    <p class="lead" id="radiusNote">Livraison, montage et démontage compris dans un rayon de 25 km autour d'Aubel.</p>
+  </header>
+  <div class="prices" id="prices"></div>
+  <div class="options">
+    <h3>Options</h3>
+    <ul id="optionsList"></ul>
+  </div>
+</section>
+
+<!-- ============ ÉTAPES ============ -->
+<section class="section steps-sec">
+  <header class="sec-head">
+    <p class="eyebrow">Comment ça se passe</p>
+    <h2 class="h2">Quatre étapes, zéro prise de tête.</h2>
+  </header>
+  <ol class="steps">
+    <li><h3>Vous réservez</h3><p>Choisissez la taille et la date. On confirme la disponibilité et on regarde ensemble l'emplacement.</p></li>
+    <li><h3>On livre et on monte</h3><p>La veille de l'événement, notre équipe installe le chapiteau, arrimé et prêt à l'emploi.</p></li>
+    <li><h3>Vous faites la fête</h3><p>Bâches ouvertes au soleil, fermées s'il pleut : vous adaptez selon la météo.</p></li>
+    <li><h3>On démonte</h3><p>On revient après l'événement et on repart avec tout. Vous ne rangez rien.</p></li>
+  </ol>
+</section>
+
+<!-- ============ RÉALISATIONS & AVIS ============ -->
+<section class="section" id="realisations">
+  <header class="sec-head">
+    <p class="eyebrow">Réalisations</p>
+    <h2 class="h2">Déjà montés près de chez vous.</h2>
+  </header>
+  <div class="gallery" id="gallery"></div>
+  <div class="reviews" id="reviews"></div>
+</section>
+
+<!-- ============ ZONE ============ -->
+<section class="section zone">
+  <div class="zone-box">
+    <div>
+      <p class="eyebrow">Zone d'intervention</p>
+      <h2 class="h2">Au cœur du Pays de Herve.</h2>
+      <p class="lead">Basés à <span data-site="city">Aubel</span>, on monte nos chapiteaux dans toute la région. Plus loin ? Demandez-nous, on trouve toujours une solution.</p>
+    </div>
+    <ul class="villages" id="villages"></ul>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <header class="sec-head">
+    <p class="eyebrow">Questions fréquentes</p>
+    <h2 class="h2">Tout ce qu'on nous demande.</h2>
+  </header>
+  <div class="faq" id="faqList"></div>
+</section>
+
+<!-- ============ RÉSERVER ============ -->
+<section class="section book" id="reserver">
+  <div class="book-box">
+    <div class="book-copy">
+      <p class="eyebrow">Réservation</p>
+      <h2 class="h2">Bloquez votre date.</h2>
+      <p class="lead">Les week-ends de mai à septembre partent vite. Envoyez-nous votre demande, on vous confirme la disponibilité rapidement.</p>
+      <ul class="coords" id="coords"></ul>
+    </div>
+    <form class="form" id="form" novalidate>
+      <fieldset class="choice">
+        <legend>Chapiteau</legend>
+        <label><input type="radio" name="tent" value="6x6"><span>6 × 6 m</span></label>
+        <label><input type="radio" name="tent" value="6x12" checked><span>6 × 12 m</span></label>
+      </fieldset>
+      <fieldset class="choice">
+        <legend>Durée</legend>
+        <label><input type="radio" name="duration" value="weekend" checked><span>Week-end</span></label>
+        <label><input type="radio" name="duration" value="week"><span>Semaine</span></label>
+      </fieldset>
+      <label for="f-date">Date de l'événement<input id="f-date" name="date" type="date" required></label>
+      <label for="f-place">Lieu (commune)<input id="f-place" name="place" placeholder="ex. Aubel" required></label>
+      <label for="f-name">Nom<input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-contact">GSM ou e-mail<input id="f-contact" name="contact" autocomplete="tel" required></label>
+      <label for="f-msg" class="full">Message<textarea id="f-msg" name="message" rows="3" placeholder="Type d'événement, nombre d'invités, terrain (herbe, gravier, béton)…"></textarea></label>
+      <div class="total full" id="formTotal"></div>
+      <button class="btn btn-blue full" type="submit">Envoyer ma demande</button>
+      <p class="form-note full" id="formNote" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <span class="brand-name small" data-site="name">Chapiteau'bel</span>
+  <span id="legal">Aubel · Province de Liège · Belgique</span>
+  <span>© <span id="year">2026</span></span>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/tent3d.js"></script>
+</body>
+</html>
