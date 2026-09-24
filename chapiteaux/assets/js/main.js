@@ -28,6 +28,18 @@
     addEventListener("scroll", () => { if (scrollY < 900) move(0, Math.min(1, scrollY / 600) * -0.8); }, { passive: true });
   }
 
+  /* ---------- chapiteau illustré : on ouvre / ferme l'entrée ---------- */
+  const heroTent = $("#heroTent"), tip = $("#tentTip");
+  if (heroTent) {
+    heroTent.setAttribute("tabindex", "0");
+    const flip = () => {
+      const closed = heroTent.classList.toggle("closed");
+      tip.textContent = closed ? "Touchez pour rouvrir l'entrée" : "Touchez le chapiteau pour fermer l'entrée";
+    };
+    heroTent.addEventListener("click", flip);
+    heroTent.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
+  }
+
   /* ---------- bandeau ---------- */
   const words = ["Mariages", "Communions", "Anniversaires", "Fêtes de village", "Soirées", "Barbecues", "Événements d'entreprise", "Marchés de Noël", "Baptêmes"];
   $("#ticker").innerHTML = words.concat(words).map((w) => `<span>${w}</span>`).join("");
