@@ -43,7 +43,7 @@ window.TENTS = {
     seated: 60, standing: 100,
     prices: { weekend: 350, week: 1000 },
     bay: 2,
-    blurb: "72 m² pour les mariages, fêtes de famille, fêtes de village et événements d'entreprise. Bâches à fenêtres en arcade, amovibles panneau par panneau.",
+    blurb: "82 m² pour les mariages, fêtes de famille, fêtes de village et événements d'entreprise. Bâches à fenêtres en arcade, amovibles panneau par panneau.",
     walls: { front: "solid", back: "solid", left: "arch", right: "arch" },
     photo: "photos/6x12-arcades.jpg"
   }
