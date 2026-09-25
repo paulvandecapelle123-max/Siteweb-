@@ -1,0 +1,7 @@
+// Configuration Cloudflare (Workers) pour le site NMcars.
+// Dans Cloudflare : Settings → Build → Root directory = nmcars
+{
+  "name": "nmcars",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "." }
+}
