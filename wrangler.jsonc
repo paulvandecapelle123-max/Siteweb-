@@ -1,0 +1,7 @@
+// Configuration Cloudflare (Workers) lue quand le projet est construit depuis la racine du dépôt.
+// Le projet "chapiteaubel" publie uniquement le dossier chapiteaux/.
+{
+  "name": "chapiteaubel",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "./chapiteaux" }
+}
