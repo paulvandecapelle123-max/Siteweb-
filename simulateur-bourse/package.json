@@ -1,0 +1,22 @@
+{
+  "name": "simulateur-bourse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simulateur de trading (paper trading) avec argent fictif, en local.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node start.js",
+    "demo": "node start.js --demo",
+    "reseau": "node start.js --reseau",
+    "server": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "lightweight-charts": "^5.2.1",
+    "yahoo-finance2": "^4.0.2"
+  }
+}

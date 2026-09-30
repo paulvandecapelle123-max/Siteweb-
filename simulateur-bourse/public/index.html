@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0e1014" />
+    <title>Simulateur de bourse</title>
+    <meta name="description" content="Simulateur de trading avec argent fictif, en local." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#/portefeuille" aria-label="Accueil">
+        <span class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></svg>
+        </span>
+        <span class="title">Simulateur de bourse</span>
+        <span class="badge-demo hidden" id="demo-badge" title="Prix simulés : lance « npm start » pour les vrais cours">Démo</span>
+      </a>
+      <div class="account-mini" id="hdr-account">
+        <div class="label">Valeur du compte</div>
+        <div class="value" id="hdr-total">—</div>
+        <div class="small" id="hdr-perf"></div>
+      </div>
+      <button class="icon-btn" id="sources-btn" title="État des sources de données" aria-label="État des sources de données"><span class="source-dot" id="sources-dot"></span></button>
+      <button class="icon-btn" id="theme-btn" title="Changer de thème (sombre / clair / système)" aria-label="Changer de thème"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </header>
+
+    <div class="ticker-bar" id="ticker-bar" aria-label="Grands indices mondiaux"></div>
+
+    <nav class="tabs" id="tabs" aria-label="Navigation principale">
+      <a href="#/portefeuille" data-route="portefeuille">Portefeuille</a>
+      <a href="#/marches" data-route="marches">Marchés</a>
+      <a href="#/favoris" data-route="favoris">Favoris</a>
+      <a href="#/ordres" data-route="ordres">Ordres &amp; historique <span class="count hidden" id="pending-count"></span></a>
+      <a href="#/journal" data-route="journal">Journal</a>
+      <a href="#/stats" data-route="stats">Statistiques</a>
+      <a href="#/bourses" data-route="bourses">Bourses</a>
+      <a href="#/reglages" data-route="reglages">Réglages</a>
+      <a href="#/aide" data-route="aide">Aide</a>
+    </nav>
+
+    <div class="banners" id="banners"></div>
+    <main id="view" tabindex="-1">
+      <div class="loading"><span class="spinner"></span> Chargement du simulateur…</div>
+    </main>
+
+    <div id="modal-root"></div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="tooltip" role="tooltip"></div>
+
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>
