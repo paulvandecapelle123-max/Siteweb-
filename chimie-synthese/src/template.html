@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synthèse chimie – polymérisation</title>
+<style>
+{{FONTS}}
+@page { size: A4; margin: 11mm 12mm 14mm 12mm; }
+:root{
+  --ink:#1f2430; --muted:#5b6170; --line:#d5d9e1;
+  --c8:#0e7490; --c8l:#e6f4f7; --c9:#b4471b; --c9l:#fbeee7;
+  --acid:#1764ab; --alc:#c45f00; --wat:#c81e3a; --new:#7a2db8; --ami:#16834a; --elec:#0aa5a5;
+}
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ margin:0; background:#fff; color:var(--ink); font:10.3pt/1.4 'Source Sans 3','Liberation Sans',Arial,sans-serif; }
+.wrap{ max-width:186mm; margin:0 auto; }
+@media screen{ body{ background:#eef0f4; } .wrap{ background:#fff; padding:14mm 12mm; margin:16px auto; box-shadow:0 2px 14px rgba(0,0,0,.12); } }
+h1,h2,h3,h4,.lbl,.kicker{ font-family:'Lexend','Source Sans 3',sans-serif; }
+h1{ font-size:23pt; line-height:1.12; margin:2px 0 4px; font-weight:700; letter-spacing:-.01em; }
+.kicker{ font-size:9pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--c9); }
+.subtitle{ font-size:11.5pt; color:var(--muted); margin:0 0 8px; }
+h2.part{ break-before:page; color:#fff; background:var(--c9); padding:7px 12px; border-radius:8px; font-size:15pt; margin:0 0 6px; font-weight:700; }
+h2.part small{ display:block; font-size:9.5pt; font-weight:500; opacity:.92; margin-top:1px; }
+h2.part.p8{ background:var(--c8); }
+h2.part.p3{ background:#3d4a63; }
+h3{ font-size:12.3pt; margin:13px 0 5px; padding-bottom:2px; border-bottom:2px solid var(--c9); color:var(--c9); break-after:avoid; font-weight:700; }
+.s8 h3{ color:var(--c8); border-color:var(--c8); }
+.s3 h3{ color:#3d4a63; border-color:#3d4a63; }
+h4{ font-size:10.6pt; margin:9px 0 3px; break-after:avoid; font-weight:700; }
+p{ margin:3px 0 6px; }
+ul,ol{ margin:3px 0 6px; padding-left:18px; }
+li{ margin:1px 0; }
+b,strong{ font-weight:700; }
+.f{ white-space:nowrap; }
+.f sub{ font-size:72%; line-height:0; }
+.muted{ color:var(--muted); }
+.small{ font-size:9.2pt; }
+.acid{ color:var(--acid); } .alc{ color:var(--alc); } .wat{ color:var(--wat); } .new{ color:var(--new); } .ami{ color:var(--ami); }
+.box{ border-left:4px solid; border-radius:6px; padding:5px 10px 6px; margin:7px 0; break-inside:avoid; }
+.box > .lbl{ display:block; font-size:8.2pt; font-weight:700; letter-spacing:.07em; text-transform:uppercase; margin-bottom:1px; }
+.box p:last-child, .box ul:last-child, .box ol:last-child{ margin-bottom:1px; }
+.retenir{ background:#fff6d6; border-color:#d9a400; } .retenir > .lbl{ color:#946f00; }
+.methode{ background:#eaf2fb; border-color:var(--acid); } .methode > .lbl{ color:var(--acid); }
+.piege{ background:#fdecee; border-color:var(--wat); } .piege > .lbl{ color:var(--wat); }
+.lien{ background:#e8f5ee; border-color:var(--ami); } .lien > .lbl{ color:var(--ami); }
+.info{ background:#f3f4f7; border-color:#8a8f99; } .info > .lbl{ color:#5b6170; }
+.prof{ background:#f4effc; border-color:var(--new); } .prof > .lbl{ color:var(--new); }
+figure{ margin:6px 0 8px; text-align:center; break-inside:avoid; }
+figure svg{ max-width:100%; height:auto; }
+figcaption{ font-size:8.8pt; color:var(--muted); margin-top:1px; }
+table{ border-collapse:collapse; width:100%; margin:5px 0 8px; font-size:9.4pt; break-inside:avoid; }
+th,td{ border:1px solid var(--line); padding:3px 6px; vertical-align:middle; }
+th{ background:#f1f3f7; font-weight:700; text-align:left; }
+td.c, th.c{ text-align:center; }
+.cols{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.cols3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+.cols > *, .cols3 > *{ min-width:0; }
+.legend{ display:flex; flex-wrap:wrap; gap:4px 14px; font-size:9pt; margin:4px 0 6px; }
+.legend span{ display:inline-flex; align-items:center; gap:5px; }
+.sw{ width:16px; height:5px; border-radius:2px; display:inline-block; }
+.dotsw{ width:7px; height:7px; border-radius:50%; display:inline-block; background:var(--elec); }
+.check{ list-style:none; padding-left:0; columns:2; column-gap:16px; margin:4px 0; }
+.check li{ padding-left:17px; position:relative; break-inside:avoid; margin:0 0 3px; font-size:9.6pt; }
+.check li::before{ content:""; position:absolute; left:0; top:3px; width:10px; height:10px; border:1.4px solid var(--ink); border-radius:2px; }
+.cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin:5px 0 8px; }
+.card{ border:1px solid var(--line); border-radius:7px; padding:4px 6px 5px; text-align:center; break-inside:avoid; background:#fff; }
+.card .nm{ font-weight:700; font-size:9.8pt; }
+.card .ex{ font-size:8.8pt; color:var(--muted); line-height:1.25; }
+.card.star{ border-color:var(--c9); box-shadow:inset 0 0 0 1px var(--c9); }
+.card.star .nm::after{ content:" ★"; color:var(--c9); }
+.codes{ display:grid; grid-template-columns:repeat(7,1fr); gap:5px; margin:5px 0 8px; }
+.code{ border:1px solid var(--line); border-radius:7px; padding:3px 4px 5px; text-align:center; font-size:8.4pt; line-height:1.25; break-inside:avoid; }
+.code b{ display:block; font-size:10pt; }
+.code svg{ width:44px; height:auto; }
+.frac{ display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; margin:0 3px; }
+.frac > span:first-child{ border-bottom:1.3px solid currentColor; padding:0 4px 1px; }
+.frac > span:last-child{ padding:1px 4px 0; }
+.eqline{ text-align:center; font-size:11pt; margin:6px 0; }
+.ex-list > li{ margin-bottom:5px; break-inside:avoid; }
+.sol > li{ margin-bottom:4px; break-inside:avoid; }
+.tag{ display:inline-block; font-size:8pt; font-weight:700; padding:0 5px; border-radius:4px; background:var(--c9l); color:var(--c9); vertical-align:1px; }
+.tag.t8{ background:var(--c8l); color:var(--c8); }
+.nobreak{ break-inside:avoid; }
+.pb{ break-before:page; }
+.tight td, .tight th{ padding:2px 5px; }
+td svg{ display:block; margin:0 auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- =================================================================== PAGE 1 -->
+<div class="kicker">Chimie 6e · synthèse pour le test</div>
+<h1>De l’estérification à la polymérisation</h1>
+<p class="subtitle">Le chapitre précédent (UAA 8 : fonctions organiques &amp; estérification) résumé pour bien comprendre le chapitre du test (UAA 9 : les macromolécules).</p>
+
+<figure>{{carte}}</figure>
+
+<div class="legend">
+  <b>Code couleur des schémas :</b>
+  <span><i class="sw" style="background:var(--acid)"></i>vient de l’acide</span>
+  <span><i class="sw" style="background:var(--alc)"></i>vient de l’alcool</span>
+  <span><i class="sw" style="background:var(--ami)"></i>vient de l’amine</span>
+  <span><i class="sw" style="background:var(--wat)"></i>atomes éliminés (eau, HCl)</span>
+  <span><i class="sw" style="background:var(--new)"></i>nouvelle liaison formée</span>
+  <span><i class="dotsw"></i>électron célibataire</span>
+</div>
+
+<div class="box retenir">
+<span class="lbl">Ce que tu dois savoir faire pour le test (objectifs du cours UAA 9)</span>
+<ul class="check">
+  <li>Définir : polymère, polymérisation, degré de polymérisation, acide aminé, thermoplastique, thermodurcissable</li>
+  <li>Nommer un alcène et écrire sa formule</li>
+  <li>Écrire l’équation d’une <b>polyaddition</b> et d’une <b>polycondensation</b></li>
+  <li>Reconnaître le <b>motif</b> (unité constitutive) dans un fragment de polymère</li>
+  <li>Retrouver le(s) <b>monomère(s)</b> d’un polymère</li>
+  <li>Calculer <b>n</b> à partir de la masse molaire ; problèmes de stœchiométrie avec un polymère</li>
+  <li>Décrire la synthèse d’une <b>protéine</b> et la <b>liaison peptidique</b></li>
+  <li>Utiliser les <b>codes d’identification</b> (1 à 7) des plastiques</li>
+  <li>Citer les <b>3 types de valorisation</b> ; avantages et inconvénients des plastiques</li>
+  <li>(UAA 8) fonctions organiques, nomenclature, estérification</li>
+</ul>
+</div>
+
+<p class="small muted"><b>Comment l’utiliser :</b> la <b>partie A</b> rappelle le chapitre 8 (les « briques » dont tu as besoin), la <b>partie B</b> est le cœur du test, la <b>partie C</b> regroupe les calculs, la <b>partie D</b> contient des exercices avec leurs corrigés. Les cadres <b>violets</b> « Ton cours » signalent les endroits où j’ai complété ton cours, qui avait des trous.</p>
+
+<!-- =================================================================== PARTIE A -->
+<section class="s8">
+<h2 class="part p8">Partie A — Rappels du chapitre précédent (UAA 8)<small>Les fonctions organiques et la réaction d’estérification : les briques de la polymérisation</small></h2>
+
+<h3>A.1 Les fonctions organiques</h3>
+<p>Une <b>fonction organique</b> est une <b>suite caractéristique d’atomes portée par une chaîne carbonée</b>. Elle contient souvent des <b>hétéroatomes</b> (atomes autres que C et H : O, N, S…). Dans les formules, <b>R</b> représente la partie carbonée. Les fonctions marquées <span style="color:var(--c9)">★</span> sont celles qui servent à fabriquer des polymères.</p>
+
+<div class="cards">
+  <div class="card star"><div class="nm">Alcool</div>{{g_alcool}}<div class="ex">⟦CH3-CH2-OH⟧<br>éthanol</div></div>
+  <div class="card"><div class="nm">Aldéhyde</div>{{g_aldehyde}}<div class="ex">⟦CH3-CHO⟧<br>éthanal (en bout de chaîne)</div></div>
+  <div class="card"><div class="nm">Cétone</div>{{g_cetone}}<div class="ex">⟦CH3-CO-CH3⟧<br>propanone (au milieu)</div></div>
+  <div class="card star"><div class="nm">Acide carboxylique</div>{{g_acide}}<div class="ex">⟦CH3-COOH⟧<br>acide éthanoïque</div></div>
+  <div class="card star"><div class="nm">Ester</div>{{g_ester}}<div class="ex">⟦CH3-COO-CH2-CH3⟧<br>éthanoate d’éthyle</div></div>
+  <div class="card star"><div class="nm">Amine</div>{{g_amine}}<div class="ex">⟦CH3-NH2⟧<br>méthylamine</div></div>
+  <div class="card star"><div class="nm">Amide</div>{{g_amide}}<div class="ex">⟦CH3-CO-NH-CH3⟧<br>liaison amide ⟦-CO-NH-⟧</div></div>
+  <div class="card"><div class="nm">Éther</div>{{g_ether}}<div class="ex">⟦CH3-O-CH3⟧<br>O entre deux C</div></div>
+</div>
+
+<div class="box piege">
+<span class="lbl">Ne pas confondre</span>
+<b>Acide</b> ⟦-COOH⟧ : C=O <u>et</u> OH sur le <b>même</b> C. · <b>Ester</b> ⟦-COO-⟧ : C=O et O relié à une 2<sup>e</sup> chaîne. · <b>Alcool</b> ⟦-OH⟧ : OH sur un C qui n’a que des liaisons simples. · <b>Éther</b> : O entre deux C, sans C=O. · <b>Amine</b> ⟦-NH2⟧ sans C=O, <b>amide</b> ⟦-CO-NH-⟧ avec C=O.
+</div>
+
+<h4>Représenter une molécule organique</h4>
+<table class="tight">
+<tr><th></th><th class="c">Développée</th><th class="c">Semi-développée</th><th class="c">Topologique</th></tr>
+<tr><td><b>Éthanol</b></td><td>{{ethanol_dev}}</td><td class="c">⟦CH3-CH2-OH⟧</td><td>{{ethanol_topo}}</td></tr>
+<tr><td><b>Acide éthanoïque</b></td><td>{{acetic_dev}}</td><td class="c">⟦CH3-COOH⟧</td><td>{{acetic_topo}}</td></tr>
+<tr class="small"><td></td><td class="c">tous les atomes et toutes les liaisons</td><td class="c">on n’écrit plus les liaisons vers les H</td><td class="c">on n’écrit plus ni les C, ni les H liés aux C</td></tr>
+</table>
+<p class="small">Un <b>hétéroatome</b> (O, N, Cl…) est <b>toujours</b> écrit, avec les H qui lui sont liés. Rappel : <b>C</b> fait 4 liaisons, <b>N</b> 3, <b>O</b> 2, <b>H</b> et <b>Cl</b> 1. Vérifie toujours tes formules avec cette règle.</p>
+
+<h3>A.2 Nommer les alcools, les acides et les esters</h3>
+<table class="tight" style="width:auto;margin:3px auto 6px">
+<tr><th>Nombre de C</th><td class="c">1</td><td class="c">2</td><td class="c">3</td><td class="c">4</td><td class="c">5</td><td class="c">6</td><td class="c">7</td><td class="c">8</td></tr>
+<tr><th>Préfixe</th><td>méth-</td><td>éth-</td><td>prop-</td><td>but-</td><td>pent-</td><td>hex-</td><td>hept-</td><td>oct-</td></tr>
+</table>
+
+<div class="cols">
+<div>
+<h4>Les alcools ⟦R-OH⟧</h4>
+<ul>
+<li>Groupe <b>hydroxyle</b> ⟦-OH⟧ porté par un <b>C saturé</b> (que des liaisons simples). Formule générale : C<sub>n</sub>H<sub>2n+1</sub>–OH.</li>
+<li>Nom de l’alcane : le <b>-e</b> final devient <b>-ol</b>.</li>
+<li>La chaîne principale est la plus longue qui porte le OH ; le <b>numéro du C qui porte le OH</b> se place devant « ol ». Il doit être <b>le plus petit possible</b> et il est <b>prioritaire</b> sur les ramifications.</li>
+</ul>
+<p class="small">Ex. : ⟦CH3-CH(OH)-CH3⟧ = propan-2-ol ; ⟦CH3-CH2-C(CH3)(OH)-CH2-CH2-CH3⟧ = 3-méthylhexan-3-ol ; ⟦CH3-C(CH3)(OH)-CH(CH3)-CH3⟧ = 2,3-diméthylbutan-2-ol.</p>
+<p class="small"><b>Polyalcools</b> <span style="color:var(--c9)">★</span> : éthane-1,2-diol (éthylène glycol, antigel) ⟦CH2OH-CH2OH⟧ → <b>monomère du PET</b> ; propane-1,2,3-triol (glycérol, E422) ⟦CH2OH-CHOH-CH2OH⟧.</p>
+</div>
+<div>
+<h4>Les acides carboxyliques ⟦R-COOH⟧</h4>
+<figure style="margin:2px 0">{{acide_gen}}</figure>
+<ul>
+<li>Toujours <b>en bout de chaîne</b> : le C de ⟦-COOH⟧ porte le <b>n° 1</b>.</li>
+<li>Nom : <b>acide</b> + nom de la chaîne + <b>-oïque</b>.</li>
+</ul>
+<p class="small">Acide méthanoïque ⟦HCOOH⟧ (formique, fourmis) ; acide éthanoïque ⟦CH3-COOH⟧ (acétique, vinaigre) ; acide butanoïque (butyrique, beurre rance) ; acide éthanedioïque ⟦HOOC-COOH⟧ (oxalique, rhubarbe). ⟦CH3-CH(CH3)-CH2-COOH⟧ = acide 3-méthylbutanoïque.</p>
+<p class="small"><b>Diacides</b> <span style="color:var(--c9)">★</span> : acide hexanedioïque (adipique) ⟦HOOC-(CH2)4-COOH⟧ → nylon 6,6 ; acide téréphtalique ⟦HOOC-C6H4-COOH⟧ → PET.</p>
+</div>
+</div>
+
+<h4>Les esters ⟦R1-COO-R2⟧</h4>
+<div class="cols" style="align-items:center">
+<figure style="margin:0">{{ester_nom}}</figure>
+<div>
+<p><b>Règle :</b> on nomme d’abord la chaîne <b>du côté du C=O</b> (en comptant ce C) avec la terminaison <b>-oate</b>, puis le groupe alkyle ⟦R2⟧ fixé sur le O, avec la terminaison <b>-yle</b>.</p>
+<p class="small">⟦CH3-COO-CH3⟧ éthanoate de méthyle · ⟦CH3-CH2-COO-CH2-CH3⟧ propanoate d’éthyle · ⟦H-COO-CH2-CH2-CH2-CH3⟧ méthanoate de butyle · ⟦CH3-CH2-CH2-COO-CH2-C(CH3)2-CH3⟧ butanoate de 2,2-diméthylpropyle.</p>
+</div>
+</div>
+<div class="box methode">
+<span class="lbl">Méthode : retrouver l’acide et l’alcool d’un ester</span>
+On coupe l’ester entre le <b>C=O</b> et le <b>O</b> : le côté C=O reçoit un <b>OH</b> → <span class="acid">acide</span> ; le côté O reçoit un <b>H</b> → <span class="alc">alcool</span>.
+Ex. : éthanoate de propyle ⟦CH3-COO-CH2-CH2-CH3⟧ ← acide éthanoïque ⟦CH3-COOH⟧ + propan-1-ol ⟦HO-CH2-CH2-CH3⟧. <b>C’est exactement la méthode qui sert à « découper » un polyester (partie B) !</b>
+</div>
+
+<h3>A.3 Propriétés et usages</h3>
+<div class="cols">
+<div>
+<p><b>Alcools :</b> leur <b>température d’ébullition</b> est plus haute que celle d’un alcane de masse voisine, à cause des <b>liaisons (ponts) hydrogène</b> entre les molécules (il faut plus d’énergie pour les séparer). Elle augmente aussi avec la longueur de la chaîne. Ils sont <b>solubles dans l’eau</b> (le OH est polaire et fait des ponts H avec l’eau) tant que la chaîne carbonée, hydrophobe, reste courte.</p>
+</div>
+<div>
+<p><b>Usages :</b> méthanol (solvant, combustible, <b>très toxique</b>), éthanol (boissons, désinfectant, solvant), glycol (antigel), glycérol (cosmétiques). Les <b>esters</b> : arômes et parfums, solvants (acétate d’éthyle = dissolvant), <b>polyesters</b> (fibres, plastiques), savons (à partir des triesters des huiles et graisses).</p>
+<p class="small">Fabriquer l’éthanol : fermentation ⟦C6H12O6 → 2 CH3-CH2-OH + 2 CO2⟧ ou hydratation d’un <b>alcène</b> ⟦CH2=CH2 + H2O → CH3-CH2-OH⟧.</p>
+</div>
+</div>
+
+<h3>A.4 La réaction d’estérification</h3>
+<figure>{{esterif_gen}}<figcaption>Le OH de l’acide et le H de l’alcool partent ensemble sous forme d’eau ; la nouvelle liaison C–O forme le groupe ester.</figcaption></figure>
+<p class="eqline">Ex. : ⟦CH3-COOH⟧ + ⟦HO-CH2-CH2-CH3⟧ ⇌ ⟦CH3-COO-CH2-CH2-CH3⟧ + ⟦H2O⟧<br><span class="small muted">acide éthanoïque + propan-1-ol ⇌ éthanoate de propyle (odeur de poire) + eau</span></p>
+
+<div class="cols" style="align-items:start">
+<div class="box retenir" style="margin:0">
+<span class="lbl">Caractéristiques</span>
+<ul>
+<li><b>Lente</b> (plusieurs heures à température ambiante).</li>
+<li><b>Limitée à un équilibre</b> (incomplète) : elle s’arrête alors que les 4 espèces sont encore présentes. C’est un <b>équilibre dynamique</b>, noté par une <b>double flèche</b> ⇌.</li>
+<li>La réaction inverse est l’<b>hydrolyse</b> de l’ester.</li>
+</ul>
+</div>
+<div class="box prof" style="margin:0">
+<span class="lbl">Ton cours (à compléter, p. 16)</span>
+<b>Augmenter la VITESSE :</b> ① <b>chauffer</b> (augmenter la température, montage à reflux) ; ② ajouter un <b>catalyseur</b> : des ions H⁺ (quelques gouttes d’acide sulfurique ⟦H2SO4⟧).<br>
+<b>Augmenter le RENDEMENT</b> (déplacer l’équilibre, loi de <b>Le Chatelier</b>) : ① mettre un <b>réactif en excès</b> ; ② <b>éliminer un produit</b> (l’eau ou l’ester) au fur et à mesure qu’il se forme.<br>
+<span class="small">Le chauffage et le catalyseur font arriver <b>plus vite</b> à l’équilibre, mais ne changent <b>pas</b> le rendement.</span>
+</div>
+</div>
+
+<div class="cols" style="margin-top:6px;align-items:start">
+<figure style="margin:0">{{reflux}}<figcaption>Montage à reflux : on chauffe sans perdre de matière.</figcaption></figure>
+<div>
+<h4 style="margin-top:0">Constante d’équilibre K<sub>c</sub></h4>
+<p class="eqline">K<sub>c</sub> = <span class="frac"><span>[ester] · [⟦H2O⟧]</span><span>[acide] · [alcool]</span></span></p>
+<p class="small"><b>Attention :</b> d’habitude l’eau n’apparaît pas dans K<sub>c</sub> (c’est le solvant). Ici, l’eau est un <b>produit</b>, donc on la <b>met</b> dans K<sub>c</sub>.</p>
+<p class="small"><b>Exemple (exercice du cours) :</b> 1 mol d’acide éthanoïque + 1 mol d’éthanol, K<sub>c</sub> = 4. À l’équilibre : acide = alcool = 1 – x ; ester = eau = x.<br>
+x² / (1 – x)² = 4 ⇒ x / (1 – x) = 2 ⇒ x = 2/3 mol ⇒ <b>rendement = 0,67 / 1 = 67 %</b>.<br>
+Rendement = n(ester obtenu) / n(ester maximum) × 100.</p>
+</div>
+</div>
+
+<p class="small"><b>Esters et arômes (tableau du cours) :</b> éthanoate de propyle → poire · éthanoate d’isopentyle (3-méthylbutyle) → banane · éthanoate d’octyle → orange · butanoate de méthyle → pomme · butanoate d’éthyle → ananas · butanoate de pentyle → abricot.</p>
+
+<h3>A.5 La passerelle vers les polymères : amines et amides</h3>
+<figure>{{amide_gen}}<figcaption>Même logique que l’estérification : le OH de l’acide + un H de l’amine → eau. Le groupe formé est un <b>amide</b>.</figcaption></figure>
+<p>Au laboratoire, on remplace souvent l’acide par un <b>chlorure d’acide</b> ⟦R-COCl⟧, beaucoup plus réactif : la réaction est <b>rapide et complète</b> et la petite molécule éliminée est <b>HCl</b> au lieu de ⟦H2O⟧ :
+<span class="f">⟦R1-COCl⟧ + ⟦H2N-R2⟧ → ⟦R1-CO-NH-R2⟧ + HCl</span>.</p>
+<div class="box lien">
+<span class="lbl">Le lien avec le chapitre 9</span>
+L’estérification et la formation d’un amide sont des réactions de <b>condensation</b> : deux molécules s’unissent en <b>éliminant une petite molécule</b> (⟦H2O⟧ ou HCl). Si chaque molécule possède <b>deux</b> fonctions, la réaction peut se répéter des milliers de fois : c’est la <b>polycondensation</b>. Polyesters, polyamides, protéines, amidon… tous fonctionnent ainsi.
+</div>
+</section>
+
+<!-- =================================================================== PARTIE B -->
+<section>
+<h2 class="part">Partie B — Les macromolécules (UAA 9) · le test<small>Polymères, polyaddition, polycondensation, macromolécules biologiques, propriétés et recyclage</small></h2>
+
+<h3>B.1 Notions de base</h3>
+<div class="box retenir">
+<span class="lbl">Définitions à connaître par cœur</span>
+<ul>
+<li><b>Macromolécule</b> : molécule contenant un <b>très grand nombre d’atomes (plus de 1000)</b> liés par des liaisons covalentes. Les polymères font partie des macromolécules.</li>
+<li><b>Monomère</b> : petite molécule (faible masse moléculaire) qui sert d’unité de base.</li>
+<li><b>Polymère</b> : molécule constituée par la <b>répétition</b> d’une ou de plusieurs unités de base, les <b>monomères</b>.</li>
+<li><b>Polymérisation</b> : réaction chimique qui permet de synthétiser un polymère à partir de monomères.</li>
+<li><b>Motif</b> (ou <b>unité constitutive</b>) : groupe d’atomes qui se répète dans le polymère ; on l’écrit entre crochets avec l’indice <i>n</i>.</li>
+<li><b>Degré de polymérisation <i>n</i></b> : nombre (moyen) de monomères contenus dans le polymère (nombre sans unité). Si <i>n</i> &lt; 30, on parle d’<b>oligomère</b>, pas de polymère.</li>
+</ul>
+<p class="eqline" style="margin:4px 0 0"><b><i>n</i> = <span class="frac"><span>M<sub>p</sub></span><span>M<sub>m</sub></span></span></b> &nbsp; <span class="small">M<sub>p</sub> = masse molaire (moyenne) du polymère · M<sub>m</sub> = masse molaire du monomère (en g/mol)</span></p>
+</div>
+<figure>{{beads}}</figure>
+<p class="small"><b>Exemple (cours) :</b> un polyéthylène de M<sub>p</sub> = 300 kg/mol = 300 000 g/mol ; M(⟦C2H4⟧) = 2×12 + 4×1 = 28 g/mol ⇒ <i>n</i> = 300 000 / 28 ≈ <b>10 714</b>. <span class="wat">Attention à convertir les kg/mol en g/mol !</span></p>
+
+<div class="box prof">
+<span class="lbl">Ton cours (questions p. 3)</span>
+<b>Q1</b> <i>poly-</i> = <b>plusieurs</b> (polygone, polyglotte, polyvalent, polyclinique…). <b>Q2</b> Point commun : un <b>même groupe d’atomes se répète</b>, écrit entre crochets avec <i>n</i>. <b>Q3</b> Un polymère est une <b>très grande molécule formée par la répétition</b> d’un même motif.<br>
+<b>Q4</b> <b>Naturels :</b> amidon, cellulose, protéines (soie/fibroïne, laine, kératine), ADN, caoutchouc naturel. <b>Synthétiques :</b> PE, PP, PVC, PS, PTFE (téflon), PET, nylon. Une <b>matière plastique</b> = un polymère + des <b>additifs</b> (colorants, stabilisants, lubrifiants, ignifugeants…).
+</div>
+
+<h3>B.2 Les alcènes : les monomères de la polyaddition</h3>
+<div class="cols" style="align-items:start">
+<div>
+<p>Comme les alcanes, les <b>alcènes</b> ne contiennent que C et H, mais leur formule générale est <b>C<sub>n</sub>H<sub>2n</sub></b> : 2 H de moins qu’un alcane, ce qui oblige à avoir une <b>double liaison C=C</b> pour respecter la tétravalence du carbone.</p>
+<ul>
+<li>Double liaison ⇒ <b>hydrocarbures insaturés</b>.</li>
+<li><b>Molécules planes</b> (les atomes autour de la double liaison sont dans le même plan).</li>
+</ul>
+</div>
+<table class="tight">
+<tr><th>Nom</th><th>Formule</th><th class="c">Développée</th><th>Semi-dév.</th></tr>
+<tr><td>Éthène (éthylène)</td><td>⟦C2H4⟧</td><td>{{ethene_dev}}</td><td>⟦CH2=CH2⟧</td></tr>
+<tr><td>Propène (propylène)</td><td>⟦C3H6⟧</td><td>{{propene_dev}}</td><td>⟦CH2=CH-CH3⟧</td></tr>
+</table>
+</div>
+<div class="box methode">
+<span class="lbl">Nomenclature des alcènes (4 règles)</span>
+① La chaîne principale <b>contient la double liaison</b>. ② On numérote pour que la double liaison ait le <b>plus petit indice</b>. ③ Le « -ane » de l’alcane devient <b>« -ène »</b>, précédé du numéro du <b>1<sup>er</sup> C de la double liaison</b>, entre deux tirets. ④ La position des ramifications passe <b>après</b> la priorité de la double liaison.<br>
+Ex. : ⟦CH3-CH=CH-CH3⟧ = <b>but-2-ène</b> · ⟦CH2=C(CH3)-CH2-CH3⟧ = <b>2-méthylbut-1-ène</b>.
+</div>
+<p class="small"><b>Corrigé des exercices p. 8.</b> 1a) ⟦CH2=CH-CH2-CH2-CH3⟧ pent-1-ène · b) ⟦CH3-C(CH3)=CH-CH3⟧ 2-méthylbut-2-ène · c) ⟦CH3-CH(CH3)-CH=CH2⟧ 3-méthylbut-1-ène · d) ⟦CH3-C(CH3)=CH2⟧ méthylpropène (2-méthylprop-1-ène) · e) ⟦CH3-CH(CH3)-CH2-C(CH3)=CH2⟧ 2,4-diméthylpent-1-ène.
+2a) 4-méthylpent-1-ène ⟦CH2=CH-CH2-CH(CH3)-CH3⟧ · b) 5-méthylhex-2-ène ⟦CH3-CH=CH-CH2-CH(CH3)-CH3⟧ · c) 3,4-diméthylpent-2-ène ⟦CH3-CH=C(CH3)-CH(CH3)-CH3⟧.</p>
+
+<h3>B.3 La polymérisation par polyaddition</h3>
+<p>Le monomère est un <b>alcène</b> (un <b>seul type</b> de monomère). Un très grand nombre de monomères se lient les uns aux autres pour former une très longue chaîne qui ne contient <b>que des liaisons covalentes simples</b>. Aucun atome n’est perdu.</p>
+<figure>{{polyadd_steps}}<figcaption>Polyaddition de l’éthène, comme dans ton cours (p. 9-10).</figcaption></figure>
+<figure>{{polyadd_eq}}</figure>
+<div class="box retenir">
+<span class="lbl">Équation générale de la polyaddition</span>
+<p class="eqline" style="margin:2px 0">n ⟦CH2=CH2⟧ → ⟦-[CH2-CH2]n-⟧ &nbsp;&nbsp; et, plus généralement : &nbsp; n ⟦CH2=CHX⟧ → ⟦-[CH2-CHX]n-⟧</p>
+Ça marche <b>quels que soient les groupes</b> placés autour de la double liaison (à la place des H de l’éthène). Le motif a <b>la même formule brute</b> que le monomère (rien n’est éliminé).
+</div>
+
+<div class="box methode">
+<span class="lbl">Méthode 1 : du monomère au polymère</span>
+<figure style="margin:2px 0 0">{{pvc_method}}</figure>
+</div>
+<div class="box methode">
+<span class="lbl">Méthode 2 : du polymère au monomère</span>
+Dans un polymère d’addition, la chaîne principale ne contient <b>que des C</b>, et le motif se répète <b>tous les 2 C</b>. On découpe tous les 2 C, puis on remet la double liaison entre ces 2 C.
+<figure style="margin:2px 0 0">{{pp_cut}}</figure>
+</div>
+
+<h4>Les principaux polymères d’addition (corrigé du tableau p. 11 + p. 11-12)</h4>
+<table class="tight">
+<tr><th>Monomère</th><th class="c">Monomère (développé)</th><th class="c">Polymère (motif)</th><th>Polymère condensé</th><th>Sigle · code</th><th>Usages</th></tr>
+<tr><td>éthène (éthylène)</td><td>{{mono_pe}}</td><td>{{motif_pe}}</td><td>⟦-[CH2-CH2]n-⟧</td><td><b>PE</b> · 2 (PEHD) / 4 (PEBD)</td><td class="small">sacs, films, bouteilles de lait, seaux ; le plastique le plus utilisé au monde</td></tr>
+<tr><td>propène (propylène)</td><td>{{mono_pp}}</td><td>{{motif_pp}}</td><td>⟦-[CH2-CH(CH3)]n-⟧</td><td><b>PP</b> · 5</td><td class="small">pare-chocs, meubles de jardin, boîtes pour micro-ondes, valises</td></tr>
+<tr><td>chloroéthène (chlorure de vinyle)</td><td>{{mono_pvc}}</td><td>{{motif_pvc}}</td><td>⟦-[CH2-CHCl]n-⟧</td><td><b>PVC</b> · 3</td><td class="small">tuyaux, châssis, cartes, gouttières ; sa combustion libère des composés chlorés (pluies acides)</td></tr>
+<tr><td>styrène (phényléthène)</td><td>{{mono_ps}}</td><td>{{motif_ps}}</td><td>⟦-[CH2-CH(C6H5)]n-⟧</td><td><b>PS</b> · 6</td><td class="small">gobelets ; PS expansé (PSE, « frigolite ») : isolant léger</td></tr>
+<tr><td>tétrafluoroéthène</td><td>{{mono_ptfe}}</td><td>{{motif_ptfe}}</td><td>⟦-[CF2-CF2]n-⟧</td><td><b>PTFE</b> (téflon) · 7</td><td class="small">poêles antiadhésives</td></tr>
+<tr><td>but-2-ène</td><td>{{mono_pbut}}</td><td>{{motif_pbut}}</td><td>⟦-[CH(CH3)-CH(CH3)]n-⟧</td><td>poly(but-2-ène)</td><td class="small">exemple du tableau p. 11</td></tr>
+</table>
+<p class="small">⟦C6H5⟧ = groupe <b>phényle</b> (cycle benzénique). Dans le tableau p. 11, la 2<sup>e</sup> ligne (chaîne avec un ⟦CH3⟧ tous les 2 C) correspond au <b>propène → PP</b> et la 4<sup>e</sup> (cycle tous les 2 C) au <b>styrène → PS</b>.</p>
+<div class="box piege">
+<span class="lbl">Remarque sur ton cours</span>
+Ton cours (p. 12) dit « polystyrène : plastique expansé <b>thermodurcissable</b> ». En réalité, le PS est un <b>thermoplastique</b> : il ramollit à la chaleur, on peut le remouler et on le recycle (code 6). Si une question tombe là-dessus, vérifie avec ta prof ce qu’elle attend.
+</div>
+
+<h3>B.4 La polymérisation par polycondensation</h3>
+<p>Deux molécules qui possèdent des fonctions bien précises (<b>acide carboxylique, alcool, amine</b>) se lient un très grand nombre de fois les unes aux autres en <b>éliminant à chaque fois une petite molécule</b> (généralement <b>⟦H2O⟧</b> ou <b>HCl</b>). On obtient deux grandes familles : les <b>polyesters</b> et les <b>polyamides</b>.</p>
+<figure>{{bifonc}}<figcaption>Pourquoi faut-il des monomères <b>bifonctionnels</b> (deux fonctions par molécule) ?</figcaption></figure>
+
+<h4>1) Les polyesters : diacide + dialcool. Exemple : le PET</h4>
+<p>Le <b>PET</b> (polyéthylène téréphtalate) résulte de la condensation d’un <b>diacide</b>, l’<span class="acid">acide téréphtalique</span>, et d’un <b>dialcool</b>, l’<span class="alc">éthylène glycol</span> (éthane-1,2-diol). On fait réagir n diacides avec n dialcools.</p>
+<figure>{{polycond_steps}}<figcaption>Les 3 étapes de ton cours (p. 15) pour une liaison ester. « ⋯ » = le reste de la molécule.</figcaption></figure>
+<figure>{{pet_eq}}<figcaption>Équation bilan du PET. Usages : bouteilles de boissons (code 1), fibres textiles « polyester » (27 bouteilles → 1 pull polaire), films.</figcaption></figure>
+<div class="box retenir">
+<span class="lbl">Équation générale d’un polyester</span>
+<p class="eqline" style="margin:2px 0">n ⟦HOOC-R1-COOH⟧ + n ⟦HO-R2-OH⟧ → ⟦-[CO-R1-CO-O-R2-O]n-⟧ + 2n ⟦H2O⟧</p>
+<span class="small">Chaque motif contient <b>2 liaisons ester</b>, donc 2 molécules d’eau par motif : on écrit <b>2n ⟦H2O⟧</b>, comme dans ton cours. (En toute rigueur c’est 2n – 1, mais <i>n</i> est si grand que ça ne change rien.)</span>
+</div>
+
+<h4>2) Les polyamides : diacide + diamine. Exemple : le nylon 6,6</h4>
+<figure>{{nylon_eq}}<figcaption>« 6,6 » : la diamine a 6 C et le diacide a 6 C. Usages : bas nylon, textiles, cordes, fils de pêche, roues dentées.</figcaption></figure>
+<div class="box info">
+<span class="lbl">Expérience du nylon (p. 18) : avec un dichlorure d’acide</span>
+Au labo, on utilise le <b>dichlorure d’acide adipique</b> (plus réactif : réaction <b>rapide et complète</b>). La petite molécule éliminée est alors <b>HCl</b> :
+<p class="eqline" style="margin:3px 0">n ⟦ClOC-(CH2)4-COCl⟧ + n ⟦H2N-(CH2)6-NH2⟧ → ⟦-[CO-(CH2)4-CO-NH-(CH2)6-NH]n-⟧ + 2n HCl</p>
+Le lien formé entre les deux monomères est un <b>lien amide</b> ⟦-NH-CO-⟧ : le nylon est donc un <b>polyamide</b>.
+</div>
+
+<div class="box methode">
+<span class="lbl">Méthode 3 : retrouver les monomères d’un polyester (ou d’un polyamide)</span>
+① Repère les liaisons <b>ester</b> ⟦-CO-O-⟧ (ou <b>amide</b> ⟦-CO-NH-⟧). ② Coupe chaque liaison entre le <b>C=O</b> et le <b>O</b> (ou le <b>N</b>). ③ Ajoute <b>OH</b> sur chaque C=O (→ diacide) et <b>H</b> sur chaque O (→ dialcool) ou sur chaque N (→ diamine).
+<figure style="margin:3px 0 0">{{cut_method}}</figure>
+</div>
+
+<h3>B.5 Les macromolécules biologiques</h3>
+<figure>{{bio_beads}}</figure>
+<div class="cols">
+<div>
+<h4 style="margin-top:0">Polysaccharides</h4>
+<p class="small">Ce sont des <b>glucides</b> (sucres) formés par la polymérisation d’un grand nombre de <b>monosaccharides</b> (ex. glucose ⟦C6H12O6⟧) : <b>amidon</b> (réserve des plantes : pommes de terre, céréales), <b>cellulose</b> (bois, coton, papier), glycogène (réserve chez l’animal). C’est une <b>polycondensation</b> : chaque liaison élimine une molécule d’eau.</p>
+</div>
+<div>
+<h4 style="margin-top:0">Acides nucléiques</h4>
+<p class="small">L’<b>ADN</b> (acide désoxyribonucléique) forme les chromosomes, les molécules de l’hérédité, en double hélice. Comme l’ARN, chaque brin est une macromolécule formée d’un grand nombre de <b>nucléotides</b>.</p>
+</div>
+</div>
+<figure>{{glucose_cond}}</figure>
+
+<h4>Les protéines</h4>
+<p>Les protéines sont indispensables à la cellule vivante : rôle <b>structural</b> (kératine des poils, ongles et griffes), rôle <b>métabolique</b> (enzymes), ou les deux (myosine des muscles). Toutes les protéines résultent d’une <b>association d’acides aminés</b>.</p>
+<div class="cols" style="align-items:center">
+<figure style="margin:0">{{aa_general}}</figure>
+<div class="box retenir" style="margin:0">
+<span class="lbl">Définition : acide aminé</span>
+Molécule qui possède un <b>groupe amine</b> ⟦-NH2⟧ et un <b>groupe acide carboxylique</b> ⟦-COOH⟧ portés par le <b>même carbone</b>. Le radical <b>R</b> change d’un acide aminé à l’autre (20 acides aminés), ce qui leur donne des propriétés différentes. Ex. : glycine (R = H), alanine (R = ⟦CH3⟧), sérine (R = ⟦CH2OH⟧).
+</div>
+</div>
+<p>Deux acides aminés réagissent par <b>polycondensation</b> : la fonction <span class="acid">acide</span> du 1<sup>er</sup> réagit avec la fonction <span class="ami">amine</span> du 2<sup>e</sup>. Il se forme une <b>liaison amide</b>, appelée ici <b>liaison peptidique</b>, avec <b>perte d’une molécule d’eau</b>.</p>
+<figure>{{peptide}}</figure>
+<ul>
+<li>Le <b>peptide</b> formé garde une fonction acide d’un côté et une fonction amine de l’autre : il peut encore se lier à d’autres acides aminés → <b>polypeptide</b>.</li>
+<li>De <b>50 à 500</b> acides aminés condensés ⇒ <b>protéine</b>. La diversité des protéines vient du <b>nombre</b> d’acides aminés, de leur <b>ordre</b> et de la nature des radicaux <b>R</b>.</li>
+<li>Ex. : l’<b>hémoglobine</b> (globules rouges, fixe le dioxygène) = 4 polypeptides (identiques 2 à 2) reliés par des groupes contenant du fer, les <b>hèmes</b>.</li>
+</ul>
+<div class="box prof">
+<span class="lbl">Ton cours, Q1 p. 21 : quelle différence avec les monomères des polyesters / polyamides ?</span>
+Pour le PET ou le nylon, on utilise <b>deux monomères différents</b>, chacun avec <b>deux fonctions identiques</b> (diacide + dialcool ou diacide + diamine). Un acide aminé porte <b>les deux fonctions différentes (amine + acide) dans la même molécule</b> : un seul type de molécule suffit pour polymériser. De plus, il existe 20 acides aminés différents qu’on peut enchaîner dans n’importe quel ordre.
+</div>
+
+<h3>B.6 Résumé des différents types de polymérisation <span class="tag">p. 24 de ton cours</span></h3>
+<figure>{{resume_tree}}</figure>
+<table>
+<tr><th></th><th>Polyaddition</th><th>Polycondensation</th></tr>
+<tr><td><b>Monomère(s)</b></td><td>un <b>alcène</b> (double liaison C=C)</td><td>molécules <b>bifonctionnelles</b> : acide + alcool ou amine</td></tr>
+<tr><td><b>Nombre de types de monomères</b></td><td>un seul</td><td>souvent deux (diacide + dialcool/diamine) ; un seul pour les acides aminés</td></tr>
+<tr><td><b>Ce qui se passe</b></td><td>la double liaison s’ouvre</td><td>liaison ester ou amide entre deux fonctions</td></tr>
+<tr><td><b>Sous-produit</b></td><td><b>aucun</b></td><td>une petite molécule à chaque liaison : <b>⟦H2O⟧</b> (ou HCl)</td></tr>
+<tr><td><b>Formule du motif</b></td><td>= formule brute du monomère</td><td>= monomères – ⟦2 H2O⟧</td></tr>
+<tr><td><b>Chaîne principale</b></td><td>uniquement des C</td><td>contient des O (ester) ou des N (amide)</td></tr>
+<tr><td><b>Exemples</b></td><td>PE, PP, PVC, PS, PTFE</td><td>PET, nylon 6,6, Kevlar, protéines, amidon, cellulose</td></tr>
+</table>
+<div class="box methode">
+<span class="lbl">Reconnaître le type en 2 secondes</span>
+Regarde la <b>chaîne principale</b> du polymère : <b>que des C</b> → polyaddition. Des <b>O</b> ou des <b>N</b> dans la chaîne (⟦-CO-O-⟧ ou ⟦-CO-NH-⟧) → polycondensation. Regarde le <b>monomère</b> : une C=C → addition ; deux fonctions (⟦-COOH⟧, ⟦-OH⟧, ⟦-NH2⟧) → condensation.
+</div>
+
+<h3>B.7 Structure et propriétés : thermoplastiques et thermodurcissables</h3>
+<div class="box retenir">
+<span class="lbl">Définitions</span>
+<b>Polymère thermoplastique</b> : sous l’action de la chaleur, il <b>ramollit et fond</b>, et peut être <b>remis en forme</b> pour une autre utilisation (on dit aussi « thermosouple »). Ses chaînes ne sont pas liées entre elles par des liaisons covalentes. Il est <b>recyclable</b> par valorisation de matière. Ex. : PE, PET, PVC, PP, PS.<br>
+<b>Polymère thermodurcissable</b> : il <b>durcit</b> lors de sa fabrication et <b>ne fond plus</b> à la chaleur (il se décompose et brûle), car ses chaînes forment un <b>réseau 3D</b> relié par des liaisons covalentes. Il n’est <b>pas recyclable</b> par fusion. Ex. : <b>bakélite</b> (interrupteurs, vieux téléphones, poignées : isolant, lourd et cassant).
+</div>
+<figure>{{structures}}</figure>
+
+<h4>Classer les polymères selon leurs propriétés physiques</h4>
+<p class="small"><b>Comportement à la chaleur</b> : fond (thermoplastique) ou pas (thermodurcissable). <b>Densité</b> (test de flottaison dans l’eau) : PP (≈ 0,9) et PE (≈ 0,92-0,96) <b>flottent</b> ; PS (≈ 1,05), PET et PVC (≈ 1,4) <b>coulent</b>, c’est ainsi qu’on les sépare au centre de tri. <b>Étirement</b> : ductile (s’étire sans rompre, comme le PEBD), rigide, cassant…</p>
+<table class="tight small">
+<tr><th>Polymère</th><th>Propriétés typiques (tableau du cours)</th><th>Polymère</th><th>Propriétés typiques</th></tr>
+<tr><td>PEbd</td><td>souple, ductile, transparent</td><td>PP</td><td>rigide, léger, résiste aux chocs et à la température</td></tr>
+<tr><td>PEhd</td><td>rigide, opaque, résiste aux chocs</td><td>PS / PSE</td><td>rigide, cassant / isolant thermique très léger</td></tr>
+<tr><td>PET</td><td>transparent, résiste à la pression et à la traction</td><td>Nylon 6,6</td><td>souple, résiste à l’abrasion et aux chocs</td></tr>
+<tr><td>PVC</td><td>isolant électrique, résiste au vieillissement</td><td></td><td></td></tr>
+</table>
+
+<h3>B.8 Les codes d’identification des plastiques</h3>
+<div class="codes">
+  <div class="code">{{code1}}<b>PET</b>polyéthylène téréphtalate<br><span class="muted">bouteilles de boissons, fibres</span></div>
+  <div class="code">{{code2}}<b>PEHD</b>polyéthylène haute densité<br><span class="muted">flacons rigides, seaux, poubelles</span></div>
+  <div class="code">{{code3}}<b>PVC</b>polychlorure de vinyle<br><span class="muted">tuyaux, châssis, cartes</span></div>
+  <div class="code">{{code4}}<b>PEBD</b>polyéthylène basse densité<br><span class="muted">sacs, films, flacons souples</span></div>
+  <div class="code">{{code5}}<b>PP</b>polypropylène<br><span class="muted">boîtes, pare-chocs, bouchons</span></div>
+  <div class="code">{{code6}}<b>PS</b>polystyrène<br><span class="muted">gobelets, frigolite (PSE)</span></div>
+  <div class="code">{{code7}}<b>Autres</b>(nylon, PTFE…)<br><span class="muted">pas de numéro propre</span></div>
+</div>
+<p class="small">Le numéro, gravé sur l’objet, identifie le polymère pour le tri. Recyclage (cours) : <b>PET</b> broyé, lavé, fondu à 250 °C en granulés ; <b>PEHD/PEBD</b> broyés et mélangés à de la matière vierge ; <b>PVC</b> broyé en paillettes ; <b>PP</b> généralement incinéré ; <b>PS</b> (frigolite) recyclage en développement.</p>
+
+<h3>B.9 Gestion des déchets plastiques : 3 valorisations</h3>
+<p class="small">En Belgique : plastiques ≈ <b>10 % en masse</b> des déchets ménagers (≈ 500 kg/habitant/an). « Le meilleur déchet est celui que l’on ne produit pas. »</p>
+<figure>{{valorisation}}</figure>
+<div class="cols">
+<div class="box lien" style="margin:0">
+<span class="lbl">Avantages des plastiques (impact positif)</span>
+légers, solides, bon marché, faciles à mouler, isolants ; emballages hygiéniques ; <b>médecine</b> (prothèses, implants, seringues) ; dentisterie, construction, textiles ; <b>Kevlar</b> (gilets pare-balles).
+</div>
+<div class="box piege" style="margin:0">
+<span class="lbl">Inconvénients</span>
+issus du <b>pétrole</b> (non renouvelable) ; <b>peu biodégradables</b> (océans, microplastiques) ; leur combustion libère du ⟦CO2⟧ (effet de serre) et parfois des gaz <b>toxiques</b> (PVC → composés chlorés, pluies acides).
+</div>
+</div>
+</section>
+
+<!-- =================================================================== PARTIE C -->
+<section class="s3">
+<h2 class="part p3">Partie C — Les calculs avec les polymères<small>Degré de polymérisation et stœchiométrie : exercices du cours résolus pas à pas</small></h2>
+
+<h3>C.1 Masses molaires utiles</h3>
+<table class="tight" style="width:auto">
+<tr><th>Atome</th><td>H = 1</td><td>C = 12</td><td>N = 14</td><td>O = 16</td><td>F = 19</td><td>Cl = 35,5</td><td class="muted">(g/mol)</td></tr>
+<tr><th>Monomère</th><td>éthène 28</td><td>propène 42</td><td>chloroéthène 62,5</td><td>styrène 104</td><td>TFE 100</td><td>⟦H2O⟧ 18</td><td>⟦CO2⟧ 44</td></tr>
+</table>
+<div class="box methode">
+<span class="lbl">Les 3 formules qui servent</span>
+<i>n</i> = M<sub>p</sub> / M<sub>m</sub> &nbsp;·&nbsp; M<sub>p</sub> = <i>n</i> × M(motif) &nbsp;·&nbsp; quantité de matière : n(mol) = m / M.<br>
+<span class="small">Polyaddition : M(motif) = M(monomère). Polycondensation : M(motif) = M(diacide) + M(dialcool ou diamine) – 2 × 18.</span>
+</div>
+
+<h3>C.2 Combustion d’un polyéthylène (exercice 2 p. 13)</h3>
+<p><b>Équation</b> (n = 1000) : chaque motif ⟦C2H4⟧ consomme 3 ⟦O2⟧ et donne 2 ⟦CO2⟧ + 2 ⟦H2O⟧.</p>
+<p class="eqline">⟦(C2H4)1000⟧ + 3000 ⟦O2⟧ → 2000 ⟦CO2⟧ + 2000 ⟦H2O⟧ &nbsp;&nbsp; <span class="muted small">(en général : ⟦(C2H4)n + 3n O2 → 2n CO2 + 2n H2O⟧)</span></p>
+<p><b>Masse de ⟦CO2⟧ pour 1 kg de PE :</b> M(PE) = 1000 × 28 = 28 000 g/mol ⇒ n(PE) = 1000 / 28 000 = 0,0357 mol ⇒ n(⟦CO2⟧) = 2000 × 0,0357 = 71,4 mol ⇒ m = 71,4 × 44 ≈ <b>3143 g ≈ 3,14 kg</b>.</p>
+<p class="small"><b>Astuce :</b> par motif, 28 g de PE donnent 2 × 44 = 88 g de ⟦CO2⟧ ; <i>n</i> se simplifie : m(⟦CO2⟧) = 1000 g × 88/28 ≈ 3143 g. On trouve le même résultat sans connaître <i>n</i> !</p>
+
+<h3>C.3 Polycondensation de l’acide adipique avec le butane-1,4-diol (exercice 1 p. 16)</h3>
+<p>a) <b>Équation bilan :</b></p>
+<p class="eqline">n ⟦HOOC-(CH2)4-COOH⟧ + n ⟦HO-(CH2)4-OH⟧ → ⟦-[CO-(CH2)4-CO-O-(CH2)4-O]n-⟧ + 2n ⟦H2O⟧</p>
+<p>b) M(diol ⟦C4H10O2⟧) = 90 g/mol ⇒ n(diol) = 756 / 90 = <b>8,4 mol</b>. D’après l’équation, 1 diol donne 2 ⟦H2O⟧ ⇒ n(⟦H2O⟧) max = 16,8 mol ⇒ m = 16,8 × 18 = <b>302,4 g</b>. On obtient exactement cette masse maximale ⇒ la réaction est <b>complète</b>. <span class="small">(Lien avec le chapitre 8 : on élimine l’eau dès sa formation, ce qui déplace l’équilibre vers les produits, d’après Le Chatelier.)</span></p>
+<p>c) n(acide) = n(diol) = 8,4 mol ; M(acide adipique ⟦C6H10O4⟧) = 146 g/mol ⇒ m = 8,4 × 146 = <b>1226,4 g</b>.</p>
+<p>d) Motif ⟦C10H16O4⟧ : M = 146 + 90 – 2 × 18 = <b>200 g/mol</b> ⇒ M<sub>p</sub> = 83 × 200 = <b>16 600 g/mol</b>.</p>
+
+<h3>C.4 Le polypropylène dans un incinérateur (exercice p. 30)</h3>
+<ol type="a" class="small" style="font-size:10pt">
+<li>Formule générale : ⟦-[CH2-CH(CH3)]n-⟧.</li>
+<li>n ⟦CH2=CH-CH3⟧ → ⟦-[CH2-CH(CH3)]n-⟧.</li>
+<li>Combustion complète (n = 3000) : ⟦(C3H6)3000⟧ + 13 500 ⟦O2⟧ → 9000 ⟦CO2⟧ + 9000 ⟦H2O⟧ (par motif : ⟦C3H6⟧ + 4,5 ⟦O2⟧ → 3 ⟦CO2⟧ + 3 ⟦H2O⟧).</li>
+<li>Par motif, 42 g de PP donnent 3 × 44 = 132 g de ⟦CO2⟧ ⇒ m(⟦CO2⟧) = 1,1·10<sup>6</sup> t × 132/42 ≈ <b>3,5·10<sup>6</sup> t</b>.</li>
+<li>Le ⟦CO2⟧ est un gaz à <b>effet de serre</b> : il contribue au réchauffement climatique.</li>
+<li>E = 1,1·10<sup>9</sup> kg × 5·10<sup>7</sup> J/kg = 5,5·10<sup>16</sup> J = <b>5,5·10<sup>10</sup> MJ</b>.</li>
+</ol>
+</section>
+
+<!-- =================================================================== PARTIE D -->
+<section class="s3">
+<h2 class="part p3">Partie D — Je m’entraîne<small>Essaie d’abord seul, puis vérifie avec le corrigé de la page suivante</small></h2>
+<ol class="ex-list">
+<li><span class="tag">déf.</span> Définis : polymère, polymérisation, degré de polymérisation, acide aminé, polymère thermoplastique, polymère thermodurcissable.</li>
+<li><span class="tag">calcul</span> Un PVC a une masse molaire moyenne de 125 kg/mol. Calcule son degré de polymérisation.</li>
+<li><span class="tag">polyaddition</span> Écris l’équation de la polymérisation du tétrafluoroéthène ⟦CF2=CF2⟧. Donne le nom, le sigle et un usage du polymère.</li>
+<li><span class="tag">motif</span> Voici un fragment de polymère : ⟦…-CH2-CH(CN)-CH2-CH(CN)-CH2-CH(CN)-…⟧. Entoure le motif, écris le polymère en écriture condensée et donne la formule du monomère. De quel type de polymérisation s’agit-il ?</li>
+<li><span class="tag">type</span> Polyaddition, polycondensation ou aucune des deux ? a) ⟦CH2=CH-CH3⟧ ; b) ⟦HOOC-CH2-CH2-COOH⟧ + ⟦HO-CH2-CH2-OH⟧ ; c) ⟦H2N-(CH2)5-COOH⟧ seul ; d) ⟦CH3-CH2-OH⟧ seul ; e) ⟦CH2=CH-C6H5⟧.</li>
+<li><span class="tag">polycondensation</span> Écris l’équation de la polycondensation de l’acide butanedioïque ⟦HOOC-CH2-CH2-COOH⟧ avec l’éthane-1,2-diol. Quel type de polymère obtient-on ? Quelle molécule est éliminée ?</li>
+<li><span class="tag">monomères</span> (exercice 2 p. 16) Le polyester ⟦-[O-CO-C6H4-CO-O-CH2-CH2]n-⟧ : quels sont ses monomères ? Le connais-tu ?</li>
+<li><span class="tag">Kevlar</span> (exercice p. 19) Fragment : ⟦…-NH-C6H4-NH-CO-C6H4-CO-NH-C6H4-NH-CO-C6H4-CO-…⟧. a) Polyester ou polyamide ? b) Quel est le motif ? c) Donne les deux monomères.</li>
+<li><span class="tag">protéines</span> (exercice 1 p. 22) Écris la formule semi-développée du tripeptide Ala–Gly–Ser. Alanine : ⟦H2N-CH(CH3)-COOH⟧ ; glycine : ⟦H2N-CH2-COOH⟧ ; sérine : ⟦H2N-CH(CH2OH)-COOH⟧. Combien de molécules d’eau sont libérées ?</li>
+<li><span class="tag t8">UAA 8</span> Nomme l’ester ⟦CH3-CH2-COO-CH3⟧ et écris l’équation de sa synthèse en nommant l’acide et l’alcool.</li>
+<li><span class="tag">propriétés</span> Pourquoi peut-on recycler une bouteille en PET en la fondant, mais pas une prise électrique en bakélite ?</li>
+<li><span class="tag">calcul</span> Quelle masse de ⟦CO2⟧ est libérée par la combustion complète de 500 g de polyéthylène ?</li>
+<li><span class="tag">vrai / faux</span> a) Une polyaddition libère de l’eau. b) Le motif d’un polymère d’addition a la même formule brute que le monomère. c) L’amidon et la cellulose sont formés du même monomère. d) Une protéine contient des liaisons amide. e) Un catalyseur augmente le rendement d’une estérification. f) L’huile d’olive (un triester du glycérol) est un polymère.</li>
+<li><span class="tag">recyclage</span> Cite les 3 types de valorisation des plastiques avec un exemple pour chacun.</li>
+</ol>
+
+<h3 class="pb">Corrigés</h3>
+<ol class="sol small" style="font-size:9.8pt">
+<li>Voir l’encadré « Définitions » de B.1 et de B.7, et la définition de l’acide aminé en B.5.</li>
+<li>M(⟦C2H3Cl⟧) = 2×12 + 3×1 + 35,5 = 62,5 g/mol ; <i>n</i> = 125 000 / 62,5 = <b>2000</b>.</li>
+<li>n ⟦CF2=CF2⟧ → ⟦-[CF2-CF2]n-⟧ : <b>polytétrafluoroéthylène, PTFE (téflon)</b>, revêtement des poêles antiadhésives.</li>
+<li>Le motif contient 2 C de la chaîne : ⟦-[CH2-CH(CN)]n-⟧ ; monomère : ⟦CH2=CH-CN⟧ (propènenitrile ou acrylonitrile). <b>Polyaddition</b> (chaîne principale faite uniquement de C). C’est le polyacrylonitrile (fibres « acryliques »).</li>
+<li>a) <b>polyaddition</b> (C=C) → PP ; b) <b>polycondensation</b> (diacide + dialcool → polyester) ; c) <b>polycondensation</b> (un seul monomère avec une amine et un acide → polyamide, le nylon 6) ; d) <b>aucune</b> (une seule fonction et pas de C=C) ; e) <b>polyaddition</b> → PS.</li>
+<li>n ⟦HOOC-CH2-CH2-COOH⟧ + n ⟦HO-CH2-CH2-OH⟧ → ⟦-[CO-CH2-CH2-CO-O-CH2-CH2-O]n-⟧ + 2n ⟦H2O⟧. Un <b>polyester</b> ; on élimine de l’<b>eau</b>.</li>
+<li>On coupe les liaisons ester (entre C=O et O) : <b>acide téréphtalique</b> ⟦HOOC-C6H4-COOH⟧ + <b>éthane-1,2-diol</b> ⟦HO-CH2-CH2-OH⟧. C’est le <b>PET</b> !</li>
+<li>a) <b>Polyamide</b> (liaisons ⟦-CO-NH-⟧). b) Motif : ⟦-[NH-C6H4-NH-CO-C6H4-CO]n-⟧. c) ⟦H2N-C6H4-NH2⟧ (benzène-1,4-diamine) et ⟦HOOC-C6H4-COOH⟧ (acide téréphtalique).</li>
+<li>⟦H2N-CH(CH3)-CO-NH-CH2-CO-NH-CH(CH2OH)-COOH⟧ : 2 liaisons peptidiques ⇒ <b>2 ⟦H2O⟧</b> libérées. L’ordre compte : Ala est à gauche (côté ⟦NH2⟧ libre) et Ser à droite (côté ⟦COOH⟧ libre).</li>
+<li><b>Propanoate de méthyle</b>. ⟦CH3-CH2-COOH⟧ (acide propanoïque) + ⟦HO-CH3⟧ (méthanol) ⇌ ⟦CH3-CH2-COO-CH3⟧ + ⟦H2O⟧ (lente, limitée, catalysée par H⁺).</li>
+<li>Le PET est un <b>thermoplastique</b> : ses chaînes ne sont pas liées entre elles par des liaisons covalentes et glissent à la chaleur, donc il fond et se remoule. La bakélite est <b>thermodurcissable</b> : réseau 3D de liaisons covalentes, elle ne fond pas, elle se décompose.</li>
+<li>28 g de PE (1 motif) → 2 ⟦CO2⟧ = 88 g ⇒ m = 500 × 88 / 28 ≈ <b>1571 g ≈ 1,57 kg</b>.</li>
+<li>a) <b>F</b> (rien n’est éliminé) ; b) <b>V</b> ; c) <b>V</b> (glucose) ; d) <b>V</b> (la liaison peptidique est une liaison amide) ; e) <b>F</b> (il accélère seulement) ; f) <b>F</b> (c’est un ester, il n’y a pas de motif répété <i>n</i> fois).</li>
+<li><b>Matière</b> : bouteilles PET → pull polaire ; <b>chimique</b> : PS → styrène, ou plastiques → hydrocarbures / CO + ⟦H2⟧ ; <b>énergétique</b> : incinération chez Uvélia → électricité et chauffage.</li>
+</ol>
+
+<div class="box retenir" style="margin-top:10px">
+<span class="lbl">Les 10 pièges classiques le jour du test</span>
+<ol class="small" style="margin:2px 0 0">
+<li>Oublier le <b>n</b> devant le monomère <b>et</b> en indice du crochet.</li>
+<li>Dessiner un motif de polyaddition qui garde une <b>double liaison</b> : dans le polymère, il n’y a <b>que des liaisons simples</b>.</li>
+<li>Oublier les <b>traits libres</b> qui sortent des crochets (ils montrent que la chaîne continue).</li>
+<li>Prendre un motif de <b>1 C</b> ou de <b>3 C</b> dans un polymère d’addition : c’est toujours <b>2 C</b> de la chaîne principale.</li>
+<li>Oublier l’<b>eau</b> (2n ⟦H2O⟧) dans l’équation d’une polycondensation… ou en mettre dans une polyaddition.</li>
+<li>Couper un ester au mauvais endroit : on coupe entre <b>C=O</b> et <b>O</b>, pas ailleurs.</li>
+<li>Oublier de convertir les <b>kg/mol en g/mol</b> avant de calculer <i>n</i>.</li>
+<li>Confondre <b>liaison peptidique</b> et liaison ester : la liaison peptidique est une liaison <b>amide</b> ⟦-CO-NH-⟧.</li>
+<li>Dire qu’un catalyseur augmente le <b>rendement</b> : il augmente seulement la <b>vitesse</b>.</li>
+<li>Croire qu’un thermodurcissable se recycle par fusion : <b>non</b>, seuls les thermoplastiques le peuvent.</li>
+</ol>
+</div>
+</section>
+
+</div>
+</body>
+</html>
