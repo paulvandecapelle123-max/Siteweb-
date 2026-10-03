@@ -1,0 +1,24 @@
+{
+  "actifs": [
+    {"symbole": "ONON", "nom": "On Holding AG", "devise": "USD"},
+    {"symbole": "GC=F", "nom": "Or (once, COMEX)", "devise": "USD"}
+  ],
+  "intervalle_secondes": 5,
+  "seuil_achat": 35,
+  "seuil_vente": -35,
+  "delai_min_entre_alertes_minutes": 15,
+
+  "positions": {
+    "ONON": {"prix_achat": null, "quantite": null},
+    "GC=F": {"prix_achat": null, "quantite": null}
+  },
+
+  "notifications": {
+    "ntfy_topic": "",
+    "ntfy_serveur": "https://ntfy.sh",
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
+  },
+
+  "tableau_de_bord": {"hote": "127.0.0.1", "port": 8765}
+}
