@@ -29,5 +29,10 @@ if (missing.length) {
   }
 }
 
-if (!process.argv.includes('--no-open')) process.env.SIM_OPEN_BROWSER = '1';
-await import('./server.js');
+if (process.argv.includes('--reconstituer')) {
+  const { main } = await import('./outils/reconstituer.js');
+  await main(process.argv.slice(2).filter((a) => a !== '--reconstituer'));
+} else {
+  if (!process.argv.includes('--no-open')) process.env.SIM_OPEN_BROWSER = '1';
+  await import('./server.js');
+}

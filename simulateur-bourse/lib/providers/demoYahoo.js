@@ -227,6 +227,20 @@ export function createDemoFetch() {
     }
 
     let m = /^\/v8\/finance\/chart\/(.+)$/.exec(url.pathname);
+    if (m && /^EUR[A-Z]{3}=X$/.test(decodeURIComponent(m[1]))) {
+      const cur = decodeURIComponent(m[1]).slice(3, 6);
+      if (!FX[cur]) return json({ chart: { result: null, error: { code: 'Not Found', description: 'No data found' } } }, 404);
+      const step = INTERVAL_MS[url.searchParams.get('interval') || '1d'] || 86400000;
+      const p1 = Number(url.searchParams.get('period1')) * 1000;
+      const p2 = Math.min(Number(url.searchParams.get('period2')) * 1000 || Date.now(), Date.now());
+      const ts = [];
+      const c = [];
+      for (let t = Math.floor(p1 / step) * step; t <= p2; t += step) {
+        ts.push(Math.floor(t / 1000));
+        c.push(FX[cur] * (1 + 0.004 * Math.sin(t / 3600000 + hash(cur) * 10)));
+      }
+      return json({ chart: { result: [{ meta: { currency: cur, symbol: `EUR${cur}=X` }, timestamp: ts, indicators: { quote: [{ open: c, high: c, low: c, close: c, volume: c.map(() => 0) }] } }], error: null } });
+    }
     if (m) {
       const symbol = decodeURIComponent(m[1]);
       const item = UNIVERSE.get(symbol);

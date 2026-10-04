@@ -9,6 +9,7 @@
     "start": "node start.js",
     "demo": "node start.js --demo",
     "reseau": "node start.js --reseau",
+    "reconstituer": "node start.js --reconstituer",
     "server": "node server.js",
     "test": "node --test test/*.test.js"
   },

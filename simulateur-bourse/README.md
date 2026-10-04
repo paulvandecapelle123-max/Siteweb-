@@ -30,6 +30,7 @@ Autres commandes :
 |---|---|
 | `npm run demo` | Mode démo : prix **simulés**, fonctionne sans Internet (données séparées dans `data/demo/`) |
 | `npm run reseau` | Rend l'appli accessible depuis ton téléphone sur le même Wi-Fi (adresse affichée dans le terminal) |
+| `npm run reconstituer` | Recrée un portefeuille à partir d'achats passés (vrais cours Yahoo du moment de l'achat), par exemple sur un deuxième ordinateur ; voir `outils/reconstituer.js` |
 | `npm test` | Tests automatiques (moteur d'ordres, calendrier des bourses) |
 | `PORT=4000 npm start` | Autre port (si 3000 est pris, le serveur essaie automatiquement 3001, 3002…) |
 
