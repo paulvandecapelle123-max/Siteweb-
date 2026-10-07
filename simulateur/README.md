@@ -7,7 +7,7 @@ Deux tests complémentaires :
 | Onglet | Ce qu'il fait | Données |
 |---|---|---|
 | **Test sur le passé** | Rejoue la stratégie sur des dizaines de milliers de **vrais matchs** depuis 2013. Tu changes le seuil (80 → 99,5 %), la mise, le bookmaker, les sports, les années : tout se recalcule. | tennis-data.co.uk (ATP, WTA), football-data.co.uk (38 championnats), aussportsbetting.com (NBA, NFL, NHL, MLB, AFL, NRL) |
-| **Paris de l'IA en direct** | Chaque matin, un robot scanne les matchs à venir dans **tous les sports** de The Odds API, garde les favoris ≥ 97 %, et **Claude** (avec recherche web) décide PARIER ou PASSER. Les paris sont réglés avec les vrais résultats. | The Odds API (cotes en direct) + Claude |
+| **Paris de l'IA en direct** | Chaque matin, un robot scanne les matchs à venir dans **tous les sports** de The Odds API, garde les favoris ≥ 97 %, et **Claude** (avec recherche web) décide PARIER ou PASSER. Les paris sont réglés avec les vrais résultats, et le résultat des matchs écartés est vérifié aussi : si ces favoris perdent plus souvent que prévu, Claude a vraiment du flair. | The Odds API (cotes en direct) + Claude |
 
 Aucun argent réel n'est jamais engagé : il n'y a aucun lien avec un compte de bookmaker.
 

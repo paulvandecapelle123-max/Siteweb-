@@ -206,6 +206,8 @@ td .fav { font-weight: 600; }
 .statut.en_cours::before { background: var(--warning); }
 .statut.annule { color: var(--muted); }
 .raison { color: var(--ink-2); font-size: 13px; min-width: 220px; }
+.phrase-verdict { margin-top: 12px; color: var(--ink-2); }
+.phrase-verdict:empty { display: none; }
 .positif { color: var(--good-text); }
 .negatif { color: var(--critical); }
 details { margin-top: 12px; }

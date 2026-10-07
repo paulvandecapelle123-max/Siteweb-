@@ -3,7 +3,8 @@
 Robot quotidien du simulateur : l'IA « parie » en ARGENT FICTIF sur de vrais matchs à venir.
 
 À chaque exécution :
-  1. règle les paris en cours avec les vrais résultats (The Odds API, sinon Claude + recherche web)
+  1. règle les paris en cours avec les vrais résultats (The Odds API, sinon Claude + recherche web),
+     et vérifie aussi le résultat des matchs que Claude a écartés (avait-il raison ?)
   2. scanne les matchs des prochaines heures dans tous les sports proposés par The Odds API
   3. garde ceux où le favori a au moins `proba_min` de chances selon le consensus des bookmakers
   4. Claude vérifie l'actualité (blessures, rotation, enjeu…) et décide PARIER ou PASSER
@@ -97,12 +98,20 @@ def regler(p, statut, score, par, note=None):
     p["regle_le"] = MAINTENANT.isoformat(timespec="seconds")
     if note:
         p["note_reglement"] = note
+    if "mise" not in p:
+        return  # match écarté par l'IA : on note seulement le résultat du favori
     if statut == "gagne":
         p["gain"] = round(p["mise"] * (p["cote"] - 1), 2)
     elif statut == "perdu":
         p["gain"] = -p["mise"]
     else:
         p["gain"] = 0.0
+
+
+def a_verifier(j):
+    """Paris en cours + matchs écartés par l'IA dont on attend encore le résultat."""
+    return ([p for p in j["paris"] if p["statut"] == "en_cours"] +
+            [r for r in j["refus"] if r.get("statut") == "en_attente"])
 
 
 def date_iso(s):
@@ -304,13 +313,11 @@ Termine toujours en appelant l'outil enregistrer_resultats, avec une ligne par i
 # ---------------------------------------------------------------- étapes
 
 def regler_avec_scores(j, budget):
-    a_regler = [p for p in j["paris"] if p["statut"] == "en_cours"
-                and date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=3)
-                and date_iso(p["debut"]) > MAINTENANT - dt.timedelta(days=3)]
+    a_regler = [p for p in a_verifier(j)
+                if MAINTENANT - dt.timedelta(days=3) < date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=3)]
     par_sport = {}
     for p in a_regler:
         par_sport.setdefault(p["sport_key"], []).append(p)
-    regles = 0
     for cle, paris in par_sport.items():
         if cle in j["sans_scores"]:
             continue  # ce sport n'a pas de résultats sur The Odds API : Claude s'en charge
@@ -335,14 +342,10 @@ def regler_avec_scores(j, budget):
             except (KeyError, TypeError, ValueError):
                 continue
             regler(p, "gagne" if f > a else "perdu", f"{sc[p['favori']]}-{sc[p['adversaire']]}", "scores")
-            regles += 1
-    return regles
 
 
 def regler_avec_ia(j, cfg):
-    a_regler = [p for p in j["paris"] if p["statut"] == "en_cours"
-                and date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=6)]
-    regles = 0
+    a_regler = [p for p in a_verifier(j) if date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=6)]
     if a_regler and cfg["ia"]["active"] and os.environ.get("ANTHROPIC_API_KEY"):
         taille = cfg["ia"]["matchs_par_appel"]
         for k in range(0, len(a_regler), taille):
@@ -355,13 +358,14 @@ def regler_avec_ia(j, cfg):
                 p = next((x for x in lot if x["id"] == r["id"]), None)
                 if p and r["statut"] in ("gagne", "perdu", "annule"):
                     regler(p, r["statut"], r["score"], "ia", r["explication"])
-                    regles += 1
-    # au-delà de 10 jours sans résultat fiable : pari remboursé
-    for p in j["paris"]:
-        if p["statut"] == "en_cours" and date_iso(p["debut"]) < MAINTENANT - dt.timedelta(days=10):
-            regler(p, "annule", "", "delai", "résultat introuvable après 10 jours : mise remboursée")
-            regles += 1
-    return regles
+    # au-delà de 10 jours sans résultat fiable : pari remboursé, match écarté laissé sans résultat
+    limite = MAINTENANT - dt.timedelta(days=10)
+    for p in a_verifier(j):
+        if date_iso(p["debut"]) < limite:
+            if "mise" in p:
+                regler(p, "annule", "", "delai", "résultat introuvable après 10 jours : mise remboursée")
+            else:
+                regler(p, "inconnu", "", "delai", "résultat introuvable après 10 jours")
 
 
 def scanner(j, cfg, budget, sports):
@@ -438,17 +442,18 @@ def placer(j, candidats, decisions, cfg):
         d = decisions[c["id"]]
         entree = dict(c, proba_ia=d.get("proba_estimee"), raison_ia=d["raison"], decide_par=d["par"],
                       date_decision=MAINTENANT.isoformat(timespec="seconds"))
+        entree.update({"statut": "en_attente", "score": None})
         if d["decision"] != "PARIER":
-            j["refus"].insert(0, entree)
+            j["refus"].insert(0, dict(entree, motif_refus="ia"))
             continue
         capital = capital_actuel(j)
         plafond = capital * cfg["exposition_max_pourcent"] / 100 - mises_en_cours(j)
         mise = round(min(capital * cfg["mise_pourcent_du_capital"] / 100, plafond), 2)
         if mise < 1:
             entree["raison_ia"] += " (Non placé : plus assez de capital disponible.)"
-            j["refus"].insert(0, entree)
+            j["refus"].insert(0, dict(entree, motif_refus="capital"))
             continue
-        entree.update({"mise": mise, "statut": "en_cours", "gain": None, "score": None})
+        entree.update({"mise": mise, "statut": "en_cours", "gain": None})
         j["paris"].append(entree)
         places += 1
     del j["refus"][500:]
@@ -475,7 +480,11 @@ def main():
     print(f"{len(sports)} compétitions ouvertes aux paris en ce moment, "
           f"{budget.restants} crédits The Odds API restants ce mois-ci")
 
-    regles = regler_avec_scores(j, budget) + regler_avec_ia(j, cfg)
+    regler_avec_scores(j, budget)
+    regler_avec_ia(j, cfg)
+    maintenant = MAINTENANT.isoformat(timespec="seconds")
+    regles = sum(1 for p in j["paris"] if p.get("regle_le") == maintenant)
+    verifies = sum(1 for r in j["refus"] if r.get("regle_le") == maintenant)
     candidats, scannes = scanner(j, cfg, budget, sports)
     print(f"{len(scannes)} compétitions scannées, {len(candidats)} favori(s) ≥ {cfg['proba_min']:.0%}")
     decisions = decider(candidats, cfg)
@@ -485,13 +494,14 @@ def main():
     j["executions"].insert(0, {
         "date": MAINTENANT.isoformat(timespec="seconds"), "competitions_ouvertes": len(sports),
         "competitions_scannees": len(scannes), "candidats": len(candidats), "paris_places": places,
-        "paris_regles": regles, "credits_utilises": budget.utilises, "credits_restants": budget.restants,
+        "paris_regles": regles, "ecartes_verifies": verifies, "credits_utilises": budget.utilises, "credits_restants": budget.restants,
         "capital": round(capital_actuel(j), 2),
     })
     del j["executions"][120:]
     sauver_journal(j)
     capital = f"{capital_actuel(j):,.2f}".replace(",", " ")
-    print(f"{regles} pari(s) réglé(s), {places} nouveau(x) pari(s). Capital fictif : {capital} €")
+    print(f"{regles} pari(s) réglé(s), {verifies} match(s) écarté(s) vérifié(s), {places} nouveau(x) pari(s). "
+          f"Capital fictif : {capital} €")
 
 
 if __name__ == "__main__":

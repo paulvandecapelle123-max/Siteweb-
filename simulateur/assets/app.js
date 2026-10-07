@@ -493,19 +493,46 @@
         el('div', { class: 'raison' }, p.raison_ia || '', p.note_reglement ? el('div', { class: 'small muted', text: p.note_reglement }) : null)]),
       'Aucun pari pour l\'instant : aucun favori à 97 % dans les matchs scannés.');
 
+    // Le flair de Claude : les favoris qu'il a écartés ont-ils perdu plus souvent que prévu ?
+    const ecartes = (J.refus || []).filter((r) => r.motif_refus !== 'capital');
+    const verifies = ecartes.filter((r) => r.statut === 'gagne' || r.statut === 'perdu');
+    const battus = verifies.filter((r) => r.statut === 'perdu').length;
+    const prevu = verifies.length ? verifies.reduce((a, r) => a + (1 - r.proba_marche), 0) / verifies.length : 0;
+    const tauxBattus = verifies.length ? battus / verifies.length : 0;
+    const tauxParis = gagnes + perdus ? perdus / (gagnes + perdus) : 0;
+    const economie = verifies.reduce((a, r) => a + (r.statut === 'perdu' ? 100 : -(r.cote - 1) * 100), 0);
+    $('d-flair').replaceChildren(
+      tuile('Matchs écartés vérifiés', nf0.format(verifies.length), `${ecartes.filter((r) => r.statut === 'en_attente').length} en attente du résultat`),
+      tuile('Favori battu', verifies.length ? `${battus} (${pct(tauxBattus)})` : '–', verifies.length ? `les cotes en prévoyaient ${pct(prevu)}` : null),
+      tuile('Avec 100 € sur chacun', verifies.length ? signe(-economie, eurosC) : '–', verifies.length ? (economie >= 0 ? 'perte évitée grâce à Claude' : 'gain manqué à cause de Claude') : null),
+    );
+    $('d-verdict').textContent = !verifies.length ? ''
+      : verifies.length < 30
+        ? `Seulement ${verifies.length} match${verifies.length > 1 ? 's' : ''} écarté${verifies.length > 1 ? 's' : ''} vérifié${verifies.length > 1 ? 's' : ''} : trop tôt pour juger, il en faut au moins 30.`
+        : `Le favori a perdu dans ${pct(tauxBattus)} des matchs écartés, contre ${pct(prevu)} prévu par les cotes et ${pct(tauxParis)} pour les paris placés. ` +
+          (tauxBattus > prevu * 1.5 && tauxBattus > tauxParis
+            ? 'Claude repère vraiment des favoris fragiles que le marché surestime.'
+            : 'Pour l\'instant, Claude n\'écarte pas mieux qu\'au hasard : le marché connaissait déjà ces informations.');
+
+    const resultatEcarte = (r) => {
+      const t = { perdu: ['gagne', 'Favori battu : bien vu'], gagne: ['annule', 'Le favori a gagné'],
+        en_attente: ['en_cours', 'En attente'], annule: ['annule', 'Match annulé'], inconnu: ['annule', 'Résultat introuvable'] }[r.statut];
+      return t ? el('span', null, el('span', { class: 'statut ' + t[0], text: t[1] }), r.score ? el('div', { class: 'small muted', text: `Score : ${r.score}` }) : null) : '–';
+    };
     tableau($('t-refus'),
-      [{ t: 'Match' }, { t: 'Sport' }, { t: 'Favori' }, { t: 'Cote', n: 1 }, { t: 'Marché', n: 1 }, { t: 'Claude', n: 1 }, { t: 'Raison' }],
+      [{ t: 'Match' }, { t: 'Sport' }, { t: 'Favori' }, { t: 'Cote', n: 1 }, { t: 'Marché', n: 1 }, { t: 'Claude', n: 1 }, { t: 'Résultat' }, { t: 'Raison' }],
       (J.refus || []).slice(0, 100).map((p) => [
         dateHeure(p.debut),
         el('span', null, p.sport, el('br'), el('span', { class: 'small muted', text: p.competition })),
         el('span', null, el('span', { class: 'fav', text: p.favori }), ' contre ', p.adversaire),
-        cote(p.cote), pct(p.proba_marche), p.proba_ia == null ? '–' : pct(p.proba_ia), el('div', { class: 'raison', text: p.raison_ia || '' })]),
+        cote(p.cote), pct(p.proba_marche), p.proba_ia == null ? '–' : pct(p.proba_ia), resultatEcarte(p),
+        el('div', { class: 'raison', text: p.raison_ia || '' })]),
       'Claude n\'a encore écarté aucun match.');
 
     tableau($('t-executions'),
-      [{ t: 'Passage' }, { t: 'Compétitions scannées', n: 1 }, { t: 'Favoris trouvés', n: 1 }, { t: 'Paris placés', n: 1 }, { t: 'Paris réglés', n: 1 }, { t: 'Crédits restants', n: 1 }, { t: 'Capital', n: 1 }],
+      [{ t: 'Passage' }, { t: 'Compétitions scannées', n: 1 }, { t: 'Favoris trouvés', n: 1 }, { t: 'Paris placés', n: 1 }, { t: 'Paris réglés', n: 1 }, { t: 'Écartés vérifiés', n: 1 }, { t: 'Crédits restants', n: 1 }, { t: 'Capital', n: 1 }],
       (J.executions || []).slice(0, 30).map((x) => [dateHeure(x.date), `${x.competitions_scannees} / ${x.competitions_ouvertes}`,
-        nf0.format(x.candidats), nf0.format(x.paris_places), nf0.format(x.paris_regles), x.credits_restants == null ? '–' : nf0.format(x.credits_restants), eurosC(x.capital)]));
+        nf0.format(x.candidats), nf0.format(x.paris_places), nf0.format(x.paris_regles), nf0.format(x.ecartes_verifies || 0), x.credits_restants == null ? '–' : nf0.format(x.credits_restants), eurosC(x.capital)]));
   }
 
   function initDirect() {
