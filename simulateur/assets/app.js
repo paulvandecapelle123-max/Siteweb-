@@ -94,12 +94,14 @@
     hote.replaceChildren();
     if (pts.length < 2) { hote.append(el('div', { class: 'vide', text: 'Pas encore assez de paris réglés pour tracer la courbe.' })); return; }
     const W = Math.max(300, Math.round(hote.clientWidth)), Ht = W < 560 ? 220 : 280;
-    const m = { t: 14, r: W < 560 ? 12 : 84, b: 28, l: 68 };
-    const pw = W - m.l - m.r, ph = Ht - m.t - m.b;
     const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
-    const x0 = xs[0], x1 = xs[xs.length - 1] === x0 ? x0 + 864e5 : xs[xs.length - 1];
     const ticks = graduations(Math.min(depart, ...ys), Math.max(depart, ...ys), 4);
     const y0 = ticks[0], y1 = ticks[ticks.length - 1];
+    const centimes = ticks[1] - ticks[0] < 1;   // petits écarts : afficher les centimes
+    const fmtAxe = centimes ? eurosC : euros;
+    const m = { t: 14, r: W < 560 ? 12 : 84, b: 28, l: centimes ? 86 : 68 };
+    const pw = W - m.l - m.r, ph = Ht - m.t - m.b;
+    const x0 = xs[0], x1 = xs[xs.length - 1] === x0 ? x0 + 864e5 : xs[xs.length - 1];
     const X = (v) => m.l + ((v - x0) / (x1 - x0)) * pw;
     const Y = (v) => m.t + ph - ((v - y0) / (y1 - y0 || 1)) * ph;
 
@@ -108,7 +110,7 @@
     const grille = s('g', { class: 'grille' }), axe = s('g', { class: 'axe' });
     for (const t of ticks) {
       grille.append(s('line', { x1: m.l, x2: W - m.r, y1: Y(t), y2: Y(t) }));
-      axe.append(s('text', { x: m.l - 8, y: Y(t) + 4, 'text-anchor': 'end' }, euros(t)));
+      axe.append(s('text', { x: m.l - 8, y: Y(t) + 4, 'text-anchor': 'end' }, fmtAxe(t)));
     }
     // graduations du temps : années, ou mois si la période est courte
     const dA = new Date(x0), dB = new Date(x1), ans = dB.getFullYear() - dA.getFullYear();
@@ -467,14 +469,18 @@
     const delta = $('d-delta');
     delta.textContent = regles.length ? `${signe(profit, eurosC)} (${pctSigne(profit / J.capital_depart, 2)})` : 'Aucun pari réglé pour l\'instant';
     delta.className = 'delta ' + (profit > 0 ? 'up' : profit < 0 ? 'down' : '');
-    $('d-phrase').textContent = `Départ avec ${euros(J.capital_depart)} fictifs. Dernier passage du robot : ${J.maj ? dateHeure(J.maj) : '–'}.`;
+    $('d-phrase').textContent = `Départ avec ${euros(J.capital_depart)} fictifs. Dernier passage du moteur : ${J.maj ? dateHeure(J.maj) : '–'}.`;
+    const scans = Object.values(J.scans || {}).filter((x) => x && typeof x === 'object');
+    const disciplines = [...new Set(scans.map((x) => x.sport))].sort((a, b) => a.localeCompare(b, 'fr'));
+    const surveillance = [...(J.surveillance || [])].sort((a, b) => a.debut.localeCompare(b.debut));
 
     $('d-tuiles').replaceChildren(
       tuile('Paris placés', nf0.format(paris.length), `${enCours.length} en cours · ${eurosC(enCours.reduce((a, p) => a + p.mise, 0))} misés`),
-      tuile('Réussite', gagnes + perdus ? pct(gagnes / (gagnes + perdus)) : '–', `${gagnes} gagnés · ${perdus} perdus`),
+      tuile('Réussite', gagnes + perdus ? pct(gagnes / (gagnes + perdus)) : '–',
+        `${gagnes} gagnés · ${perdus} perdus` + (avecIa.length ? ` · Claude estimait ${pct(avecIa.reduce((a, p) => a + p.proba_ia, 0) / avecIa.length, 0)}` : '')),
       tuile('Rendement par euro misé', misesReglees ? pctSigne(profit / misesReglees, 2) : '–', misesReglees ? `${eurosC(misesReglees)} misés et réglés` : null),
-      tuile('Claude estimait', avecIa.length ? pct(avecIa.reduce((a, p) => a + p.proba_ia, 0) / avecIa.length) : '–', 'de réussite en moyenne'),
-      tuile('Matchs écartés par l\'IA', nf0.format((J.refus || []).length), 'malgré des cotes à 97 %'),
+      tuile('Disciplines couvertes', nf0.format(disciplines.length), disciplines.length ? `${disciplines.slice(0, 4).join(', ')}${disciplines.length > 4 ? '…' : ''} · ${scans.length} compétitions` : null),
+      tuile('En surveillance', nf0.format(surveillance.length), `décision environ ${(J.fenetre_decision_heures || 1.5).toLocaleString('fr-BE')} h avant le match`),
       tuile('Crédits The Odds API', J.credits_odds_api == null ? '–' : nf0.format(J.credits_odds_api), 'restants ce mois-ci'),
     );
 
@@ -484,6 +490,17 @@
     if (tries.length) pts.push({ x: new Date(tries[0].regle_le).getTime() - 36e5, y: c });
     for (const p of tries) { c += p.gain || 0; pts.push({ x: new Date(p.regle_le).getTime(), y: c, n: 1, g: p.gain || 0 }); }
     courbe($('g-direct'), pts, J.capital_depart, 'pari');
+
+    const fenetreMs = (J.fenetre_decision_heures || 1.5) * 36e5;
+    tableau($('t-surveillance'),
+      [{ t: 'Match' }, { t: 'Sport' }, { t: 'Favori' }, { t: 'Cote', n: 1 }, { t: 'Chances', n: 1 }, { t: 'Décision vers' }],
+      surveillance.map((w) => [
+        dateHeure(w.debut),
+        el('span', null, w.sport, el('br'), el('span', { class: 'small muted', text: w.competition })),
+        el('span', null, el('span', { class: 'fav', text: w.favori }), ' contre ', w.adversaire),
+        cote(w.cote), pct(w.proba_marche),
+        new Date(new Date(w.debut).getTime() - fenetreMs).toLocaleTimeString('fr-BE', { hour: '2-digit', minute: '2-digit' })]),
+      'Aucun favori à 97 % en vue pour l\'instant : le moteur continue de scanner toutes les heures.');
 
     const ordre = [...enCours.sort((a, b) => a.debut.localeCompare(b.debut)), ...regles.sort((a, b) => b.debut.localeCompare(a.debut))];
     tableau($('t-direct'),
@@ -497,7 +514,7 @@
       'Aucun pari pour l\'instant : aucun favori à 97 % dans les matchs scannés.');
 
     // Le flair de Claude : les favoris qu'il a écartés ont-ils perdu plus souvent que prévu ?
-    const ecartes = (J.refus || []).filter((r) => r.motif_refus !== 'capital');
+    const ecartes = (J.refus || []).filter((r) => r.motif_refus === 'ia');
     const verifies = ecartes.filter((r) => r.statut === 'gagne' || r.statut === 'perdu');
     const battus = verifies.filter((r) => r.statut === 'perdu').length;
     const prevu = verifies.length ? verifies.reduce((a, r) => a + (1 - r.proba_marche), 0) / verifies.length : 0;
@@ -533,9 +550,16 @@
       'Claude n\'a encore écarté aucun match.');
 
     tableau($('t-executions'),
-      [{ t: 'Passage' }, { t: 'Compétitions scannées', n: 1 }, { t: 'Favoris trouvés', n: 1 }, { t: 'Paris placés', n: 1 }, { t: 'Paris réglés', n: 1 }, { t: 'Écartés vérifiés', n: 1 }, { t: 'Crédits restants', n: 1 }, { t: 'Capital', n: 1 }],
-      (J.executions || []).slice(0, 30).map((x) => [dateHeure(x.date), `${x.competitions_scannees} / ${x.competitions_ouvertes}`,
-        nf0.format(x.candidats), nf0.format(x.paris_places), nf0.format(x.paris_regles), nf0.format(x.ecartes_verifies || 0), x.credits_restants == null ? '–' : nf0.format(x.credits_restants), eurosC(x.capital)]));
+      [{ t: 'Passage' }, { t: 'Compétitions scannées', n: 1 }, { t: 'Nouveaux favoris', n: 1 }, { t: 'Décisions', n: 1 }, { t: 'Paris placés', n: 1 }, { t: 'Paris réglés', n: 1 }, { t: 'Écartés vérifiés', n: 1 }, { t: 'Crédits restants', n: 1 }, { t: 'Capital', n: 1 }],
+      (J.executions || []).slice(0, 48).map((x) => [dateHeure(x.date), `${x.competitions_scannees} / ${x.competitions_ouvertes}`,
+        nf0.format(x.nouveaux_surveilles || 0), nf0.format(x.candidats), nf0.format(x.paris_places), nf0.format(x.paris_regles),
+        nf0.format(x.ecartes_verifies || 0), x.credits_restants == null ? '–' : nf0.format(x.credits_restants), eurosC(x.capital)]));
+
+    $('s-competitions').textContent = `Compétitions surveillées (${scans.length}, ${disciplines.length} disciplines)`;
+    tableau($('t-competitions'), [{ t: 'Sport' }, { t: 'Compétition' }, { t: 'Dernier scan' }, { t: 'Matchs à venir', n: 1 }],
+      [...scans].sort((a, b) => a.sport.localeCompare(b.sport, 'fr') || a.competition.localeCompare(b.competition, 'fr'))
+        .map((x) => [x.sport, x.competition, dateHeure(x.le), nf0.format(x.matchs)]),
+      'Aucune compétition scannée pour l\'instant.');
   }
 
   function initDirect() {

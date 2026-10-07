@@ -7,7 +7,7 @@ Deux tests complémentaires :
 | Onglet | Ce qu'il fait | Données |
 |---|---|---|
 | **Test sur le passé** | Rejoue la stratégie sur des dizaines de milliers de **vrais matchs** depuis 2013. Tu changes le seuil (80 → 99,5 %), la mise, le bookmaker, les sports, les années : tout se recalcule. | tennis-data.co.uk (ATP, WTA), football-data.co.uk (38 championnats), aussportsbetting.com (NBA, NFL, NHL, MLB, AFL, NRL) |
-| **Paris de l'IA en direct** | Chaque matin, un robot scanne les matchs à venir dans **tous les sports** de The Odds API, garde les favoris ≥ 97 %, et **Claude** (avec recherche web) décide PARIER ou PASSER. Les paris sont réglés avec les vrais résultats, et le résultat des matchs écartés est vérifié aussi : si ces favoris perdent plus souvent que prévu, Claude a vraiment du flair. | The Odds API (cotes en direct) + Claude |
+| **Paris de l'IA en direct** | **Toutes les heures**, un moteur repère les favoris ≥ 97 % dans **tous les sports pariables** de The Odds API (football, tennis, basket, hockey, baseball, football américain, MMA, boxe, rugby, cricket…) et les met en surveillance. Environ 1 h avant chaque match, il rafraîchit la cote et **Claude** fait une dernière recherche web (composition, blessures, forfaits, problèmes personnels, enjeu) avant de décider PARIER ou PASSER. Les paris sont réglés avec les vrais résultats, et le résultat des matchs écartés est vérifié aussi : si ces favoris perdent plus souvent que prévu, Claude a vraiment du flair. | The Odds API (cotes en direct) + Claude |
 
 Aucun argent réel n'est jamais engagé : il n'y a aucun lien avec un compte de bookmaker.
 
@@ -47,12 +47,16 @@ Puis ouvre `simulateur/index.html`.
 - **Depuis n'importe quel navigateur (même un Chromebook) :** télécharge les fichiers `.xlsx` de ces sites et dépose-les dans `simulateur/fichiers/` sur GitHub (Add file → Upload files). GitHub relance le calcul tout seul. Les liens sont dans `simulateur/fichiers/LISEZMOI.md`.
 - **Depuis un ordinateur avec Python :** lance le script, puis dépose le nouveau `simulateur/data/historique.js` sur GitHub. Les mises à jour automatiques suivantes gardent ces matchs : quand un site refuse le téléchargement, le script reprend les matchs de ce sport déjà présents dans le fichier. Pour ajouter les nouveaux matchs de tennis, relance le script sur ton ordinateur de temps en temps.
 
-## 2. Le robot IA en direct
+## 2. Le moteur IA en direct (toutes les heures)
 
-1. Clé gratuite sur [the-odds-api.com](https://the-odds-api.com). L'offre gratuite donne environ 500 crédits par mois ; le robot en utilise 12 par jour au maximum (réglable). Avec l'offre payante, monte `credits_max_par_execution` (par ex. 600) pour scanner **toutes** les compétitions chaque jour.
-2. Clé API Claude sur [console.anthropic.com](https://console.anthropic.com). Mets une **limite de dépense** dans la console. Compte environ 0,30 à 0,60 $ par lot de 12 matchs analysés : selon le nombre de grands favoris, de quelques centimes à environ 1 $ par jour.
+1. Clé sur [the-odds-api.com](https://the-odds-api.com). Le moteur répartit tout seul les crédits du mois heure par heure, quelle que soit l'offre (vérifie les prix sur leur site) :
+   - **offre gratuite** (environ 500 crédits par mois) : environ 16 compétitions scannées par jour, donc chaque compétition revue tous les quelques jours. Bien pour tester ;
+   - **offre payante** (par ex. 20 000 crédits par mois) : toutes les compétitions de tous les sports revues toutes les 8 h (le tennis toutes les 4 h), plus la cote remise à jour juste avant chaque décision.
+2. Clé API Claude sur [console.anthropic.com](https://console.anthropic.com). Mets une **limite de dépense** dans la console. Claude n'est appelé que quand un match surveillé approche (et pour retrouver les résultats introuvables) : compte environ 0,20 à 0,40 $ par appel, soit de quelques centimes à quelques dollars par jour selon le nombre de grands favoris. `"modele": "claude-sonnet-5-5"` divise environ le coût par deux.
 3. GitHub → ton dépôt → **Settings → Secrets and variables → Actions → New repository secret** : `ODDS_API_KEY` puis `ANTHROPIC_API_KEY`.
-4. Onglet **Actions → « Simulateur · paris IA du jour » → Run workflow**. Ensuite il tourne seul chaque matin (06:41 UTC) et commite `data/journal.js`.
+4. Onglet **Actions → « Simulateur · moteur IA (toutes les heures) » → Run workflow**. Ensuite il tourne seul toutes les heures (à hh:17 UTC). Il ne commite `data/journal.js` que quand il s'est passé quelque chose. GitHub Actions est gratuit pour un dépôt public ; pour un dépôt privé, une exécution par heure reste dans les 2 000 minutes gratuites par mois.
+
+Pourquoi décider 1 h avant le match : c'est là qu'on connaît les compositions officielles, les forfaits de dernière minute et les mauvaises nouvelles personnelles. Une recherche faite la veille les raterait.
 
 Sans `ANTHROPIC_API_KEY`, le robot parie sur tous les favoris au-dessus du seuil (règle simple), ce qui sert de point de comparaison.
 
@@ -66,11 +70,14 @@ En local : `ODDS_API_KEY=... ANTHROPIC_API_KEY=... python simulateur/tools/live.
 | `proba_min` | 0.97 : chances minimum du favori selon le consensus des bookmakers |
 | `mise_pourcent_du_capital` | 2 : chaque pari = 2 % du capital du moment |
 | `exposition_max_pourcent` | 60 : jamais plus de 60 % du capital en jeu en même temps |
-| `horizon_heures` | 36 : matchs qui commencent dans les 36 prochaines heures |
+| `horizon_heures` | 36 : favoris mis en surveillance s'ils jouent dans les 36 prochaines heures |
+| `fenetre_decision_heures` | 1.5 : Claude décide quand le match commence dans moins d'1 h 30 (le moteur passe chaque heure, donc entre 30 min et 1 h 30 avant) |
+| `rafraichir_cotes` | true : remet la cote à jour juste avant la décision (1 crédit par match) |
+| `intervalle_scan_heures` | 8 : chaque compétition est revue au plus toutes les 8 h |
+| `sports_prioritaires` | `["Tennis"]` : revus deux fois plus souvent (là où les favoris à 97 % sont les plus fréquents) |
 | `bookmakers_min` | 3 : ignorer les matchs cotés par moins de 3 bookmakers |
 | `bookmakers_pour_parier` | vide = cote moyenne des bookmakers ; sinon par ex. `["Unibet", "Betclic"]` pour prendre la meilleure cote de ceux-là |
-| `credits_max_par_execution` | crédits The Odds API utilisés par jour au maximum |
-| `sports_toujours_scannes` | `["Tennis"]` : le tennis (où les favoris à 97 % sont les plus fréquents) est scanné chaque jour, les autres sports tournent |
+| `credits_max_par_execution` | 40 : crédits The Odds API utilisés par heure au maximum (en plus du rythme mensuel automatique) |
 | `ia.modele` | `claude-opus-5-5` par défaut ; `claude-sonnet-5-5` coûte environ deux fois moins cher |
 | `ia.effort` | `medium` : profondeur de réflexion de Claude |
 

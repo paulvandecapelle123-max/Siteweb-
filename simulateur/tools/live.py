@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """
-Robot quotidien du simulateur : l'IA « parie » en ARGENT FICTIF sur de vrais matchs à venir.
+Moteur horaire du simulateur : l'IA « parie » en ARGENT FICTIF sur de vrais matchs, dans tous les
+sports pariables en ligne proposés par The Odds API (football, tennis, basket, hockey, baseball,
+football américain, MMA, boxe, rugby, cricket…).
 
-À chaque exécution :
+Chaque heure :
   1. règle les paris en cours avec les vrais résultats (The Odds API, sinon Claude + recherche web),
      et vérifie aussi le résultat des matchs que Claude a écartés (avait-il raison ?)
-  2. scanne les matchs des prochaines heures dans tous les sports proposés par The Odds API
-  3. garde ceux où le favori a au moins `proba_min` de chances selon le consensus des bookmakers
-  4. Claude vérifie l'actualité (blessures, rotation, enjeu…) et décide PARIER ou PASSER
-  5. enregistre tout dans simulateur/data/journal.js, affiché par le tableau de bord
+  2. scanne les compétitions (les moins récemment scannées d'abord), en répartissant les crédits
+     The Odds API du mois heure par heure, et met en surveillance les favoris >= `proba_min`
+  3. environ 1 h avant chaque match surveillé : rafraîchit la cote, puis Claude fait une dernière
+     recherche (compositions, blessures, forfaits, problèmes personnels, enjeu…) et décide
+  4. enregistre tout dans simulateur/data/journal.js, affiché par le tableau de bord
 
 Variables d'environnement :
   ODDS_API_KEY       clé gratuite sur https://the-odds-api.com (obligatoire)
@@ -55,7 +58,8 @@ def charger_config():
 
 def charger_journal(cfg):
     vide = {"capital_depart": cfg["capital_depart"], "maj": None, "credits_odds_api": None,
-            "paris": [], "refus": [], "scans": {}, "sans_scores": [], "executions": []}
+            "paris": [], "refus": [], "surveillance": [], "scans": {}, "scores_le": {},
+            "sans_scores": [], "executions": []}
     if not os.path.exists(JOURNAL):
         return vide
     with open(JOURNAL, encoding="utf-8") as f:
@@ -121,11 +125,27 @@ def date_iso(s):
 # ---------------------------------------------------------------- The Odds API
 
 class Budget:
+    """Crédits The Odds API. Le quota du mois est réparti heure par heure : l'offre gratuite
+    (500 crédits) donne environ 0,7 crédit par heure, l'offre à 20 000 crédits environ 27."""
+
     def __init__(self, cfg):
         self.max = cfg["credits_max_par_execution"]
         self.reserve = cfg["credits_reserve"]
-        self.utilises = 0
-        self.restants = None
+        self.utilises = 0            # pendant cette exécution
+        self.restants = None         # d'après l'en-tête x-requests-remaining
+        self.utilises_mois = None    # d'après l'en-tête x-requests-used
+
+    def regler_rythme(self):
+        """Autorise ce qui n'a pas encore été dépensé de la part du mois écoulée (+ 2 h d'avance)."""
+        if self.restants is None or self.utilises_mois is None:
+            return
+        quota = self.restants + self.utilises_mois
+        debut = MAINTENANT.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        fin = (debut + dt.timedelta(days=32)).replace(day=1)
+        heures = (fin - debut).total_seconds() / 3600
+        ecoulees = (MAINTENANT - debut).total_seconds() / 3600
+        permis = quota * (ecoulees + 2) / heures - self.utilises_mois
+        self.max = max(0, min(self.max, int(permis)))
 
     def peut(self, cout):
         if self.utilises + cout > self.max:
@@ -140,9 +160,12 @@ def odds_api(budget, chemin, cout=0, **params):
     with urllib.request.urlopen(req, timeout=60) as r:
         data = json.loads(r.read().decode("utf-8"))
         restants = r.headers.get("x-requests-remaining")
+        utilises = r.headers.get("x-requests-used")
     budget.utilises += cout
     if restants is not None:
         budget.restants = int(float(restants))
+    if utilises is not None:
+        budget.utilises_mois = int(float(utilises))
     return data
 
 
@@ -271,8 +294,8 @@ OUTIL_DECISIONS = {
 
 SYSTEME_DECISIONS = """Tu es l'analyste d'un simulateur de paris sportifs en argent FICTIF : aucun argent réel n'est engagé, le but est de mesurer honnêtement si une stratégie « grands favoris » gagne sur la durée.
 
-Pour chaque match proposé :
-- cherche sur le web les dernières informations utiles : blessures, forfaits, retour de blessure, état de forme, rotation ou équipe remaniée, enjeu (match sans enjeu, qualification déjà acquise), fatigue, voyage, météo, conditions. Pour le tennis : abandons récents, surface, enchaînement de tournois ;
+Les matchs proposés commencent dans l'heure qui vient : c'est la dernière vérification avant le pari. Pour chaque match :
+- cherche sur le web les toutes dernières informations : composition officielle ou probable, joueurs clés absents, blessures, forfaits, retour de blessure, maladie, suspension, problème personnel ou familial (deuil, naissance, affaire extra-sportive), conflit avec l'entraîneur, rotation ou équipe remaniée, enjeu (match sans enjeu, qualification déjà acquise, match plus important quelques jours après), fatigue, voyage, météo, état du terrain. Tennis : abandon ou douleur au tournoi précédent, enchaînement de matchs, surface, déclarations récentes. Sports de combat : pesée, changement d'adversaire, camp d'entraînement ;
 - estime toi-même la probabilité que le favori GAGNE. Au football, un match nul compte comme perdu ;
 - PARIER seulement si ta probabilité est au moins égale au seuil indiqué ET que rien d'inquiétant n'apparaît. Sinon PASSER ;
 - sois honnête et calibré : sans information nouvelle, reste proche de la probabilité du marché ;
@@ -315,6 +338,9 @@ Termine toujours en appelant l'outil enregistrer_resultats, avec une ligne par i
 def regler_avec_scores(j, budget):
     a_regler = [p for p in a_verifier(j)
                 if MAINTENANT - dt.timedelta(days=3) < date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=3)]
+    # au plus une demande de scores toutes les 3 h par compétition (2 crédits chacune)
+    a_regler = [p for p in a_regler if not j["scores_le"].get(p["sport_key"])
+                or date_iso(j["scores_le"][p["sport_key"]]) < MAINTENANT - dt.timedelta(hours=3)]
     par_sport = {}
     for p in a_regler:
         par_sport.setdefault(p["sport_key"], []).append(p)
@@ -325,6 +351,7 @@ def regler_avec_scores(j, budget):
             break
         try:
             evts = odds_api(budget, f"/sports/{cle}/scores", cout=2, daysFrom=3, dateFormat="iso")
+            j["scores_le"][cle] = MAINTENANT.isoformat(timespec="seconds")
         except urllib.error.HTTPError as e:
             budget.utilises += 2
             print(f"  scores {cle} indisponibles ({e.code})")
@@ -345,11 +372,15 @@ def regler_avec_scores(j, budget):
 
 
 def regler_avec_ia(j, cfg):
-    a_regler = [p for p in a_verifier(j) if date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=6)]
+    # Claude cherche le résultat au plus toutes les 6 h pour un même match
+    a_regler = [p for p in a_verifier(j) if date_iso(p["debut"]) < MAINTENANT - dt.timedelta(hours=6)
+                and (not p.get("verif_ia_le") or date_iso(p["verif_ia_le"]) < MAINTENANT - dt.timedelta(hours=6))]
     if a_regler and cfg["ia"]["active"] and os.environ.get("ANTHROPIC_API_KEY"):
         taille = cfg["ia"]["matchs_par_appel"]
         for k in range(0, len(a_regler), taille):
             lot = a_regler[k:k + taille]
+            for p in lot:
+                p["verif_ia_le"] = MAINTENANT.isoformat(timespec="seconds")
             texte = "Matchs à régler :\n" + "\n".join(
                 f"- id={p['id']} | {p['sport']} · {p['competition']} | début {p['debut']} | "
                 f"favori : {p['favori']} | adversaire : {p['adversaire']}" for p in lot)
@@ -368,15 +399,26 @@ def regler_avec_ia(j, cfg):
                 regler(p, "inconnu", "", "delai", "résultat introuvable après 10 jours")
 
 
+CHAMPS_COTES = ("favori", "adversaire", "proba_marche", "cote", "cote_ou", "meilleure_cote",
+                "meilleur_bookmaker", "nb_bookmakers")
+
+
 def scanner(j, cfg, budget, sports):
-    deja = {p["id"] for p in j["paris"]} | {r["id"] for r in j["refus"]}
-    toujours = [s for s in sports if s["group"] in cfg["sports_toujours_scannes"]]
-    autres = sorted((s for s in sports if s not in toujours), key=lambda s: j["scans"].get(s["key"], ""))
-    moitie = max(1, budget.max // 2)
-    ordre = toujours[:moitie] + autres + toujours[moitie:]
+    """Scanne les compétitions en retard de scan et met en surveillance les favoris >= proba_min."""
+    connus = {p["id"] for p in j["paris"]} | {r["id"] for r in j["refus"]}
+    surveilles = {w["id"]: w for w in j["surveillance"]}
+
+    def retard(s):  # >= 1 : la compétition doit être rescannée
+        info = j["scans"].get(s["key"])
+        le = info.get("le") if isinstance(info, dict) else info
+        if not le:
+            return 1e9
+        intervalle = cfg["intervalle_scan_heures"] / (2 if s["group"] in cfg["sports_prioritaires"] else 1)
+        return (MAINTENANT - date_iso(le)).total_seconds() / 3600 / intervalle
+
     fin = MAINTENANT + dt.timedelta(hours=cfg["horizon_heures"])
-    candidats, scannes = [], []
-    for s in ordre:
+    nouveaux, scannes = 0, []
+    for s in sorted((s for s in sports if retard(s) >= 1), key=retard, reverse=True):
         if not budget.peut(1):
             break
         try:
@@ -386,13 +428,19 @@ def scanner(j, cfg, budget, sports):
             budget.utilises += 1
             print(f"  {s['key']} : erreur {e.code}")
             continue
-        j["scans"][s["key"]] = MAINTENANT.isoformat(timespec="seconds")
         scannes.append(s["key"])
+        j["scans"][s["key"]] = {"le": MAINTENANT.isoformat(timespec="seconds"),
+                                "sport": GROUPES_FR.get(s["group"], s["group"]),
+                                "competition": s["title"], "matchs": len(evts)}
         for e in evts:
-            debut = date_iso(e["commence_time"])
-            if e["id"] in deja or not (MAINTENANT + dt.timedelta(minutes=20) < debut < fin):
+            if e["id"] in connus or not (MAINTENANT < date_iso(e["commence_time"]) < fin):
                 continue
             c = consensus(e, cfg)
+            if e["id"] in surveilles:  # déjà surveillé : on met juste les cotes à jour
+                if c:
+                    surveilles[e["id"]].update({k: c[k] for k in CHAMPS_COTES},
+                                               cotes_le=MAINTENANT.isoformat(timespec="seconds"))
+                continue
             if not c or c["proba_marche"] < cfg["proba_min"]:
                 continue
             c.update({
@@ -400,9 +448,53 @@ def scanner(j, cfg, budget, sports):
                 "sport": GROUPES_FR.get(s["group"], s["group"]),
                 "competition": e.get("sport_title") or s["title"],
                 "debut": e["commence_time"], "domicile": e["home_team"], "exterieur": e["away_team"],
+                "repere_le": MAINTENANT.isoformat(timespec="seconds"),
+                "cotes_le": MAINTENANT.isoformat(timespec="seconds"),
             })
-            candidats.append(c)
-    return candidats, scannes
+            j["surveillance"].append(c)
+            surveilles[c["id"]] = c
+            nouveaux += 1
+    return nouveaux, scannes
+
+
+def a_decider(j, cfg, budget):
+    """Sort de la surveillance les matchs qui commencent bientôt, avec leurs dernières cotes."""
+    limite = MAINTENANT + dt.timedelta(hours=cfg["fenetre_decision_heures"])
+    proches, garder, manques = [], [], 0
+    for w in j["surveillance"]:
+        debut = date_iso(w["debut"])
+        if debut <= MAINTENANT + dt.timedelta(minutes=10):
+            manques += 1  # le moteur n'a pas tourné à temps (GitHub en retard) : match ignoré
+        elif debut <= limite:
+            proches.append(w)
+        else:
+            garder.append(w)
+    j["surveillance"] = garder
+    if cfg.get("rafraichir_cotes"):
+        for w in proches:
+            if not budget.peut(1):
+                break
+            try:
+                e = odds_api(budget, f"/sports/{w['sport_key']}/events/{w['id']}/odds", cout=1,
+                             regions=cfg["regions"], markets="h2h", oddsFormat="decimal", dateFormat="iso")
+            except urllib.error.HTTPError:
+                budget.utilises += 1
+                continue
+            c = consensus(e, cfg)
+            if c:
+                w.update({k: c[k] for k in CHAMPS_COTES}, cotes_le=MAINTENANT.isoformat(timespec="seconds"))
+    # si les cotes ont bougé, le favori n'est peut-être plus assez favori : écarté, mais résultat vérifié
+    candidats = []
+    for w in proches:
+        if w["proba_marche"] >= cfg["proba_min"]:
+            candidats.append(w)
+        else:
+            j["refus"].insert(0, dict(w, proba_ia=None, decide_par="regle", motif_refus="cote",
+                                      statut="en_attente", score=None,
+                                      date_decision=MAINTENANT.isoformat(timespec="seconds"),
+                                      raison_ia=f"Les cotes ont bougé avant le match : le favori n'est plus "
+                                                f"qu'à {w['proba_marche']:.1%}."))
+    return candidats, manques
 
 
 def decider(candidats, cfg):
@@ -460,6 +552,10 @@ def placer(j, candidats, decisions, cfg):
     return places
 
 
+def signature(j):
+    return json.dumps([j["paris"], j["refus"], j["surveillance"]], sort_keys=True, ensure_ascii=False)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sans-ia", action="store_true", help="ne pas appeler Claude (règle simple)")
@@ -469,35 +565,47 @@ def main():
     if args.sans_ia:
         cfg["ia"]["active"] = False
     j = charger_journal(cfg)
+    avant = signature(j)
 
     if not os.environ.get("ODDS_API_KEY"):
         print("ODDS_API_KEY manquante : crée une clé gratuite sur https://the-odds-api.com "
-              "puis ajoute-la (voir simulateur/README.md). Rien à faire pour aujourd'hui.")
+              "puis ajoute-la (voir simulateur/README.md). Rien à faire pour l'instant.")
         return
 
     budget = Budget(cfg)
     sports = [s for s in odds_api(budget, "/sports") if s.get("active") and not s.get("has_outrights")]
-    print(f"{len(sports)} compétitions ouvertes aux paris en ce moment, "
-          f"{budget.restants} crédits The Odds API restants ce mois-ci")
+    budget.regler_rythme()
+    print(f"{len(sports)} compétitions ouvertes aux paris, {budget.restants} crédits restants ce mois-ci, "
+          f"{budget.max} utilisables cette heure-ci")
 
     regler_avec_scores(j, budget)
     regler_avec_ia(j, cfg)
     maintenant = MAINTENANT.isoformat(timespec="seconds")
     regles = sum(1 for p in j["paris"] if p.get("regle_le") == maintenant)
     verifies = sum(1 for r in j["refus"] if r.get("regle_le") == maintenant)
-    candidats, scannes = scanner(j, cfg, budget, sports)
-    print(f"{len(scannes)} compétitions scannées, {len(candidats)} favori(s) ≥ {cfg['proba_min']:.0%}")
+
+    nouveaux, scannes = scanner(j, cfg, budget, sports)
+    candidats, manques = a_decider(j, cfg, budget)
     decisions = decider(candidats, cfg)
     places = placer(j, candidats, decisions, cfg)
+    print(f"{len(scannes)} compétition(s) scannée(s), {nouveaux} nouveau(x) favori(s) en surveillance "
+          f"({len(j['surveillance'])} au total), {len(candidats)} décision(s) avant match, {manques} manqué(s)")
 
+    # on n'écrit (et donc on ne commite) que s'il s'est passé quelque chose, ou toutes les 6 h
+    battement = not j["maj"] or date_iso(j["maj"]) < MAINTENANT - dt.timedelta(hours=6)
+    if signature(j) == avant and budget.utilises == 0 and not battement:
+        print("Rien de nouveau cette heure-ci.")
+        return
     j["credits_odds_api"] = budget.restants
+    j["fenetre_decision_heures"] = cfg["fenetre_decision_heures"]
     j["executions"].insert(0, {
-        "date": MAINTENANT.isoformat(timespec="seconds"), "competitions_ouvertes": len(sports),
-        "competitions_scannees": len(scannes), "candidats": len(candidats), "paris_places": places,
-        "paris_regles": regles, "ecartes_verifies": verifies, "credits_utilises": budget.utilises, "credits_restants": budget.restants,
+        "date": maintenant, "competitions_ouvertes": len(sports), "competitions_scannees": len(scannes),
+        "nouveaux_surveilles": nouveaux, "candidats": len(candidats), "paris_places": places,
+        "manques": manques, "paris_regles": regles, "ecartes_verifies": verifies,
+        "credits_utilises": budget.utilises, "credits_restants": budget.restants,
         "capital": round(capital_actuel(j), 2),
     })
-    del j["executions"][120:]
+    del j["executions"][300:]
     sauver_journal(j)
     capital = f"{capital_actuel(j):,.2f}".replace(",", " ")
     print(f"{regles} pari(s) réglé(s), {verifies} match(s) écarté(s) vérifié(s), {places} nouveau(x) pari(s). "
