@@ -58,7 +58,7 @@ Puis ouvre `simulateur/index.html`.
 
 Pourquoi décider 1 h avant le match : c'est là qu'on connaît les compositions officielles, les forfaits de dernière minute et les mauvaises nouvelles personnelles. Une recherche faite la veille les raterait.
 
-Sans `ANTHROPIC_API_KEY`, le robot parie sur tous les favoris au-dessus du seuil (règle simple), ce qui sert de point de comparaison.
+**Sans `ANTHROPIC_API_KEY` (gratuit)**, le moteur parie sur tous les favoris au-dessus du seuil, d'après les cotes seulement : c'est la référence « sans IA » à laquelle comparer Claude plus tard. Comme personne ne peut alors chercher les résultats sur internet, il ne parie que dans les disciplines dont The Odds API fournit les scores (chaque discipline est testée une fois, pour 1 crédit) ; les autres sont indiquées sur le tableau de bord.
 
 En local : `ODDS_API_KEY=... ANTHROPIC_API_KEY=... python simulateur/tools/live.py`.
 

@@ -469,7 +469,11 @@
     const delta = $('d-delta');
     delta.textContent = regles.length ? `${signe(profit, eurosC)} (${pctSigne(profit / J.capital_depart, 2)})` : 'Aucun pari réglé pour l\'instant';
     delta.className = 'delta ' + (profit > 0 ? 'up' : profit < 0 ? 'down' : '');
-    $('d-phrase').textContent = `Départ avec ${euros(J.capital_depart)} fictifs. Dernier passage du moteur : ${J.maj ? dateHeure(J.maj) : '–'}.`;
+    const ignorees = J.disciplines_ignorees || [];
+    const mode = J.ia_active === false
+      ? `sans IA, paris d'après les cotes seulement${ignorees.length ? ` (${ignorees.join(', ')} ignoré${ignorees.length > 1 ? 's' : ''} : pas de résultats automatiques)` : ''}`
+      : 'Claude vérifie chaque match avant de parier';
+    $('d-phrase').textContent = `Départ avec ${euros(J.capital_depart)} fictifs. Mode : ${mode}. Dernier passage du moteur : ${J.maj ? dateHeure(J.maj) : '–'}.`;
     const scans = Object.values(J.scans || {}).filter((x) => x && typeof x === 'object');
     const disciplines = [...new Set(scans.map((x) => x.sport))].sort((a, b) => a.localeCompare(b, 'fr'));
     const surveillance = [...(J.surveillance || [])].sort((a, b) => a.debut.localeCompare(b.debut));
