@@ -180,8 +180,16 @@ def lire_xlsx(data):
 
 
 def lire_csv(data):
-    texte = data.decode("utf-8-sig", errors="replace")
-    return list(csv.DictReader(io.StringIO(texte)))
+    """Certains fichiers mélangent UTF-8 et l'ancien encodage Windows : on décode ligne par ligne."""
+    lignes = []
+    for brute in data.split(b"\n"):
+        for encodage in ("utf-8", "cp1252", "latin-1"):
+            try:
+                lignes.append(brute.decode(encodage))
+                break
+            except UnicodeDecodeError:
+                continue
+    return list(csv.DictReader(io.StringIO("\n".join(lignes).lstrip("\ufeff"))))
 
 
 class Collecteur:
