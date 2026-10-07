@@ -419,6 +419,8 @@ def decider(candidats, cfg):
             rep = appeler_claude(cfg, SYSTEME_DECISIONS, texte, OUTIL_DECISIONS)
             for d in (rep or {}).get("decisions", []):
                 d["par"] = "ia"
+                if d["proba_estimee"] > 1:  # « 97 » au lieu de « 0.97 »
+                    d["proba_estimee"] /= 100
                 decisions[d["id"]] = d
     for c in candidats:
         if c["id"] not in decisions:

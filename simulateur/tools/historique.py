@@ -149,6 +149,7 @@ def lire_xlsx(data):
     import openpyxl
     wb = openpyxl.load_workbook(io.BytesIO(data), read_only=True, data_only=True)
     ws = wb.worksheets[0]
+    ws.reset_dimensions()  # certains fichiers annoncent une taille fausse : on lit tout
     lignes = ws.iter_rows(values_only=True)
     entete = None
     for _ in range(10):
