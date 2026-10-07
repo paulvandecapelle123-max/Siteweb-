@@ -1,0 +1,43 @@
+# Toutes les heures : règle les paris terminés, repère les grands favoris dans tous les sports, et laisse
+# l'IA décider (argent fictif) environ 1 h avant chaque match, après une dernière recherche web.
+# Nécessite les secrets ODDS_API_KEY et ANTHROPIC_API_KEY (voir simulateur/README.md).
+name: "Simulateur · moteur IA (toutes les heures)"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: simulateur-donnees-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  parier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r simulateur/tools/requirements.txt
+      - run: python simulateur/tools/live.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Enregistrer le journal
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add simulateur/data/journal.js
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Simulateur : moteur IA $(date -u '+%Y-%m-%d %H:%M')"
+          for i in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME" && exit 0
+            sleep 10
+          done
+          exit 1

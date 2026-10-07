@@ -1,0 +1,7 @@
+// Configuration Cloudflare (Workers) pour le simulateur.
+// Dans Cloudflare : Settings → Build → Root directory = simulateur
+{
+  "name": "simulateur-paris",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "." }
+}

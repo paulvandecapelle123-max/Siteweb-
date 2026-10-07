@@ -1,0 +1,45 @@
+# Télécharge les vrais matchs passés (cotes + résultats) et met à jour simulateur/data/historique.js.
+# Se lance tout seul le 2 de chaque mois, quand historique.py change, quand on dépose des fichiers
+# dans simulateur/fichiers/, ou à la main (onglet Actions).
+name: "Simulateur · matchs passés"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 5 2 * *"
+  push:
+    paths:
+      - "simulateur/tools/historique.py"
+      - "simulateur/fichiers/**"
+      - ".github/workflows/simulateur-historique.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: simulateur-donnees-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  telecharger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r simulateur/tools/requirements.txt
+      - run: python simulateur/tools/historique.py
+      - name: Enregistrer les données
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add simulateur/data/historique.js
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Simulateur : mise à jour des matchs passés"
+          for i in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME" && exit 0
+            sleep 10
+          done
+          exit 1
