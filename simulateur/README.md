@@ -43,6 +43,8 @@ python simulateur/tools/historique.py --rapide # les 3 dernières saisons
 
 Puis ouvre `simulateur/index.html`.
 
+Si un site refuse les serveurs de GitHub (le détail est dans « D'où viennent les données » en bas du tableau de bord), lance le script sur ton ordinateur, puis commite `simulateur/data/historique.js`.
+
 ## 2. Le robot IA en direct
 
 1. Clé gratuite sur [the-odds-api.com](https://the-odds-api.com). L'offre gratuite donne environ 500 crédits par mois ; le robot en utilise 12 par jour au maximum (réglable). Avec l'offre payante, monte `credits_max_par_execution` (par ex. 600) pour scanner **toutes** les compétitions chaque jour.

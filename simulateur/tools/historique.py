@@ -69,25 +69,33 @@ def telecharger(urls, nom_cache):
     if os.path.exists(chemin):
         with open(chemin, "rb") as f:
             return f.read()
-    derniere_erreur = None
+    erreurs = []
     for url in urls:
+        site = "/".join(url.split("/")[:3]) + "/"
         for essai in range(3):
             try:
+                # en-têtes d'un navigateur ordinaire : certains sites refusent les noms de robots inconnus
                 req = urllib.request.Request(url, headers={
-                    "User-Agent": "Mozilla/5.0 (simulateur-paris; usage personnel)"})
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                                  "(KHTML, like Gecko) Chrome/129.0 Safari/537.36",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "Accept-Language": "fr-BE,fr;q=0.9,en;q=0.8",
+                    "Referer": site,
+                })
                 with urllib.request.urlopen(req, timeout=60) as r:
                     data = r.read()
                 os.makedirs(CACHE, exist_ok=True)
                 with open(chemin, "wb") as f:
                     f.write(data)
-                time.sleep(0.3)  # politesse envers les sites gratuits
+                time.sleep(0.5)  # politesse envers les sites gratuits
                 return data
             except Exception as e:  # noqa: BLE001 - on veut continuer avec les autres sources
-                derniere_erreur = e
-                if getattr(e, "code", None) == 404:
-                    break
+                code = getattr(e, "code", None)
+                if code in (403, 404, 410) or essai == 2:
+                    erreurs.append(f"{url} : {e}")
+                    break  # refus ou fichier absent : inutile d'insister
                 time.sleep(2 * (essai + 1))
-    raise RuntimeError(f"{urls[0]} : {derniere_erreur}")
+    raise RuntimeError(" | ".join(erreurs))
 
 
 def cote(v):
