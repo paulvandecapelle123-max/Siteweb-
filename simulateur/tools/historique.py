@@ -11,6 +11,10 @@ Sources gratuites :
 On garde seulement les matchs où le favori a au moins SEUIL_INCLUSION de chances
 (selon les cotes) : le tableau de bord laisse ensuite choisir le seuil (97 % par défaut).
 
+Fichiers déposés à la main : si un site refuse les téléchargements automatiques,
+télécharge ses fichiers depuis ton navigateur et dépose-les dans simulateur/fichiers/.
+Le script les reconnaît à leur contenu (le nom du fichier n'a pas d'importance).
+
 Utilisation :
     pip install openpyxl
     python simulateur/tools/historique.py            # tout télécharger
@@ -30,6 +34,7 @@ import urllib.request
 ICI = os.path.dirname(os.path.abspath(__file__))
 SORTIE = os.path.join(ICI, "..", "data", "historique.js")
 CACHE = os.path.join(ICI, ".cache")
+FICHIERS = os.path.join(ICI, "..", "fichiers")
 
 SEUIL_INCLUSION = 0.80     # proba minimum du favori pour garder un match dans le fichier
 PREMIERE_ANNEE = 2013
@@ -214,21 +219,68 @@ class Collecteur:
         print(f"  {nom:<45} {etat}", flush=True)
 
 
+# ---------------------------------------------------------------- fichiers déposés à la main
+
+def fichiers_deposes():
+    """Lit les .xlsx déposés dans simulateur/fichiers/ et reconnaît chacun par son contenu :
+    tennis ATP ou WTA (colonne « ATP » ou « WTA » + année des dates) ou sport US (nom nba, nfl…)."""
+    trouves = {}
+    if not os.path.isdir(FICHIERS):
+        return trouves
+    for nom in sorted(os.listdir(FICHIERS)):
+        if not nom.lower().endswith(".xlsx"):
+            continue
+        with open(os.path.join(FICHIERS, nom), "rb") as f:
+            data = f.read()
+        try:
+            lignes = lire_xlsx(data)
+        except Exception as e:  # noqa: BLE001
+            print(f"  {nom} : illisible ({e}), ignoré")
+            continue
+        if not lignes:
+            print(f"  {nom} : vide, ignoré")
+            continue
+        entete = set(lignes[0])
+        us = next((c for c in US_SPORTS if nom.lower().startswith(c)), None)
+        circuit = "ATP" if "ATP" in entete else "WTA" if "WTA" in entete else None
+        if circuit and "Winner" in entete:
+            annees = {}
+            for l in lignes:
+                d = lire_date(l.get("Date"))
+                if d:
+                    annees[d.year] = annees.get(d.year, 0) + 1
+            if annees:
+                an = max(annees, key=annees.get)
+                trouves[("tennis", circuit, an)] = lignes
+                print(f"  {nom} : tennis {circuit} {an} ({len(lignes)} matchs)")
+                continue
+        elif us:
+            trouves[("us", us)] = lignes
+            print(f"  {nom} : {US_SPORTS[us]} ({len(lignes)} matchs)")
+            continue
+        print(f"  {nom} : pas reconnu, ignoré")
+    return trouves
+
+
 # ---------------------------------------------------------------- tennis
 
-def tennis(col, annees):
+def tennis(col, annees, deposes):
     for circuit, suffixe, sport in (("ATP", "", "Tennis ATP"), ("WTA", "w", "Tennis WTA")):
         for an in annees:
             nom = f"Tennis {circuit} {an}"
-            try:
-                data = telecharger([
-                    f"https://www.tennis-data.co.uk/{an}{suffixe}/{an}.xlsx",
-                    f"http://www.tennis-data.co.uk/{an}{suffixe}/{an}.xlsx",
-                ], f"tennis_{circuit}_{an}.xlsx")
-                lignes = lire_xlsx(data)
-            except Exception as e:  # noqa: BLE001
-                col.source(nom, sport, 0, 0, str(e)[:120])
-                continue
+            lignes = deposes.get(("tennis", circuit, an))
+            if lignes is not None:
+                nom += " (fichier déposé)"
+            else:
+                try:
+                    data = telecharger([
+                        f"https://www.tennis-data.co.uk/{an}{suffixe}/{an}.xlsx",
+                        f"http://www.tennis-data.co.uk/{an}{suffixe}/{an}.xlsx",
+                    ], f"tennis_{circuit}_{an}.xlsx")
+                    lignes = lire_xlsx(data)
+                except Exception as e:  # noqa: BLE001
+                    col.source(nom, sport, 0, 0, str(e)[:120])
+                    continue
             total = gardes = 0
             for l in lignes:
                 if str(l.get("Comment", "")).strip().lower().startswith("walkover"):
@@ -340,15 +392,19 @@ def _colonne(entete, *candidats):
     return None
 
 
-def sports_us(col):
+def sports_us(col, deposes):
     for code, sport in US_SPORTS.items():
         nom = sport
-        try:
-            lignes = lire_xlsx(telecharger(
-                [f"https://www.aussportsbetting.com/historical_data/{code}.xlsx"], f"us_{code}.xlsx"))
-        except Exception as e:  # noqa: BLE001
-            col.source(nom, sport, 0, 0, str(e)[:120])
-            continue
+        lignes = deposes.get(("us", code))
+        if lignes is not None:
+            nom += " (fichier déposé)"
+        else:
+            try:
+                lignes = lire_xlsx(telecharger(
+                    [f"https://www.aussportsbetting.com/historical_data/{code}.xlsx"], f"us_{code}.xlsx"))
+            except Exception as e:  # noqa: BLE001
+                col.source(nom, sport, 0, 0, str(e)[:120])
+                continue
         if not lignes:
             col.source(nom, sport, 0, 0, "fichier vide")
             continue
@@ -433,12 +489,13 @@ def main():
     saisons = [f"{a % 100:02d}{(a + 1) % 100:02d}" for a in range(debut, derniere_saison + 1)]
 
     col = Collecteur()
+    deposes = fichiers_deposes()
     print("Tennis…", flush=True)
-    tennis(col, annees)
+    tennis(col, annees, deposes)
     print("Football…", flush=True)
     football(col, saisons)
     print("Sports US / Australie…", flush=True)
-    sports_us(col)
+    sports_us(col, deposes)
     reprendre_anciens(col)
 
     col.matchs.sort(key=lambda m: m[0])

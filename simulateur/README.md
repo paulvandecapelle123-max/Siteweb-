@@ -43,7 +43,9 @@ python simulateur/tools/historique.py --rapide # les 3 dernières saisons
 
 Puis ouvre `simulateur/index.html`.
 
-**Tennis et sports US :** tennis-data.co.uk et aussportsbetting.com refusent les serveurs de GitHub (erreur 403). Lance donc le script une fois sur ton ordinateur, puis dépose le nouveau `simulateur/data/historique.js` sur GitHub (Add file → Upload files). Les mises à jour automatiques suivantes gardent ces matchs : quand un site refuse le téléchargement, le script reprend les matchs de ce sport déjà présents dans le fichier. Pour ajouter les nouveaux matchs de tennis, relance le script sur ton ordinateur de temps en temps.
+**Tennis et sports US :** tennis-data.co.uk et aussportsbetting.com refusent les serveurs de GitHub (erreur 403). Deux solutions :
+- **Depuis n'importe quel navigateur (même un Chromebook) :** télécharge les fichiers `.xlsx` de ces sites et dépose-les dans `simulateur/fichiers/` sur GitHub (Add file → Upload files). GitHub relance le calcul tout seul. Les liens sont dans `simulateur/fichiers/LISEZMOI.md`.
+- **Depuis un ordinateur avec Python :** lance le script, puis dépose le nouveau `simulateur/data/historique.js` sur GitHub. Les mises à jour automatiques suivantes gardent ces matchs : quand un site refuse le téléchargement, le script reprend les matchs de ce sport déjà présents dans le fichier. Pour ajouter les nouveaux matchs de tennis, relance le script sur ton ordinateur de temps en temps.
 
 ## 2. Le robot IA en direct
 

@@ -1,5 +1,6 @@
 # Télécharge les vrais matchs passés (cotes + résultats) et met à jour simulateur/data/historique.js.
-# Se lance tout seul le 2 de chaque mois, quand historique.py change, ou à la main (onglet Actions).
+# Se lance tout seul le 2 de chaque mois, quand historique.py change, quand on dépose des fichiers
+# dans simulateur/fichiers/, ou à la main (onglet Actions).
 name: "Simulateur · matchs passés"
 
 on:
@@ -9,6 +10,7 @@ on:
   push:
     paths:
       - "simulateur/tools/historique.py"
+      - "simulateur/fichiers/**"
       - ".github/workflows/simulateur-historique.yml"
 
 permissions:
