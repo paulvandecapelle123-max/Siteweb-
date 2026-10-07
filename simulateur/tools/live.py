@@ -457,6 +457,30 @@ def scanner(j, cfg, budget, sports):
     return nouveaux, scannes
 
 
+def disciplines_avec_resultats(j, budget, sports):
+    """Sans Claude, personne ne peut chercher un résultat sur internet : on ne parie alors que dans
+    les disciplines dont The Odds API donne les scores. Une discipline est gardée dès qu'une de ses
+    compétitions a des scores, et ignorée après deux compétitions sans scores (1 crédit par test)."""
+    connues = j.setdefault("resultats_par_discipline", {})
+    testees = j.setdefault("scores_testes", [])
+    for s in sports:
+        etat = connues.setdefault(s["group"], {"ok": 0, "ko": 0})
+        if etat["ok"] or etat["ko"] >= 2 or s["key"] in testees:
+            continue
+        if not budget.peut(1):
+            break  # pas assez de crédits : on testera les autres disciplines plus tard
+        try:
+            odds_api(budget, f"/sports/{s['key']}/scores", cout=1, dateFormat="iso")
+            etat["ok"] += 1
+            testees.append(s["key"])
+        except urllib.error.HTTPError as e:
+            budget.utilises += 1
+            if e.code in (404, 422):
+                etat["ko"] += 1
+                testees.append(s["key"])
+    return [s for s in sports if connues.get(s["group"], {}).get("ok")]
+
+
 def a_decider(j, cfg, budget):
     """Sort de la surveillance les matchs qui commencent bientôt, avec leurs dernières cotes."""
     limite = MAINTENANT + dt.timedelta(hours=cfg["fenetre_decision_heures"])
@@ -584,7 +608,16 @@ def main():
     regles = sum(1 for p in j["paris"] if p.get("regle_le") == maintenant)
     verifies = sum(1 for r in j["refus"] if r.get("regle_le") == maintenant)
 
-    nouveaux, scannes = scanner(j, cfg, budget, sports)
+    ia_ok = bool(cfg["ia"]["active"] and os.environ.get("ANTHROPIC_API_KEY"))
+    j["ia_active"] = ia_ok
+    a_scanner = sports if ia_ok else disciplines_avec_resultats(j, budget, sports)
+    ignorees = [] if ia_ok else sorted(
+        {GROUPES_FR.get(g, g) for g, e in j["resultats_par_discipline"].items() if not e["ok"] and e["ko"]})
+    j["disciplines_ignorees"] = ignorees
+    if not ia_ok:
+        print(f"Sans Claude : seulement les disciplines dont les résultats sont fournis automatiquement"
+              f"{' (ignorées : ' + ', '.join(ignorees) + ')' if ignorees else ''}")
+    nouveaux, scannes = scanner(j, cfg, budget, a_scanner)
     candidats, manques = a_decider(j, cfg, budget)
     decisions = decider(candidats, cfg)
     places = placer(j, candidats, decisions, cfg)

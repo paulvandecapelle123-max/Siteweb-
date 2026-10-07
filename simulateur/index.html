@@ -129,8 +129,8 @@
         <p>Toutes les heures, il repère les favoris à 97 % ou plus dans tous les sports pariables en ligne (football, tennis, basket, hockey, baseball, MMA, boxe, rugby, cricket…) et les met en surveillance. Environ une heure avant chaque match, Claude fait une dernière recherche sur internet (composition, blessures, forfaits, problèmes personnels, enjeu) et décide de parier ou non, en argent fictif. Pour l'activer :</p>
         <ol class="etapes">
           <li>Crée une clé sur <a href="https://the-odds-api.com" rel="noopener">the-odds-api.com</a> (cotes de dizaines de sports et de bookmakers). L'offre gratuite suffit pour tester ; pour surveiller tous les sports en continu, il faut l'offre payante.</li>
-          <li>Crée une clé API Claude sur <a href="https://console.anthropic.com" rel="noopener">console.anthropic.com</a> (de quelques centimes à quelques dollars par jour selon le nombre de grands favoris ; mets une limite de dépense dans la console).</li>
-          <li>Sur GitHub : ton dépôt → <b>Settings</b> → <b>Secrets and variables</b> → <b>Actions</b> → ajoute <code>ODDS_API_KEY</code> et <code>ANTHROPIC_API_KEY</code>.</li>
+          <li><b>Facultatif :</b> une clé API Claude sur <a href="https://console.anthropic.com" rel="noopener">console.anthropic.com</a>, payante à l'usage (de quelques centimes à quelques dollars par jour ; mets une limite de dépense). Sans elle, le moteur est gratuit : il parie d'après les cotes seulement, sans recherches, et uniquement dans les sports dont les résultats arrivent automatiquement.</li>
+          <li>Sur GitHub : ton dépôt → <b>Settings</b> → <b>Secrets and variables</b> → <b>Actions</b> → ajoute <code>ODDS_API_KEY</code> (et <code>ANTHROPIC_API_KEY</code> si tu as pris la clé Claude).</li>
           <li>Onglet <b>Actions</b> → « Simulateur · moteur IA (toutes les heures) » → <b>Run workflow</b>. Ensuite il tourne seul toutes les heures.</li>
         </ol>
       </div>
