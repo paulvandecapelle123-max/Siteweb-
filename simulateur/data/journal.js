@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-07T14:48:59+00:00",
- "credits_odds_api": 460,
+ "maj": "2026-10-07T15:42:42+00:00",
+ "credits_odds_api": 421,
  "paris": [],
  "refus": [],
  "scans": {
@@ -179,10 +179,258 @@ window.JOURNAL = {
    "sport": "Football",
    "competition": "Brazil Série B",
    "matchs": 17
+  },
+  "soccer_chile_campeonato": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Primera División - Chile",
+   "matchs": 8
+  },
+  "soccer_china_superleague": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Super League - China",
+   "matchs": 9
+  },
+  "soccer_conmebol_copa_libertadores": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Copa Libertadores",
+   "matchs": 2
+  },
+  "soccer_conmebol_copa_sudamericana": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Copa Sudamericana",
+   "matchs": 2
+  },
+  "soccer_denmark_superliga": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Denmark Superliga",
+   "matchs": 6
+  },
+  "soccer_efl_champ": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Championship",
+   "matchs": 20
+  },
+  "soccer_england_efl_cup": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "EFL Cup",
+   "matchs": 8
+  },
+  "soccer_england_league1": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "League 1",
+   "matchs": 12
+  },
+  "soccer_england_league2": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "League 2",
+   "matchs": 12
+  },
+  "soccer_epl": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "EPL",
+   "matchs": 20
+  },
+  "soccer_finland_veikkausliiga": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Veikkausliiga - Finland",
+   "matchs": 9
+  },
+  "soccer_france_ligue_one": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Ligue 1 - France",
+   "matchs": 18
+  },
+  "soccer_france_ligue_two": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Ligue 2 - France",
+   "matchs": 9
+  },
+  "soccer_germany_bundesliga": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Bundesliga - Germany",
+   "matchs": 18
+  },
+  "soccer_germany_bundesliga2": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Bundesliga 2 - Germany",
+   "matchs": 9
+  },
+  "soccer_germany_dfb_pokal": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "DFB-Pokal",
+   "matchs": 16
+  },
+  "soccer_germany_liga3": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "3. Liga - Germany",
+   "matchs": 20
+  },
+  "soccer_greece_super_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Super League - Greece",
+   "matchs": 14
+  },
+  "soccer_italy_serie_a": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Serie A - Italy",
+   "matchs": 20
+  },
+  "soccer_italy_serie_b": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Serie B - Italy",
+   "matchs": 10
+  },
+  "soccer_japan_j_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "J League",
+   "matchs": 10
+  },
+  "soccer_korea_kleague1": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "K League 1",
+   "matchs": 6
+  },
+  "soccer_league_of_ireland": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "League of Ireland",
+   "matchs": 6
+  },
+  "soccer_mexico_ligamx": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Liga MX",
+   "matchs": 9
+  },
+  "soccer_netherlands_eredivisie": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Dutch Eredivisie",
+   "matchs": 18
+  },
+  "soccer_norway_eliteserien": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Eliteserien - Norway",
+   "matchs": 8
+  },
+  "soccer_poland_ekstraklasa": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Ekstraklasa - Poland",
+   "matchs": 10
+  },
+  "soccer_portugal_primeira_liga": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Primeira Liga - Portugal",
+   "matchs": 9
+  },
+  "soccer_russia_premier_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Premier League - Russia",
+   "matchs": 8
+  },
+  "soccer_saudi_arabia_pro_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Saudi Pro League",
+   "matchs": 9
+  },
+  "soccer_spain_segunda_division": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "La Liga 2 - Spain",
+   "matchs": 11
+  },
+  "soccer_spl": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Premiership - Scotland",
+   "matchs": 6
+  },
+  "soccer_sweden_allsvenskan": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Allsvenskan - Sweden",
+   "matchs": 8
+  },
+  "soccer_sweden_superettan": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Superettan - Sweden",
+   "matchs": 8
+  },
+  "soccer_switzerland_superleague": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Swiss Superleague",
+   "matchs": 6
+  },
+  "soccer_turkey_super_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "Turkey Super League",
+   "matchs": 9
+  },
+  "soccer_uefa_champs_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "UEFA Champions League",
+   "matchs": 18
+  },
+  "soccer_uefa_europa_conference_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "UEFA Europa Conference League",
+   "matchs": 18
+  },
+  "soccer_uefa_europa_league": {
+   "le": "2026-10-07T15:42:42+00:00",
+   "sport": "Football",
+   "competition": "UEFA Europa League",
+   "matchs": 18
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-07T15:42:42+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 39,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 40,
+   "credits_restants": 421,
+   "capital": 10000
+  },
   {
    "date": "2026-10-07T14:48:59+00:00",
    "competitions_ouvertes": 73,
