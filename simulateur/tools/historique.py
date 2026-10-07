@@ -384,6 +384,36 @@ def sports_us(col):
         col.source(nom, sport, total, gardes)
 
 
+# ---------------------------------------------------------------- reprise
+
+def reprendre_anciens(col):
+    """Si le site d'un sport a refusé tous les téléchargements (par ex. depuis les serveurs de GitHub),
+    garde les matchs de ce sport déjà présents dans historique.js au lieu de les effacer."""
+    echoues = {s["sport"] for s in col.sources} - {s["sport"] for s in col.sources if not s["erreur"]}
+    if not echoues or not os.path.exists(SORTIE):
+        return
+    with open(SORTIE, encoding="utf-8") as f:
+        texte = f.read()
+    try:
+        ancien = json.loads(texte[texte.find("{"):texte.rfind("}") + 1])
+    except ValueError:
+        return
+    for sport in sorted(echoues):
+        anciennes_sources = [s for s in ancien.get("sources", []) if s["sport"] == sport and not s["erreur"]]
+        if not anciennes_sources or sport not in ancien["sports"]:
+            continue
+        i_ancien = ancien["sports"].index(sport)
+        i_sport = col._index(sport, col.sports, col._idx_s)
+        n = 0
+        for m in ancien["matchs"]:
+            if m[1] == i_ancien:
+                i_comp = col._index(ancien["competitions"][m[2]], col.competitions, col._idx_c)
+                col.matchs.append([m[0], i_sport, i_comp] + m[3:])
+                n += 1
+        col.sources = [s for s in col.sources if s["sport"] != sport] + anciennes_sources
+        print(f"  {sport} : site indisponible, {n} matchs repris du fichier précédent", flush=True)
+
+
 # ---------------------------------------------------------------- principal
 
 def main():
@@ -409,6 +439,7 @@ def main():
     football(col, saisons)
     print("Sports US / Australie…", flush=True)
     sports_us(col)
+    reprendre_anciens(col)
 
     col.matchs.sort(key=lambda m: m[0])
     total = sum(s["matchs_analyses"] for s in col.sources)
