@@ -200,6 +200,7 @@
     const y0 = ticks[0], y1 = ticks[ticks.length - 1];
     const Y = (v) => m.t + ph - ((v - y0) / (y1 - y0)) * ph;
     const bande = pw / items.length, bw = Math.min(24, bande * 0.55);
+    const etroit = bande < 64;   // téléphone : étiquettes courtes, valeurs dans la bulle et le tableau
     const svg = s('svg', { viewBox: `0 0 ${W} ${Ht}`, role: 'img', 'aria-label': 'Rendement par niveau de favori (détail dans le tableau en dessous)' });
     items.forEach((it, i) => { if (it.zone) svg.append(s('rect', { class: 'seuil', x: m.l + i * bande, y: m.t, width: bande, height: ph })); });
     const grille = s('g', { class: 'grille' }), axe = s('g', { class: 'axe' });
@@ -212,7 +213,7 @@
     const b = bulle(hote);
     items.forEach((it, i) => {
       const cx = m.l + i * bande + bande / 2;
-      svg.append(s('text', { class: 'etiquette', x: cx, y: Ht - 22, 'text-anchor': 'middle' }, it.label));
+      svg.append(s('text', { class: 'etiquette', x: cx, y: Ht - 22, 'text-anchor': 'middle' }, etroit ? it.court : it.label));
       if (!it.n) { svg.append(s('text', { class: 'etiquette', x: cx, y: Y(0) - 6, 'text-anchor': 'middle' }, '–')); return; }
       const g = s('g', { class: 'barre ' + (it.v >= 0 ? 'pos' : 'neg'), tabindex: '0', role: 'img',
         'aria-label': `${it.label} : rendement ${pctSigne(it.v)}, ${it.n} paris` });
@@ -220,7 +221,7 @@
       const yv = Y(it.v), yz = Y(0);
       g.append(s('path', { d: Math.abs(yv - yz) < 1 ? `M${cx - bw / 2},${yz - 0.5}h${bw}v1h${-bw}Z` : cheminBarre(cx - bw / 2, yz, yv, bw, 4) }));
       const ty = it.v >= 0 ? yv - 6 : yv + 14;
-      g.append(s('text', { class: 'valeur-fin', x: cx, y: ty, 'text-anchor': 'middle' }, pctSigne(it.v, 1)));
+      if (!etroit) g.append(s('text', { class: 'valeur-fin', x: cx, y: ty, 'text-anchor': 'middle' }, pctSigne(it.v, 1)));
       const montrer = () => {
         const k = svg.getBoundingClientRect().width / W;
         b.montrer(cx * k, Math.min(yv, yz) * k, [
@@ -235,7 +236,8 @@
       g.addEventListener('blur', () => b.cacher());
       svg.append(g);
     });
-    svg.append(s('text', { class: 'etiquette', x: m.l + pw / 2, y: Ht - 4, 'text-anchor': 'middle' }, 'Chances du favori selon les cotes'));
+    svg.append(s('text', { class: 'etiquette', x: m.l + pw / 2, y: Ht - 4, 'text-anchor': 'middle' },
+      etroit ? 'Chances du favori (en %, à partir de)' : 'Chances du favori selon les cotes'));
   }
 
   // ------------------------------------------------------------ onglets
@@ -336,6 +338,7 @@
     }
     return stats.map((b) => ({
       label: b.haut > 1 ? `${Math.round(b.bas * 100)}+ %` : `${Math.round(b.bas * 100)}–${Math.round(b.haut * 100)} %`,
+      court: b.haut > 1 ? `${Math.round(b.bas * 100)}+` : String(Math.round(b.bas * 100)),
       n: b.n, v: b.n ? b.profit / b.n : 0, reel: b.n ? b.gagnes / b.n : 0, promis: b.n ? b.promis / b.n : 0,
       coteMoy: b.n ? b.cotes / b.n : 0, zone: b.bas >= r.pmin - 1e-9 || (r.pmin > b.bas && r.pmin < b.haut),
     }));
