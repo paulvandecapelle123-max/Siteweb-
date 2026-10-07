@@ -1,0 +1,20 @@
+{
+  "capital_depart": 10000,
+  "proba_min": 0.97,
+  "mise_pourcent_du_capital": 2,
+  "exposition_max_pourcent": 60,
+  "horizon_heures": 36,
+  "bookmakers_min": 3,
+  "regions": "eu",
+  "bookmakers_pour_parier": [],
+  "credits_max_par_execution": 12,
+  "credits_reserve": 10,
+  "sports_toujours_scannes": ["Tennis"],
+  "ia": {
+    "active": true,
+    "modele": "claude-opus-5-5",
+    "effort": "medium",
+    "recherches_web_max": 12,
+    "matchs_par_appel": 12
+  }
+}

@@ -1,0 +1,6 @@
+wrangler.jsonc
+.assetsignore
+README.md
+PROMPT.md
+config.json
+tools

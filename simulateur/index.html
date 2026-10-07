@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Simulateur grands favoris</title>
+  <meta name="description" content="Simulateur en argent fictif : une IA parie sur de vrais matchs où le favori est quasi sûr de gagner.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M7 22l6-7 5 4 7-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="titre">
+        <h1>Simulateur IA · grands favoris</h1>
+        <span class="pastille">Argent fictif · vrais matchs</span>
+      </div>
+      <p class="sous-titre">On place 10 000 € fictifs sur des matchs où le favori a 97 % de chances de gagner selon les bookmakers, dans tous les sports disponibles. Le but : savoir, chiffres réels à l'appui, si cette stratégie gagne de l'argent avant d'y risquer un euro.</p>
+      <nav class="onglets" role="tablist" aria-label="Vues">
+        <button role="tab" id="onglet-passe" aria-controls="passe" aria-selected="true">Test sur le passé</button>
+        <button role="tab" id="onglet-direct" aria-controls="direct" aria-selected="false">Paris de l'IA en direct</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- ================= TEST SUR LE PASSÉ ================= -->
+    <section id="passe" class="panneau" role="tabpanel" aria-labelledby="onglet-passe">
+      <div id="passe-absent" class="carte" hidden>
+        <h2>Les matchs passés ne sont pas encore téléchargés</h2>
+        <p>Lance <code>python simulateur/tools/historique.py</code> sur ton ordinateur, ou l'action GitHub « Simulateur · matchs passés » (voir <code>simulateur/README.md</code>). Le fichier <code>data/historique.js</code> sera créé et cette page se remplira toute seule.</p>
+      </div>
+
+      <div id="passe-contenu">
+        <form class="filtres" id="filtres" onsubmit="return false">
+          <label class="champ"><span>Capital de départ (€)</span>
+            <input type="number" id="f-capital" value="10000" min="100" step="100" inputmode="numeric">
+          </label>
+          <div class="champ"><span id="l-proba">Chances minimum du favori</span>
+            <div class="curseur">
+              <input type="range" id="f-proba" min="80" max="99.5" step="0.5" value="97" aria-labelledby="l-proba">
+              <output id="o-proba" for="f-proba">97 %</output>
+            </div>
+          </div>
+          <label class="champ"><span>Mise par pari</span>
+            <select id="f-mise">
+              <option value="p1">1 % du capital</option>
+              <option value="p2" selected>2 % du capital</option>
+              <option value="p5">5 % du capital</option>
+              <option value="p10">10 % du capital</option>
+              <option value="f100">100 € fixes</option>
+            </select>
+          </label>
+          <label class="champ"><span>Où on parie</span>
+            <select id="f-cote">
+              <option value="b365" selected>Bet365 (un vrai bookmaker)</option>
+              <option value="moy">Cote moyenne du marché</option>
+              <option value="max">Meilleure cote du marché (optimiste)</option>
+            </select>
+          </label>
+          <label class="champ"><span>Stratégie</span>
+            <select id="f-strat">
+              <option value="tous" selected>Tous les grands favoris</option>
+              <option value="valeur">Seulement si la cote est « trop belle »</option>
+            </select>
+          </label>
+          <label class="champ"><span>De</span><select id="f-debut"></select></label>
+          <label class="champ"><span>À</span><select id="f-fin"></select></label>
+          <div class="champ champ-large"><span>Sports</span><div class="puces" id="f-sports"></div></div>
+        </form>
+
+        <div class="resume">
+          <div class="carte hero" aria-live="polite">
+            <div class="label">Capital à la fin</div>
+            <div class="valeur" id="r-final">–</div>
+            <div class="delta" id="r-delta"></div>
+            <p class="phrase" id="r-phrase"></p>
+          </div>
+          <div class="tuiles" id="r-tuiles"></div>
+        </div>
+        <div id="r-alerte"></div>
+
+        <div class="carte section">
+          <h2>Capital au fil du temps</h2>
+          <p>Chaque jour, on mise sur tous les favoris qui passent le filtre, puis on encaisse les vrais résultats.</p>
+          <div class="graph" id="g-capital"></div>
+        </div>
+
+        <div class="carte section">
+          <h2>Ce que promettent les cotes, et ce qui s'est vraiment passé</h2>
+          <p>Tous les favoris à 80 % ou plus, dans les sports et années choisis. Barre au-dessus de zéro : on aurait gagné de l'argent à ce niveau de favori.</p>
+          <div class="graph" id="g-niveaux"></div>
+          <div class="legende"><span><i style="background:var(--gain)"></i>Rendement positif</span><span><i style="background:var(--perte)"></i>Rendement négatif</span><span><i style="background:var(--surface-2);border:1px solid var(--axis)"></i>Ton filtre actuel</span></div>
+          <div class="table-boite" id="t-niveaux"></div>
+        </div>
+
+        <div class="grille-2">
+          <div class="carte">
+            <h2>Résultat par sport</h2>
+            <p>Avec tes réglages actuels.</p>
+            <div class="table-boite" id="t-sports"></div>
+          </div>
+          <div class="carte">
+            <h2>Les surprises qui ont coûté cher</h2>
+            <p>Les favoris « sûrs » qui ont perdu, du plus gros favori au moins gros.</p>
+            <div class="table-boite" id="t-surprises"></div>
+          </div>
+        </div>
+
+        <div class="carte section">
+          <h2>Les 100 derniers paris simulés</h2>
+          <div class="table-boite" id="t-paris"></div>
+        </div>
+
+        <div class="carte section">
+          <h2>D'où viennent les données</h2>
+          <p id="sources-resume"></p>
+          <p class="small muted" style="margin-top:8px">Pourquoi l'IA Claude ne choisit pas les paris sur le passé : elle connaît déjà le résultat de la plupart des anciens matchs, elle tricherait sans le vouloir. Sur le passé, la « probabilité » vient donc des cotes du marché (marge du bookmaker retirée). Le vrai test de l'IA, c'est l'onglet « Paris de l'IA en direct ».</p>
+          <details><summary>Détail des fichiers téléchargés</summary><div class="table-boite" id="t-sources"></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EN DIRECT ================= -->
+    <section id="direct" class="panneau" role="tabpanel" aria-labelledby="onglet-direct" hidden>
+      <div id="direct-config" class="carte" hidden>
+        <h2>Le robot IA n'a pas encore tourné</h2>
+        <p>Chaque jour, il scanne les matchs à venir dans tous les sports, garde les favoris à 97 % ou plus, laisse Claude vérifier l'actualité (blessures, rotation, enjeu) et place les paris en argent fictif. Pour l'activer :</p>
+        <ol class="etapes">
+          <li>Crée une clé gratuite sur <a href="https://the-odds-api.com" rel="noopener">the-odds-api.com</a> (cotes de dizaines de sports et de bookmakers).</li>
+          <li>Crée une clé API Claude sur <a href="https://console.anthropic.com" rel="noopener">console.anthropic.com</a> (de quelques centimes à environ 1 $ par jour selon le nombre de matchs ; mets une limite de dépense dans la console).</li>
+          <li>Sur GitHub : ton dépôt → <b>Settings</b> → <b>Secrets and variables</b> → <b>Actions</b> → ajoute <code>ODDS_API_KEY</code> et <code>ANTHROPIC_API_KEY</code>.</li>
+          <li>Onglet <b>Actions</b> → « Simulateur · paris IA du jour » → <b>Run workflow</b>. Ensuite il tourne seul chaque matin.</li>
+        </ol>
+      </div>
+
+      <div id="direct-contenu" hidden>
+        <div class="resume" style="margin-top:0">
+          <div class="carte hero" aria-live="polite">
+            <div class="label">Capital fictif actuel</div>
+            <div class="valeur" id="d-capital">–</div>
+            <div class="delta" id="d-delta"></div>
+            <p class="phrase" id="d-phrase"></p>
+          </div>
+          <div class="tuiles" id="d-tuiles"></div>
+        </div>
+        <div class="carte section">
+          <h2>Capital fictif au fil des paris réglés</h2>
+          <div class="graph" id="g-direct"></div>
+        </div>
+        <div class="carte section">
+          <h2>Paris de l'IA</h2>
+          <p>Les paris en cours en premier. La raison est écrite par Claude après ses recherches sur le web.</p>
+          <div class="table-boite" id="t-direct"></div>
+        </div>
+        <div class="carte section">
+          <h2>Matchs écartés par l'IA</h2>
+          <p>Favoris à 97 % selon les cotes, mais Claude a trouvé une raison de ne pas parier.</p>
+          <div class="table-boite" id="t-refus"></div>
+        </div>
+        <div class="carte section">
+          <h2>Journal du robot</h2>
+          <div class="table-boite" id="t-executions"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Simulation en argent fictif, à but d'apprentissage. Les paris sportifs comportent des risques : endettement, dépendance. En Belgique, informations et aide : <a href="https://www.gamingcommission.be" rel="noopener">Commission des jeux de hasard</a>.</div>
+  </footer>
+
+  <script src="data/historique.js"></script>
+  <script src="data/journal.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
