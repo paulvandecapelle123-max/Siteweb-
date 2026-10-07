@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-07T16:36:29+00:00",
- "credits_odds_api": 416,
+ "maj": "2026-10-07T21:32:54+00:00",
+ "credits_odds_api": 414,
  "paris": [],
  "refus": [],
  "scans": {
@@ -433,13 +433,13 @@ window.JOURNAL = {
    "matchs": 30
   },
   "tennis_atp_shanghai_masters": {
-   "le": "2026-10-07T16:36:29+00:00",
+   "le": "2026-10-07T21:32:54+00:00",
    "sport": "Tennis",
    "competition": "ATP Shanghai Masters",
    "matchs": 32
   },
   "tennis_wta_china_open": {
-   "le": "2026-10-07T16:36:29+00:00",
+   "le": "2026-10-07T21:32:54+00:00",
    "sport": "Tennis",
    "competition": "WTA China Open",
    "matchs": 4
@@ -447,6 +447,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-07T21:32:54+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 414,
+   "capital": 10000
+  },
   {
    "date": "2026-10-07T16:36:29+00:00",
    "competitions_ouvertes": 73,
