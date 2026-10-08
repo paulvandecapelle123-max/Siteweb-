@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-08T06:41:11+00:00",
- "credits_odds_api": 382,
+ "maj": "2026-10-08T07:35:58+00:00",
+ "credits_odds_api": 381,
  "paris": [],
  "refus": [],
  "scans": {
@@ -187,7 +187,7 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_china_superleague": {
-   "le": "2026-10-07T15:42:42+00:00",
+   "le": "2026-10-08T07:35:58+00:00",
    "sport": "Football",
    "competition": "Super League - China",
    "matchs": 9
@@ -453,6 +453,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-08T07:35:58+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 381,
+   "capital": 10000
+  },
   {
    "date": "2026-10-08T06:41:11+00:00",
    "competitions_ouvertes": 73,
