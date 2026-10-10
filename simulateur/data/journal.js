@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-10T13:31:59+00:00",
- "credits_odds_api": 345,
+ "maj": "2026-10-10T14:30:37+00:00",
+ "credits_odds_api": 344,
  "paris": [],
  "refus": [],
  "scans": {
@@ -373,7 +373,7 @@ window.JOURNAL = {
    "matchs": 6
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-10-07T15:42:42+00:00",
+   "le": "2026-10-10T14:30:37+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
    "matchs": 8
@@ -459,6 +459,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-10T14:30:37+00:00",
+   "competitions_ouvertes": 75,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 344,
+   "capital": 10000
+  },
   {
    "date": "2026-10-10T13:31:59+00:00",
    "competitions_ouvertes": 75,
