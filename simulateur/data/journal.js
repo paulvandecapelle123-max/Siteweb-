@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-11T20:31:54+00:00",
- "credits_odds_api": 324,
+ "maj": "2026-10-11T21:31:51+00:00",
+ "credits_odds_api": 323,
  "paris": [],
  "refus": [],
  "scans": {
@@ -79,10 +79,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-10-07T23:28:56+00:00",
+   "le": "2026-10-11T21:31:51+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 33
+   "matchs": 28
   },
   "cricket_international_t20": {
    "le": "2026-10-07T23:28:56+00:00",
@@ -465,6 +465,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-11T21:31:51+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 323,
+   "capital": 10000
+  },
   {
    "date": "2026-10-11T20:31:54+00:00",
    "competitions_ouvertes": 66,
