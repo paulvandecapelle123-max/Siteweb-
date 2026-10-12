@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-12T03:38:09+00:00",
- "credits_odds_api": 319,
+ "maj": "2026-10-12T05:35:36+00:00",
+ "credits_odds_api": 318,
  "paris": [],
  "refus": [],
  "scans": {
@@ -109,10 +109,10 @@ window.JOURNAL = {
    "matchs": 7
   },
   "icehockey_liiga": {
-   "le": "2026-10-07T23:28:56+00:00",
+   "le": "2026-10-12T05:35:36+00:00",
    "sport": "Hockey sur glace",
    "competition": "Liiga",
-   "matchs": 8
+   "matchs": 4
   },
   "icehockey_mestis": {
    "le": "2026-10-07T23:28:56+00:00",
@@ -465,6 +465,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-12T05:35:36+00:00",
+   "competitions_ouvertes": 67,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 318,
+   "capital": 10000
+  },
   {
    "date": "2026-10-12T03:38:09+00:00",
    "competitions_ouvertes": 67,
