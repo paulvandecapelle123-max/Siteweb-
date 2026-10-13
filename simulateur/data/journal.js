@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-13T07:40:00+00:00",
- "credits_odds_api": 300,
+ "maj": "2026-10-13T09:37:16+00:00",
+ "credits_odds_api": 299,
  "paris": [],
  "refus": [],
  "scans": {
@@ -457,14 +457,28 @@ window.JOURNAL = {
    "matchs": 4
   },
   "tennis_wta_wuhan_open": {
-   "le": "2026-10-10T23:29:26+00:00",
+   "le": "2026-10-13T09:37:16+00:00",
    "sport": "Tennis",
    "competition": "WTA Wuhan Open",
-   "matchs": 17
+   "matchs": 14
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-13T09:37:16+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 299,
+   "capital": 10000
+  },
   {
    "date": "2026-10-13T07:40:00+00:00",
    "competitions_ouvertes": 69,
