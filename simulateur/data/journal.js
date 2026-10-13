@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-13T18:42:59+00:00",
- "credits_odds_api": 293,
+ "maj": "2026-10-13T19:47:32+00:00",
+ "credits_odds_api": 292,
  "paris": [],
  "refus": [],
  "scans": {
@@ -241,7 +241,7 @@ window.JOURNAL = {
    "matchs": 20
   },
   "soccer_finland_veikkausliiga": {
-   "le": "2026-10-09T02:32:07+00:00",
+   "le": "2026-10-13T19:47:32+00:00",
    "sport": "Football",
    "competition": "Veikkausliiga - Finland",
    "matchs": 6
@@ -465,6 +465,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-13T19:47:32+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 292,
+   "capital": 10000
+  },
   {
    "date": "2026-10-13T18:42:59+00:00",
    "competitions_ouvertes": 72,
