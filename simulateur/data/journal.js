@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-14T16:50:21+00:00",
- "credits_odds_api": 278,
+ "maj": "2026-10-14T18:57:02+00:00",
+ "credits_odds_api": 277,
  "paris": [],
  "refus": [],
  "scans": {
@@ -19,10 +19,10 @@ window.JOURNAL = {
    "matchs": 39
   },
   "americanfootball_ncaaf_fcs": {
-   "le": "2026-10-07T23:28:56+00:00",
+   "le": "2026-10-14T18:57:02+00:00",
    "sport": "Football américain",
    "competition": "NCAAF FCS",
-   "matchs": 43
+   "matchs": 49
   },
   "americanfootball_nfl": {
    "le": "2026-10-11T09:32:50+00:00",
@@ -471,6 +471,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-14T18:57:02+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 277,
+   "capital": 10000
+  },
   {
    "date": "2026-10-14T16:50:21+00:00",
    "competitions_ouvertes": 72,
