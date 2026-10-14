@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-14T19:46:59+00:00",
- "credits_odds_api": 276,
+ "maj": "2026-10-14T21:46:32+00:00",
+ "credits_odds_api": 275,
  "paris": [],
  "refus": [],
  "scans": {
@@ -325,10 +325,10 @@ window.JOURNAL = {
    "matchs": 13
   },
   "soccer_netherlands_eredivisie": {
-   "le": "2026-10-10T02:33:01+00:00",
+   "le": "2026-10-14T21:46:32+00:00",
    "sport": "Football",
    "competition": "Dutch Eredivisie",
-   "matchs": 17
+   "matchs": 18
   },
   "soccer_norway_eliteserien": {
    "le": "2026-10-10T04:33:22+00:00",
@@ -471,6 +471,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-14T21:46:32+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 275,
+   "capital": 10000
+  },
   {
    "date": "2026-10-14T19:46:59+00:00",
    "competitions_ouvertes": 73,
