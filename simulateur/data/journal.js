@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-14T13:50:35+00:00",
- "credits_odds_api": 280,
+ "maj": "2026-10-14T15:52:53+00:00",
+ "credits_odds_api": 279,
  "paris": [],
  "refus": [],
  "scans": {
@@ -307,10 +307,10 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_korea_kleague1": {
-   "le": "2026-10-09T22:32:40+00:00",
+   "le": "2026-10-14T15:52:53+00:00",
    "sport": "Football",
    "competition": "K League 1",
-   "matchs": 3
+   "matchs": 6
   },
   "soccer_league_of_ireland": {
    "le": "2026-10-09T23:30:59+00:00",
@@ -471,6 +471,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-14T15:52:53+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 279,
+   "capital": 10000
+  },
   {
    "date": "2026-10-14T13:50:35+00:00",
    "competitions_ouvertes": 72,
