@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-15T19:44:19+00:00",
- "credits_odds_api": 260,
+ "maj": "2026-10-15T20:47:59+00:00",
+ "credits_odds_api": 259,
  "paris": [],
  "refus": [],
  "scans": {
@@ -409,10 +409,10 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-10-11T00:43:08+00:00",
+   "le": "2026-10-15T20:47:59+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
-   "matchs": 18
+   "matchs": 10
   },
   "soccer_spain_la_liga": {
    "le": "2026-10-11T02:32:27+00:00",
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-15T20:47:59+00:00",
+   "competitions_ouvertes": 75,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 259,
+   "capital": 10000
+  },
   {
    "date": "2026-10-15T19:44:19+00:00",
    "competitions_ouvertes": 75,
