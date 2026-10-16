@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-16T10:48:30+00:00",
- "credits_odds_api": 250,
+ "maj": "2026-10-16T11:47:23+00:00",
+ "credits_odds_api": 249,
  "paris": [],
  "refus": [],
  "scans": {
@@ -43,10 +43,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "baseball_npb": {
-   "le": "2026-10-11T15:31:37+00:00",
+   "le": "2026-10-16T11:47:23+00:00",
    "sport": "Baseball",
    "competition": "NPB",
-   "matchs": 1
+   "matchs": 2
   },
   "basketball_euroleague": {
    "le": "2026-10-16T10:48:30+00:00",
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-16T11:47:23+00:00",
+   "competitions_ouvertes": 76,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 249,
+   "capital": 10000
+  },
   {
    "date": "2026-10-16T10:48:30+00:00",
    "competitions_ouvertes": 75,
