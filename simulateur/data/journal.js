@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-16T19:43:38+00:00",
- "credits_odds_api": 244,
+ "maj": "2026-10-16T20:47:04+00:00",
+ "credits_odds_api": 243,
  "paris": [],
  "refus": [],
  "scans": {
@@ -163,10 +163,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "soccer_belgium_first_div": {
-   "le": "2026-10-07T23:28:56+00:00",
+   "le": "2026-10-16T20:47:04+00:00",
    "sport": "Football",
    "competition": "Belgium First Div",
-   "matchs": 9
+   "matchs": 1
   },
   "soccer_brazil_campeonato": {
    "le": "2026-10-12T20:35:50+00:00",
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-16T20:47:04+00:00",
+   "competitions_ouvertes": 77,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 243,
+   "capital": 10000
+  },
   {
    "date": "2026-10-16T19:43:38+00:00",
    "competitions_ouvertes": 76,
