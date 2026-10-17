@@ -16,7 +16,7 @@
         "one": "{{ count }} result for “{{ terms }}”",
         "other": "{{ count }} results for “{{ terms }}”"
       },
-      "no_results": "No results. Try another word, like “beauty” or “chocolate”."
+      "no_results": "No results. Try another word, like “charm” or “fishing”."
     }
   },
   "accessibility": {

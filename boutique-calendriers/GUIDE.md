@@ -5,6 +5,7 @@ Ce dossier contient un thème Shopify sur mesure, « Avent ».
 ```
 boutique-calendriers/
   avent-theme.zip   ← le fichier à importer dans Shopify
+  FICHES-PRODUITS.md ← les fiches de tes calendriers (titres, textes, prix)
   theme/            ← le code source du thème (le même contenu que le zip)
   apercu/           ← captures d'écran (avec des produits d'exemple)
 ```
@@ -51,7 +52,7 @@ boutique-calendriers/
 - **Menu principal** (`main-menu`) : Calendriers (→ collection « Tous »), Comment ça marche (→ `/#comment-ca-marche`), FAQ (→ `/#faq`).
 - **Pied de page** (`footer`) : Livraison, Retours, Contact, Mentions légales.
 
-**Produits → Collections** : crée par exemple *Beauté*, *Gourmand*, *Enfants* et *Bijoux*, puis relie-les dans la section **Catégories** de l'accueil.
+**Produits → Collections** : crée *Enfants*, *Bijoux & breloques*, *Pêche* et *À remplir soi-même*, puis relie-les dans la section **Catégories** de l'accueil (voir `FICHES-PRODUITS.md` pour savoir quel calendrier va où).
 
 Pour les filtres de la page collection (prix, disponibilité, catégorie…), installe l'application gratuite **Shopify Search & Discovery**.
 
@@ -64,7 +65,7 @@ L'outil le plus courant est l'application **DSers** (partenaire officiel d'AliEx
 3. Modifie le titre, la description et le prix, puis **Push to Shopify**.
 4. Quand un client commande, DSers passe la commande chez le fournisseur avec l'adresse du client.
 
-Les fiches produit (titres, descriptions, prix conseillés), je peux les rédiger à partir des liens ou des captures que tu m'envoies.
+Les titres, descriptions et prix conseillés de tes calendriers sont dans **`FICHES-PRODUITS.md`**, prêts à copier-coller.
 
 **Délai propre à un produit** (par exemple un produit expédié depuis un entrepôt en Europe) : dans **Paramètres → Données personnalisées → Produits**, crée deux métachamps de type *Nombre entier* :
 

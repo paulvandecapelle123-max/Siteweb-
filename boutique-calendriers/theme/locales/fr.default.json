@@ -16,7 +16,7 @@
         "one": "{{ count }} résultat pour « {{ terms }} »",
         "other": "{{ count }} résultats pour « {{ terms }} »"
       },
-      "no_results": "Aucun résultat. Essayez un autre mot, par exemple « beauté » ou « chocolat »."
+      "no_results": "Aucun résultat. Essayez un autre mot, par exemple « breloque » ou « pêche »."
     }
   },
   "accessibility": {

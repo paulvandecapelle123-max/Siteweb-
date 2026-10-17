@@ -6,7 +6,9 @@
     },
     "hero": {
       "type": "hero-advent",
-      "settings": {}
+      "settings": {
+        "text": "<p>Bijoux à breloques, minéraux, pêche ou calendrier à remplir soi-même… Trouvez le calendrier de l'Avent qui fera briller les matins de décembre, et faites-vous livrer à temps.</p>"
+      }
     },
     "featured": {
       "type": "featured-collection",
@@ -18,12 +20,41 @@
     "categories": {
       "type": "collection-list",
       "blocks": {
-        "cat-1": { "type": "collection", "settings": { "title": "Beauté", "icon": "sparkles" } },
-        "cat-2": { "type": "collection", "settings": { "title": "Gourmand", "icon": "candy" } },
-        "cat-3": { "type": "collection", "settings": { "title": "Enfants", "icon": "star" } },
-        "cat-4": { "type": "collection", "settings": { "title": "Bijoux", "icon": "heart" } }
+        "cat-1": {
+          "type": "collection",
+          "settings": {
+            "title": "Enfants",
+            "icon": "star"
+          }
+        },
+        "cat-2": {
+          "type": "collection",
+          "settings": {
+            "title": "Bijoux & breloques",
+            "icon": "heart"
+          }
+        },
+        "cat-3": {
+          "type": "collection",
+          "settings": {
+            "title": "Pêche",
+            "icon": "fish"
+          }
+        },
+        "cat-4": {
+          "type": "collection",
+          "settings": {
+            "title": "À remplir soi-même",
+            "icon": "scissors"
+          }
+        }
       },
-      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4"],
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3",
+        "cat-4"
+      ],
       "settings": {
         "surface": true
       }
@@ -35,7 +66,7 @@
           "type": "step",
           "settings": {
             "title": "Choisissez votre calendrier",
-            "text": "Beauté, gourmand, enfant, bijoux… La date de livraison estimée est affichée sur chaque produit."
+            "text": "Breloques, minéraux, pêche ou à remplir soi-même… La date de livraison estimée est affichée sur chaque produit."
           }
         },
         "step-2": {
@@ -53,7 +84,11 @@
           }
         }
       },
-      "block_order": ["step-1", "step-2", "step-3"],
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3"
+      ],
       "settings": {}
     },
     "story": {
@@ -65,12 +100,45 @@
     "perks": {
       "type": "perks",
       "blocks": {
-        "perk-1": { "type": "perk", "settings": { "icon": "truck", "title": "Livraison suivie", "text": "Un numéro de suivi par e-mail dès l'expédition." } },
-        "perk-2": { "type": "perk", "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Carte bancaire, Apple Pay, Google Pay." } },
-        "perk-3": { "type": "perk", "settings": { "icon": "return", "title": "14 jours pour changer d'avis", "text": "Retours acceptés selon notre politique de retour." } },
-        "perk-4": { "type": "perk", "settings": { "icon": "chat", "title": "Une question ?", "text": "Réponse par e-mail sous 24 h ouvrées." } }
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison suivie",
+            "text": "Un numéro de suivi par e-mail dès l'expédition."
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Carte bancaire, Apple Pay, Google Pay."
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "icon": "return",
+            "title": "14 jours pour changer d'avis",
+            "text": "Retours acceptés selon notre politique de retour."
+          }
+        },
+        "perk-4": {
+          "type": "perk",
+          "settings": {
+            "icon": "chat",
+            "title": "Une question ?",
+            "text": "Réponse par e-mail sous 24 h ouvrées."
+          }
+        }
       },
-      "block_order": ["perk-1", "perk-2", "perk-3", "perk-4"],
+      "block_order": [
+        "perk-1",
+        "perk-2",
+        "perk-3",
+        "perk-4"
+      ],
       "settings": {
         "style": "none"
       }
@@ -114,7 +182,13 @@
           }
         }
       },
-      "block_order": ["q-1", "q-2", "q-3", "q-4", "q-5"],
+      "block_order": [
+        "q-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "q-5"
+      ],
       "settings": {}
     },
     "newsletter": {
@@ -122,5 +196,15 @@
       "settings": {}
     }
   },
-  "order": ["deadline", "hero", "featured", "categories", "steps", "story", "perks", "faq", "newsletter"]
+  "order": [
+    "deadline",
+    "hero",
+    "featured",
+    "categories",
+    "steps",
+    "story",
+    "perks",
+    "faq",
+    "newsletter"
+  ]
 }
