@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-17T16:44:03+00:00",
- "credits_odds_api": 230,
+ "maj": "2026-10-17T17:41:23+00:00",
+ "credits_odds_api": 229,
  "paris": [],
  "refus": [],
  "scans": {
@@ -169,10 +169,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_brazil_campeonato": {
-   "le": "2026-10-12T20:35:50+00:00",
+   "le": "2026-10-17T17:41:23+00:00",
    "sport": "Football",
    "competition": "Brazil Série A",
-   "matchs": 13
+   "matchs": 19
   },
   "soccer_brazil_serie_b": {
    "le": "2026-10-12T21:32:43+00:00",
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-17T17:41:23+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 229,
+   "capital": 10000
+  },
   {
    "date": "2026-10-17T16:44:03+00:00",
    "competitions_ouvertes": 74,
