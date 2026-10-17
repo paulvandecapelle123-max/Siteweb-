@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-17T18:44:47+00:00",
- "credits_odds_api": 228,
+ "maj": "2026-10-17T20:42:06+00:00",
+ "credits_odds_api": 227,
  "paris": [],
  "refus": [],
  "scans": {
@@ -181,7 +181,7 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_chile_campeonato": {
-   "le": "2026-10-12T23:32:58+00:00",
+   "le": "2026-10-17T20:42:06+00:00",
    "sport": "Football",
    "competition": "Primera División - Chile",
    "matchs": 8
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-17T20:42:06+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 227,
+   "capital": 10000
+  },
   {
    "date": "2026-10-17T18:44:47+00:00",
    "competitions_ouvertes": 72,
