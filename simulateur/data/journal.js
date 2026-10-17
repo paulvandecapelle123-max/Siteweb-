@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-17T08:45:23+00:00",
- "credits_odds_api": 235,
+ "maj": "2026-10-17T10:43:15+00:00",
+ "credits_odds_api": 234,
  "paris": [],
  "refus": [],
  "scans": {
@@ -103,10 +103,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "handball_germany_bundesliga": {
-   "le": "2026-10-12T12:58:06+00:00",
+   "le": "2026-10-17T10:43:15+00:00",
    "sport": "Handball",
    "competition": "Handball-Bundesliga",
-   "matchs": 7
+   "matchs": 5
   },
   "icehockey_liiga": {
    "le": "2026-10-17T02:46:27+00:00",
@@ -477,6 +477,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-17T10:43:15+00:00",
+   "competitions_ouvertes": 75,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 234,
+   "capital": 10000
+  },
   {
    "date": "2026-10-17T08:45:23+00:00",
    "competitions_ouvertes": 76,
