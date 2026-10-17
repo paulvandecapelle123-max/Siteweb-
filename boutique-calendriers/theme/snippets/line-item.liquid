@@ -1,0 +1,73 @@
+{%- comment -%}
+  Ligne du panier.
+  - item: ligne du panier
+  - line: numéro de la ligne (commence à 1)
+  - drawer: true dans le panier latéral (boutons +/- en AJAX)
+{%- endcomment -%}
+<li class="line-item">
+  <a href="{{ item.url }}" class="line-item__media" tabindex="-1" aria-hidden="true">
+    {%- if item.image -%}
+      {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}
+    {%- endif -%}
+  </a>
+  <div>
+    <p class="line-item__title"><a href="{{ item.url }}">{{ item.product.title | escape }}</a></p>
+    {%- unless item.product.has_only_default_variant -%}
+      <p class="line-item__meta">{{ item.variant.title | escape }}</p>
+    {%- endunless -%}
+    {%- for discount in item.line_level_discount_allocations -%}
+      <p class="line-item__meta">{{ discount.discount_application.title | escape }} (-{{ discount.amount | money }})</p>
+    {%- endfor -%}
+    {%- if drawer -%}
+      <div class="qty qty--small">
+        <button
+          type="button"
+          data-line-step="-1"
+          data-line="{{ line }}"
+          data-quantity="{{ item.quantity }}"
+          aria-label="{{ 'products.product.quantity_decrease' | t }}"
+        >
+          {% render 'icon', name: 'minus' %}
+        </button>
+        <input type="number" value="{{ item.quantity }}" readonly aria-label="{{ 'products.product.quantity' | t }}">
+        <button
+          type="button"
+          data-line-step="1"
+          data-line="{{ line }}"
+          data-quantity="{{ item.quantity }}"
+          aria-label="{{ 'products.product.quantity_increase' | t }}"
+        >
+          {% render 'icon', name: 'plus' %}
+        </button>
+      </div>
+    {%- else -%}
+      <div class="qty qty--small">
+        <button type="button" data-qty-step="-1" aria-label="{{ 'products.product.quantity_decrease' | t }}">
+          {% render 'icon', name: 'minus' %}
+        </button>
+        <input
+          type="number"
+          name="updates[]"
+          value="{{ item.quantity }}"
+          min="0"
+          data-qty-input
+          aria-label="{{ 'products.product.quantity' | t }}"
+        >
+        <button type="button" data-qty-step="1" aria-label="{{ 'products.product.quantity_increase' | t }}">
+          {% render 'icon', name: 'plus' %}
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="line-item__end">
+    <div class="price">
+      {%- if item.original_line_price != item.final_line_price -%}
+        <span class="price__sale">{{ item.final_line_price | money }}</span>
+        <s class="price__compare">{{ item.original_line_price | money }}</s>
+      {%- else -%}
+        <span>{{ item.final_line_price | money }}</span>
+      {%- endif -%}
+    </div>
+    <a href="{{ item.url_to_remove }}" class="line-item__remove" data-line-remove="{{ line }}">{{ 'cart.remove' | t }}</a>
+  </div>
+</li>

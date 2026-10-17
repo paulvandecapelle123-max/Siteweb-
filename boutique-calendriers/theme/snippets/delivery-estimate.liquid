@@ -1,0 +1,20 @@
+{%- comment -%}
+  Date de livraison estimée, calculée dans le navigateur (assets/theme.js).
+  Délais : Paramètres du thème > Livraison et 1er décembre, ou métachamps
+  custom.delai_min_jours / custom.delai_max_jours du produit.
+{%- endcomment -%}
+{%- liquid
+  assign min_days = product.metafields.custom.delai_min_jours.value | default: settings.shipping_min_days
+  assign max_days = product.metafields.custom.delai_max_jours.value | default: settings.shipping_max_days
+  assign total_min = min_days | plus: settings.processing_days
+  assign total_max = max_days | plus: settings.processing_days
+-%}
+<div class="delivery" data-delivery data-min="{{ min_days }}" data-max="{{ max_days }}">
+  {% render 'icon', name: 'truck' %}
+  <div>
+    <p class="delivery__range" data-delivery-range>
+      {{ 'delivery.range_fallback' | t: min: total_min, max: total_max }}
+    </p>
+    <p class="delivery__status" data-delivery-status></p>
+  </div>
+</div>

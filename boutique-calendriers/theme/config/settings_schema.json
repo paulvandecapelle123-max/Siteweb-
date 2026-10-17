@@ -1,0 +1,173 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Avent",
+    "theme_version": "1.0.0",
+    "theme_author": "Sur mesure",
+    "theme_documentation_url": "https://help.shopify.com/fr/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/fr"
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Fond du site",
+        "default": "#FBF7F0"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Fond des encadrés",
+        "default": "#F3EADB"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Texte",
+        "default": "#1D2A23"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Couleur principale (vert sapin)",
+        "default": "#1F4D3A"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Couleur d'accent (rouge)",
+        "default": "#B42B3F"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Doré",
+        "default": "#C9A24D"
+      }
+    ]
+  },
+  {
+    "name": "Livraison et 1er décembre",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Ces délais servent à calculer la date de livraison affichée sur chaque produit et la date limite de commande pour recevoir le calendrier avant le 1er décembre. Mets des délais réalistes : ceux de ton fournisseur, pas les plus optimistes."
+      },
+      {
+        "type": "range",
+        "id": "processing_days",
+        "label": "Préparation de la commande",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "j",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "shipping_min_days",
+        "label": "Transport : délai le plus court",
+        "min": 1,
+        "max": 40,
+        "step": 1,
+        "unit": "j",
+        "default": 7
+      },
+      {
+        "type": "range",
+        "id": "shipping_max_days",
+        "label": "Transport : délai le plus long",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "unit": "j",
+        "default": 14
+      },
+      {
+        "type": "checkbox",
+        "id": "show_delivery_estimate",
+        "label": "Afficher la date de livraison estimée sur les produits",
+        "default": true
+      },
+      {
+        "type": "paragraph",
+        "content": "Pour un produit expédié plus vite (entrepôt en Europe par exemple), crée les métachamps produit custom.delai_min_jours et custom.delai_max_jours (nombres entiers) : ils remplacent les délais de transport ci-dessus pour ce produit."
+      }
+    ]
+  },
+  {
+    "name": "Panier",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Après un ajout au panier",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Ouvrir le panier latéral"
+          },
+          {
+            "value": "page",
+            "label": "Aller à la page panier"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Livraison offerte à partir de (montant)",
+        "info": "Laisse vide si tu ne proposes pas la livraison offerte. Le montant doit correspondre à ta règle d'expédition dans Paramètres > Expédition.",
+        "default": 39
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_note",
+        "label": "Permettre d'ajouter une note (message cadeau)",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram",
+        "placeholder": "https://instagram.com/..."
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok",
+        "placeholder": "https://tiktok.com/@..."
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook",
+        "placeholder": "https://facebook.com/..."
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest",
+        "placeholder": "https://pinterest.com/..."
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Image (32 × 32 px)"
+      }
+    ]
+  }
+]

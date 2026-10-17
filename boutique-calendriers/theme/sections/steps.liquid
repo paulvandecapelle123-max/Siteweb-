@@ -1,0 +1,85 @@
+<section class="section section--surface" id="{{ section.settings.anchor | default: section.id | handleize }}">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <ol class="steps" style="--cols: {{ section.blocks.size | at_most: 4 | at_least: 1 }};">
+      {%- for block in section.blocks -%}
+        <li class="step reveal" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title | escape }}</h3>
+          <p>{{ block.settings.text | escape }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Étapes",
+  "class": "section-steps",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Simple comme bonjour"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Comment ça <em>marche</em> ?"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Ancre (pour un lien du type #comment-ca-marche)",
+      "default": "comment-ca-marche"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Étape",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Choisissez"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte",
+          "default": "Trouvez le calendrier qui correspond à la personne à gâter."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Étapes",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": { "title": "Choisissez votre calendrier", "text": "Beauté, gourmand, enfant, bijoux… La date de livraison estimée est affichée sur chaque produit." }
+        },
+        {
+          "type": "step",
+          "settings": { "title": "Commandez avant la date limite", "text": "Le bandeau en haut du site indique jusqu'à quand commander pour être livré avant le 1er décembre." }
+        },
+        {
+          "type": "step",
+          "settings": { "title": "Une case chaque matin", "text": "Du 1er au 24 décembre, ouvrez une case par jour et profitez de la surprise." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+<section class="section" id="{{ section.settings.anchor | default: section.id | handleize }}">
+  <div class="container container--narrow">
+    <div class="section-head section-head--center reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="accordion reveal">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>
+            {{- block.settings.question | escape -}}
+            {% render 'icon', name: 'plus' %}
+          </summary>
+          <div class="accordion__content rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Questions fréquentes",
+  "class": "section-faq",
+  "max_blocks": 16,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "FAQ"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Vos <em>questions</em>"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Ancre",
+      "default": "faq"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Quand vais-je recevoir mon calendrier ?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "<p>La date de livraison estimée est indiquée sur chaque produit.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Questions fréquentes",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Quand vais-je recevoir mon calendrier ?",
+            "answer": "<p>Chaque fiche produit affiche une date de livraison estimée. Pour recevoir votre calendrier avant le 1er décembre, commandez avant la date indiquée dans le bandeau en haut du site.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Et si mon calendrier arrive après le 1er décembre ?",
+            "answer": "<p>Ouvrez simplement les cases des jours déjà passés à son arrivée : toutes les surprises sont là. Si vous préférez, vous pouvez aussi exercer votre droit de rétractation (voir notre politique de retour).</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Comment suivre ma commande ?",
+            "answer": "<p>Dès l'expédition, vous recevez un e-mail avec votre numéro de suivi.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je retourner un calendrier ?",
+            "answer": "<p>Oui, vous avez 14 jours après la réception pour changer d'avis. Les conditions sont détaillées dans notre politique de retour.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Le paiement est-il sécurisé ?",
+            "answer": "<p>Oui. Le paiement passe par un prestataire certifié PCI-DSS : nous n'avons jamais accès à vos coordonnées bancaires.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,50 @@
+{%- comment -%}
+  Polices hébergées dans le thème (aucun appel à Google) et couleurs réglables dans
+  Personnaliser > Paramètres du thème > Couleurs.
+{%- endcomment -%}
+<style>
+  @font-face {
+    font-family: 'Fraunces';
+    src: url('{{ 'fraunces.woff2' | asset_url }}') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Fraunces';
+    src: url('{{ 'fraunces-italic.woff2' | asset_url }}') format('woff2');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Outfit';
+    src: url('{{ 'outfit-400.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Outfit';
+    src: url('{{ 'outfit-500.woff2' | asset_url }}') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Outfit';
+    src: url('{{ 'outfit-600.woff2' | asset_url }}') format('woff2');
+    font-weight: 600 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --c-bg: {{ settings.color_background }};
+    --c-surface: {{ settings.color_surface }};
+    --c-text: {{ settings.color_text }};
+    --c-primary: {{ settings.color_primary }};
+    --c-accent: {{ settings.color_accent }};
+    --c-gold: {{ settings.color_gold }};
+  }
+</style>

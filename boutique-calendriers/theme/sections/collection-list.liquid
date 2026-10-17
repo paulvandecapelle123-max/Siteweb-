@@ -1,0 +1,115 @@
+<section class="section{% if section.settings.surface %} section--surface{% endif %}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head section-head--center reveal">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="cats" style="--cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign placeholder_title = 'sections.collection_list.placeholder' | t
+          assign title = block.settings.title | default: c.title | default: placeholder_title
+          assign image = block.settings.image | default: c.featured_image
+          assign url = c.url | default: routes.all_products_collection_url
+        -%}
+        <a href="{{ url }}" class="cat{% if image == blank %} cat--plain{% endif %} reveal" {{ block.shopify_attributes }}>
+          {%- if image != blank -%}
+            {{
+              image
+              | image_url: width: 800
+              | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 25vw, 50vw', alt: title
+            }}
+          {%- else -%}
+            <span class="cat__icon">{% render 'icon', name: block.settings.icon %}</span>
+          {%- endif -%}
+          <h3 class="cat__title">{{ title | escape }}</h3>
+          <span class="cat__more">{{ 'sections.collection_list.discover' | t }}{% render 'icon', name: 'arrow' %}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Catégories",
+  "class": "section-collection-list",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Pour qui ?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Un calendrier pour <em>chaque</em> personne"
+    },
+    {
+      "type": "checkbox",
+      "id": "surface",
+      "label": "Fond coloré",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Catégorie",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre (sinon celui de la collection)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (sinon celle de la collection)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône quand il n'y a pas d'image",
+          "options": [
+            { "value": "sparkles", "label": "Étincelles" },
+            { "value": "candy", "label": "Bonbon" },
+            { "value": "star", "label": "Étoile" },
+            { "value": "heart", "label": "Cœur" },
+            { "value": "gift", "label": "Cadeau" },
+            { "value": "tree", "label": "Sapin" },
+            { "value": "snowflake", "label": "Flocon" },
+            { "value": "bell", "label": "Cloche" }
+          ],
+          "default": "gift"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Catégories",
+      "blocks": [
+        { "type": "collection", "settings": { "title": "Beauté", "icon": "sparkles" } },
+        { "type": "collection", "settings": { "title": "Gourmand", "icon": "candy" } },
+        { "type": "collection", "settings": { "title": "Enfants", "icon": "star" } },
+        { "type": "collection", "settings": { "title": "Bijoux", "icon": "heart" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

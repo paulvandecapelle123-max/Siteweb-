@@ -1,0 +1,49 @@
+{%- comment -%}
+  Réglages et textes transmis à assets/theme.js.
+{%- endcomment -%}
+{%- liquid
+  assign free_shipping_cents = 0
+  if settings.free_shipping_threshold != blank and settings.free_shipping_threshold > 0
+    assign free_shipping_cents = settings.free_shipping_threshold | times: 100
+  endif
+-%}
+<script>
+  window.theme = {
+    locale: {{ request.locale.iso_code | json }},
+    moneyFormat: {{ shop.money_format | json }},
+    cartType: {{ settings.cart_type | json }},
+    freeShippingCents: {{ free_shipping_cents | json }},
+    delivery: {
+      processing: {{ settings.processing_days | json }},
+      min: {{ settings.shipping_min_days | json }},
+      max: {{ settings.shipping_max_days | json }}
+    },
+    routes: {
+      root: {{ routes.root_url | json }},
+      cart: {{ routes.cart_url | json }},
+      cartAdd: {{ routes.cart_add_url | json }},
+      cartChange: {{ routes.cart_change_url | json }},
+      recommendations: {{ routes.product_recommendations_url | json }}
+    },
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      adding: {{ 'products.product.adding' | t | json }},
+      cartError: {{ 'cart.error' | t | json }},
+      deliveryRange: {{ 'delivery.range' | t | json }},
+      deliveryBefore: {{ 'delivery.status_before' | t | json }},
+      deliveryBorderline: {{ 'delivery.status_borderline' | t | json }},
+      deliveryAfter: {{ 'delivery.status_after' | t | json }},
+      deadlineBefore: {{ 'delivery.deadline_before' | t | json }},
+      deadlineAfter: {{ 'delivery.deadline_after' | t | json }},
+      deadlineDecember: {{ 'delivery.deadline_december' | t | json }},
+      daysLeft: {{ 'delivery.days_left' | t | json }},
+      dayLeft: {{ 'delivery.day_left' | t | json }},
+      lastDay: {{ 'delivery.last_day' | t | json }},
+      countdownBefore: {{ 'countdown.before' | t | json }},
+      countdownTomorrow: {{ 'countdown.tomorrow' | t | json }},
+      countdownDuring: {{ 'countdown.during' | t | json }}
+    }
+  };
+</script>

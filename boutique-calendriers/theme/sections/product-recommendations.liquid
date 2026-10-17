@@ -1,0 +1,46 @@
+{%- liquid
+  assign limit = section.settings.limit
+  assign url = routes.product_recommendations_url | append: '?section_id=' | append: section.id | append: '&product_id=' | append: product.id | append: '&limit=' | append: limit
+-%}
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div data-recommendations data-url="{{ url }}">
+      {%- if recommendations.performed and recommendations.products_count > 0 -%}
+        <ul class="grid grid--4">
+          {%- for product in recommendations.products -%}
+            <li class="reveal">
+              {% render 'product-card', product: product, quick_add: true %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produits similaires",
+  "class": "section-recommendations",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Vous aimerez <em>aussi</em>"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Nombre de produits",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

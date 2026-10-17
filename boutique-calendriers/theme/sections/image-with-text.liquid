@@ -1,0 +1,119 @@
+<section class="section{% if section.settings.style == 'surface' %} section--surface{% elsif section.settings.style == 'primary' %} section--primary{% endif %}" id="{{ section.settings.anchor | default: section.id | handleize }}">
+  <div class="container split{% if section.settings.layout == 'right' %} split--reverse{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <div class="split__media reveal">
+        {{
+          section.settings.image
+          | image_url: width: 1400
+          | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 900px) 50vw, 100vw'
+        }}
+      </div>
+    {%- else -%}
+      <div class="split__media split__media--placeholder reveal">
+        <span class="split__stars" aria-hidden="true">
+          {%- render 'icon', name: 'star' -%}
+          {%- render 'icon', name: 'sparkles' -%}
+          {%- render 'icon', name: 'snowflake' -%}
+          {%- render 'icon', name: 'star' -%}
+        </span>
+        <p>
+          <span class="split__number">24</span>
+          <span class="split__caption">{{ section.settings.placeholder_caption | escape }}</span>
+        </p>
+      </div>
+    {%- endif -%}
+    <div class="split__text reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn{% if section.settings.style == 'primary' %} btn--gold{% else %} btn--accent{% endif %}">
+          {{- section.settings.button_label | escape -}}
+          {% render 'icon', name: 'arrow' %}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image et texte",
+  "class": "section-image-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Position de l'image",
+      "options": [
+        { "value": "left", "label": "À gauche" },
+        { "value": "right", "label": "À droite" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Fond",
+      "options": [
+        { "value": "none", "label": "Clair" },
+        { "value": "surface", "label": "Beige" },
+        { "value": "primary", "label": "Vert sapin" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Le petit plus"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Le rituel <em>préféré</em> de décembre"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Chaque matin, une case à ouvrir et une petite surprise à découvrir. Un calendrier de l'Avent, c'est le plaisir de Noël étalé sur 24 jours, à offrir ou à s'offrir.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton",
+      "default": "Trouver le mien"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_caption",
+      "label": "Légende du grand « 24 » (quand il n'y a pas d'image)",
+      "default": "surprises à découvrir"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Ancre (pour un lien du type #rituel)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image et texte"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,116 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.limit
+-%}
+<section class="section{% if section.settings.surface %} section--surface{% endif %}">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}
+          <p>{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_view_all and collection != blank -%}
+        <a href="{{ collection.url }}" class="link">
+          {{- 'sections.featured_collection.view_all' | t -}}
+          {% render 'icon', name: 'arrow' %}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <ul class="grid grid--{{ section.settings.columns }}">
+      {%- if collection != blank and collection.products_count > 0 -%}
+        {%- for product in collection.products limit: limit -%}
+          <li class="reveal">
+            {% render 'product-card', product: product, quick_add: section.settings.quick_add %}
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..limit) -%}
+          {%- assign placeholder_index = i | modulo: 6 | plus: 1 -%}
+          <li>
+            {% render 'product-card', product: blank, placeholder_index: placeholder_index %}
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection en vedette",
+  "class": "section-featured-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Les incontournables"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Nos calendriers <em>préférés</em>"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texte",
+      "default": "Sélectionnés pour leur contenu, leur prix et leur délai de livraison."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Nombre de produits",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Colonnes sur ordinateur",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_add",
+      "label": "Bouton d'ajout rapide",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Lien « Tout voir »",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "surface",
+      "label": "Fond coloré",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection en vedette"
+    }
+  ]
+}
+{% endschema %}

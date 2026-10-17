@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "deadline": { "type": "deadline-banner", "settings": {} },
+    "main": { "type": "main-collection", "settings": {} }
+  },
+  "order": ["deadline", "main"]
+}

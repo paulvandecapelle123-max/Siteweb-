@@ -1,0 +1,53 @@
+{%- comment -%}
+  Les 24 cases du calendrier, numérotées dans le désordre comme un vrai calendrier.
+  - image: image révélée derrière les cases (facultatif)
+  - ribbon: texte du ruban (facultatif)
+  - teaser: true pour ouvrir quelques cases au chargement hors décembre
+{%- endcomment -%}
+{%- liquid
+  assign order = '7,18,3,22,11,1,15,24,9,20,5,13,2,17,10,23,6,14,21,4,12,19,8,16' | split: ','
+  assign icons = 'star,gift,tree,snowflake,candy,bell,sparkles,heart' | split: ','
+  if image != blank
+    assign image_src = image | image_url: width: 1200
+  endif
+-%}
+<div class="advent">
+  {%- if ribbon != blank -%}
+    <span class="advent__ribbon">{{ ribbon }}</span>
+  {%- endif -%}
+  <div
+    class="advent__grid"
+    data-advent
+    {% if teaser %}
+      data-teaser
+    {% endif %}
+    {% if image_src %}
+      style="--door-image: url('{{ image_src }}');"
+    {% endif %}
+  >
+    {%- for number in order -%}
+      {%- liquid
+        assign index = forloop.index0
+        assign x = index | modulo: 6
+        assign y = index | divided_by: 6
+        assign icon_index = number | modulo: icons.size
+        assign icon_name = icons[icon_index]
+      -%}
+      <div class="door" data-day="{{ number }}" style="--x: {{ x }}; --y: {{ y }};">
+        {%- if image_src -%}
+          <div class="door__behind door__behind--image"></div>
+        {%- else -%}
+          <div class="door__behind">{% render 'icon', name: icon_name %}</div>
+        {%- endif -%}
+        <button
+          type="button"
+          class="door__leaf"
+          aria-pressed="false"
+          aria-label="{{ 'sections.hero.door' | t: day: number }}"
+        >
+          {{ number }}
+        </button>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<article>
+  <div class="page-head container container--narrow">
+    <p class="meta">{{ article.published_at | time_tag: format: 'date' }}</p>
+    <h1>{{ article.title | escape }}</h1>
+  </div>
+  {%- if article.image -%}
+    <div class="container container--narrow" style="margin-bottom: 2rem;">
+      <div class="article-card__media">
+        {{ article.image | image_url: width: 1400 | image_tag: widths: '600, 900, 1400', sizes: '(min-width: 800px) 780px, 100vw' }}
+      </div>
+    </div>
+  {%- endif -%}
+  <div class="page-body container container--narrow">
+    <div class="rte">{{ article.content }}</div>
+    <p style="margin-top: 2.5rem;">
+      <a href="{{ blog.url }}" class="link">{% render 'icon', name: 'chevron-left' %}{{ 'blogs.back' | t }}</a>
+    </p>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "class": "section-main-article",
+  "settings": []
+}
+{% endschema %}

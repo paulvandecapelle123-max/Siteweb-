@@ -1,0 +1,107 @@
+<section class="section section--tight{% if section.settings.style == 'surface' %} section--surface{% elsif section.settings.style == 'primary' %} section--primary{% endif %}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head section-head--center reveal">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+    <ul class="perks" style="--cols: {{ section.blocks.size | at_most: 4 | at_least: 2 }};">
+      {%- for block in section.blocks -%}
+        <li class="perk reveal" {{ block.shopify_attributes }}>
+          <span class="perk__icon">{% render 'icon', name: block.settings.icon %}</span>
+          <h3 class="perk__title">{{ block.settings.title | escape }}</h3>
+          {%- if block.settings.text != blank -%}
+            <p class="perk__text">{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Réassurance",
+  "class": "section-perks",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre (facultatif)"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Fond",
+      "options": [
+        { "value": "none", "label": "Clair" },
+        { "value": "surface", "label": "Beige" },
+        { "value": "primary", "label": "Vert sapin" }
+      ],
+      "default": "surface"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Argument",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "options": [
+            { "value": "truck", "label": "Camion" },
+            { "value": "lock", "label": "Cadenas" },
+            { "value": "return", "label": "Retour" },
+            { "value": "chat", "label": "Message" },
+            { "value": "gift", "label": "Cadeau" },
+            { "value": "star", "label": "Étoile" },
+            { "value": "shield", "label": "Bouclier" },
+            { "value": "package", "label": "Colis" },
+            { "value": "clock", "label": "Horloge" },
+            { "value": "heart", "label": "Cœur" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Livraison suivie"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Un numéro de suivi par e-mail dès l'expédition."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Réassurance",
+      "blocks": [
+        {
+          "type": "perk",
+          "settings": { "icon": "truck", "title": "Livraison suivie", "text": "Un numéro de suivi par e-mail dès l'expédition." }
+        },
+        {
+          "type": "perk",
+          "settings": { "icon": "lock", "title": "Paiement sécurisé", "text": "Carte bancaire, Apple Pay, Google Pay." }
+        },
+        {
+          "type": "perk",
+          "settings": { "icon": "return", "title": "14 jours pour changer d'avis", "text": "Retours acceptés selon notre politique de retour." }
+        },
+        {
+          "type": "perk",
+          "settings": { "icon": "chat", "title": "Une question ?", "text": "Réponse par e-mail sous 24 h ouvrées." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

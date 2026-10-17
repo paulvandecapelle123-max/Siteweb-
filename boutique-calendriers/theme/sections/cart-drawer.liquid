@@ -1,0 +1,60 @@
+<div class="drawer drawer--right" id="CartDrawer" aria-hidden="true">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+    <div data-cart-drawer-inner data-count="{{ cart.item_count }}" style="display: contents;">
+      <div class="drawer__head">
+        <p class="drawer__title">{{ 'cart.title' | t }} ({{ cart.item_count }})</p>
+        <button type="button" class="header__icon" data-drawer-close aria-label="{{ 'general.close' | t }}">
+          {% render 'icon', name: 'close' %}
+        </button>
+      </div>
+
+      {%- if cart.item_count > 0 -%}
+        <div class="drawer__body">
+          {% render 'free-shipping' %}
+          <ul class="line-items">
+            {%- for item in cart.items -%}
+              {% render 'line-item', item: item, line: forloop.index, drawer: true %}
+            {%- endfor -%}
+          </ul>
+        </div>
+        <div class="drawer__foot">
+          <form action="{{ routes.cart_url }}" method="post" class="cart-summary">
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <div class="cart-summary__row" style="font-size: 0.95rem; font-weight: 500;">
+                <span>{{ discount.title | escape }}</span>
+                <span>-{{ discount.total_allocated_amount | money }}</span>
+              </div>
+            {%- endfor -%}
+            <div class="cart-summary__row">
+              <span>{{ 'cart.subtotal' | t }}</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+            <p class="cart-summary__note">{{ 'cart.taxes_and_shipping' | t }}</p>
+            <button type="submit" name="checkout" class="btn btn--accent btn--block">
+              {% render 'icon', name: 'lock' %}
+              {{ 'cart.checkout' | t }}
+            </button>
+            <a href="{{ routes.cart_url }}" class="link" style="justify-content: center;">{{ 'cart.view_cart' | t }}</a>
+          </form>
+        </div>
+      {%- else -%}
+        <div class="drawer__body">
+          <div class="empty">
+            <div class="empty__icon">{% render 'icon', name: 'gift' %}</div>
+            <p class="h3">{{ 'cart.empty' | t }}</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'cart.continue' | t }}</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Panier latéral",
+  "class": "section-cart-drawer",
+  "settings": []
+}
+{% endschema %}

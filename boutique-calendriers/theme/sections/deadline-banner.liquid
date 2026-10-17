@@ -1,0 +1,31 @@
+<div class="deadline" data-deadline>
+  <div class="container deadline__inner">
+    <span class="deadline__icon">{% render 'icon', name: 'truck' %}</span>
+    <span data-deadline-text>{{ section.settings.fallback }}</span>
+    <span class="deadline__pill" data-deadline-pill></span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Date limite de commande",
+  "class": "section-deadline",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "De septembre au 24 décembre, ce bandeau calcule tout seul la date limite pour être livré avant le 1er décembre, à partir des délais réglés dans Paramètres du thème > Livraison et 1er décembre."
+    },
+    {
+      "type": "text",
+      "id": "fallback",
+      "label": "Texte hors saison",
+      "default": "Livraison suivie partout en France et en Belgique"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Date limite de commande"
+    }
+  ]
+}
+{% endschema %}

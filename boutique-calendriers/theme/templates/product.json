@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs": { "type": "breadcrumbs", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "variants": { "type": "variant_picker", "settings": {} },
+        "buy": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
+        "delivery": { "type": "delivery", "settings": {} },
+        "trust": { "type": "trust", "settings": {} },
+        "description": { "type": "description", "settings": { "open": true } },
+        "shipping": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Livraison",
+            "icon": "truck",
+            "content": "<p>Commande préparée sous 1 à 3 jours puis expédiée avec un numéro de suivi. La date estimée ci-dessus tient compte de ces délais.</p>"
+          }
+        },
+        "returns": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Retours",
+            "icon": "return",
+            "content": "<p>Vous disposez de 14 jours après réception pour exercer votre droit de rétractation. Les conditions sont détaillées dans notre politique de retour.</p>"
+          }
+        }
+      },
+      "block_order": ["breadcrumbs", "title", "price", "variants", "buy", "delivery", "trust", "description", "shipping", "returns"],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": ["main", "recommendations"]
+}

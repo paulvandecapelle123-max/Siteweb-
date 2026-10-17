@@ -1,0 +1,115 @@
+<section class="hero" aria-labelledby="HeroTitle-{{ section.id }}">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{% render 'icon', name: 'sparkles' %}{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="h1" id="HeroTitle-{{ section.id }}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}
+        <div class="hero__lead rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="hero__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn--gold">
+            {{- section.settings.button_label | escape -}}
+            {% render 'icon', name: 'arrow' %}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 | default: '#comment-ca-marche' }}" class="btn btn--ghost-light">
+            {{- section.settings.button_label_2 | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_countdown -%}
+        <p class="hero__countdown" data-countdown hidden>
+          <span class="hero__countdown-badge" data-countdown-badge></span>
+          <span data-countdown-label></span>
+        </p>
+      {%- endif -%}
+    </div>
+
+    <div class="hero__calendar">
+      {% render 'advent-grid', image: section.settings.image, ribbon: section.settings.ribbon, teaser: true %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Calendrier (bannière)",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Collection Noël 2026"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "info": "Mets un mot en italique pour le faire ressortir en doré.",
+      "default": "24 jours de <em>surprises</em>, une case chaque matin"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Beauté, gourmandises, bijoux, jouets… Trouvez le calendrier de l'Avent qui fera briller les matins de décembre, et faites-vous livrer à temps.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton principal",
+      "default": "Voir les calendriers"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton principal"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Bouton secondaire",
+      "default": "Comment ça marche ?"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Lien du bouton secondaire"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Afficher le compte à rebours avant le 1er décembre",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Les 24 cases"
+    },
+    {
+      "type": "text",
+      "id": "ribbon",
+      "label": "Texte du ruban",
+      "default": "Ouvrez une case !"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image cachée derrière les cases",
+      "info": "Facultatif. Format paysage (3:2). Sans image, des petites icônes de Noël apparaissent derrière les cases."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Calendrier (bannière)"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,34 @@
+<div class="page-head container">
+  <h1>{{ blog.title | escape }}</h1>
+</div>
+<div class="container page-body">
+  {%- paginate blog.articles by 9 -%}
+    <ul class="grid grid--3">
+      {%- for article in blog.articles -%}
+        <li class="reveal">
+          <a href="{{ article.url }}" class="article-card">
+            <div class="article-card__media">
+              {%- if article.image -%}
+                {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 750px) 33vw, 50vw' }}
+              {%- endif -%}
+            </div>
+            <span class="meta">{{ article.published_at | time_tag: format: 'date' }}</span>
+            <h2>{{ article.title | escape }}</h2>
+            <p>{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if paginate.pages > 1 -%}
+      {% render 'pagination', paginate: paginate %}
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "class": "section-main-blog",
+  "settings": []
+}
+{% endschema %}

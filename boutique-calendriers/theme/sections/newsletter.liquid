@@ -1,0 +1,66 @@
+<section class="section">
+  <div class="container">
+    <div class="newsletter reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{% render 'icon', name: 'bell' %}{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}
+        <div class="rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      {%- assign form_id = 'Newsletter-' | append: section.id -%}
+      {%- form 'customer', class: 'newsletter__form', id: form_id -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+        <input
+          class="input"
+          id="NewsletterEmail-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          autocomplete="email"
+          required
+          placeholder="{{ 'newsletter.placeholder' | t }}"
+        >
+        <button type="submit" class="btn btn--gold">{{ 'newsletter.button' | t }}</button>
+        {%- if form.posted_successfully? -%}
+          <p class="notice notice--success" role="status">{{ 'newsletter.success' | t }}</p>
+        {%- elsif form.errors -%}
+          <p class="notice notice--error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "class": "section-newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "Restez au courant"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Les bons plans de Noël, en <em>avant-première</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Nouveaux calendriers, réassorts et dernière date pour être livré à temps : on vous prévient.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

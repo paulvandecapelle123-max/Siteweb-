@@ -1,0 +1,19 @@
+{%- comment -%}
+  Logo de la boutique (image du réglage de l'en-tête, sinon le nom).
+  - section: la section d'en-tête
+{%- endcomment -%}
+<a href="{{ routes.root_url }}">
+  {%- if section.settings.logo != blank -%}
+    {%- assign logo_width_2x = section.settings.logo_width | times: 2 -%}
+    {{
+      section.settings.logo
+      | image_url: width: logo_width_2x
+      | image_tag: width: section.settings.logo_width, alt: shop.name, loading: 'eager'
+    }}
+  {%- else -%}
+    {%- if section.settings.show_mark -%}
+      <span class="header__logo-mark">{% render 'icon', name: 'gift' %}</span>
+    {%- endif -%}
+    <span>{{ shop.name }}</span>
+  {%- endif -%}
+</a>

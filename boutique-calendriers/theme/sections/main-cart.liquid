@@ -1,0 +1,69 @@
+<div class="page-head container">
+  <h1>{{ 'cart.title' | t }}</h1>
+</div>
+
+<div class="container">
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" class="cart-page" data-cart-form id="CartForm">
+      <div>
+        {% render 'free-shipping' %}
+        <ul class="line-items">
+          {%- for item in cart.items -%}
+            {% render 'line-item', item: item, line: forloop.index, drawer: false %}
+          {%- endfor -%}
+        </ul>
+        <noscript>
+          <button type="submit" name="update" class="btn btn--outline btn--small" style="margin-top: 1rem;">{{ 'cart.update' | t }}</button>
+        </noscript>
+      </div>
+
+      <div class="cart-summary">
+        {%- if settings.cart_show_note -%}
+          <details class="cart-note"{% if cart.note != blank %} open{% endif %}>
+            <summary>{{ 'cart.note' | t }}</summary>
+            <label class="visually-hidden" for="CartNote">{{ 'cart.note' | t }}</label>
+            <textarea class="textarea" id="CartNote" name="note" placeholder="{{ 'cart.note_placeholder' | t }}">{{ cart.note }}</textarea>
+          </details>
+        {%- endif -%}
+        {%- for discount in cart.cart_level_discount_applications -%}
+          <div class="cart-summary__row" style="font-size: 0.95rem; font-weight: 500;">
+            <span>{{ discount.title | escape }}</span>
+            <span>-{{ discount.total_allocated_amount | money }}</span>
+          </div>
+        {%- endfor -%}
+        <div class="cart-summary__row">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="cart-summary__note">{{ 'cart.taxes_and_shipping' | t }}</p>
+        <button type="submit" name="checkout" class="btn btn--accent btn--block">
+          {% render 'icon', name: 'lock' %}
+          {{ 'cart.checkout' | t }}
+        </button>
+        {%- if additional_checkout_buttons -%}
+          <div>{{ content_for_additional_checkout_buttons }}</div>
+        {%- endif -%}
+        <ul class="trust" style="margin-top: 0.5rem;">
+          <li>{% render 'icon', name: 'lock' %}{{ 'cart.secure' | t }}</li>
+          <li>{% render 'icon', name: 'return' %}{{ 'cart.returns' | t }}</li>
+        </ul>
+      </div>
+    </form>
+  {%- else -%}
+    <div class="empty">
+      <div class="empty__icon">{% render 'icon', name: 'gift' %}</div>
+      <p class="h3">{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'cart.continue' | t }}</a>
+    </div>
+  {%- endif -%}
+</div>
+
+<div class="section--tight"></div>
+
+{% schema %}
+{
+  "name": "Panier",
+  "class": "section-main-cart",
+  "settings": []
+}
+{% endschema %}

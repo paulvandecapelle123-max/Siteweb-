@@ -1,0 +1,40 @@
+{
+  "type": "header",
+  "name": "En-tête",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Livraison offerte dès 39 € d'achat",
+            "link": "",
+            "icon": "truck"
+          }
+        },
+        "msg-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Commandez tôt pour ouvrir la 1re case le 1er décembre",
+            "link": "",
+            "icon": "gift"
+          }
+        }
+      },
+      "block_order": ["msg-1", "msg-2"],
+      "settings": {
+        "speed": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_width": 140,
+        "show_mark": true,
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

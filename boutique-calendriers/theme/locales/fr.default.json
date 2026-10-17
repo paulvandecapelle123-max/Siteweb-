@@ -1,0 +1,161 @@
+{
+  "general": {
+    "home": "Accueil",
+    "all_products": "Tous les calendriers",
+    "breadcrumbs": "Fil d'Ariane",
+    "close": "Fermer",
+    "page": "Page {{ page }}",
+    "pagination": "Pagination",
+    "previous": "Page précédente",
+    "next": "Page suivante",
+    "search": {
+      "title": "Rechercher",
+      "placeholder": "Rechercher un calendrier…",
+      "submit": "Rechercher",
+      "results": {
+        "one": "{{ count }} résultat pour « {{ terms }} »",
+        "other": "{{ count }} résultats pour « {{ terms }} »"
+      },
+      "no_results": "Aucun résultat. Essayez un autre mot, par exemple « beauté » ou « chocolat »."
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Aller au contenu"
+  },
+  "sections": {
+    "announcement": {
+      "label": "Annonces"
+    },
+    "header": {
+      "menu": "Menu",
+      "cart": "Panier",
+      "account": "Mon compte",
+      "see_all": "Tout voir"
+    },
+    "hero": {
+      "door": "Ouvrir la case {{ day }}"
+    },
+    "featured_collection": {
+      "view_all": "Tout voir"
+    },
+    "collection_list": {
+      "discover": "Découvrir",
+      "placeholder": "Catégorie"
+    },
+    "footer": {
+      "policies": "Informations légales",
+      "payment": "Moyens de paiement acceptés"
+    }
+  },
+  "countdown": {
+    "before": "jours avant l'ouverture de la 1re case",
+    "tomorrow": "Demain, on ouvre la 1re case !",
+    "during": "C'est le jour [day] : une nouvelle case vous attend"
+  },
+  "delivery": {
+    "range": "Livraison estimée entre le [from] et le [to]",
+    "range_fallback": "Livraison estimée sous {{ min }} à {{ max }} jours",
+    "status_before": "Arrive avant le 1er décembre",
+    "status_borderline": "Arrivée possible juste autour du 1er décembre",
+    "status_after": "Arrivera après le 1er décembre",
+    "deadline_before": "Commandez avant le [date] pour être livré avant le 1er décembre",
+    "deadline_after": "Commandé aujourd'hui, livré entre le [from] et le [to]",
+    "deadline_december": "Il n'est pas trop tard : livré entre le [from] et le [to]",
+    "days_left": "Plus que [days] jours",
+    "day_left": "Plus qu'1 jour",
+    "last_day": "Dernier jour !"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "adding": "Ajout…",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "quick_add": "Ajouter",
+      "choose_options": "Choisir",
+      "price_from": "À partir de",
+      "sale_price": "Prix promotionnel",
+      "regular_price": "Prix habituel",
+      "new": "Nouveau",
+      "placeholder_title": "Calendrier de l'Avent",
+      "taxes_included": "TVA incluse. Frais de livraison calculés à la commande.",
+      "quantity": "Quantité",
+      "quantity_decrease": "Retirer un",
+      "quantity_increase": "Ajouter un",
+      "description": "Ce qu'il y a dedans",
+      "media_previous": "Image précédente",
+      "media_next": "Image suivante",
+      "media_show": "Voir l'image {{ index }}"
+    }
+  },
+  "collections": {
+    "all_title": "Toutes nos catégories",
+    "product_count": {
+      "one": "{{ count }} calendrier",
+      "other": "{{ count }} calendriers"
+    },
+    "filters": "Filtrer",
+    "sort_by": "Trier par",
+    "price_from": "Prix minimum",
+    "price_to": "Prix maximum",
+    "apply": "Appliquer",
+    "clear_all": "Tout effacer",
+    "empty": "Aucun calendrier ne correspond",
+    "empty_text": "Essayez d'enlever un filtre."
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide",
+    "continue": "Voir les calendriers",
+    "subtotal": "Sous-total",
+    "taxes_and_shipping": "TVA incluse. Frais de livraison et codes promo à l'étape suivante.",
+    "checkout": "Commander",
+    "view_cart": "Voir le panier",
+    "update": "Mettre à jour",
+    "remove": "Retirer",
+    "note": "Ajouter un message cadeau",
+    "note_placeholder": "Votre message (il sera transmis avec la commande)",
+    "free_shipping_remaining_html": "Plus que <strong>{{ amount }}</strong> pour la livraison offerte",
+    "free_shipping_reached": "Bravo, la livraison est offerte !",
+    "secure": "Paiement 100 % sécurisé",
+    "returns": "14 jours pour changer d'avis",
+    "error": "Impossible d'ajouter ce produit pour le moment. Réessayez."
+  },
+  "newsletter": {
+    "label": "Adresse e-mail",
+    "placeholder": "Votre adresse e-mail",
+    "button": "Je m'inscris",
+    "success": "Merci, c'est noté !"
+  },
+  "contact": {
+    "name": "Nom",
+    "email": "E-mail",
+    "order": "Numéro de commande (facultatif)",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Merci pour votre message. Nous vous répondons au plus vite."
+  },
+  "blogs": {
+    "back": "Retour au blog"
+  },
+  "templates": {
+    "404": {
+      "title": "Cette case est vide…",
+      "text": "La page que vous cherchez n'existe pas ou n'existe plus."
+    }
+  },
+  "password": {
+    "notify": "Me prévenir",
+    "owner": "Vous êtes le propriétaire ?",
+    "password": "Mot de passe",
+    "enter": "Entrer"
+  },
+  "gift_card": {
+    "title": "Votre carte cadeau",
+    "code": "Code à saisir lors du paiement :",
+    "expired": "Cette carte cadeau a expiré.",
+    "disabled": "Cette carte cadeau est désactivée.",
+    "shop": "Aller à la boutique",
+    "apple_wallet": "Ajouter à Apple Wallet"
+  }
+}

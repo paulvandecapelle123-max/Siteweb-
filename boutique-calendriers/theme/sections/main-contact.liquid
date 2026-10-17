@@ -1,0 +1,40 @@
+<div class="page-head container container--narrow">
+  <h1>{{ page.title | escape }}</h1>
+  {%- if page.content != blank -%}
+    <div class="rte">{{ page.content }}</div>
+  {%- endif -%}
+</div>
+<div class="page-body container container--narrow">
+  {%- form 'contact', id: 'ContactForm' -%}
+    {%- if form.posted_successfully? -%}
+      <p class="notice notice--success" role="status">{{ 'contact.success' | t }}</p>
+    {%- elsif form.errors -%}
+      <div class="notice notice--error" role="alert">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <div class="field">
+      <label for="ContactName">{{ 'contact.name' | t }}</label>
+      <input class="input" id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}">
+    </div>
+    <div class="field">
+      <label for="ContactEmail">{{ 'contact.email' | t }} *</label>
+      <input class="input" id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+    </div>
+    <div class="field">
+      <label for="ContactOrder">{{ 'contact.order' | t }}</label>
+      <input class="input" id="ContactOrder" type="text" name="contact[numero_commande]" value="{{ form.numero_commande }}">
+    </div>
+    <div class="field">
+      <label for="ContactBody">{{ 'contact.message' | t }} *</label>
+      <textarea class="textarea" id="ContactBody" name="contact[body]" required>{{ form.body }}</textarea>
+    </div>
+    <button type="submit" class="btn btn--accent">{{ 'contact.send' | t }}</button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "Formulaire de contact",
+  "class": "section-main-contact",
+  "settings": []
+}
+{% endschema %}

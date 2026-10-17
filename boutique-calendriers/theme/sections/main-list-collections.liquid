@@ -1,0 +1,30 @@
+<div class="page-head container">
+  <h1>{{ 'collections.all_title' | t }}</h1>
+</div>
+<div class="container page-body">
+  <div class="cats">
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="cat{% if collection.featured_image == blank %} cat--plain{% endif %} reveal">
+        {%- if collection.featured_image -%}
+          {{
+            collection.featured_image
+            | image_url: width: 800
+            | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 25vw, 50vw'
+          }}
+        {%- else -%}
+          <span class="cat__icon">{% render 'icon', name: 'gift' %}</span>
+        {%- endif -%}
+        <h2 class="cat__title">{{ collection.title | escape }}</h2>
+        <span class="cat__more">{{ 'collections.product_count' | t: count: collection.products_count }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Liste des collections",
+  "class": "section-list-collections",
+  "settings": []
+}
+{% endschema %}

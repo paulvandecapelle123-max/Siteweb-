@@ -1,0 +1,128 @@
+{%- liquid
+  assign menu_blocks = section.blocks | where: 'type', 'menu'
+-%}
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top" style="--cols: {{ menu_blocks.size | at_least: 1 }};">
+      <div class="footer__brand">
+        <p class="header__logo">
+          {%- if section.settings.show_mark -%}
+            <span class="header__logo-mark">{% render 'icon', name: 'gift' %}</span>
+          {%- endif -%}
+          <span>{{ shop.name }}</span>
+        </p>
+        {%- if section.settings.text != blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- liquid
+          assign has_social = false
+          if settings.social_instagram != blank or settings.social_tiktok != blank or settings.social_facebook != blank or settings.social_pinterest != blank
+            assign has_social = true
+          endif
+        -%}
+        {%- if has_social -%}
+          <div class="socials">
+            {%- if settings.social_instagram != blank -%}
+              <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>
+            {%- endif -%}
+            {%- if settings.social_tiktok != blank -%}
+              <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>
+            {%- endif -%}
+            {%- if settings.social_facebook != blank -%}
+              <a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a>
+            {%- endif -%}
+            {%- if settings.social_pinterest != blank -%}
+              <a href="{{ settings.social_pinterest }}" target="_blank" rel="noopener">Pinterest</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- for block in menu_blocks -%}
+        <nav {{ block.shopify_attributes }} aria-label="{{ block.settings.title | escape }}">
+          <h2>{{ block.settings.title | escape }}</h2>
+          {%- if block.settings.menu != blank -%}
+            <ul>
+              {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </nav>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <div>
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+        {%- if shop.policies.size > 0 -%}
+          <nav class="footer__policies" aria-label="{{ 'sections.footer.policies' | t }}">
+            {%- for policy in shop.policies -%}
+              {%- if policy != blank -%}
+                <a href="{{ policy.url }}">{{ policy.title | escape }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_payment_icons -%}
+        <ul class="payment-icons" aria-label="{{ 'sections.footer.payment' | t }}">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "class": "section-footer",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte de présentation",
+      "default": "<p>Des calendriers de l'Avent choisis un par un, pour faire de chaque matin de décembre un petit moment de fête.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mark",
+      "label": "Afficher l'icône cadeau",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Afficher les moyens de paiement",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Boutique"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

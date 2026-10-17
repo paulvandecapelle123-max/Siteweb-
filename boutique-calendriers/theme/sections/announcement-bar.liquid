@@ -1,0 +1,85 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="announcement" data-announcement data-speed="{{ section.settings.speed }}" role="region" aria-label="{{ 'sections.announcement.label' | t }}">
+    <div class="container announcement__inner">
+      {%- for block in section.blocks -%}
+        <p class="announcement__item{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}
+            {% render 'icon', name: block.settings.icon %}
+          {%- endif -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">{{ block.settings.text }}</a>
+          {%- else -%}
+            <span>{{ block.settings.text }}</span>
+          {%- endif -%}
+        </p>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barre d'annonce",
+  "class": "section-announcement",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Changement de message toutes les",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison offerte dès 39 € d'achat"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "options": [
+            { "value": "none", "label": "Aucune" },
+            { "value": "truck", "label": "Camion" },
+            { "value": "gift", "label": "Cadeau" },
+            { "value": "star", "label": "Étoile" },
+            { "value": "clock", "label": "Horloge" },
+            { "value": "lock", "label": "Cadenas" },
+            { "value": "sparkles", "label": "Étincelles" }
+          ],
+          "default": "truck"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barre d'annonce",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,161 @@
+{
+  "general": {
+    "home": "Home",
+    "all_products": "All calendars",
+    "breadcrumbs": "Breadcrumbs",
+    "close": "Close",
+    "page": "Page {{ page }}",
+    "pagination": "Pagination",
+    "previous": "Previous page",
+    "next": "Next page",
+    "search": {
+      "title": "Search",
+      "placeholder": "Search for a calendar…",
+      "submit": "Search",
+      "results": {
+        "one": "{{ count }} result for “{{ terms }}”",
+        "other": "{{ count }} results for “{{ terms }}”"
+      },
+      "no_results": "No results. Try another word, like “beauty” or “chocolate”."
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "sections": {
+    "announcement": {
+      "label": "Announcements"
+    },
+    "header": {
+      "menu": "Menu",
+      "cart": "Cart",
+      "account": "My account",
+      "see_all": "See all"
+    },
+    "hero": {
+      "door": "Open door {{ day }}"
+    },
+    "featured_collection": {
+      "view_all": "See all"
+    },
+    "collection_list": {
+      "discover": "Discover",
+      "placeholder": "Category"
+    },
+    "footer": {
+      "policies": "Legal information",
+      "payment": "Accepted payment methods"
+    }
+  },
+  "countdown": {
+    "before": "days until the first door opens",
+    "tomorrow": "Tomorrow, we open the first door!",
+    "during": "It's day [day]: a new door is waiting for you"
+  },
+  "delivery": {
+    "range": "Estimated delivery between [from] and [to]",
+    "range_fallback": "Estimated delivery within {{ min }} to {{ max }} days",
+    "status_before": "Arrives before December 1st",
+    "status_borderline": "May arrive right around December 1st",
+    "status_after": "Will arrive after December 1st",
+    "deadline_before": "Order before [date] to receive it before December 1st",
+    "deadline_after": "Order today, delivered between [from] and [to]",
+    "deadline_december": "It's not too late: delivered between [from] and [to]",
+    "days_left": "[days] days left",
+    "day_left": "1 day left",
+    "last_day": "Last day!"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "adding": "Adding…",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quick_add": "Add",
+      "choose_options": "Choose",
+      "price_from": "From",
+      "sale_price": "Sale price",
+      "regular_price": "Regular price",
+      "new": "New",
+      "placeholder_title": "Advent calendar",
+      "taxes_included": "Tax included. Shipping calculated at checkout.",
+      "quantity": "Quantity",
+      "quantity_decrease": "Decrease quantity",
+      "quantity_increase": "Increase quantity",
+      "description": "What's inside",
+      "media_previous": "Previous image",
+      "media_next": "Next image",
+      "media_show": "Show image {{ index }}"
+    }
+  },
+  "collections": {
+    "all_title": "All categories",
+    "product_count": {
+      "one": "{{ count }} calendar",
+      "other": "{{ count }} calendars"
+    },
+    "filters": "Filter",
+    "sort_by": "Sort by",
+    "price_from": "Minimum price",
+    "price_to": "Maximum price",
+    "apply": "Apply",
+    "clear_all": "Clear all",
+    "empty": "No calendar matches",
+    "empty_text": "Try removing a filter."
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "continue": "Browse calendars",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping": "Tax included. Shipping and discount codes at the next step.",
+    "checkout": "Check out",
+    "view_cart": "View cart",
+    "update": "Update",
+    "remove": "Remove",
+    "note": "Add a gift message",
+    "note_placeholder": "Your message (sent along with the order)",
+    "free_shipping_remaining_html": "Only <strong>{{ amount }}</strong> away from free shipping",
+    "free_shipping_reached": "Great, shipping is free!",
+    "secure": "100% secure payment",
+    "returns": "14 days to change your mind",
+    "error": "This product couldn't be added right now. Please try again."
+  },
+  "newsletter": {
+    "label": "Email address",
+    "placeholder": "Your email address",
+    "button": "Sign up",
+    "success": "Thanks, you're on the list!"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "order": "Order number (optional)",
+    "message": "Message",
+    "send": "Send",
+    "success": "Thanks for your message. We'll get back to you soon."
+  },
+  "blogs": {
+    "back": "Back to the blog"
+  },
+  "templates": {
+    "404": {
+      "title": "This door is empty…",
+      "text": "The page you're looking for doesn't exist or has been removed."
+    }
+  },
+  "password": {
+    "notify": "Notify me",
+    "owner": "Are you the store owner?",
+    "password": "Password",
+    "enter": "Enter"
+  },
+  "gift_card": {
+    "title": "Your gift card",
+    "code": "Code to enter at checkout:",
+    "expired": "This gift card has expired.",
+    "disabled": "This gift card is disabled.",
+    "shop": "Go to the store",
+    "apple_wallet": "Add to Apple Wallet"
+  }
+}

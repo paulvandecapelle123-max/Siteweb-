@@ -1,0 +1,20 @@
+{%- comment -%}
+  Barre « plus que X € pour la livraison offerte ».
+  Seuil : Paramètres du thème > Panier.
+{%- endcomment -%}
+{%- if settings.free_shipping_threshold != blank and settings.free_shipping_threshold > 0 and cart.item_count > 0 -%}
+  {%- liquid
+    assign threshold = settings.free_shipping_threshold | times: 100
+    assign remaining = threshold | minus: cart.total_price
+    assign remaining_money = remaining | money
+    assign percent = cart.total_price | times: 100 | divided_by: threshold | at_most: 100
+  -%}
+  <div class="free-ship">
+    {%- if remaining > 0 -%}
+      {{ 'cart.free_shipping_remaining_html' | t: amount: remaining_money }}
+    {%- else -%}
+      <strong>{{ 'cart.free_shipping_reached' | t }}</strong>
+    {%- endif -%}
+    <div class="free-ship__bar"><span style="width: {{ percent }}%;"></span></div>
+  </div>
+{%- endif -%}

@@ -1,0 +1,37 @@
+{%- comment -%}
+  Prix d'un produit (ou d'une variante).
+  - product: objet produit (obligatoire)
+  - variant: variante à afficher (facultatif, sinon la variante choisie / la moins chère)
+  - show_badge: affiche le pourcentage de remise
+  - class: classe CSS supplémentaire
+{%- endcomment -%}
+{%- liquid
+  if variant == blank
+    assign price = product.price_min
+    assign compare_at = product.compare_at_price_min
+    assign varies = product.price_varies
+  else
+    assign price = variant.price
+    assign compare_at = variant.compare_at_price
+    assign varies = false
+  endif
+  assign on_sale = false
+  if compare_at > price
+    assign on_sale = true
+  endif
+-%}
+<div class="price {{ class }}" data-price>
+  {%- if varies -%}
+    <span class="price__from">{{ 'products.product.price_from' | t }}</span>
+  {%- endif -%}
+  {%- if on_sale -%}
+    <span class="price__sale"><span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>{{ price | money }}</span>
+    <s class="price__compare"><span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>{{ compare_at | money }}</s>
+    {%- if show_badge -%}
+      {%- assign saving = compare_at | minus: price | times: 100 | divided_by: compare_at | round -%}
+      <span class="badge">-{{ saving }}%</span>
+    {%- endif -%}
+  {%- else -%}
+    <span>{{ price | money }}</span>
+  {%- endif -%}
+</div>
