@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-19T18:57:50+00:00",
- "credits_odds_api": 196,
+ "maj": "2026-10-19T20:47:49+00:00",
+ "credits_odds_api": 195,
  "paris": [],
  "refus": [],
  "scans": {
@@ -337,7 +337,7 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_poland_ekstraklasa": {
-   "le": "2026-10-15T00:56:42+00:00",
+   "le": "2026-10-19T20:47:49+00:00",
    "sport": "Football",
    "competition": "Ekstraklasa - Poland",
    "matchs": 9
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-19T20:47:49+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 195,
+   "capital": 10000
+  },
   {
    "date": "2026-10-19T18:57:50+00:00",
    "competitions_ouvertes": 70,
