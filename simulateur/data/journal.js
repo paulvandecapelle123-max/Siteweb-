@@ -1,13 +1,13 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-20T19:47:34+00:00",
- "credits_odds_api": 179,
+ "maj": "2026-10-20T21:47:16+00:00",
+ "credits_odds_api": 178,
  "paris": [],
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
-   "le": "2026-10-16T02:47:36+00:00",
+   "le": "2026-10-20T21:47:16+00:00",
    "sport": "Football américain",
    "competition": "CFL",
    "matchs": 4
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-20T21:47:16+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 178,
+   "capital": 10000
+  },
   {
    "date": "2026-10-20T19:47:34+00:00",
    "competitions_ouvertes": 71,
