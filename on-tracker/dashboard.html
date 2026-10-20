@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suivi ON & Or</title>
+<script src="/static/lightweight-charts.standalone.production.js"></script>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #16181d; --muted: #6b7280; --line: #e5e7eb;
+    --up: #0f9d58; --down: #d93025; --neutral: #8a8f98;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1015; --card: #171a21; --text: #e8eaed; --muted: #9aa0a6; --line: #2a2e37;
+            --up: #34c77b; --down: #ff6b5e; --neutral: #9aa0a6; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 20px 16px 8px; max-width: 1200px; margin: auto; display: flex;
+           justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  h1 { font-size: 20px; margin: 0; }
+  #status { color: var(--muted); font-size: 13px; }
+  main { max-width: 1200px; margin: auto; padding: 8px 16px 40px; display: grid; gap: 16px;
+         grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .name { font-weight: 600; } .sym { color: var(--muted); font-size: 13px; }
+  .price { font-size: 30px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .chg { font-size: 14px; font-variant-numeric: tabular-nums; }
+  .badge { padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .ACHAT { background: color-mix(in srgb, var(--up) 18%, transparent); color: var(--up); }
+  .VENTE { background: color-mix(in srgb, var(--down) 18%, transparent); color: var(--down); }
+  .NEUTRE { background: color-mix(in srgb, var(--neutral) 18%, transparent); color: var(--neutral); }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .gauge { margin: 14px 0 6px; height: 10px; border-radius: 5px; position: relative;
+           background: linear-gradient(90deg, var(--down), var(--neutral) 50%, var(--up)); }
+  .gauge i { position: absolute; top: -4px; width: 4px; height: 18px; background: var(--text);
+             border-radius: 2px; transform: translateX(-2px); transition: left .4s; }
+  .gl { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+  .chart { height: 260px; margin: 12px 0; }
+  .tfs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+  .tf { border: 1px solid var(--line); border-radius: 8px; padding: 8px; font-size: 13px; }
+  .tf b { font-size: 16px; font-variant-numeric: tabular-nums; }
+  details { margin-top: 10px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 3px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.v { text-align: right; font-variant-numeric: tabular-nums; width: 50px; }
+  .levels { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .levels span b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .alert { font-size: 13px; border-top: 1px solid var(--line); padding: 6px 0; white-space: pre-line; }
+  .alert small { color: var(--muted); }
+  footer { max-width: 1200px; margin: auto; padding: 0 16px 30px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Suivi en direct : On Holding &amp; Or</h1>
+  <span id="status">Connexion…</span>
+</header>
+<main id="cards"></main>
+<footer>Signaux calculés à partir d'indicateurs techniques (EMA, MACD, ADX, RSI, stochastique, Bollinger, OBV, VWAP, Donchian)
+sur 3 unités de temps. Ce sont des probabilités, pas des certitudes, et ce n'est pas un conseil en investissement.</footer>
+
+<script>
+const NAMES = { tendance_ema: "Tendance EMA", macd: "MACD", adx: "ADX", rsi: "RSI", divergence_rsi: "Divergence RSI",
+  stochastique: "Stochastique", bollinger: "Bollinger", volume_obv: "Volume / OBV", vwap: "VWAP", cassure_donchian: "Cassure Donchian" };
+const TF = { "1d": "Jour", "1h": "Heure", "5m": "5 min" };
+const charts = {};
+const fmt = (x, d = 2) => x == null ? "–" : Number(x).toLocaleString("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const cls = x => x > 0 ? "up" : x < 0 ? "down" : "";
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function card(a) {
+  const id = a.symbole.replace(/[^a-z0-9]/gi, "_");
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement("section");
+    el.className = "card"; el.id = id;
+    el.innerHTML = `<div class="top"><div><div class="name"></div><div class="sym"></div>
+      <div class="price"></div><div class="chg"></div></div><span class="badge"></span></div>
+      <div class="gauge"><i></i></div><div class="gl"><span>Vente forte −100</span><span class="sc"></span><span>+100 Achat fort</span></div>
+      <div class="chart"></div><div class="levels"></div><div class="tfs"></div>
+      <details><summary>Détail des indicateurs</summary><div class="det"></div></details>
+      <details><summary>Dernières alertes</summary><div class="alerts"></div></details>`;
+    document.getElementById("cards").appendChild(el);
+    if (window.LightweightCharts) {
+      const c = LightweightCharts.createChart(el.querySelector(".chart"), {
+        autoSize: true, layout: { background: { color: "transparent" }, textColor: css("--muted") },
+        grid: { vertLines: { visible: false }, horzLines: { color: css("--line") } },
+        timeScale: { timeVisible: true, secondsVisible: false }, rightPriceScale: { borderVisible: false } });
+      charts[id] = c.addCandlestickSeries({ upColor: css("--up"), downColor: css("--down"),
+        wickUpColor: css("--up"), wickDownColor: css("--down"), borderVisible: false });
+    }
+  }
+  const q = s => el.querySelector(s);
+  q(".name").textContent = a.nom;
+  q(".sym").textContent = `${a.symbole} · ${a.devise}`;
+  q(".price").textContent = fmt(a.prix);
+  q(".chg").innerHTML = `<span class="${cls(a.variation_jour)}">${a.variation_jour == null ? "" : (a.variation_jour > 0 ? "+" : "") + fmt(a.variation_jour) + " % aujourd'hui"}</span>`;
+  const b = q(".badge"); b.className = "badge " + a.signal; b.textContent = a.signal;
+  q(".gauge i").style.left = ((a.score + 100) / 2) + "%";
+  q(".sc").innerHTML = `Score <b class="${cls(a.score)}">${a.score > 0 ? "+" : ""}${fmt(a.score, 0)}</b>`;
+  q(".levels").innerHTML = a.niveaux ? `<span>Stop <b>${fmt(a.niveaux.stop)}</b></span>
+      <span>Objectif 1 <b>${fmt(a.niveaux.objectif_1)}</b></span><span>Objectif 2 <b>${fmt(a.niveaux.objectif_2)}</b></span>`
+    + (a.position ? `<span>Achat <b>${fmt(a.position.prix_achat)}</b> → <b class="${cls(a.prix - a.position.prix_achat)}">${fmt((a.prix / a.position.prix_achat - 1) * 100, 1)} %</b></span>` : "") : "";
+  q(".tfs").innerHTML = Object.entries(TF).filter(([k]) => a.unites[k]).map(([k, n]) =>
+    `<div class="tf">${n}<br><b class="${cls(a.unites[k].score)}">${a.unites[k].score > 0 ? "+" : ""}${fmt(a.unites[k].score, 0)}</b></div>`).join("");
+  q(".det").innerHTML = Object.entries(TF).filter(([k]) => a.unites[k]).map(([k, n]) =>
+    `<p><b>${n}</b></p><table>` + Object.entries(a.unites[k].votes).map(([name, v]) =>
+      `<tr><td>${NAMES[name] || name}</td><td>${v.detail}</td><td class="v ${cls(v.vote)}">${v.vote > 0 ? "+" : ""}${fmt(v.vote, 2)}</td></tr>`).join("") + "</table>").join("");
+  q(".alerts").innerHTML = a.alertes.length ? a.alertes.map(x =>
+    `<div class="alert"><small>${new Date(x.heure).toLocaleString("fr-FR")}</small><br><b>${x.titre}</b>\n${x.message}</div>`).join("")
+    : `<div class="alert"><small>Aucune alerte depuis le démarrage.</small></div>`;
+  if (charts[id] && a.bougies.length) {
+    const off = -new Date().getTimezoneOffset() * 60; // affichage à l'heure locale
+    charts[id].setData(a.bougies.map(c => ({ time: c.t + off, open: c.o, high: c.h, low: c.l, close: c.c })));
+  }
+}
+
+async function tick() {
+  try {
+    const r = await fetch("/api/state", { cache: "no-store" });
+    const data = await r.json();
+    data.forEach(card);
+    document.getElementById("status").textContent = "Mis à jour " + new Date().toLocaleTimeString("fr-FR");
+  } catch (e) {
+    document.getElementById("status").textContent = "Hors ligne : le script tracker.py tourne-t-il ?";
+  }
+}
+tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>
