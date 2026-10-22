@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-22T18:56:51+00:00",
- "credits_odds_api": 148,
+ "maj": "2026-10-22T19:47:44+00:00",
+ "credits_odds_api": 147,
  "paris": [],
  "refus": [],
  "scans": {
@@ -199,10 +199,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_conmebol_copa_sudamericana": {
-   "le": "2026-10-18T02:45:12+00:00",
+   "le": "2026-10-22T19:47:44+00:00",
    "sport": "Football",
    "competition": "Copa Sudamericana",
-   "matchs": 2
+   "matchs": 1
   },
   "soccer_denmark_superliga": {
    "le": "2026-10-18T05:44:03+00:00",
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-22T19:47:44+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 147,
+   "capital": 10000
+  },
   {
    "date": "2026-10-22T18:56:51+00:00",
    "competitions_ouvertes": 72,
