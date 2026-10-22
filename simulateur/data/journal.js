@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-22T00:59:35+00:00",
- "credits_odds_api": 160,
+ "maj": "2026-10-22T01:48:24+00:00",
+ "credits_odds_api": 159,
  "paris": [],
  "refus": [],
  "scans": {
@@ -139,10 +139,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-10-17T08:45:23+00:00",
+   "le": "2026-10-22T01:48:24+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 72
+   "matchs": 45
   },
   "soccer_argentina_primera_division": {
    "le": "2026-10-17T11:41:38+00:00",
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-22T01:48:24+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 159,
+   "capital": 10000
+  },
   {
    "date": "2026-10-22T00:59:35+00:00",
    "competitions_ouvertes": 72,
