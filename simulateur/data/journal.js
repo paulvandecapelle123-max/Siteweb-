@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-22T20:47:10+00:00",
- "credits_odds_api": 146,
+ "maj": "2026-10-23T00:00:22+00:00",
+ "credits_odds_api": 144,
  "paris": [],
  "refus": [],
  "scans": {
@@ -205,16 +205,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_denmark_superliga": {
-   "le": "2026-10-18T05:44:03+00:00",
+   "le": "2026-10-23T00:00:22+00:00",
    "sport": "Football",
    "competition": "Denmark Superliga",
    "matchs": 6
   },
   "soccer_efl_champ": {
-   "le": "2026-10-18T08:45:23+00:00",
+   "le": "2026-10-23T00:00:22+00:00",
    "sport": "Football",
    "competition": "Championship",
-   "matchs": 13
+   "matchs": 12
   },
   "soccer_england_efl_cup": {
    "le": "2026-10-18T09:44:27+00:00",
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-23T00:00:22+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 144,
+   "capital": 10000
+  },
   {
    "date": "2026-10-22T20:47:10+00:00",
    "competitions_ouvertes": 72,
