@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-23T00:00:22+00:00",
- "credits_odds_api": 144,
+ "maj": "2026-10-23T04:56:49+00:00",
+ "credits_odds_api": 141,
  "paris": [],
  "refus": [],
  "scans": {
@@ -217,22 +217,22 @@ window.JOURNAL = {
    "matchs": 12
   },
   "soccer_england_efl_cup": {
-   "le": "2026-10-18T09:44:27+00:00",
+   "le": "2026-10-23T04:56:49+00:00",
    "sport": "Football",
    "competition": "EFL Cup",
    "matchs": 8
   },
   "soccer_england_league1": {
-   "le": "2026-10-18T11:41:27+00:00",
+   "le": "2026-10-23T04:56:49+00:00",
    "sport": "Football",
    "competition": "League 1",
-   "matchs": 24
+   "matchs": 16
   },
   "soccer_england_league2": {
-   "le": "2026-10-18T12:51:15+00:00",
+   "le": "2026-10-23T04:56:49+00:00",
    "sport": "Football",
    "competition": "League 2",
-   "matchs": 24
+   "matchs": 13
   },
   "soccer_epl": {
    "le": "2026-10-18T14:43:16+00:00",
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-23T04:56:49+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 141,
+   "capital": 10000
+  },
   {
    "date": "2026-10-23T00:00:22+00:00",
    "competitions_ouvertes": 70,
