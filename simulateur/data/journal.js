@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-23T15:07:58+00:00",
- "credits_odds_api": 134,
+ "maj": "2026-10-23T19:17:41+00:00",
+ "credits_odds_api": 131,
  "paris": [],
  "refus": [],
  "scans": {
@@ -271,22 +271,22 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_germany_dfb_pokal": {
-   "le": "2026-10-19T00:59:40+00:00",
+   "le": "2026-10-23T19:17:41+00:00",
    "sport": "Football",
    "competition": "DFB-Pokal",
    "matchs": 16
   },
   "soccer_germany_liga3": {
-   "le": "2026-10-19T02:47:30+00:00",
+   "le": "2026-10-23T19:17:41+00:00",
    "sport": "Football",
    "competition": "3. Liga - Germany",
-   "matchs": 20
+   "matchs": 19
   },
   "soccer_greece_super_league": {
-   "le": "2026-10-19T03:51:02+00:00",
+   "le": "2026-10-23T19:17:41+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 7
+   "matchs": 21
   },
   "soccer_italy_serie_a": {
    "le": "2026-10-19T05:47:06+00:00",
@@ -483,6 +483,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-23T19:17:41+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 131,
+   "capital": 10000
+  },
   {
    "date": "2026-10-23T15:07:58+00:00",
    "competitions_ouvertes": 71,
