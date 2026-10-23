@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-23T04:56:49+00:00",
- "credits_odds_api": 141,
+ "maj": "2026-10-23T10:08:26+00:00",
+ "credits_odds_api": 138,
  "paris": [],
  "refus": [],
  "scans": {
@@ -235,16 +235,16 @@ window.JOURNAL = {
    "matchs": 13
   },
   "soccer_epl": {
-   "le": "2026-10-18T14:43:16+00:00",
+   "le": "2026-10-23T10:08:26+00:00",
    "sport": "Football",
    "competition": "EPL",
-   "matchs": 25
+   "matchs": 21
   },
   "soccer_finland_veikkausliiga": {
-   "le": "2026-10-18T17:40:47+00:00",
+   "le": "2026-10-23T10:08:26+00:00",
    "sport": "Football",
    "competition": "Veikkausliiga - Finland",
-   "matchs": 3
+   "matchs": 6
   },
   "soccer_france_ligue_one": {
    "le": "2026-10-18T18:46:18+00:00",
@@ -475,14 +475,28 @@ window.JOURNAL = {
    "matchs": 11
   },
   "tennis_wta_ningbo_open": {
-   "le": "2026-10-21T01:48:51+00:00",
+   "le": "2026-10-23T10:08:26+00:00",
    "sport": "Tennis",
    "competition": "WTA Ningbo Open",
-   "matchs": 8
+   "matchs": 2
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-23T10:08:26+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 138,
+   "capital": 10000
+  },
   {
    "date": "2026-10-23T04:56:49+00:00",
    "competitions_ouvertes": 70,
