@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-23T23:11:06+00:00",
- "credits_odds_api": 129,
+ "maj": "2026-10-24T01:38:24+00:00",
+ "credits_odds_api": 127,
  "paris": [],
  "refus": [],
  "scans": {
@@ -295,10 +295,10 @@ window.JOURNAL = {
    "matchs": 19
   },
   "soccer_italy_serie_b": {
-   "le": "2026-10-19T07:06:19+00:00",
+   "le": "2026-10-24T01:38:24+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
-   "matchs": 10
+   "matchs": 19
   },
   "soccer_japan_j_league": {
    "le": "2026-10-19T09:52:03+00:00",
@@ -479,10 +479,30 @@ window.JOURNAL = {
    "sport": "Tennis",
    "competition": "WTA Ningbo Open",
    "matchs": 2
+  },
+  "basketball_ncaab": {
+   "le": "2026-10-24T01:38:24+00:00",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "matchs": 1
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-24T01:38:24+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 127,
+   "capital": 10000
+  },
   {
    "date": "2026-10-23T23:11:06+00:00",
    "competitions_ouvertes": 71,
