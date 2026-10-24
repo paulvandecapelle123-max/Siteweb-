@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-24T16:38:12+00:00",
- "credits_odds_api": 117,
+ "maj": "2026-10-24T19:31:07+00:00",
+ "credits_odds_api": 115,
  "paris": [],
  "refus": [],
  "scans": {
@@ -355,16 +355,16 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_saudi_arabia_pro_league": {
-   "le": "2026-10-19T23:45:19+00:00",
+   "le": "2026-10-24T19:31:07+00:00",
    "sport": "Football",
    "competition": "Saudi Pro League",
-   "matchs": 13
+   "matchs": 8
   },
   "soccer_spain_segunda_division": {
-   "le": "2026-10-20T01:01:05+00:00",
+   "le": "2026-10-24T19:31:07+00:00",
    "sport": "Football",
    "competition": "La Liga 2 - Spain",
-   "matchs": 11
+   "matchs": 9
   },
   "soccer_spl": {
    "le": "2026-10-20T01:47:59+00:00",
@@ -495,6 +495,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-24T19:31:07+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 115,
+   "capital": 10000
+  },
   {
    "date": "2026-10-24T16:38:12+00:00",
    "competitions_ouvertes": 72,
