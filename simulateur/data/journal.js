@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-24T12:43:07+00:00",
- "credits_odds_api": 120,
+ "maj": "2026-10-24T16:38:12+00:00",
+ "credits_odds_api": 117,
  "paris": [],
  "refus": [],
  "scans": {
@@ -343,10 +343,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_portugal_primeira_liga": {
-   "le": "2026-10-19T21:46:22+00:00",
+   "le": "2026-10-24T16:38:12+00:00",
    "sport": "Football",
    "competition": "Primeira Liga - Portugal",
-   "matchs": 9
+   "matchs": 10
   },
   "soccer_russia_premier_league": {
    "le": "2026-10-20T07:00:03+00:00",
@@ -445,7 +445,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "baseball_kbo": {
-   "le": "2026-10-19T08:00:59+00:00",
+   "le": "2026-10-24T16:38:12+00:00",
    "sport": "Baseball",
    "competition": "KBO",
    "matchs": 1
@@ -485,10 +485,30 @@ window.JOURNAL = {
    "sport": "Basket",
    "competition": "NCAAB",
    "matchs": 1
+  },
+  "soccer_uefa_champs_league_women": {
+   "le": "2026-10-24T16:38:12+00:00",
+   "sport": "Football",
+   "competition": "UEFA Champions League Women",
+   "matchs": 6
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-24T16:38:12+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 117,
+   "capital": 10000
+  },
   {
    "date": "2026-10-24T12:43:07+00:00",
    "competitions_ouvertes": 69,
