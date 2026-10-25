@@ -1,22 +1,22 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-25T11:40:53+00:00",
- "credits_odds_api": 104,
+ "maj": "2026-10-25T16:27:33+00:00",
+ "credits_odds_api": 101,
  "paris": [],
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
-   "le": "2026-10-20T21:47:16+00:00",
+   "le": "2026-10-25T16:27:33+00:00",
    "sport": "Football américain",
    "competition": "CFL",
-   "matchs": 4
+   "matchs": 2
   },
   "americanfootball_ncaaf": {
-   "le": "2026-10-20T22:45:24+00:00",
+   "le": "2026-10-25T16:27:33+00:00",
    "sport": "Football américain",
    "competition": "NCAAF",
-   "matchs": 56
+   "matchs": 49
   },
   "americanfootball_ncaaf_fcs": {
    "le": "2026-10-21T18:56:46+00:00",
@@ -25,10 +25,10 @@ window.JOURNAL = {
    "matchs": 51
   },
   "americanfootball_nfl": {
-   "le": "2026-10-21T01:00:34+00:00",
+   "le": "2026-10-25T16:27:33+00:00",
    "sport": "Football américain",
    "competition": "NFL",
-   "matchs": 28
+   "matchs": 26
   },
   "aussierules_aflw": {
    "le": "2026-10-21T15:51:02+00:00",
@@ -495,6 +495,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-25T16:27:33+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 101,
+   "capital": 10000
+  },
   {
    "date": "2026-10-25T11:40:53+00:00",
    "competitions_ouvertes": 66,
