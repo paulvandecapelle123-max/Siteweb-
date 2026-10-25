@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-25T01:13:40+00:00",
- "credits_odds_api": 111,
+ "maj": "2026-10-25T06:13:35+00:00",
+ "credits_odds_api": 108,
  "paris": [],
  "refus": [],
  "scans": {
@@ -385,19 +385,19 @@ window.JOURNAL = {
    "matchs": 6
   },
   "soccer_switzerland_superleague": {
-   "le": "2026-10-20T09:47:38+00:00",
+   "le": "2026-10-25T06:13:35+00:00",
    "sport": "Football",
    "competition": "Swiss Superleague",
-   "matchs": 6
+   "matchs": 5
   },
   "soccer_turkey_super_league": {
-   "le": "2026-10-20T10:47:16+00:00",
+   "le": "2026-10-25T06:13:35+00:00",
    "sport": "Football",
    "competition": "Turkey Super League",
    "matchs": 9
   },
   "soccer_uefa_champs_league": {
-   "le": "2026-10-20T12:59:48+00:00",
+   "le": "2026-10-25T06:13:35+00:00",
    "sport": "Football",
    "competition": "UEFA Champions League",
    "matchs": 18
@@ -495,6 +495,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-25T06:13:35+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 108,
+   "capital": 10000
+  },
   {
    "date": "2026-10-25T01:13:40+00:00",
    "competitions_ouvertes": 70,
