@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-26T01:14:23+00:00",
- "credits_odds_api": 95,
+ "maj": "2026-10-26T06:22:37+00:00",
+ "credits_odds_api": 92,
  "paris": [],
  "refus": [],
  "scans": {
@@ -491,10 +491,42 @@ window.JOURNAL = {
    "sport": "Football",
    "competition": "UEFA Champions League Women",
    "matchs": 6
+  },
+  "tennis_atp_swiss_indoors": {
+   "le": "2026-10-26T06:22:37+00:00",
+   "sport": "Tennis",
+   "competition": "ATP Swiss Indoors Basel",
+   "matchs": 16
+  },
+  "tennis_atp_vienna_open": {
+   "le": "2026-10-26T06:22:37+00:00",
+   "sport": "Tennis",
+   "competition": "ATP Vienna Open",
+   "matchs": 16
+  },
+  "tennis_wta_pan_pacific_open": {
+   "le": "2026-10-26T06:22:37+00:00",
+   "sport": "Tennis",
+   "competition": "WTA Pan Pacific Open",
+   "matchs": 10
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-26T06:22:37+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 92,
+   "capital": 10000
+  },
   {
    "date": "2026-10-26T01:14:23+00:00",
    "competitions_ouvertes": 65,
