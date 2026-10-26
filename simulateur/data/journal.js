@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-26T06:22:37+00:00",
- "credits_odds_api": 92,
+ "maj": "2026-10-26T14:19:32+00:00",
+ "credits_odds_api": 86,
  "paris": [],
  "refus": [],
  "scans": {
@@ -31,7 +31,7 @@ window.JOURNAL = {
    "matchs": 26
   },
   "aussierules_aflw": {
-   "le": "2026-10-21T15:51:02+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Football australien",
    "competition": "AFL Women's",
    "matchs": 9
@@ -67,10 +67,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "basketball_nbl": {
-   "le": "2026-10-21T13:54:31+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Basket",
    "competition": "NBL",
-   "matchs": 4
+   "matchs": 3
   },
   "basketball_wnba": {
    "le": "2026-10-25T22:36:00+00:00",
@@ -97,10 +97,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "cricket_test_match": {
-   "le": "2026-10-21T16:49:30+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Cricket",
    "competition": "Test Matches",
-   "matchs": 1
+   "matchs": 2
   },
   "handball_germany_bundesliga": {
    "le": "2026-10-22T03:49:53+00:00",
@@ -109,10 +109,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "icehockey_liiga": {
-   "le": "2026-10-21T19:47:03+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Hockey sur glace",
    "competition": "Liiga",
-   "matchs": 7
+   "matchs": 8
   },
   "icehockey_mestis": {
    "le": "2026-10-22T07:57:10+00:00",
@@ -121,10 +121,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "icehockey_nhl": {
-   "le": "2026-10-21T21:49:33+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 14
+   "matchs": 3
   },
   "icehockey_sweden_allsvenskan": {
    "le": "2026-10-21T22:46:57+00:00",
@@ -163,7 +163,7 @@ window.JOURNAL = {
    "matchs": 12
   },
   "soccer_belgium_first_div": {
-   "le": "2026-10-21T13:00:30+00:00",
+   "le": "2026-10-26T14:19:32+00:00",
    "sport": "Football",
    "competition": "Belgium First Div",
    "matchs": 9
@@ -513,6 +513,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-26T14:19:32+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 86,
+   "capital": 10000
+  },
   {
    "date": "2026-10-26T06:22:37+00:00",
    "competitions_ouvertes": 70,
