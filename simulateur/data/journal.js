@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-25T22:36:00+00:00",
- "credits_odds_api": 97,
+ "maj": "2026-10-26T01:14:23+00:00",
+ "credits_odds_api": 95,
  "paris": [],
  "refus": [],
  "scans": {
@@ -79,16 +79,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-10-21T09:49:40+00:00",
+   "le": "2026-10-26T01:14:23+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 35
+   "matchs": 32
   },
   "cricket_international_t20": {
-   "le": "2026-10-21T10:49:08+00:00",
+   "le": "2026-10-26T01:14:23+00:00",
    "sport": "Cricket",
    "competition": "International Twenty20",
-   "matchs": 1
+   "matchs": 2
   },
   "cricket_odi": {
    "le": "2026-10-22T20:47:10+00:00",
@@ -495,6 +495,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-26T01:14:23+00:00",
+   "competitions_ouvertes": 65,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 95,
+   "capital": 10000
+  },
   {
    "date": "2026-10-25T22:36:00+00:00",
    "competitions_ouvertes": 65,
