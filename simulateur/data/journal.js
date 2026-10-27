@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-27T06:20:12+00:00",
- "credits_odds_api": 76,
+ "maj": "2026-10-27T13:15:48+00:00",
+ "credits_odds_api": 71,
  "paris": [],
  "refus": [],
  "scans": {
@@ -175,16 +175,16 @@ window.JOURNAL = {
    "matchs": 20
   },
   "soccer_brazil_serie_b": {
-   "le": "2026-10-22T13:00:31+00:00",
+   "le": "2026-10-27T13:15:48+00:00",
    "sport": "Football",
    "competition": "Brazil Série B",
-   "matchs": 10
+   "matchs": 9
   },
   "soccer_chile_campeonato": {
-   "le": "2026-10-22T13:56:54+00:00",
+   "le": "2026-10-27T13:15:48+00:00",
    "sport": "Football",
    "competition": "Primera División - Chile",
-   "matchs": 8
+   "matchs": 9
   },
   "soccer_china_superleague": {
    "le": "2026-10-22T14:50:08+00:00",
@@ -193,13 +193,13 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_conmebol_copa_libertadores": {
-   "le": "2026-10-22T16:49:38+00:00",
+   "le": "2026-10-27T13:15:48+00:00",
    "sport": "Football",
    "competition": "Copa Libertadores",
    "matchs": 1
   },
   "soccer_conmebol_copa_sudamericana": {
-   "le": "2026-10-22T19:47:44+00:00",
+   "le": "2026-10-27T13:15:48+00:00",
    "sport": "Football",
    "competition": "Copa Sudamericana",
    "matchs": 1
@@ -451,10 +451,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_ahl": {
-   "le": "2026-10-22T18:56:51+00:00",
+   "le": "2026-10-27T13:15:48+00:00",
    "sport": "Hockey sur glace",
    "competition": "AHL",
-   "matchs": 4
+   "matchs": 7
   },
   "tennis_wta_wuhan_open": {
    "le": "2026-10-18T06:54:44+00:00",
@@ -513,6 +513,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-27T13:15:48+00:00",
+   "competitions_ouvertes": 75,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 71,
+   "capital": 10000
+  },
   {
    "date": "2026-10-27T06:20:12+00:00",
    "competitions_ouvertes": 76,
