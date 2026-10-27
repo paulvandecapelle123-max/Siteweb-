@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-26T20:32:29+00:00",
- "credits_odds_api": 82,
+ "maj": "2026-10-27T00:29:00+00:00",
+ "credits_odds_api": 79,
  "paris": [],
  "refus": [],
  "scans": {
@@ -103,7 +103,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "handball_germany_bundesliga": {
-   "le": "2026-10-22T03:49:53+00:00",
+   "le": "2026-10-27T00:29:00+00:00",
    "sport": "Handball",
    "competition": "Handball-Bundesliga",
    "matchs": 9
@@ -145,13 +145,13 @@ window.JOURNAL = {
    "matchs": 47
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-10-22T04:47:56+00:00",
+   "le": "2026-10-27T00:29:00+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 30
+   "matchs": 18
   },
   "soccer_australia_aleague": {
-   "le": "2026-10-22T07:03:32+00:00",
+   "le": "2026-10-27T00:29:00+00:00",
    "sport": "Football",
    "competition": "A-League",
    "matchs": 12
@@ -513,6 +513,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-27T00:29:00+00:00",
+   "competitions_ouvertes": 76,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 79,
+   "capital": 10000
+  },
   {
    "date": "2026-10-26T20:32:29+00:00",
    "competitions_ouvertes": 75,
