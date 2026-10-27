@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-27T13:15:48+00:00",
- "credits_odds_api": 71,
+ "maj": "2026-10-27T18:45:36+00:00",
+ "credits_odds_api": 67,
  "paris": [],
  "refus": [],
  "scans": {
@@ -91,10 +91,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_odi": {
-   "le": "2026-10-22T20:47:10+00:00",
+   "le": "2026-10-27T18:45:36+00:00",
    "sport": "Cricket",
    "competition": "One Day Internationals",
-   "matchs": 3
+   "matchs": 2
   },
   "cricket_test_match": {
    "le": "2026-10-26T14:19:32+00:00",
@@ -205,13 +205,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_denmark_superliga": {
-   "le": "2026-10-23T00:00:22+00:00",
+   "le": "2026-10-27T18:45:36+00:00",
    "sport": "Football",
    "competition": "Denmark Superliga",
    "matchs": 6
   },
   "soccer_efl_champ": {
-   "le": "2026-10-23T00:00:22+00:00",
+   "le": "2026-10-27T18:45:36+00:00",
    "sport": "Football",
    "competition": "Championship",
    "matchs": 12
@@ -509,10 +509,30 @@ window.JOURNAL = {
    "sport": "Tennis",
    "competition": "WTA Pan Pacific Open",
    "matchs": 10
+  },
+  "soccer_spain_copa_del_rey": {
+   "le": "2026-10-27T18:45:36+00:00",
+   "sport": "Football",
+   "competition": "Copa del Rey",
+   "matchs": 32
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-27T18:45:36+00:00",
+   "competitions_ouvertes": 76,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 67,
+   "capital": 10000
+  },
   {
    "date": "2026-10-27T13:15:48+00:00",
    "competitions_ouvertes": 75,
