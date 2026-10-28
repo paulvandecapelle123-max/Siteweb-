@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-28T09:44:39+00:00",
- "credits_odds_api": 57,
+ "maj": "2026-10-28T16:40:26+00:00",
+ "credits_odds_api": 52,
  "paris": [],
  "refus": [],
  "scans": {
@@ -265,28 +265,28 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_germany_bundesliga2": {
-   "le": "2026-10-23T15:07:58+00:00",
+   "le": "2026-10-28T16:40:26+00:00",
    "sport": "Football",
    "competition": "Bundesliga 2 - Germany",
    "matchs": 9
   },
   "soccer_germany_dfb_pokal": {
-   "le": "2026-10-23T19:17:41+00:00",
+   "le": "2026-10-28T16:40:26+00:00",
    "sport": "Football",
    "competition": "DFB-Pokal",
-   "matchs": 16
+   "matchs": 8
   },
   "soccer_germany_liga3": {
-   "le": "2026-10-23T19:17:41+00:00",
+   "le": "2026-10-28T16:40:26+00:00",
    "sport": "Football",
    "competition": "3. Liga - Germany",
-   "matchs": 19
+   "matchs": 20
   },
   "soccer_greece_super_league": {
-   "le": "2026-10-23T19:17:41+00:00",
+   "le": "2026-10-28T16:40:26+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 21
+   "matchs": 14
   },
   "soccer_italy_serie_a": {
    "le": "2026-10-23T23:11:06+00:00",
@@ -493,10 +493,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "tennis_atp_swiss_indoors": {
-   "le": "2026-10-26T06:22:37+00:00",
+   "le": "2026-10-28T16:40:26+00:00",
    "sport": "Tennis",
    "competition": "ATP Swiss Indoors Basel",
-   "matchs": 16
+   "matchs": 7
   },
   "tennis_atp_vienna_open": {
    "le": "2026-10-26T06:22:37+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-28T16:40:26+00:00",
+   "competitions_ouvertes": 77,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 52,
+   "capital": 10000
+  },
   {
    "date": "2026-10-28T09:44:39+00:00",
    "competitions_ouvertes": 78,
