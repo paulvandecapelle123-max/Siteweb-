@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-28T16:40:26+00:00",
- "credits_odds_api": 52,
+ "maj": "2026-10-28T21:40:55+00:00",
+ "credits_odds_api": 49,
  "paris": [],
  "refus": [],
  "scans": {
@@ -289,10 +289,10 @@ window.JOURNAL = {
    "matchs": 14
   },
   "soccer_italy_serie_a": {
-   "le": "2026-10-23T23:11:06+00:00",
+   "le": "2026-10-28T21:40:55+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
-   "matchs": 19
+   "matchs": 14
   },
   "soccer_italy_serie_b": {
    "le": "2026-10-24T01:38:24+00:00",
@@ -499,16 +499,16 @@ window.JOURNAL = {
    "matchs": 7
   },
   "tennis_atp_vienna_open": {
-   "le": "2026-10-26T06:22:37+00:00",
+   "le": "2026-10-28T21:40:55+00:00",
    "sport": "Tennis",
    "competition": "ATP Vienna Open",
-   "matchs": 16
+   "matchs": 6
   },
   "tennis_wta_pan_pacific_open": {
-   "le": "2026-10-26T06:22:37+00:00",
+   "le": "2026-10-28T21:40:55+00:00",
    "sport": "Tennis",
    "competition": "WTA Pan Pacific Open",
-   "matchs": 10
+   "matchs": 6
   },
   "soccer_spain_copa_del_rey": {
    "le": "2026-10-27T18:45:36+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-28T21:40:55+00:00",
+   "competitions_ouvertes": 77,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 49,
+   "capital": 10000
+  },
   {
    "date": "2026-10-28T16:40:26+00:00",
    "competitions_ouvertes": 77,
