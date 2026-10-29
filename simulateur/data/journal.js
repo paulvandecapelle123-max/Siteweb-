@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-29T08:33:45+00:00",
- "credits_odds_api": 42,
+ "maj": "2026-10-29T16:11:21+00:00",
+ "credits_odds_api": 37,
  "paris": [],
  "refus": [],
  "scans": {
@@ -319,25 +319,25 @@ window.JOURNAL = {
    "matchs": 5
   },
   "soccer_mexico_ligamx": {
-   "le": "2026-10-24T12:43:07+00:00",
+   "le": "2026-10-29T16:11:21+00:00",
    "sport": "Football",
    "competition": "Liga MX",
    "matchs": 9
   },
   "soccer_netherlands_eredivisie": {
-   "le": "2026-10-24T12:43:07+00:00",
+   "le": "2026-10-29T16:11:21+00:00",
    "sport": "Football",
    "competition": "Dutch Eredivisie",
-   "matchs": 17
+   "matchs": 18
   },
   "soccer_norway_eliteserien": {
-   "le": "2026-10-24T12:43:07+00:00",
+   "le": "2026-10-29T16:11:21+00:00",
    "sport": "Football",
    "competition": "Eliteserien - Norway",
-   "matchs": 9
+   "matchs": 8
   },
   "soccer_poland_ekstraklasa": {
-   "le": "2026-10-24T12:43:07+00:00",
+   "le": "2026-10-29T16:11:21+00:00",
    "sport": "Football",
    "competition": "Ekstraklasa - Poland",
    "matchs": 9
@@ -445,7 +445,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "baseball_kbo": {
-   "le": "2026-10-24T16:38:12+00:00",
+   "le": "2026-10-29T16:11:21+00:00",
    "sport": "Baseball",
    "competition": "KBO",
    "matchs": 1
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-29T16:11:21+00:00",
+   "competitions_ouvertes": 77,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 37,
+   "capital": 10000
+  },
   {
    "date": "2026-10-29T08:33:45+00:00",
    "competitions_ouvertes": 77,
