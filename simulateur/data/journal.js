@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-28T21:40:55+00:00",
- "credits_odds_api": 49,
+ "maj": "2026-10-29T01:49:54+00:00",
+ "credits_odds_api": 46,
  "paris": [],
  "refus": [],
  "scans": {
@@ -19,10 +19,10 @@ window.JOURNAL = {
    "matchs": 49
   },
   "americanfootball_ncaaf_fcs": {
-   "le": "2026-10-21T18:56:46+00:00",
+   "le": "2026-10-29T01:49:54+00:00",
    "sport": "Football américain",
    "competition": "NCAAF FCS",
-   "matchs": 51
+   "matchs": 54
   },
   "americanfootball_nfl": {
    "le": "2026-10-25T16:27:33+00:00",
@@ -295,10 +295,10 @@ window.JOURNAL = {
    "matchs": 14
   },
   "soccer_italy_serie_b": {
-   "le": "2026-10-24T01:38:24+00:00",
+   "le": "2026-10-29T01:49:54+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
-   "matchs": 19
+   "matchs": 10
   },
   "soccer_japan_j_league": {
    "le": "2026-10-24T07:20:49+00:00",
@@ -481,10 +481,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "basketball_ncaab": {
-   "le": "2026-10-24T01:38:24+00:00",
+   "le": "2026-10-29T01:49:54+00:00",
    "sport": "Basket",
    "competition": "NCAAB",
-   "matchs": 1
+   "matchs": 7
   },
   "soccer_uefa_champs_league_women": {
    "le": "2026-10-24T16:38:12+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-29T01:49:54+00:00",
+   "competitions_ouvertes": 78,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 46,
+   "capital": 10000
+  },
   {
    "date": "2026-10-28T21:40:55+00:00",
    "competitions_ouvertes": 77,
