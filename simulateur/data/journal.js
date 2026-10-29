@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-29T16:11:21+00:00",
- "credits_odds_api": 37,
+ "maj": "2026-10-29T21:10:44+00:00",
+ "credits_odds_api": 33,
  "paris": [],
  "refus": [],
  "scans": {
@@ -343,10 +343,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_portugal_primeira_liga": {
-   "le": "2026-10-24T16:38:12+00:00",
+   "le": "2026-10-29T21:10:44+00:00",
    "sport": "Football",
    "competition": "Primeira Liga - Portugal",
-   "matchs": 10
+   "matchs": 9
   },
   "soccer_russia_premier_league": {
    "le": "2026-10-25T01:13:40+00:00",
@@ -355,16 +355,16 @@ window.JOURNAL = {
    "matchs": 6
   },
   "soccer_saudi_arabia_pro_league": {
-   "le": "2026-10-24T19:31:07+00:00",
+   "le": "2026-10-29T21:10:44+00:00",
    "sport": "Football",
    "competition": "Saudi Pro League",
    "matchs": 8
   },
   "soccer_spain_segunda_division": {
-   "le": "2026-10-24T19:31:07+00:00",
+   "le": "2026-10-29T21:10:44+00:00",
    "sport": "Football",
    "competition": "La Liga 2 - Spain",
-   "matchs": 9
+   "matchs": 11
   },
   "soccer_spl": {
    "le": "2026-10-24T22:31:19+00:00",
@@ -487,10 +487,10 @@ window.JOURNAL = {
    "matchs": 7
   },
   "soccer_uefa_champs_league_women": {
-   "le": "2026-10-24T16:38:12+00:00",
+   "le": "2026-10-29T21:10:44+00:00",
    "sport": "Football",
    "competition": "UEFA Champions League Women",
-   "matchs": 6
+   "matchs": 2
   },
   "tennis_atp_swiss_indoors": {
    "le": "2026-10-28T16:40:26+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-29T21:10:44+00:00",
+   "competitions_ouvertes": 76,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 33,
+   "capital": 10000
+  },
   {
    "date": "2026-10-29T16:11:21+00:00",
    "competitions_ouvertes": 77,
