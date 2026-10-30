@@ -1,22 +1,22 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-30T14:14:27+00:00",
- "credits_odds_api": 22,
+ "maj": "2026-10-30T19:27:56+00:00",
+ "credits_odds_api": 18,
  "paris": [],
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
-   "le": "2026-10-25T16:27:33+00:00",
+   "le": "2026-10-30T19:27:56+00:00",
    "sport": "Football américain",
    "competition": "CFL",
    "matchs": 2
   },
   "americanfootball_ncaaf": {
-   "le": "2026-10-25T16:27:33+00:00",
+   "le": "2026-10-30T19:27:56+00:00",
    "sport": "Football américain",
    "competition": "NCAAF",
-   "matchs": 49
+   "matchs": 67
   },
   "americanfootball_ncaaf_fcs": {
    "le": "2026-10-29T01:49:54+00:00",
@@ -25,7 +25,7 @@ window.JOURNAL = {
    "matchs": 54
   },
   "americanfootball_nfl": {
-   "le": "2026-10-25T16:27:33+00:00",
+   "le": "2026-10-30T19:27:56+00:00",
    "sport": "Football américain",
    "competition": "NFL",
    "matchs": 26
@@ -521,10 +521,30 @@ window.JOURNAL = {
    "sport": "Football australien",
    "competition": "AFL",
    "matchs": 9
+  },
+  "basketball_wncaab": {
+   "le": "2026-10-30T19:27:56+00:00",
+   "sport": "Basket",
+   "competition": "WNCAAB",
+   "matchs": 1
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-30T19:27:56+00:00",
+   "competitions_ouvertes": 74,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 1,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 18,
+   "capital": 10000
+  },
   {
    "date": "2026-10-30T14:14:27+00:00",
    "competitions_ouvertes": 73,
@@ -4502,7 +4522,27 @@ window.JOURNAL = {
    "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "Notre Dame Fighting Irish",
+   "adversaire": "Navy Midshipmen",
+   "proba_marche": 0.9813,
+   "cote": 1.014,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "Betsson",
+   "nb_bookmakers": 8,
+   "id": "e916f49c82de2ce0b1844ee9f6deccfa",
+   "sport_key": "americanfootball_ncaaf",
+   "sport": "Football américain",
+   "competition": "NCAAF",
+   "debut": "2026-10-31T16:00:00Z",
+   "domicile": "Navy Midshipmen",
+   "exterieur": "Notre Dame Fighting Irish",
+   "repere_le": "2026-10-30T19:27:56+00:00",
+   "cotes_le": "2026-10-30T19:27:56+00:00"
+  }
+ ],
  "scores_le": {},
  "ia_active": false,
  "resultats_par_discipline": {
