@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-29T21:10:44+00:00",
- "credits_odds_api": 33,
+ "maj": "2026-10-30T01:04:22+00:00",
+ "credits_odds_api": 31,
  "paris": [],
  "refus": [],
  "scans": {
@@ -367,16 +367,16 @@ window.JOURNAL = {
    "matchs": 11
   },
   "soccer_spl": {
-   "le": "2026-10-24T22:31:19+00:00",
+   "le": "2026-10-30T01:04:22+00:00",
    "sport": "Football",
    "competition": "Premiership - Scotland",
-   "matchs": 11
+   "matchs": 4
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-10-24T22:31:19+00:00",
+   "le": "2026-10-30T01:04:22+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
-   "matchs": 10
+   "matchs": 8
   },
   "soccer_sweden_superettan": {
    "le": "2026-10-25T01:13:40+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-30T01:04:22+00:00",
+   "competitions_ouvertes": 74,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 31,
+   "capital": 10000
+  },
   {
    "date": "2026-10-29T21:10:44+00:00",
    "competitions_ouvertes": 76,
