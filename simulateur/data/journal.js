@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-30T19:27:56+00:00",
- "credits_odds_api": 18,
+ "maj": "2026-10-30T23:50:54+00:00",
+ "credits_odds_api": 15,
  "paris": [],
  "refus": [],
  "scans": {
@@ -49,16 +49,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "basketball_euroleague": {
-   "le": "2026-10-25T19:40:44+00:00",
+   "le": "2026-10-30T23:50:54+00:00",
    "sport": "Basket",
    "competition": "Basketball Euroleague",
-   "matchs": 16
+   "matchs": 1
   },
   "basketball_nba": {
-   "le": "2026-10-25T22:36:00+00:00",
+   "le": "2026-10-30T23:50:54+00:00",
    "sport": "Basket",
    "competition": "NBA",
-   "matchs": 12
+   "matchs": 15
   },
   "basketball_nba_preseason": {
    "le": "2026-10-16T14:49:38+00:00",
@@ -73,7 +73,7 @@ window.JOURNAL = {
    "matchs": 3
   },
   "basketball_wnba": {
-   "le": "2026-10-25T22:36:00+00:00",
+   "le": "2026-10-30T23:50:54+00:00",
    "sport": "Basket",
    "competition": "WNBA",
    "matchs": 1
@@ -531,6 +531,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-30T23:50:54+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 15,
+   "capital": 10000
+  },
   {
    "date": "2026-10-30T19:27:56+00:00",
    "competitions_ouvertes": 74,
