@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-30T07:11:51+00:00",
- "credits_odds_api": 27,
+ "maj": "2026-10-30T14:14:27+00:00",
+ "credits_odds_api": 22,
  "paris": [],
  "refus": [],
  "scans": {
@@ -397,7 +397,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_uefa_champs_league": {
-   "le": "2026-10-25T06:13:35+00:00",
+   "le": "2026-10-30T14:14:27+00:00",
    "sport": "Football",
    "competition": "UEFA Champions League",
    "matchs": 18
@@ -409,28 +409,28 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-10-25T11:40:53+00:00",
+   "le": "2026-10-30T14:14:27+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
    "matchs": 18
   },
   "soccer_spain_la_liga": {
-   "le": "2026-10-25T11:40:53+00:00",
+   "le": "2026-10-30T14:14:27+00:00",
    "sport": "Football",
    "competition": "La Liga - Spain",
-   "matchs": 15
+   "matchs": 20
   },
   "soccer_uefa_nations_league": {
-   "le": "2026-10-25T11:40:53+00:00",
+   "le": "2026-10-30T14:14:27+00:00",
    "sport": "Football",
    "competition": "UEFA Nations League",
    "matchs": 8
   },
   "soccer_usa_mls": {
-   "le": "2026-10-25T11:40:53+00:00",
+   "le": "2026-10-30T14:14:27+00:00",
    "sport": "Football",
    "competition": "MLS",
-   "matchs": 24
+   "matchs": 15
   },
   "tennis_atp_shanghai_masters": {
    "le": "2026-10-16T08:50:31+00:00",
@@ -525,6 +525,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-30T14:14:27+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 22,
+   "capital": 10000
+  },
   {
    "date": "2026-10-30T07:11:51+00:00",
    "competitions_ouvertes": 74,
