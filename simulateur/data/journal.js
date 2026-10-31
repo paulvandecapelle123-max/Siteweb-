@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-31T05:49:59+00:00",
- "credits_odds_api": 11,
+ "maj": "2026-10-31T12:38:47+00:00",
+ "credits_odds_api": 10,
  "paris": [],
  "refus": [],
  "scans": {
@@ -527,10 +527,30 @@ window.JOURNAL = {
    "sport": "Basket",
    "competition": "WNCAAB",
    "matchs": 1
+  },
+  "tennis_atp_paris_masters": {
+   "le": "2026-10-31T12:38:47+00:00",
+   "sport": "Tennis",
+   "competition": "ATP Paris Masters",
+   "matchs": 22
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-31T12:38:47+00:00",
+   "competitions_ouvertes": 75,
+   "competitions_scannees": 1,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 1,
+   "credits_restants": 10,
+   "capital": 10000
+  },
   {
    "date": "2026-10-31T05:49:59+00:00",
    "competitions_ouvertes": 73,
