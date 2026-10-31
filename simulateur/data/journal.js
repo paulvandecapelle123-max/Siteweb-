@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-30T23:50:54+00:00",
- "credits_odds_api": 15,
+ "maj": "2026-10-31T05:49:59+00:00",
+ "credits_odds_api": 11,
  "paris": [],
  "refus": [],
  "scans": {
@@ -79,13 +79,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-10-26T01:14:23+00:00",
+   "le": "2026-10-31T05:49:59+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 32
+   "matchs": 44
   },
   "cricket_international_t20": {
-   "le": "2026-10-26T01:14:23+00:00",
+   "le": "2026-10-31T05:49:59+00:00",
    "sport": "Cricket",
    "competition": "International Twenty20",
    "matchs": 2
@@ -493,16 +493,16 @@ window.JOURNAL = {
    "matchs": 2
   },
   "tennis_atp_swiss_indoors": {
-   "le": "2026-10-28T16:40:26+00:00",
+   "le": "2026-10-31T05:49:59+00:00",
    "sport": "Tennis",
    "competition": "ATP Swiss Indoors Basel",
-   "matchs": 7
+   "matchs": 2
   },
   "tennis_atp_vienna_open": {
-   "le": "2026-10-28T21:40:55+00:00",
+   "le": "2026-10-31T05:49:59+00:00",
    "sport": "Tennis",
    "competition": "ATP Vienna Open",
-   "matchs": 6
+   "matchs": 2
   },
   "tennis_wta_pan_pacific_open": {
    "le": "2026-10-28T21:40:55+00:00",
@@ -531,6 +531,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-31T05:49:59+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 11,
+   "capital": 10000
+  },
   {
    "date": "2026-10-30T23:50:54+00:00",
    "competitions_ouvertes": 73,
