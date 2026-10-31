@@ -1,7 +1,7 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-31T12:38:47+00:00",
+ "maj": "2026-10-31T17:46:55+00:00",
  "credits_odds_api": 10,
  "paris": [],
  "refus": [],
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-10-31T17:46:55+00:00",
+   "competitions_ouvertes": 74,
+   "competitions_scannees": 0,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 1,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 0,
+   "credits_restants": 10,
+   "capital": 10000
+  },
   {
    "date": "2026-10-31T12:38:47+00:00",
    "competitions_ouvertes": 75,
@@ -4570,27 +4584,7 @@ window.JOURNAL = {
    "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "Notre Dame Fighting Irish",
-   "adversaire": "Navy Midshipmen",
-   "proba_marche": 0.9813,
-   "cote": 1.014,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "Betsson",
-   "nb_bookmakers": 8,
-   "id": "e916f49c82de2ce0b1844ee9f6deccfa",
-   "sport_key": "americanfootball_ncaaf",
-   "sport": "Football américain",
-   "competition": "NCAAF",
-   "debut": "2026-10-31T16:00:00Z",
-   "domicile": "Navy Midshipmen",
-   "exterieur": "Notre Dame Fighting Irish",
-   "repere_le": "2026-10-30T19:27:56+00:00",
-   "cotes_le": "2026-10-30T19:27:56+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {},
  "ia_active": false,
  "resultats_par_discipline": {
