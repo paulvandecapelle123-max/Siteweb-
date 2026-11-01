@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-10-31T17:46:55+00:00",
- "credits_odds_api": 10,
+ "maj": "2026-11-01T01:14:26+00:00",
+ "credits_odds_api": 498,
  "paris": [],
  "refus": [],
  "scans": {
@@ -469,10 +469,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_fa_cup": {
-   "le": "2026-10-20T07:53:15+00:00",
+   "le": "2026-11-01T01:14:26+00:00",
    "sport": "Football",
    "competition": "FA Cup",
-   "matchs": 11
+   "matchs": 32
   },
   "tennis_wta_ningbo_open": {
    "le": "2026-10-23T10:08:26+00:00",
@@ -505,10 +505,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "tennis_wta_pan_pacific_open": {
-   "le": "2026-10-28T21:40:55+00:00",
+   "le": "2026-11-01T01:14:26+00:00",
    "sport": "Tennis",
    "competition": "WTA Pan Pacific Open",
-   "matchs": 6
+   "matchs": 1
   },
   "soccer_spain_copa_del_rey": {
    "le": "2026-10-27T18:45:36+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-01T01:14:26+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 498,
+   "capital": 10000
+  },
   {
    "date": "2026-10-31T17:46:55+00:00",
    "competitions_ouvertes": 74,
