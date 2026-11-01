@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-01T07:38:05+00:00",
- "credits_odds_api": 494,
+ "maj": "2026-11-01T15:14:12+00:00",
+ "credits_odds_api": 489,
  "paris": [],
  "refus": [],
  "scans": {
@@ -103,10 +103,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "handball_germany_bundesliga": {
-   "le": "2026-10-27T00:29:00+00:00",
+   "le": "2026-11-01T15:14:12+00:00",
    "sport": "Handball",
    "competition": "Handball-Bundesliga",
-   "matchs": 9
+   "matchs": 3
   },
   "icehockey_liiga": {
    "le": "2026-11-01T07:38:05+00:00",
@@ -127,10 +127,10 @@ window.JOURNAL = {
    "matchs": 5
   },
   "icehockey_sweden_allsvenskan": {
-   "le": "2026-10-26T20:32:29+00:00",
+   "le": "2026-11-01T15:14:12+00:00",
    "sport": "Hockey sur glace",
    "competition": "HockeyAllsvenskan",
-   "matchs": 7
+   "matchs": 4
   },
   "icehockey_sweden_hockey_league": {
    "le": "2026-10-26T20:32:29+00:00",
@@ -139,10 +139,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-10-26T20:32:29+00:00",
+   "le": "2026-11-01T15:14:12+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 47
+   "matchs": 48
   },
   "soccer_argentina_primera_division": {
    "le": "2026-10-27T00:29:00+00:00",
@@ -163,10 +163,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "soccer_belgium_first_div": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T15:14:12+00:00",
    "sport": "Football",
    "competition": "Belgium First Div",
-   "matchs": 9
+   "matchs": 11
   },
   "soccer_brazil_campeonato": {
    "le": "2026-10-27T06:20:12+00:00",
@@ -403,7 +403,7 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_conference_league": {
-   "le": "2026-10-26T20:32:29+00:00",
+   "le": "2026-11-01T15:14:12+00:00",
    "sport": "Football",
    "competition": "UEFA Europa Conference League",
    "matchs": 18
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-01T15:14:12+00:00",
+   "competitions_ouvertes": 67,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 489,
+   "capital": 10000
+  },
   {
    "date": "2026-11-01T07:38:05+00:00",
    "competitions_ouvertes": 70,
