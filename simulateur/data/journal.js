@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-01T19:45:11+00:00",
- "credits_odds_api": 485,
+ "maj": "2026-11-01T23:38:43+00:00",
+ "credits_odds_api": 483,
  "paris": [],
  "refus": [],
  "scans": {
@@ -169,10 +169,10 @@ window.JOURNAL = {
    "matchs": 11
   },
   "soccer_brazil_campeonato": {
-   "le": "2026-10-27T06:20:12+00:00",
+   "le": "2026-11-01T23:38:43+00:00",
    "sport": "Football",
    "competition": "Brazil Série A",
-   "matchs": 20
+   "matchs": 10
   },
   "soccer_brazil_serie_b": {
    "le": "2026-10-27T13:15:48+00:00",
@@ -451,10 +451,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_ahl": {
-   "le": "2026-10-27T13:15:48+00:00",
+   "le": "2026-11-01T23:38:43+00:00",
    "sport": "Hockey sur glace",
    "competition": "AHL",
-   "matchs": 7
+   "matchs": 6
   },
   "tennis_wta_wuhan_open": {
    "le": "2026-10-18T06:54:44+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-01T23:38:43+00:00",
+   "competitions_ouvertes": 65,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 483,
+   "capital": 10000
+  },
   {
    "date": "2026-11-01T19:45:11+00:00",
    "competitions_ouvertes": 64,
