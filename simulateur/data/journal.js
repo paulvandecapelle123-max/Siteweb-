@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-01T15:14:12+00:00",
- "credits_odds_api": 489,
+ "maj": "2026-11-01T19:45:11+00:00",
+ "credits_odds_api": 485,
  "paris": [],
  "refus": [],
  "scans": {
@@ -97,10 +97,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_test_match": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T19:45:11+00:00",
    "sport": "Cricket",
    "competition": "Test Matches",
-   "matchs": 2
+   "matchs": 1
   },
   "handball_germany_bundesliga": {
    "le": "2026-11-01T15:14:12+00:00",
@@ -145,19 +145,19 @@ window.JOURNAL = {
    "matchs": 48
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-10-27T00:29:00+00:00",
+   "le": "2026-11-01T19:45:11+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 18
+   "matchs": 23
   },
   "soccer_australia_aleague": {
-   "le": "2026-10-27T00:29:00+00:00",
+   "le": "2026-11-01T19:45:11+00:00",
    "sport": "Football",
    "competition": "A-League",
-   "matchs": 12
+   "matchs": 6
   },
   "soccer_austria_bundesliga": {
-   "le": "2026-10-27T06:20:12+00:00",
+   "le": "2026-11-01T19:45:11+00:00",
    "sport": "Football",
    "competition": "Austrian Football Bundesliga",
    "matchs": 6
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-01T19:45:11+00:00",
+   "competitions_ouvertes": 64,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 485,
+   "capital": 10000
+  },
   {
    "date": "2026-11-01T15:14:12+00:00",
    "competitions_ouvertes": 67,
