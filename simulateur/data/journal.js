@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-01T01:14:26+00:00",
- "credits_odds_api": 498,
+ "maj": "2026-11-01T07:38:05+00:00",
+ "credits_odds_api": 494,
  "paris": [],
  "refus": [],
  "scans": {
@@ -31,10 +31,10 @@ window.JOURNAL = {
    "matchs": 26
   },
   "aussierules_aflw": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T07:38:05+00:00",
    "sport": "Football australien",
    "competition": "AFL Women's",
-   "matchs": 9
+   "matchs": 1
   },
   "baseball_mlb": {
    "le": "2026-10-25T19:40:44+00:00",
@@ -67,10 +67,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "basketball_nbl": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T07:38:05+00:00",
    "sport": "Basket",
    "competition": "NBL",
-   "matchs": 3
+   "matchs": 2
   },
   "basketball_wnba": {
    "le": "2026-10-30T23:50:54+00:00",
@@ -109,10 +109,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "icehockey_liiga": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T07:38:05+00:00",
    "sport": "Hockey sur glace",
    "competition": "Liiga",
-   "matchs": 8
+   "matchs": 1
   },
   "icehockey_mestis": {
    "le": "2026-10-27T06:20:12+00:00",
@@ -121,10 +121,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "icehockey_nhl": {
-   "le": "2026-10-26T14:19:32+00:00",
+   "le": "2026-11-01T07:38:05+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 3
+   "matchs": 5
   },
   "icehockey_sweden_allsvenskan": {
    "le": "2026-10-26T20:32:29+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-01T07:38:05+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 494,
+   "capital": 10000
+  },
   {
    "date": "2026-11-01T01:14:26+00:00",
    "competitions_ouvertes": 72,
