@@ -2,7 +2,7 @@
 
 Un jeu Roblox de nourriture en slime :
 
-1. 🛒 **Le Marché** : achète un kit parmi 25 recettes (pizza, burger, sushis, ramen, bubble tea, gâteau arc-en-ciel…).
+1. 🛒 **Le Marché** : achète un kit parmi 25 recettes (pizza, burger, sushis, ramen, bubble tea, gâteau arc-en-ciel…). Chaque kit est vendu dans une boîte-panier jaune avec le nom du plat dessus.
 2. 🍳 **La Cuisine** : construis ton plat en ajoutant les ingrédients dans le bon ordre. Le plat se construit en 3D sous tes yeux.
 3. 🧪 **Le Labo à slime** : clique vite pour tout mélanger, et ton plat devient un slime. La texture est tirée au hasard : Classique, Pailleté, Nuage, Croquant, Arc-en-ciel ou Galaxie.
 4. 💰 **Le Marchand** : vends tes slimes pour gagner des pièces, puis recommence avec des kits plus chers.
@@ -32,6 +32,7 @@ Sans ces étapes, le jeu marche quand même, mais les pièces et le sac reparten
 | Changer le nom du jeu, l'argent de départ… | `ReplicatedStorage > Shared > Config`         |
 | Changer les textures de slime et leur prix | `ReplicatedStorage > Shared > Slimes`         |
 | Changer la forme des ingrédients           | `ReplicatedStorage > Shared > FoodModel`      |
+| Changer le dessin des boîtes jaunes        | `ReplicatedStorage > Shared > KitBox`         |
 | Modifier la map                            | Directement dans le Workspace (dossier `Map`) |
 | Règles du jeu (prix, vérifications)        | `ServerScriptService > GameServer`            |
 | Interface du joueur                        | `StarterPlayer > StarterPlayerScripts > GameClient` |

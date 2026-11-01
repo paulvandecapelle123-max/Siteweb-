@@ -24,7 +24,7 @@ end
 local shared = Instance.new("Folder")
 shared.Name = "Shared"
 shared.Parent = ReplicatedStorage
-for _, name in { "Config", "Recipes", "Slimes", "FoodModel" } do
+for _, name in { "Config", "Recipes", "Slimes", "FoodModel", "KitBox" } do
 	addScript("ModuleScript", name, shared, "src/shared/" .. name .. ".luau")
 end
 
@@ -53,8 +53,9 @@ addScript("LocalScript", "GameClient", starterPlayerScripts, "src/client/GameCli
 local Config = Env.loadModule("src/shared/Config.luau")
 local Recipes = Env.loadModule("src/shared/Recipes.luau")
 local FoodModel = Env.loadModule("src/shared/FoodModel.luau")
+local KitBox = Env.loadModule("src/shared/KitBox.luau")
 local MapBuilder = Env.loadModule("src/server/MapBuilder.luau")
-local map = MapBuilder.build(Workspace, { Config = Config, Recipes = Recipes, FoodModel = FoodModel })
+local map = MapBuilder.build(Workspace, { Config = Config, Recipes = Recipes, FoodModel = FoodModel, KitBox = KitBox })
 MapBuilder.setupLighting(Lighting)
 
 local count = 0

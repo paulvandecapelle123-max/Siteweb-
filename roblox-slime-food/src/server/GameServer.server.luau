@@ -15,13 +15,14 @@ local Config = require(Shared:WaitForChild("Config"))
 local Recipes = require(Shared:WaitForChild("Recipes"))
 local Slimes = require(Shared:WaitForChild("Slimes"))
 local FoodModel = require(Shared:WaitForChild("FoodModel"))
+local KitBox = require(Shared:WaitForChild("KitBox"))
 
 ---------------------------------------------------------------- map
 
 -- La map est déjà dans le fichier. Si elle a été supprimée, on la reconstruit.
 if not workspace:FindFirstChild("Map") then
 	local MapBuilder = require(script.Parent:WaitForChild("MapBuilder"))
-	MapBuilder.build(workspace, { Recipes = Recipes, FoodModel = FoodModel, Config = Config })
+	MapBuilder.build(workspace, { Recipes = Recipes, FoodModel = FoodModel, KitBox = KitBox, Config = Config })
 end
 
 ---------------------------------------------------------------- communication

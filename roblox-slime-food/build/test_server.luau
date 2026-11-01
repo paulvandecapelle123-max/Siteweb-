@@ -67,7 +67,7 @@ end
 -- Modules partagés
 local modules = {}
 local shared = fakeInstance("Folder", "Shared")
-for _, name in { "Config", "Recipes", "Slimes", "FoodModel" } do
+for _, name in { "Config", "Recipes", "Slimes", "FoodModel", "KitBox" } do
 	local token = fakeInstance("ModuleScript", name)
 	token.Parent = shared
 	modules[token] = Env.loadModule("src/shared/" .. name .. ".luau")

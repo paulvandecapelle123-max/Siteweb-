@@ -111,6 +111,26 @@ end
 print(string.format("Gain moyen d'un slime : x%.2f le prix du kit", average * Config.SlimeValueMultiplier))
 check(average * Config.SlimeValueMultiplier > 1.1, "les slimes ne rapportent pas assez")
 
+-- Boîtes jaunes des kits (interface + 3D)
+local KitBox = Env.loadModule("src/shared/KitBox.luau")
+check(KitBox.upper("Le Marché Gluant") == "LE MARCHÉ GLUANT", "majuscules accentuées : " .. KitBox.upper("Le Marché Gluant"))
+for _, recipe in Recipes.List do
+	local frame = Env.roblox.Instance.new("Frame")
+	local ok, picture = pcall(KitBox.drawFront, frame, recipe, { handle = true, picture = false, gameName = Config.GameName })
+	check(ok and picture ~= nil, recipe.id .. " : face de la boîte : " .. tostring(picture))
+	local ok2, kit = pcall(KitBox.buildModel, recipe, { gameName = Config.GameName })
+	check(ok2, recipe.id .. " : boîte 3D : " .. tostring(kit))
+	if ok2 then
+		local guis = 0
+		for _, d in kit:GetDescendants() do
+			if d:IsA("SurfaceGui") then
+				guis += 1
+			end
+		end
+		check(guis == 3, recipe.id .. " : la boîte 3D doit avoir 3 faces imprimées")
+	end
+end
+
 print(string.format("%d recettes, %d morceaux au total", #Recipes.List, totalParts))
 if failures > 0 then
 	print(failures .. " test(s) en échec")

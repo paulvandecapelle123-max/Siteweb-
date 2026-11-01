@@ -16,6 +16,7 @@ local Config = require(Shared:WaitForChild("Config"))
 local Recipes = require(Shared:WaitForChild("Recipes"))
 local Slimes = require(Shared:WaitForChild("Slimes"))
 local FoodModel = require(Shared:WaitForChild("FoodModel"))
+local KitBox = require(Shared:WaitForChild("KitBox"))
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local Request = Remotes:WaitForChild("Request")
 local DataChanged = Remotes:WaitForChild("DataChanged")
@@ -435,11 +436,27 @@ local function grid(parent, cellWidth, cellHeight, top)
 	})
 end
 
--- Une carte avec un aperçu 3D, un titre, un sous-titre et un bouton
-local function itemCard(w, parent, order, borderColor, model, title, subtitle, subtitleColor, buttonText, buttonColor, onClick)
+-- La boîte jaune d'un kit, avec le plat en 3D dessiné dessus
+local function kitBoxVisual(w, parent, recipe, props)
+	local holder = create("Frame", withDefaults(props, { BackgroundTransparency = 1 }))
+	holder.Parent = parent
+	local picture = KitBox.drawFront(holder, recipe, { handle = true, picture = false, gameName = Config.GameName, pixelScale = S })
+	local view = addView(w, picture, { Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1 }, false)
+	view.set(FoodModel.build(recipe))
+	return holder
+end
+
+-- Une carte avec un aperçu, un titre, un sous-titre et un bouton.
+-- visual = un modèle 3D (plat ou slime), ou { kit = recette } pour afficher la boîte jaune du kit
+local function itemCard(w, parent, order, borderColor, visual, title, subtitle, subtitleColor, buttonText, buttonColor, onClick)
 	local card = create("Frame", { LayoutOrder = order, BackgroundColor3 = COLORS.card, Parent = parent }, { corner(16), stroke(borderColor, 3) })
-	local view = addView(w, card, { AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, px(6)), Size = UDim2.new(1, -px(12), 0, px(118)) }, false)
-	view.set(model)
+	local visualProps = { AnchorPoint = Vector2.new(0.5, 0), Position = UDim2.new(0.5, 0, 0, px(6)), Size = UDim2.new(1, -px(12), 0, px(118)) }
+	if type(visual) == "table" and visual.kit then
+		kitBoxVisual(w, card, visual.kit, visualProps)
+	else
+		local view = addView(w, card, visualProps, false)
+		view.set(visual)
+	end
 	text({ Position = UDim2.new(0, px(6), 0, px(128)), Size = UDim2.new(1, -px(12), 0, px(42)), Text = title, MaxSize = 21, Parent = card })
 	text({ Position = UDim2.new(0, px(6), 0, px(170)), Size = UDim2.new(1, -px(12), 0, px(20)), Text = subtitle, TextColor3 = subtitleColor, MaxSize = 17, Parent = card })
 	local b = nil
@@ -485,7 +502,7 @@ local function openShop(stationPart)
 			list,
 			i,
 			rarity.color,
-			FoodModel.build(recipe),
+			{ kit = recipe },
 			recipe.emoji .. " " .. recipe.name,
 			rarity.label .. " · " .. #recipe.steps .. " ingrédients",
 			rarity.color,
@@ -525,7 +542,7 @@ local function openKitchen(stationPart)
 		for i, item in kits do
 			local recipe = Recipes.ById[item.recipe]
 			local rarity = rarityOf(recipe)
-			itemCard(w, list, i, rarity.color, FoodModel.build(recipe), recipe.emoji .. " " .. recipe.name, "Kit · " .. #recipe.steps .. " ingrédients", rarity.color, "Cuisiner !", COLORS.orange, function()
+			itemCard(w, list, i, rarity.color, { kit = recipe }, recipe.emoji .. " " .. recipe.name, "Kit · " .. #recipe.steps .. " ingrédients", rarity.color, "Cuisiner !", COLORS.orange, function()
 				showAssembly(item)
 			end)
 		end
@@ -907,8 +924,11 @@ openInventory = function()
 				local texture = Slimes.ById[item.texture] or Slimes.Textures[1]
 				itemCard(w, list, i, texture.color, FoodModel.buildSlime(recipe, texture.id), "Slime " .. recipe.name, texture.name .. " · " .. tostring(item.value) .. " 🪙", texture.color)
 			else
-				local subtitle = item.kind == "kit" and "Kit à préparer" or "Plat prêt"
-				itemCard(w, list, i, rarity.color, FoodModel.build(recipe), recipe.emoji .. " " .. recipe.name, subtitle, rarity.color)
+				if item.kind == "kit" then
+					itemCard(w, list, i, rarity.color, { kit = recipe }, recipe.emoji .. " " .. recipe.name, "Kit à préparer", rarity.color)
+				else
+					itemCard(w, list, i, rarity.color, FoodModel.build(recipe), recipe.emoji .. " " .. recipe.name, "Plat prêt", rarity.color)
+				end
 			end
 		end
 	end

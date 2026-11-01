@@ -303,7 +303,7 @@ local function buildPlaza(map, config)
 	end
 end
 
-local function buildMarket(map, recipes, foodModel, config, rarities)
+local function buildMarket(map, recipes, foodModel, kitBox, config, rarities)
 	local market = folder(map, "Marche")
 	local floorY = 0.4
 
@@ -323,7 +323,7 @@ local function buildMarket(map, recipes, foodModel, config, rarities)
 	block(building, "Vitre", Vector3.new(16, 8, 0.3), Vector3.new(22, 8, -55.85), C.sky, { Transparency = 0.2, Reflectance = 0.2 })
 	block(building, "Toit", Vector3.new(72, 1.5, 50), Vector3.new(0, 20.75, -80), C.yellow)
 	drips(building, Vector3.new(-35, 0, -55.1), Vector3.new(35, 0, -55.1), 20.2, { C.pink, C.slime, C.lightPink })
-	sign(building, string.upper(config.GameName), facing(Vector3.new(0, 26, -56.5), FACE_PLUS_Z), Vector3.new(44, 9, 1), C.pink, C.white)
+	sign(building, kitBox.upper(config.GameName), facing(Vector3.new(0, 26, -56.5), FACE_PLUS_Z), Vector3.new(44, 9, 1), C.pink, C.white)
 
 	-- lumières au plafond
 	for _, x in { -20, 0, 20 } do
@@ -336,27 +336,36 @@ local function buildMarket(map, recipes, foodModel, config, rarities)
 	-- caisses (stations pour acheter les kits)
 	for _, x in { -15, 15 } do
 		local counter = model(market, "Caisse")
-		local body = block(counter, "Comptoir", Vector3.new(10, 3.4, 3), Vector3.new(x, floorY + 1.7, -65), C.pink)
-		block(counter, "Plateau", Vector3.new(10.4, 0.3, 3.4), Vector3.new(x, floorY + 3.55, -65), C.white)
-		block(counter, "Caisse", Vector3.new(1.8, 1.4, 1.4), Vector3.new(x - 3, floorY + 4.4, -65), rgb(90, 90, 110))
-		block(counter, "Ecran", Vector3.new(1.4, 0.9, 0.2), Vector3.new(x - 3, floorY + 5.4, -64.6), rgb(120, 230, 255), { Material = Enum.Material.Neon })
-		sign(counter, "🛒 CAISSE", facing(Vector3.new(x, 10, -65), FACE_PLUS_Z), Vector3.new(7, 1.8, 0.3), C.yellow, C.pink)
+		local body = block(counter, "Comptoir", Vector3.new(10, 3.4, 3), Vector3.new(x, floorY + 1.7, -63.5), C.pink)
+		block(counter, "Plateau", Vector3.new(10.4, 0.3, 3.4), Vector3.new(x, floorY + 3.55, -63.5), C.white)
+		block(counter, "Caisse", Vector3.new(1.8, 1.4, 1.4), Vector3.new(x - 3, floorY + 4.4, -63.5), rgb(90, 90, 110))
+		block(counter, "Ecran", Vector3.new(1.4, 0.9, 0.2), Vector3.new(x - 3, floorY + 5.4, -63.1), rgb(120, 230, 255), { Material = Enum.Material.Neon })
+		sign(counter, "🛒 CAISSE", facing(Vector3.new(x, 10, -63.5), FACE_PLUS_Z), Vector3.new(7, 1.8, 0.3), C.yellow, C.pink)
 		prompt(body, "Shop", "Acheter des kits", "Caisse")
 	end
 
-	-- îlots de kits (décor)
+	-- îlots : tous les kits dans leur boîte jaune, avec une étiquette de prix
+	local kitSlots = {}
 	for _, x in { -13, 13 } do
 		local island = model(market, "IlotKits")
-		block(island, "Meuble", Vector3.new(5, 4, 18), Vector3.new(x, floorY + 2, -85), C.white)
-		for row = 0, 1 do
-			for k = 0, 7 do
-				local bx, bz = x - 1.2 + row * 2.4, -92.9 + k * 2.25
-				local color = LOLLIPOP_COLORS[((k + row) % #LOLLIPOP_COLORS) + 1]
-				block(island, "Kit", Vector3.new(1.8, 1.3, 1.8), Vector3.new(bx, floorY + 4.65, bz), C.yellow)
-				block(island, "Couvercle", Vector3.new(1.85, 0.3, 1.85), Vector3.new(bx, floorY + 5.45, bz), color)
+		block(island, "Meuble", Vector3.new(5, 4, 26), Vector3.new(x, floorY + 2, -82.2), C.white)
+		sign(island, "KITS", facing(Vector3.new(x, floorY + 2.2, -69.1), FACE_PLUS_Z), Vector3.new(4.6, 2.4, 0.2), C.pink, C.white)
+		for _, side in { -1, 1 } do
+			for k = 0, 6 do
+				table.insert(kitSlots, { parent = island, x = x, z = -93.3 + k * 3.7, side = side })
 			end
 		end
-		sign(island, "KITS", facing(Vector3.new(x, floorY + 2, -75.9), FACE_PLUS_Z), Vector3.new(4.6, 2.2, 0.2), C.pink, C.white)
+	end
+	for i, recipe in recipes.List do
+		local slot = kitSlots[i]
+		if slot then
+			local angle = slot.side < 0 and FACE_MINUS_X or FACE_PLUS_X
+			local origin = CFrame.new(slot.x + slot.side * 1.2, floorY + 4, slot.z) * CFrame.Angles(0, angle, 0)
+			local kit = kitBox.buildModel(recipe, { origin = origin, gameName = config.GameName })
+			kit.Parent = slot.parent
+			local tagPos = Vector3.new(slot.x + slot.side * 2.58, floorY + 3, slot.z)
+			sign(slot.parent, recipe.emoji .. " " .. recipe.price .. " pièces", facing(tagPos, angle), Vector3.new(3.2, 1.3, 0.15), rarities[recipe.rarity].color, C.white)
+		end
 	end
 
 	-- vitrine : un exemplaire de chaque plat, avec son nom et son prix
@@ -622,7 +631,7 @@ function MapBuilder.setupLighting(lighting)
 	lighting.GlobalShadows = true
 end
 
--- deps = { Recipes = ..., FoodModel = ..., Config = ... }
+-- deps = { Recipes = ..., FoodModel = ..., KitBox = ..., Config = ... }
 function MapBuilder.build(parent, deps)
 	FONT = Font.fromEnum(Enum.Font.FredokaOne)
 	seed = 1
@@ -630,7 +639,7 @@ function MapBuilder.build(parent, deps)
 	map.Name = "Map"
 	buildGround(map)
 	buildPlaza(map, deps.Config)
-	buildMarket(map, deps.Recipes, deps.FoodModel, deps.Config, deps.Config.Rarities)
+	buildMarket(map, deps.Recipes, deps.FoodModel, deps.KitBox, deps.Config, deps.Config.Rarities)
 	buildKitchen(map)
 	buildLab(map)
 	buildMerchant(map)
@@ -652,6 +661,7 @@ function MapBuilder.rebuild()
 		Recipes = require(shared.Recipes),
 		FoodModel = require(shared.FoodModel),
 		Config = require(shared.Config),
+		KitBox = require(shared.KitBox),
 	})
 end
 
