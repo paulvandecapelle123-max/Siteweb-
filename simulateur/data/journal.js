@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-02T16:09:23+00:00",
- "credits_odds_api": 471,
+ "maj": "2026-11-02T23:35:29+00:00",
+ "credits_odds_api": 466,
  "paris": [],
  "refus": [],
  "scans": {
@@ -133,10 +133,10 @@ window.JOURNAL = {
    "matchs": 4
   },
   "icehockey_sweden_hockey_league": {
-   "le": "2026-10-26T20:32:29+00:00",
+   "le": "2026-11-02T23:35:29+00:00",
    "sport": "Hockey sur glace",
    "competition": "SHL",
-   "matchs": 6
+   "matchs": 1
   },
   "mma_mixed_martial_arts": {
    "le": "2026-11-01T15:14:12+00:00",
@@ -229,25 +229,25 @@ window.JOURNAL = {
    "matchs": 3
   },
   "soccer_england_league2": {
-   "le": "2026-10-28T02:19:38+00:00",
+   "le": "2026-11-02T23:35:29+00:00",
    "sport": "Football",
    "competition": "League 2",
-   "matchs": 13
+   "matchs": 1
   },
   "soccer_epl": {
-   "le": "2026-10-28T09:44:39+00:00",
+   "le": "2026-11-02T23:35:29+00:00",
    "sport": "Football",
    "competition": "EPL",
-   "matchs": 21
+   "matchs": 20
   },
   "soccer_finland_veikkausliiga": {
-   "le": "2026-10-28T09:44:39+00:00",
+   "le": "2026-11-02T23:35:29+00:00",
    "sport": "Football",
    "competition": "Veikkausliiga - Finland",
-   "matchs": 6
+   "matchs": 3
   },
   "soccer_france_ligue_one": {
-   "le": "2026-10-28T09:44:39+00:00",
+   "le": "2026-11-02T23:35:29+00:00",
    "sport": "Football",
    "competition": "Ligue 1 - France",
    "matchs": 18
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-02T23:35:29+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 466,
+   "capital": 10000
+  },
   {
    "date": "2026-11-02T16:09:23+00:00",
    "competitions_ouvertes": 68,
