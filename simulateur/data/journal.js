@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-02T06:13:37+00:00",
- "credits_odds_api": 478,
+ "maj": "2026-11-02T16:09:23+00:00",
+ "credits_odds_api": 471,
  "paris": [],
  "refus": [],
  "scans": {
@@ -91,10 +91,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_odi": {
-   "le": "2026-10-27T18:45:36+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Cricket",
    "competition": "One Day Internationals",
-   "matchs": 2
+   "matchs": 1
   },
   "cricket_test_match": {
    "le": "2026-11-01T19:45:11+00:00",
@@ -187,7 +187,7 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_china_superleague": {
-   "le": "2026-10-28T02:19:38+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football",
    "competition": "Super League - China",
    "matchs": 8
@@ -211,22 +211,22 @@ window.JOURNAL = {
    "matchs": 7
   },
   "soccer_efl_champ": {
-   "le": "2026-10-27T18:45:36+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football",
    "competition": "Championship",
-   "matchs": 12
+   "matchs": 24
   },
   "soccer_england_efl_cup": {
-   "le": "2026-10-27T22:58:34+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football",
    "competition": "EFL Cup",
-   "matchs": 6
+   "matchs": 9
   },
   "soccer_england_league1": {
-   "le": "2026-10-27T22:58:34+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football",
    "competition": "League 1",
-   "matchs": 13
+   "matchs": 3
   },
   "soccer_england_league2": {
    "le": "2026-10-28T02:19:38+00:00",
@@ -511,13 +511,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_spain_copa_del_rey": {
-   "le": "2026-10-27T18:45:36+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football",
    "competition": "Copa del Rey",
-   "matchs": 32
+   "matchs": 11
   },
   "aussierules_afl": {
-   "le": "2026-10-27T22:58:34+00:00",
+   "le": "2026-11-02T16:09:23+00:00",
    "sport": "Football australien",
    "competition": "AFL",
    "matchs": 9
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-02T16:09:23+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 471,
+   "capital": 10000
+  },
   {
    "date": "2026-11-02T06:13:37+00:00",
    "competitions_ouvertes": 64,
