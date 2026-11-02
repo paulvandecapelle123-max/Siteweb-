@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-01T23:38:43+00:00",
- "credits_odds_api": 483,
+ "maj": "2026-11-02T06:13:37+00:00",
+ "credits_odds_api": 478,
  "paris": [],
  "refus": [],
  "scans": {
@@ -175,16 +175,16 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_brazil_serie_b": {
-   "le": "2026-10-27T13:15:48+00:00",
+   "le": "2026-11-02T06:13:37+00:00",
    "sport": "Football",
    "competition": "Brazil Série B",
-   "matchs": 9
+   "matchs": 8
   },
   "soccer_chile_campeonato": {
-   "le": "2026-10-27T13:15:48+00:00",
+   "le": "2026-11-02T06:13:37+00:00",
    "sport": "Football",
    "competition": "Primera División - Chile",
-   "matchs": 9
+   "matchs": 10
   },
   "soccer_china_superleague": {
    "le": "2026-10-28T02:19:38+00:00",
@@ -193,22 +193,22 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_conmebol_copa_libertadores": {
-   "le": "2026-10-27T13:15:48+00:00",
+   "le": "2026-11-02T06:13:37+00:00",
    "sport": "Football",
    "competition": "Copa Libertadores",
    "matchs": 1
   },
   "soccer_conmebol_copa_sudamericana": {
-   "le": "2026-10-27T13:15:48+00:00",
+   "le": "2026-11-02T06:13:37+00:00",
    "sport": "Football",
    "competition": "Copa Sudamericana",
    "matchs": 1
   },
   "soccer_denmark_superliga": {
-   "le": "2026-10-27T18:45:36+00:00",
+   "le": "2026-11-02T06:13:37+00:00",
    "sport": "Football",
    "competition": "Denmark Superliga",
-   "matchs": 6
+   "matchs": 7
   },
   "soccer_efl_champ": {
    "le": "2026-10-27T18:45:36+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-02T06:13:37+00:00",
+   "competitions_ouvertes": 64,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 478,
+   "capital": 10000
+  },
   {
    "date": "2026-11-01T23:38:43+00:00",
    "competitions_ouvertes": 65,
