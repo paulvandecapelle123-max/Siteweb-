@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-03T06:53:01+00:00",
- "credits_odds_api": 461,
+ "maj": "2026-11-03T15:13:08+00:00",
+ "credits_odds_api": 455,
  "paris": [],
  "refus": [],
  "scans": {
@@ -283,25 +283,25 @@ window.JOURNAL = {
    "matchs": 20
   },
   "soccer_greece_super_league": {
-   "le": "2026-10-28T16:40:26+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 14
+   "matchs": 7
   },
   "soccer_italy_serie_a": {
-   "le": "2026-10-28T21:40:55+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
-   "matchs": 14
+   "matchs": 10
   },
   "soccer_italy_serie_b": {
-   "le": "2026-10-29T01:49:54+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
    "matchs": 10
   },
   "soccer_japan_j_league": {
-   "le": "2026-10-29T08:33:45+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Football",
    "competition": "J League",
    "matchs": 10
@@ -481,10 +481,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "basketball_ncaab": {
-   "le": "2026-10-29T01:49:54+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Basket",
    "competition": "NCAAB",
-   "matchs": 7
+   "matchs": 19
   },
   "soccer_uefa_champs_league_women": {
    "le": "2026-10-29T21:10:44+00:00",
@@ -529,14 +529,28 @@ window.JOURNAL = {
    "matchs": 1
   },
   "tennis_atp_paris_masters": {
-   "le": "2026-10-31T12:38:47+00:00",
+   "le": "2026-11-03T15:13:08+00:00",
    "sport": "Tennis",
    "competition": "ATP Paris Masters",
-   "matchs": 22
+   "matchs": 14
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-03T15:13:08+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 5,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 455,
+   "capital": 10000
+  },
   {
    "date": "2026-11-03T06:53:01+00:00",
    "competitions_ouvertes": 69,
@@ -4710,7 +4724,103 @@ window.JOURNAL = {
    "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "Boston College Eagles",
+   "adversaire": "Wagner Seahawks",
+   "proba_marche": 0.9795,
+   "cote": 1.014,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "1xBet",
+   "nb_bookmakers": 7,
+   "id": "2cccdbb5426caa7a69f652bb577b367c",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-04T00:00:00Z",
+   "domicile": "Boston College Eagles",
+   "exterieur": "Wagner Seahawks",
+   "repere_le": "2026-11-03T15:13:08+00:00",
+   "cotes_le": "2026-11-03T15:13:08+00:00"
+  },
+  {
+   "favori": "Rhode Island Rams",
+   "adversaire": "Holy Cross Crusaders",
+   "proba_marche": 0.9829,
+   "cote": 1.012,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "1xBet",
+   "nb_bookmakers": 6,
+   "id": "d2c45b0c90f12321cb072d68bd3d4a1c",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-04T00:00:00Z",
+   "domicile": "Rhode Island Rams",
+   "exterieur": "Holy Cross Crusaders",
+   "repere_le": "2026-11-03T15:13:08+00:00",
+   "cotes_le": "2026-11-03T15:13:08+00:00"
+  },
+  {
+   "favori": "South Carolina Gamecocks",
+   "adversaire": "Stetson Hatters",
+   "proba_marche": 0.9726,
+   "cote": 1.02,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.03,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 7,
+   "id": "5327528ec3e4f115e5283df73f2a1ded",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-04T00:00:00Z",
+   "domicile": "South Carolina Gamecocks",
+   "exterieur": "Stetson Hatters",
+   "repere_le": "2026-11-03T15:13:08+00:00",
+   "cotes_le": "2026-11-03T15:13:08+00:00"
+  },
+  {
+   "favori": "Iowa Hawkeyes",
+   "adversaire": "Lipscomb Bisons",
+   "proba_marche": 0.9828,
+   "cote": 1.012,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 5,
+   "id": "7057bcf2a149f4767dba9068bbff1845",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-04T01:00:00Z",
+   "domicile": "Iowa Hawkeyes",
+   "exterieur": "Lipscomb Bisons",
+   "repere_le": "2026-11-03T15:13:08+00:00",
+   "cotes_le": "2026-11-03T15:13:08+00:00"
+  },
+  {
+   "favori": "UNLV Rebels",
+   "adversaire": "Northern Arizona Lumberjacks",
+   "proba_marche": 0.9827,
+   "cote": 1.012,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 5,
+   "id": "80e148489a44ada538f600e7db5d27d9",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-04T03:00:00Z",
+   "domicile": "UNLV Rebels",
+   "exterieur": "Northern Arizona Lumberjacks",
+   "repere_le": "2026-11-03T15:13:08+00:00",
+   "cotes_le": "2026-11-03T15:13:08+00:00"
+  }
+ ],
  "scores_le": {},
  "ia_active": false,
  "resultats_par_discipline": {
