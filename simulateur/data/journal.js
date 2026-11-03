@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-03T15:13:08+00:00",
- "credits_odds_api": 455,
+ "maj": "2026-11-03T21:03:53+00:00",
+ "credits_odds_api": 451,
  "paris": [],
  "refus": [],
  "scans": {
@@ -307,16 +307,16 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_korea_kleague1": {
-   "le": "2026-10-29T08:33:45+00:00",
+   "le": "2026-11-03T21:03:53+00:00",
    "sport": "Football",
    "competition": "K League 1",
    "matchs": 6
   },
   "soccer_league_of_ireland": {
-   "le": "2026-10-29T08:33:45+00:00",
+   "le": "2026-11-03T21:03:53+00:00",
    "sport": "Football",
    "competition": "League of Ireland",
-   "matchs": 5
+   "matchs": 1
   },
   "soccer_mexico_ligamx": {
    "le": "2026-10-29T16:11:21+00:00",
@@ -445,7 +445,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "baseball_kbo": {
-   "le": "2026-10-29T16:11:21+00:00",
+   "le": "2026-11-03T21:03:53+00:00",
    "sport": "Baseball",
    "competition": "KBO",
    "matchs": 1
@@ -463,10 +463,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_germany_bundesliga_women": {
-   "le": "2026-10-29T08:33:45+00:00",
+   "le": "2026-11-03T21:03:53+00:00",
    "sport": "Football",
    "competition": "Frauen-Bundesliga",
-   "matchs": 1
+   "matchs": 2
   },
   "soccer_fa_cup": {
    "le": "2026-11-01T01:14:26+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-03T21:03:53+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 451,
+   "capital": 10000
+  },
   {
    "date": "2026-11-03T15:13:08+00:00",
    "competitions_ouvertes": 70,
