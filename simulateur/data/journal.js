@@ -1,13 +1,13 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-04T09:20:52+00:00",
- "credits_odds_api": 443,
+ "maj": "2026-11-04T23:43:09+00:00",
+ "credits_odds_api": 433,
  "paris": [],
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
-   "le": "2026-10-30T19:27:56+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football américain",
    "competition": "CFL",
    "matchs": 2
@@ -349,7 +349,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_russia_premier_league": {
-   "le": "2026-10-30T07:11:51+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "Premier League - Russia",
    "matchs": 8
@@ -373,25 +373,25 @@ window.JOURNAL = {
    "matchs": 7
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-10-30T01:04:22+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
    "matchs": 8
   },
   "soccer_sweden_superettan": {
-   "le": "2026-10-30T07:11:51+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "Superettan - Sweden",
    "matchs": 8
   },
   "soccer_switzerland_superleague": {
-   "le": "2026-10-30T07:11:51+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "Swiss Superleague",
    "matchs": 6
   },
   "soccer_turkey_super_league": {
-   "le": "2026-10-30T07:11:51+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "Turkey Super League",
    "matchs": 9
@@ -409,25 +409,25 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-10-30T14:14:27+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
-   "matchs": 18
+   "matchs": 17
   },
   "soccer_spain_la_liga": {
-   "le": "2026-10-30T14:14:27+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "La Liga - Spain",
    "matchs": 20
   },
   "soccer_uefa_nations_league": {
-   "le": "2026-10-30T14:14:27+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "UEFA Nations League",
-   "matchs": 8
+   "matchs": 26
   },
   "soccer_usa_mls": {
-   "le": "2026-10-30T14:14:27+00:00",
+   "le": "2026-11-04T23:43:09+00:00",
    "sport": "Football",
    "competition": "MLS",
    "matchs": 15
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-04T23:43:09+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 10,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 10,
+   "credits_restants": 433,
+   "capital": 10000
+  },
   {
    "date": "2026-11-04T09:20:52+00:00",
    "competitions_ouvertes": 70,
@@ -4721,20 +4735,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 2,
    "credits_restants": 414,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-07T16:36:29+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 5,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 5,
-   "credits_restants": 416,
    "capital": 10000
   }
  ],
