@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-04T01:25:27+00:00",
- "credits_odds_api": 448,
+ "maj": "2026-11-04T09:20:52+00:00",
+ "credits_odds_api": 443,
  "paris": [],
  "refus": [],
  "scans": {
@@ -331,19 +331,19 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_norway_eliteserien": {
-   "le": "2026-10-29T16:11:21+00:00",
+   "le": "2026-11-04T09:20:52+00:00",
    "sport": "Football",
    "competition": "Eliteserien - Norway",
    "matchs": 8
   },
   "soccer_poland_ekstraklasa": {
-   "le": "2026-10-29T16:11:21+00:00",
+   "le": "2026-11-04T09:20:52+00:00",
    "sport": "Football",
    "competition": "Ekstraklasa - Poland",
    "matchs": 9
   },
   "soccer_portugal_primeira_liga": {
-   "le": "2026-10-29T21:10:44+00:00",
+   "le": "2026-11-04T09:20:52+00:00",
    "sport": "Football",
    "competition": "Primeira Liga - Portugal",
    "matchs": 9
@@ -361,16 +361,16 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_spain_segunda_division": {
-   "le": "2026-10-29T21:10:44+00:00",
+   "le": "2026-11-04T09:20:52+00:00",
    "sport": "Football",
    "competition": "La Liga 2 - Spain",
    "matchs": 11
   },
   "soccer_spl": {
-   "le": "2026-10-30T01:04:22+00:00",
+   "le": "2026-11-04T09:20:52+00:00",
    "sport": "Football",
    "competition": "Premiership - Scotland",
-   "matchs": 4
+   "matchs": 7
   },
   "soccer_sweden_allsvenskan": {
    "le": "2026-10-30T01:04:22+00:00",
@@ -537,6 +537,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-04T09:20:52+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 1,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 443,
+   "capital": 10000
+  },
   {
    "date": "2026-11-04T01:25:27+00:00",
    "competitions_ouvertes": 71,
@@ -4722,43 +4736,9 @@ window.JOURNAL = {
    "credits_utilises": 5,
    "credits_restants": 416,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-07T15:42:42+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 39,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 40,
-   "credits_restants": 421,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "UNLV Rebels",
-   "adversaire": "Northern Arizona Lumberjacks",
-   "proba_marche": 0.9827,
-   "cote": 1.012,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "GTbets",
-   "nb_bookmakers": 5,
-   "id": "80e148489a44ada538f600e7db5d27d9",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-04T03:00:00Z",
-   "domicile": "UNLV Rebels",
-   "exterieur": "Northern Arizona Lumberjacks",
-   "repere_le": "2026-11-03T15:13:08+00:00",
-   "cotes_le": "2026-11-03T15:13:08+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {},
  "ia_active": false,
  "resultats_par_discipline": {
