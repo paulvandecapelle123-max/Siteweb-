@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-05T06:53:40+00:00",
- "credits_odds_api": 428,
+ "maj": "2026-11-05T15:31:19+00:00",
+ "credits_odds_api": 422,
  "paris": [],
  "refus": [],
  "scans": {
@@ -31,10 +31,10 @@ window.JOURNAL = {
    "matchs": 28
   },
   "aussierules_aflw": {
-   "le": "2026-11-01T07:38:05+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Football australien",
    "competition": "AFL Women's",
-   "matchs": 1
+   "matchs": 4
   },
   "baseball_mlb": {
    "le": "2026-10-25T19:40:44+00:00",
@@ -67,10 +67,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "basketball_nbl": {
-   "le": "2026-11-01T07:38:05+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Basket",
    "competition": "NBL",
-   "matchs": 2
+   "matchs": 3
   },
   "basketball_wnba": {
    "le": "2026-10-30T23:50:54+00:00",
@@ -79,10 +79,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-10-31T05:49:59+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 44
+   "matchs": 45
   },
   "cricket_international_t20": {
    "le": "2026-10-31T05:49:59+00:00",
@@ -397,7 +397,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_uefa_champs_league": {
-   "le": "2026-10-30T14:14:27+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Football",
    "competition": "UEFA Champions League",
    "matchs": 18
@@ -469,10 +469,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "soccer_fa_cup": {
-   "le": "2026-11-01T01:14:26+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Football",
    "competition": "FA Cup",
-   "matchs": 32
+   "matchs": 40
   },
   "tennis_wta_ningbo_open": {
    "le": "2026-10-23T10:08:26+00:00",
@@ -523,10 +523,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "basketball_wncaab": {
-   "le": "2026-10-30T19:27:56+00:00",
+   "le": "2026-11-05T15:31:19+00:00",
    "sport": "Basket",
    "competition": "WNCAAB",
-   "matchs": 1
+   "matchs": 6
   },
   "tennis_atp_paris_masters": {
    "le": "2026-11-03T15:13:08+00:00",
@@ -543,6 +543,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-05T15:31:19+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 422,
+   "capital": 10000
+  },
   {
    "date": "2026-11-05T06:53:40+00:00",
    "competitions_ouvertes": 68,
@@ -4727,20 +4741,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 386,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-07T23:28:56+00:00",
-   "competitions_ouvertes": 72,
-   "competitions_scannees": 27,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 27,
-   "credits_restants": 387,
    "capital": 10000
   }
  ],
