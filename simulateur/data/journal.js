@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-07T10:18:13+00:00",
- "credits_odds_api": 392,
+ "maj": "2026-11-07T16:51:07+00:00",
+ "credits_odds_api": 387,
  "paris": [],
  "refus": [],
  "scans": {
@@ -253,34 +253,34 @@ window.JOURNAL = {
    "matchs": 17
   },
   "soccer_france_ligue_two": {
-   "le": "2026-11-03T06:53:01+00:00",
+   "le": "2026-11-07T16:51:07+00:00",
    "sport": "Football",
    "competition": "Ligue 2 - France",
-   "matchs": 9
+   "matchs": 2
   },
   "soccer_germany_bundesliga": {
-   "le": "2026-11-03T06:53:01+00:00",
+   "le": "2026-11-07T16:51:07+00:00",
    "sport": "Football",
    "competition": "Bundesliga - Germany",
-   "matchs": 9
+   "matchs": 13
   },
   "soccer_germany_bundesliga2": {
-   "le": "2026-11-03T06:53:01+00:00",
+   "le": "2026-11-07T16:51:07+00:00",
    "sport": "Football",
    "competition": "Bundesliga 2 - Germany",
-   "matchs": 9
+   "matchs": 4
   },
   "soccer_germany_dfb_pokal": {
-   "le": "2026-11-03T06:53:01+00:00",
+   "le": "2026-11-07T16:51:07+00:00",
    "sport": "Football",
    "competition": "DFB-Pokal",
    "matchs": 8
   },
   "soccer_germany_liga3": {
-   "le": "2026-11-03T06:53:01+00:00",
+   "le": "2026-11-07T16:51:07+00:00",
    "sport": "Football",
    "competition": "3. Liga - Germany",
-   "matchs": 20
+   "matchs": 14
   },
   "soccer_greece_super_league": {
    "le": "2026-11-03T15:13:08+00:00",
@@ -543,6 +543,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-07T16:51:07+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 387,
+   "capital": 10000
+  },
   {
    "date": "2026-11-07T10:18:13+00:00",
    "competitions_ouvertes": 72,
@@ -4727,20 +4741,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 378,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-08T10:35:18+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 379,
    "capital": 10000
   }
  ],
