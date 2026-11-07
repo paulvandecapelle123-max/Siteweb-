@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-07T02:51:44+00:00",
- "credits_odds_api": 397,
+ "maj": "2026-11-07T10:18:13+00:00",
+ "credits_odds_api": 392,
  "paris": [],
  "refus": [],
  "scans": {
@@ -133,10 +133,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_sweden_hockey_league": {
-   "le": "2026-11-02T23:35:29+00:00",
+   "le": "2026-11-07T10:18:13+00:00",
    "sport": "Hockey sur glace",
    "competition": "SHL",
-   "matchs": 1
+   "matchs": 7
   },
   "mma_mixed_martial_arts": {
    "le": "2026-11-05T22:01:53+00:00",
@@ -229,28 +229,28 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_england_league2": {
-   "le": "2026-11-02T23:35:29+00:00",
+   "le": "2026-11-07T10:18:13+00:00",
    "sport": "Football",
    "competition": "League 2",
-   "matchs": 1
+   "matchs": 10
   },
   "soccer_epl": {
-   "le": "2026-11-02T23:35:29+00:00",
+   "le": "2026-11-07T10:18:13+00:00",
    "sport": "Football",
    "competition": "EPL",
-   "matchs": 20
+   "matchs": 19
   },
   "soccer_finland_veikkausliiga": {
-   "le": "2026-11-02T23:35:29+00:00",
+   "le": "2026-11-07T10:18:13+00:00",
    "sport": "Football",
    "competition": "Veikkausliiga - Finland",
    "matchs": 3
   },
   "soccer_france_ligue_one": {
-   "le": "2026-11-02T23:35:29+00:00",
+   "le": "2026-11-07T10:18:13+00:00",
    "sport": "Football",
    "competition": "Ligue 1 - France",
-   "matchs": 18
+   "matchs": 17
   },
   "soccer_france_ligue_two": {
    "le": "2026-11-03T06:53:01+00:00",
@@ -543,6 +543,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-07T10:18:13+00:00",
+   "competitions_ouvertes": 72,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 392,
+   "capital": 10000
+  },
   {
    "date": "2026-11-07T02:51:44+00:00",
    "competitions_ouvertes": 73,
@@ -4727,20 +4741,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 379,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-08T08:35:51+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 380,
    "capital": 10000
   }
  ],
