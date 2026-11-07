@@ -1,9 +1,37 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-07T16:51:07+00:00",
- "credits_odds_api": 387,
- "paris": [],
+ "maj": "2026-11-07T20:55:42+00:00",
+ "credits_odds_api": 385,
+ "paris": [
+  {
+   "favori": "Miami (OH) RedHawks",
+   "adversaire": "Bellarmine Knights",
+   "proba_marche": 0.979,
+   "cote": 1.015,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 4,
+   "id": "13682aa418e925f984130159d8f351b8",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-07T22:00:00Z",
+   "domicile": "Miami (OH) RedHawks",
+   "exterieur": "Bellarmine Knights",
+   "repere_le": "2026-11-07T20:55:42+00:00",
+   "cotes_le": "2026-11-07T20:55:42+00:00",
+   "proba_ia": null,
+   "raison_ia": "IA non utilisée : pari placé d'après les cotes seulement.",
+   "decide_par": "regle",
+   "date_decision": "2026-11-07T20:55:42+00:00",
+   "statut": "en_cours",
+   "score": null,
+   "mise": 200.0,
+   "gain": null
+  }
+ ],
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
@@ -283,10 +311,10 @@ window.JOURNAL = {
    "matchs": 14
   },
   "soccer_greece_super_league": {
-   "le": "2026-11-03T15:13:08+00:00",
+   "le": "2026-11-07T20:55:42+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 7
+   "matchs": 5
   },
   "soccer_italy_serie_a": {
    "le": "2026-11-03T15:13:08+00:00",
@@ -481,10 +509,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "basketball_ncaab": {
-   "le": "2026-11-03T15:13:08+00:00",
+   "le": "2026-11-07T20:55:42+00:00",
    "sport": "Basket",
    "competition": "NCAAB",
-   "matchs": 19
+   "matchs": 64
   },
   "soccer_uefa_champs_league_women": {
    "le": "2026-11-06T18:00:35+00:00",
@@ -543,6 +571,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-07T20:55:42+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 2,
+   "nouveaux_surveilles": 4,
+   "candidats": 1,
+   "paris_places": 1,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 2,
+   "credits_restants": 385,
+   "capital": 10000
+  },
   {
    "date": "2026-11-07T16:51:07+00:00",
    "competitions_ouvertes": 71,
@@ -4728,23 +4770,67 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 377,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-08T11:33:53+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 378,
-   "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "Dayton Flyers",
+   "adversaire": "Northern Illinois Huskies",
+   "proba_marche": 0.9776,
+   "cote": 1.017,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "BetOnline.ag",
+   "nb_bookmakers": 3,
+   "id": "13f00af18ed09193a860cfb25d9caff1",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-08T00:00:00Z",
+   "domicile": "Dayton Flyers",
+   "exterieur": "Northern Illinois Huskies",
+   "repere_le": "2026-11-07T20:55:42+00:00",
+   "cotes_le": "2026-11-07T20:55:42+00:00"
+  },
+  {
+   "favori": "Grand Canyon Antelopes",
+   "adversaire": "Bethune-Cookman Wildcats",
+   "proba_marche": 0.982,
+   "cote": 1.013,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 3,
+   "id": "30fe39df8463cf104dcce6d4fcf7fa53",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-08T01:00:00Z",
+   "domicile": "Grand Canyon Antelopes",
+   "exterieur": "Bethune-Cookman Wildcats",
+   "repere_le": "2026-11-07T20:55:42+00:00",
+   "cotes_le": "2026-11-07T20:55:42+00:00"
+  },
+  {
+   "favori": "Santa Clara Broncos",
+   "adversaire": "Sacramento St Hornets",
+   "proba_marche": 0.9762,
+   "cote": 1.018,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "888sport",
+   "nb_bookmakers": 4,
+   "id": "fc880e5a120c069cb1dae81b47fc1451",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-08T03:00:00Z",
+   "domicile": "Santa Clara Broncos",
+   "exterieur": "Sacramento St Hornets",
+   "repere_le": "2026-11-07T20:55:42+00:00",
+   "cotes_le": "2026-11-07T20:55:42+00:00"
+  }
+ ],
  "scores_le": {},
  "ia_active": false,
  "resultats_par_discipline": {
