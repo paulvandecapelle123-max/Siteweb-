@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-06T23:12:41+00:00",
- "credits_odds_api": 400,
+ "maj": "2026-11-07T02:51:44+00:00",
+ "credits_odds_api": 397,
  "paris": [],
  "refus": [],
  "scans": {
@@ -217,16 +217,16 @@ window.JOURNAL = {
    "matchs": 11
   },
   "soccer_england_efl_cup": {
-   "le": "2026-11-02T16:09:23+00:00",
+   "le": "2026-11-07T02:51:44+00:00",
    "sport": "Football",
    "competition": "EFL Cup",
    "matchs": 9
   },
   "soccer_england_league1": {
-   "le": "2026-11-02T16:09:23+00:00",
+   "le": "2026-11-07T02:51:44+00:00",
    "sport": "Football",
    "competition": "League 1",
-   "matchs": 3
+   "matchs": 8
   },
   "soccer_england_league2": {
    "le": "2026-11-02T23:35:29+00:00",
@@ -511,10 +511,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_spain_copa_del_rey": {
-   "le": "2026-11-02T16:09:23+00:00",
+   "le": "2026-11-07T02:51:44+00:00",
    "sport": "Football",
    "competition": "Copa del Rey",
-   "matchs": 11
+   "matchs": 2
   },
   "aussierules_afl": {
    "le": "2026-11-06T18:00:35+00:00",
@@ -543,6 +543,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-07T02:51:44+00:00",
+   "competitions_ouvertes": 73,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 397,
+   "capital": 10000
+  },
   {
    "date": "2026-11-06T23:12:41+00:00",
    "competitions_ouvertes": 73,
@@ -4727,20 +4741,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 380,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-08T07:35:58+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 381,
    "capital": 10000
   }
  ],
