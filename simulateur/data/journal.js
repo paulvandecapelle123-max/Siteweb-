@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-08T00:41:02+00:00",
- "credits_odds_api": 382,
+ "maj": "2026-11-08T07:25:52+00:00",
+ "credits_odds_api": 377,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -26,10 +26,12 @@ window.JOURNAL = {
    "raison_ia": "IA non utilisée : pari placé d'après les cotes seulement.",
    "decide_par": "regle",
    "date_decision": "2026-11-07T20:55:42+00:00",
-   "statut": "en_cours",
-   "score": null,
+   "statut": "gagne",
+   "score": "80-73",
    "mise": 200.0,
-   "gain": null
+   "gain": 3.0,
+   "regle_par": "scores",
+   "regle_le": "2026-11-08T07:25:52+00:00"
   },
   {
    "favori": "Grand Canyon Antelopes",
@@ -53,10 +55,12 @@ window.JOURNAL = {
    "raison_ia": "IA non utilisée : pari placé d'après les cotes seulement.",
    "decide_par": "regle",
    "date_decision": "2026-11-08T00:41:02+00:00",
-   "statut": "en_cours",
-   "score": null,
+   "statut": "gagne",
+   "score": "99-81",
    "mise": 200.0,
-   "gain": null
+   "gain": 2.6,
+   "regle_par": "scores",
+   "regle_le": "2026-11-08T07:25:52+00:00"
   }
  ],
  "refus": [],
@@ -500,7 +504,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "baseball_kbo": {
-   "le": "2026-11-03T21:03:53+00:00",
+   "le": "2026-11-08T07:25:52+00:00",
    "sport": "Baseball",
    "competition": "KBO",
    "matchs": 1
@@ -518,10 +522,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_germany_bundesliga_women": {
-   "le": "2026-11-03T21:03:53+00:00",
+   "le": "2026-11-08T07:25:52+00:00",
    "sport": "Football",
    "competition": "Frauen-Bundesliga",
-   "matchs": 2
+   "matchs": 3
   },
   "soccer_fa_cup": {
    "le": "2026-11-05T15:31:19+00:00",
@@ -584,10 +588,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "tennis_atp_paris_masters": {
-   "le": "2026-11-05T22:01:53+00:00",
+   "le": "2026-11-08T07:25:52+00:00",
    "sport": "Tennis",
    "competition": "ATP Paris Masters",
-   "matchs": 4
+   "matchs": 1
   },
   "cricket_big_bash": {
    "le": "2026-11-05T06:53:40+00:00",
@@ -598,6 +602,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-08T07:25:52+00:00",
+   "competitions_ouvertes": 65,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 1,
+   "paris_regles": 2,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 377,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-08T00:41:02+00:00",
    "competitions_ouvertes": 68,
@@ -4783,44 +4801,12 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 375,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-08T14:37:20+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 376,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "Santa Clara Broncos",
-   "adversaire": "Sacramento St Hornets",
-   "proba_marche": 0.9762,
-   "cote": 1.018,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "888sport",
-   "nb_bookmakers": 4,
-   "id": "fc880e5a120c069cb1dae81b47fc1451",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-08T03:00:00Z",
-   "domicile": "Santa Clara Broncos",
-   "exterieur": "Sacramento St Hornets",
-   "repere_le": "2026-11-07T20:55:42+00:00",
-   "cotes_le": "2026-11-07T20:55:42+00:00"
-  }
- ],
- "scores_le": {},
+ "surveillance": [],
+ "scores_le": {
+  "basketball_ncaab": "2026-11-08T07:25:52+00:00"
+ },
  "ia_active": false,
  "resultats_par_discipline": {
   "American Football": {
