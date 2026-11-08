@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-08T19:46:45+00:00",
- "credits_odds_api": 369,
+ "maj": "2026-11-08T23:45:34+00:00",
+ "credits_odds_api": 366,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -468,22 +468,22 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-11-04T23:43:09+00:00",
+   "le": "2026-11-08T23:45:34+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
-   "matchs": 17
+   "matchs": 18
   },
   "soccer_spain_la_liga": {
-   "le": "2026-11-04T23:43:09+00:00",
+   "le": "2026-11-08T23:45:34+00:00",
    "sport": "Football",
    "competition": "La Liga - Spain",
-   "matchs": 20
+   "matchs": 10
   },
   "soccer_uefa_nations_league": {
-   "le": "2026-11-04T23:43:09+00:00",
+   "le": "2026-11-08T23:45:34+00:00",
    "sport": "Football",
    "competition": "UEFA Nations League",
-   "matchs": 26
+   "matchs": 27
   },
   "soccer_usa_mls": {
    "le": "2026-11-04T23:43:09+00:00",
@@ -602,6 +602,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-08T23:45:34+00:00",
+   "competitions_ouvertes": 51,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 366,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-08T19:46:45+00:00",
    "competitions_ouvertes": 55,
@@ -4786,20 +4800,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 372,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-08T19:33:23+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 373,
    "capital": 10000
   }
  ],
