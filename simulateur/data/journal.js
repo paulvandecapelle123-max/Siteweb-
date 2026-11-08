@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-07T20:55:42+00:00",
- "credits_odds_api": 385,
+ "maj": "2026-11-08T00:41:02+00:00",
+ "credits_odds_api": 382,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -26,6 +26,33 @@ window.JOURNAL = {
    "raison_ia": "IA non utilisée : pari placé d'après les cotes seulement.",
    "decide_par": "regle",
    "date_decision": "2026-11-07T20:55:42+00:00",
+   "statut": "en_cours",
+   "score": null,
+   "mise": 200.0,
+   "gain": null
+  },
+  {
+   "favori": "Grand Canyon Antelopes",
+   "adversaire": "Bethune-Cookman Wildcats",
+   "proba_marche": 0.982,
+   "cote": 1.013,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 3,
+   "id": "30fe39df8463cf104dcce6d4fcf7fa53",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-08T01:00:00Z",
+   "domicile": "Grand Canyon Antelopes",
+   "exterieur": "Bethune-Cookman Wildcats",
+   "repere_le": "2026-11-07T20:55:42+00:00",
+   "cotes_le": "2026-11-07T20:55:42+00:00",
+   "proba_ia": null,
+   "raison_ia": "IA non utilisée : pari placé d'après les cotes seulement.",
+   "decide_par": "regle",
+   "date_decision": "2026-11-08T00:41:02+00:00",
    "statut": "en_cours",
    "score": null,
    "mise": 200.0,
@@ -317,22 +344,22 @@ window.JOURNAL = {
    "matchs": 5
   },
   "soccer_italy_serie_a": {
-   "le": "2026-11-03T15:13:08+00:00",
+   "le": "2026-11-08T00:41:02+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
-   "matchs": 10
+   "matchs": 15
   },
   "soccer_italy_serie_b": {
-   "le": "2026-11-03T15:13:08+00:00",
+   "le": "2026-11-08T00:41:02+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
-   "matchs": 10
+   "matchs": 3
   },
   "soccer_japan_j_league": {
-   "le": "2026-11-03T15:13:08+00:00",
+   "le": "2026-11-08T00:41:02+00:00",
    "sport": "Football",
    "competition": "J League",
-   "matchs": 10
+   "matchs": 4
   },
   "soccer_korea_kleague1": {
    "le": "2026-11-03T21:03:53+00:00",
@@ -571,6 +598,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-08T00:41:02+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 1,
+   "paris_places": 1,
+   "manques": 1,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 382,
+   "capital": 10000
+  },
   {
    "date": "2026-11-07T20:55:42+00:00",
    "competitions_ouvertes": 70,
@@ -4756,61 +4797,9 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 376,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-08T13:37:18+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 377,
-   "capital": 10000
   }
  ],
  "surveillance": [
-  {
-   "favori": "Dayton Flyers",
-   "adversaire": "Northern Illinois Huskies",
-   "proba_marche": 0.9776,
-   "cote": 1.017,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "BetOnline.ag",
-   "nb_bookmakers": 3,
-   "id": "13f00af18ed09193a860cfb25d9caff1",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-08T00:00:00Z",
-   "domicile": "Dayton Flyers",
-   "exterieur": "Northern Illinois Huskies",
-   "repere_le": "2026-11-07T20:55:42+00:00",
-   "cotes_le": "2026-11-07T20:55:42+00:00"
-  },
-  {
-   "favori": "Grand Canyon Antelopes",
-   "adversaire": "Bethune-Cookman Wildcats",
-   "proba_marche": 0.982,
-   "cote": 1.013,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "GTbets",
-   "nb_bookmakers": 3,
-   "id": "30fe39df8463cf104dcce6d4fcf7fa53",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-08T01:00:00Z",
-   "domicile": "Grand Canyon Antelopes",
-   "exterieur": "Bethune-Cookman Wildcats",
-   "repere_le": "2026-11-07T20:55:42+00:00",
-   "cotes_le": "2026-11-07T20:55:42+00:00"
-  },
   {
    "favori": "Santa Clara Broncos",
    "adversaire": "Sacramento St Hornets",
