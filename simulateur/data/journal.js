@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-10T01:36:05+00:00",
- "credits_odds_api": 348,
+ "maj": "2026-11-10T09:55:24+00:00",
+ "credits_odds_api": 342,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -156,10 +156,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_test_match": {
-   "le": "2026-11-06T02:30:10+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "Cricket",
    "competition": "Test Matches",
-   "matchs": 3
+   "matchs": 2
   },
   "handball_germany_bundesliga": {
    "le": "2026-11-01T15:14:12+00:00",
@@ -180,16 +180,16 @@ window.JOURNAL = {
    "matchs": 2
   },
   "icehockey_nhl": {
-   "le": "2026-11-05T22:01:53+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 14
+   "matchs": 7
   },
   "icehockey_sweden_allsvenskan": {
-   "le": "2026-11-05T22:01:53+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "Hockey sur glace",
    "competition": "HockeyAllsvenskan",
-   "matchs": 1
+   "matchs": 7
   },
   "icehockey_sweden_hockey_league": {
    "le": "2026-11-07T10:18:13+00:00",
@@ -198,16 +198,16 @@ window.JOURNAL = {
    "matchs": 7
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-11-05T22:01:53+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 68
+   "matchs": 61
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-11-06T02:30:10+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 13
+   "matchs": 8
   },
   "soccer_australia_aleague": {
    "le": "2026-11-06T10:58:20+00:00",
@@ -462,10 +462,10 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_conference_league": {
-   "le": "2026-11-01T15:14:12+00:00",
+   "le": "2026-11-10T09:55:24+00:00",
    "sport": "Football",
    "competition": "UEFA Europa Conference League",
-   "matchs": 18
+   "matchs": 1
   },
   "soccer_uefa_europa_league": {
    "le": "2026-11-08T23:45:34+00:00",
@@ -602,6 +602,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-10T09:55:24+00:00",
+   "competitions_ouvertes": 63,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 342,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-10T01:36:05+00:00",
    "competitions_ouvertes": 63,
@@ -4786,20 +4800,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 368,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-09T01:34:41+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 369,
    "capital": 10000
   }
  ],
