@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-12T03:04:07+00:00",
- "credits_odds_api": 314,
+ "maj": "2026-11-12T11:21:23+00:00",
+ "credits_odds_api": 308,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -330,34 +330,34 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_germany_dfb_pokal": {
-   "le": "2026-11-07T16:51:07+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Football",
    "competition": "DFB-Pokal",
    "matchs": 8
   },
   "soccer_germany_liga3": {
-   "le": "2026-11-07T16:51:07+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Football",
    "competition": "3. Liga - Germany",
-   "matchs": 14
+   "matchs": 20
   },
   "soccer_greece_super_league": {
-   "le": "2026-11-07T20:55:42+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 5
+   "matchs": 7
   },
   "soccer_italy_serie_a": {
-   "le": "2026-11-08T00:41:02+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
-   "matchs": 15
+   "matchs": 20
   },
   "soccer_italy_serie_b": {
-   "le": "2026-11-08T00:41:02+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
-   "matchs": 3
+   "matchs": 10
   },
   "soccer_japan_j_league": {
    "le": "2026-11-08T00:41:02+00:00",
@@ -540,10 +540,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "basketball_ncaab": {
-   "le": "2026-11-07T20:55:42+00:00",
+   "le": "2026-11-12T11:21:23+00:00",
    "sport": "Basket",
    "competition": "NCAAB",
-   "matchs": 64
+   "matchs": 24
   },
   "soccer_uefa_champs_league_women": {
    "le": "2026-11-11T15:16:51+00:00",
@@ -614,6 +614,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-12T11:21:23+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 2,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 308,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-12T03:04:07+00:00",
    "competitions_ouvertes": 68,
@@ -4799,23 +4813,48 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 361,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-09T11:31:36+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 362,
-   "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "Penn State Nittany Lions",
+   "adversaire": "Mercyhurst Lakers",
+   "proba_marche": 0.9848,
+   "cote": 1.01,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.01,
+   "meilleur_bookmaker": "888sport",
+   "nb_bookmakers": 6,
+   "id": "c62dc747fca57d00af7e4fe8f1326f58",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-12T23:30:00Z",
+   "domicile": "Penn State Nittany Lions",
+   "exterieur": "Mercyhurst Lakers",
+   "repere_le": "2026-11-12T11:21:23+00:00",
+   "cotes_le": "2026-11-12T11:21:23+00:00"
+  },
+  {
+   "favori": "High Point Panthers",
+   "adversaire": "Southern Utah Thunderbirds",
+   "proba_marche": 0.983,
+   "cote": 1.012,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 6,
+   "id": "ddcf26810b7aa3e03d38719931c1d035",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-13T00:00:00Z",
+   "domicile": "High Point Panthers",
+   "exterieur": "Southern Utah Thunderbirds",
+   "repere_le": "2026-11-12T11:21:23+00:00",
+   "cotes_le": "2026-11-12T11:21:23+00:00"
+  }
+ ],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
