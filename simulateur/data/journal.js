@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-11T22:03:26+00:00",
- "credits_odds_api": 317,
+ "maj": "2026-11-12T03:04:07+00:00",
+ "credits_odds_api": 314,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -312,22 +312,22 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_france_ligue_two": {
-   "le": "2026-11-07T16:51:07+00:00",
+   "le": "2026-11-12T03:04:07+00:00",
    "sport": "Football",
    "competition": "Ligue 2 - France",
-   "matchs": 2
+   "matchs": 9
   },
   "soccer_germany_bundesliga": {
-   "le": "2026-11-07T16:51:07+00:00",
+   "le": "2026-11-12T03:04:07+00:00",
    "sport": "Football",
    "competition": "Bundesliga - Germany",
-   "matchs": 13
+   "matchs": 18
   },
   "soccer_germany_bundesliga2": {
-   "le": "2026-11-07T16:51:07+00:00",
+   "le": "2026-11-12T03:04:07+00:00",
    "sport": "Football",
    "competition": "Bundesliga 2 - Germany",
-   "matchs": 4
+   "matchs": 9
   },
   "soccer_germany_dfb_pokal": {
    "le": "2026-11-07T16:51:07+00:00",
@@ -614,6 +614,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-12T03:04:07+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 314,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-11T22:03:26+00:00",
    "competitions_ouvertes": 68,
@@ -4798,20 +4812,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 362,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-09T10:35:08+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 363,
    "capital": 10000
   }
  ],
