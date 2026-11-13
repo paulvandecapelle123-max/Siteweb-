@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-13T16:29:01+00:00",
- "credits_odds_api": 288,
+ "maj": "2026-11-13T22:40:44+00:00",
+ "credits_odds_api": 283,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -90,7 +90,7 @@ window.JOURNAL = {
    "matchs": 26
   },
   "aussierules_aflw": {
-   "le": "2026-11-09T17:34:35+00:00",
+   "le": "2026-11-13T22:40:44+00:00",
    "sport": "Football australien",
    "competition": "AFL Women's",
    "matchs": 2
@@ -408,7 +408,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_russia_premier_league": {
-   "le": "2026-11-09T17:34:35+00:00",
+   "le": "2026-11-13T22:40:44+00:00",
    "sport": "Football",
    "competition": "Premier League - Russia",
    "matchs": 8
@@ -432,13 +432,13 @@ window.JOURNAL = {
    "matchs": 7
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-11-09T17:34:35+00:00",
+   "le": "2026-11-13T22:40:44+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
    "matchs": 8
   },
   "soccer_sweden_superettan": {
-   "le": "2026-11-09T17:34:35+00:00",
+   "le": "2026-11-13T22:40:44+00:00",
    "sport": "Football",
    "competition": "Superettan - Sweden",
    "matchs": 3
@@ -594,7 +594,7 @@ window.JOURNAL = {
    "matchs": 1
   },
   "cricket_big_bash": {
-   "le": "2026-11-09T06:41:32+00:00",
+   "le": "2026-11-13T22:40:44+00:00",
    "sport": "Cricket",
    "competition": "Big Bash",
    "matchs": 3
@@ -626,6 +626,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-13T22:40:44+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 283,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-13T16:29:01+00:00",
    "competitions_ouvertes": 71,
@@ -4810,20 +4824,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 356,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-09T19:32:34+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 357,
    "capital": 10000
   }
  ],
