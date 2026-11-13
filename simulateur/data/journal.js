@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-12T19:58:25+00:00",
- "credits_odds_api": 302,
+ "maj": "2026-11-13T01:07:50+00:00",
+ "credits_odds_api": 298,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -66,7 +66,7 @@ window.JOURNAL = {
  "refus": [],
  "scans": {
   "americanfootball_cfl": {
-   "le": "2026-11-08T19:46:45+00:00",
+   "le": "2026-11-13T01:07:50+00:00",
    "sport": "Football américain",
    "competition": "CFL",
    "matchs": 1
@@ -402,10 +402,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_portugal_primeira_liga": {
-   "le": "2026-11-08T15:16:34+00:00",
+   "le": "2026-11-13T01:07:50+00:00",
    "sport": "Football",
    "competition": "Primeira Liga - Portugal",
-   "matchs": 6
+   "matchs": 9
   },
   "soccer_russia_premier_league": {
    "le": "2026-11-09T17:34:35+00:00",
@@ -420,7 +420,7 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_spain_segunda_division": {
-   "le": "2026-11-08T19:46:45+00:00",
+   "le": "2026-11-13T01:07:50+00:00",
    "sport": "Football",
    "competition": "La Liga 2 - Spain",
    "matchs": 11
@@ -606,10 +606,10 @@ window.JOURNAL = {
    "matchs": 19
   },
   "tennis_wta_finals": {
-   "le": "2026-11-10T17:53:54+00:00",
+   "le": "2026-11-13T01:07:50+00:00",
    "sport": "Tennis",
    "competition": "WTA Finals",
-   "matchs": 4
+   "matchs": 3
   },
   "soccer_france_coupe_de_france": {
    "le": "2026-11-12T19:58:25+00:00",
@@ -620,6 +620,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-13T01:07:50+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 2,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 298,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-12T19:58:25+00:00",
    "competitions_ouvertes": 70,
@@ -4805,62 +4819,9 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 359,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-09T14:37:52+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 360,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "Penn State Nittany Lions",
-   "adversaire": "Mercyhurst Lakers",
-   "proba_marche": 0.9848,
-   "cote": 1.01,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.01,
-   "meilleur_bookmaker": "888sport",
-   "nb_bookmakers": 6,
-   "id": "c62dc747fca57d00af7e4fe8f1326f58",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-12T23:30:00Z",
-   "domicile": "Penn State Nittany Lions",
-   "exterieur": "Mercyhurst Lakers",
-   "repere_le": "2026-11-12T11:21:23+00:00",
-   "cotes_le": "2026-11-12T11:21:23+00:00"
-  },
-  {
-   "favori": "High Point Panthers",
-   "adversaire": "Southern Utah Thunderbirds",
-   "proba_marche": 0.983,
-   "cote": 1.012,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "GTbets",
-   "nb_bookmakers": 6,
-   "id": "ddcf26810b7aa3e03d38719931c1d035",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-13T00:00:00Z",
-   "domicile": "High Point Panthers",
-   "exterieur": "Southern Utah Thunderbirds",
-   "repere_le": "2026-11-12T11:21:23+00:00",
-   "cotes_le": "2026-11-12T11:21:23+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
