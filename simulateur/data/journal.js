@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-13T08:03:31+00:00",
- "credits_odds_api": 294,
+ "maj": "2026-11-13T16:29:01+00:00",
+ "credits_odds_api": 288,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -72,10 +72,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "americanfootball_ncaaf": {
-   "le": "2026-11-09T06:41:32+00:00",
+   "le": "2026-11-13T16:29:01+00:00",
    "sport": "Football américain",
    "competition": "NCAAF",
-   "matchs": 67
+   "matchs": 74
   },
   "americanfootball_ncaaf_fcs": {
    "le": "2026-11-10T23:26:09+00:00",
@@ -84,10 +84,10 @@ window.JOURNAL = {
    "matchs": 10
   },
   "americanfootball_nfl": {
-   "le": "2026-11-09T06:41:32+00:00",
+   "le": "2026-11-13T16:29:01+00:00",
    "sport": "Football américain",
    "competition": "NFL",
-   "matchs": 15
+   "matchs": 26
   },
   "aussierules_aflw": {
    "le": "2026-11-09T17:34:35+00:00",
@@ -108,13 +108,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "basketball_euroleague": {
-   "le": "2026-11-09T06:41:32+00:00",
+   "le": "2026-11-13T16:29:01+00:00",
    "sport": "Basket",
    "competition": "Basketball Euroleague",
-   "matchs": 10
+   "matchs": 12
   },
   "basketball_nba": {
-   "le": "2026-11-09T06:41:32+00:00",
+   "le": "2026-11-13T16:29:01+00:00",
    "sport": "Basket",
    "competition": "NBA",
    "matchs": 13
@@ -360,10 +360,10 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_japan_j_league": {
-   "le": "2026-11-08T00:41:02+00:00",
+   "le": "2026-11-13T16:29:01+00:00",
    "sport": "Football",
    "competition": "J League",
-   "matchs": 4
+   "matchs": 3
   },
   "soccer_korea_kleague1": {
    "le": "2026-11-03T21:03:53+00:00",
@@ -616,10 +616,30 @@ window.JOURNAL = {
    "sport": "Football",
    "competition": "Coupe de France",
    "matchs": 5
+  },
+  "tennis_atp_finals": {
+   "le": "2026-11-13T16:29:01+00:00",
+   "sport": "Tennis",
+   "competition": "ATP Finals",
+   "matchs": 4
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-13T16:29:01+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 1,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 288,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-13T08:03:31+00:00",
    "competitions_ouvertes": 68,
@@ -4805,23 +4825,29 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 357,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-09T17:31:47+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 358,
-   "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "Notre Dame Fighting Irish",
+   "adversaire": "Boston College Eagles",
+   "proba_marche": 0.9821,
+   "cote": 1.012,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "GTbets",
+   "nb_bookmakers": 5,
+   "id": "1daaf8ba9d71d56b9657b450f3df7861",
+   "sport_key": "americanfootball_ncaaf",
+   "sport": "Football américain",
+   "competition": "NCAAF",
+   "debut": "2026-11-14T20:30:00Z",
+   "domicile": "Notre Dame Fighting Irish",
+   "exterieur": "Boston College Eagles",
+   "repere_le": "2026-11-13T16:29:01+00:00",
+   "cotes_le": "2026-11-13T16:29:01+00:00"
+  }
+ ],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
