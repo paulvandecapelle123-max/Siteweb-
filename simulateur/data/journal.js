@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-13T01:07:50+00:00",
- "credits_odds_api": 298,
+ "maj": "2026-11-13T08:03:31+00:00",
+ "credits_odds_api": 294,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -426,7 +426,7 @@ window.JOURNAL = {
    "matchs": 11
   },
   "soccer_spl": {
-   "le": "2026-11-08T19:46:45+00:00",
+   "le": "2026-11-13T08:03:31+00:00",
    "sport": "Football",
    "competition": "Premiership - Scotland",
    "matchs": 7
@@ -468,19 +468,19 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-11-08T23:45:34+00:00",
+   "le": "2026-11-13T08:03:31+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
    "matchs": 18
   },
   "soccer_spain_la_liga": {
-   "le": "2026-11-08T23:45:34+00:00",
+   "le": "2026-11-13T08:03:31+00:00",
    "sport": "Football",
    "competition": "La Liga - Spain",
-   "matchs": 10
+   "matchs": 20
   },
   "soccer_uefa_nations_league": {
-   "le": "2026-11-08T23:45:34+00:00",
+   "le": "2026-11-13T08:03:31+00:00",
    "sport": "Football",
    "competition": "UEFA Nations League",
    "matchs": 27
@@ -620,6 +620,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-13T08:03:31+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 294,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-13T01:07:50+00:00",
    "competitions_ouvertes": 69,
@@ -4804,20 +4818,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 358,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-09T16:34:11+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 359,
    "capital": 10000
   }
  ],
