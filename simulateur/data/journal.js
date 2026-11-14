@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-14T18:09:38+00:00",
- "credits_odds_api": 270,
+ "maj": "2026-11-14T22:29:12+00:00",
+ "credits_odds_api": 267,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -198,16 +198,16 @@ window.JOURNAL = {
    "matchs": 7
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T22:29:12+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 61
+   "matchs": 58
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T22:29:12+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 8
+   "matchs": 9
   },
   "soccer_australia_aleague": {
    "le": "2026-11-10T17:53:54+00:00",
@@ -462,10 +462,10 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_conference_league": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T22:29:12+00:00",
    "sport": "Football",
    "competition": "UEFA Europa Conference League",
-   "matchs": 1
+   "matchs": 18
   },
   "soccer_uefa_europa_league": {
    "le": "2026-11-13T08:03:31+00:00",
@@ -626,6 +626,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-14T22:29:12+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 1,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 267,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-14T18:09:38+00:00",
    "competitions_ouvertes": 70,
@@ -4811,43 +4825,9 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 352,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-10T00:44:14+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 353,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "Notre Dame Fighting Irish",
-   "adversaire": "Boston College Eagles",
-   "proba_marche": 0.9821,
-   "cote": 1.012,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "GTbets",
-   "nb_bookmakers": 5,
-   "id": "1daaf8ba9d71d56b9657b450f3df7861",
-   "sport_key": "americanfootball_ncaaf",
-   "sport": "Football américain",
-   "competition": "NCAAF",
-   "debut": "2026-11-14T20:30:00Z",
-   "domicile": "Notre Dame Fighting Irish",
-   "exterieur": "Boston College Eagles",
-   "repere_le": "2026-11-13T16:29:01+00:00",
-   "cotes_le": "2026-11-13T16:29:01+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
