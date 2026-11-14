@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-14T03:20:58+00:00",
- "credits_odds_api": 280,
+ "maj": "2026-11-14T11:32:23+00:00",
+ "credits_odds_api": 274,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -126,10 +126,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "basketball_nbl": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Basket",
    "competition": "NBL",
-   "matchs": 5
+   "matchs": 3
   },
   "basketball_wnba": {
    "le": "2026-10-30T23:50:54+00:00",
@@ -138,10 +138,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 36
+   "matchs": 49
   },
   "cricket_international_t20": {
    "le": "2026-10-31T05:49:59+00:00",
@@ -168,16 +168,16 @@ window.JOURNAL = {
    "matchs": 8
   },
   "icehockey_liiga": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Hockey sur glace",
    "competition": "Liiga",
    "matchs": 6
   },
   "icehockey_mestis": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Hockey sur glace",
    "competition": "Mestis",
-   "matchs": 2
+   "matchs": 3
   },
   "icehockey_nhl": {
    "le": "2026-11-10T09:55:24+00:00",
@@ -366,10 +366,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "soccer_korea_kleague1": {
-   "le": "2026-11-03T21:03:53+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Football",
    "competition": "K League 1",
-   "matchs": 6
+   "matchs": 4
   },
   "soccer_league_of_ireland": {
    "le": "2026-11-03T21:03:53+00:00",
@@ -456,7 +456,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_uefa_champs_league": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T11:32:23+00:00",
    "sport": "Football",
    "competition": "UEFA Champions League",
    "matchs": 18
@@ -626,6 +626,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-14T11:32:23+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 1,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 274,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-14T03:20:58+00:00",
    "competitions_ouvertes": 71,
@@ -4811,20 +4825,6 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 354,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-09T22:32:40+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 355,
-   "capital": 10000
   }
  ],
  "surveillance": [
@@ -4846,6 +4846,25 @@ window.JOURNAL = {
    "exterieur": "Boston College Eagles",
    "repere_le": "2026-11-13T16:29:01+00:00",
    "cotes_le": "2026-11-13T16:29:01+00:00"
+  },
+  {
+   "favori": "Jakhongir Zokirov",
+   "adversaire": "Brandon Colantonio",
+   "proba_marche": 0.9842,
+   "cote": 1.01,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.01,
+   "meilleur_bookmaker": "BetOnline.ag",
+   "nb_bookmakers": 3,
+   "id": "3760f42894e03eedf4c41dec659582c5",
+   "sport_key": "boxing_boxing",
+   "sport": "Boxe",
+   "competition": "Boxing",
+   "debut": "2026-11-14T16:00:00Z",
+   "domicile": "Jakhongir Zokirov",
+   "exterieur": "Brandon Colantonio",
+   "repere_le": "2026-11-14T11:32:23+00:00",
+   "cotes_le": "2026-11-14T11:32:23+00:00"
   }
  ],
  "scores_le": {
