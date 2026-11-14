@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-14T11:32:23+00:00",
- "credits_odds_api": 274,
+ "maj": "2026-11-14T18:09:38+00:00",
+ "credits_odds_api": 270,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -156,10 +156,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_test_match": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T18:09:38+00:00",
    "sport": "Cricket",
    "competition": "Test Matches",
-   "matchs": 2
+   "matchs": 3
   },
   "handball_germany_bundesliga": {
    "le": "2026-11-10T23:26:09+00:00",
@@ -180,16 +180,16 @@ window.JOURNAL = {
    "matchs": 3
   },
   "icehockey_nhl": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T18:09:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 7
+   "matchs": 19
   },
   "icehockey_sweden_allsvenskan": {
-   "le": "2026-11-10T09:55:24+00:00",
+   "le": "2026-11-14T18:09:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "HockeyAllsvenskan",
-   "matchs": 7
+   "matchs": 5
   },
   "icehockey_sweden_hockey_league": {
    "le": "2026-11-11T22:03:26+00:00",
@@ -582,10 +582,10 @@ window.JOURNAL = {
    "matchs": 9
   },
   "basketball_wncaab": {
-   "le": "2026-11-10T01:36:05+00:00",
+   "le": "2026-11-14T18:09:38+00:00",
    "sport": "Basket",
    "competition": "WNCAAB",
-   "matchs": 5
+   "matchs": 7
   },
   "tennis_atp_paris_masters": {
    "le": "2026-11-08T07:25:52+00:00",
@@ -626,6 +626,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-14T18:09:38+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 1,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 270,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-14T11:32:23+00:00",
    "competitions_ouvertes": 70,
@@ -4811,20 +4825,6 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 353,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-09T23:30:59+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 354,
-   "capital": 10000
   }
  ],
  "surveillance": [
@@ -4846,25 +4846,6 @@ window.JOURNAL = {
    "exterieur": "Boston College Eagles",
    "repere_le": "2026-11-13T16:29:01+00:00",
    "cotes_le": "2026-11-13T16:29:01+00:00"
-  },
-  {
-   "favori": "Jakhongir Zokirov",
-   "adversaire": "Brandon Colantonio",
-   "proba_marche": 0.9842,
-   "cote": 1.01,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.01,
-   "meilleur_bookmaker": "BetOnline.ag",
-   "nb_bookmakers": 3,
-   "id": "3760f42894e03eedf4c41dec659582c5",
-   "sport_key": "boxing_boxing",
-   "sport": "Boxe",
-   "competition": "Boxing",
-   "debut": "2026-11-14T16:00:00Z",
-   "domicile": "Jakhongir Zokirov",
-   "exterieur": "Brandon Colantonio",
-   "repere_le": "2026-11-14T11:32:23+00:00",
-   "cotes_le": "2026-11-14T11:32:23+00:00"
   }
  ],
  "scores_le": {
