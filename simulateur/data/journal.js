@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-15T17:45:12+00:00",
- "credits_odds_api": 253,
+ "maj": "2026-11-15T22:52:35+00:00",
+ "credits_odds_api": 250,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -150,10 +150,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "cricket_odi": {
-   "le": "2026-11-11T15:16:51+00:00",
+   "le": "2026-11-15T22:52:35+00:00",
    "sport": "Cricket",
    "competition": "One Day Internationals",
-   "matchs": 2
+   "matchs": 1
   },
   "cricket_test_match": {
    "le": "2026-11-14T18:09:38+00:00",
@@ -234,10 +234,10 @@ window.JOURNAL = {
    "matchs": 19
   },
   "soccer_brazil_serie_b": {
-   "le": "2026-11-11T06:31:11+00:00",
+   "le": "2026-11-15T22:52:35+00:00",
    "sport": "Football",
    "competition": "Brazil Série B",
-   "matchs": 10
+   "matchs": 2
   },
   "soccer_chile_campeonato": {
    "le": "2026-11-15T17:45:12+00:00",
@@ -618,10 +618,10 @@ window.JOURNAL = {
    "matchs": 5
   },
   "tennis_atp_finals": {
-   "le": "2026-11-13T16:29:01+00:00",
+   "le": "2026-11-15T22:52:35+00:00",
    "sport": "Tennis",
    "competition": "ATP Finals",
-   "matchs": 4
+   "matchs": 2
   },
   "rugbyleague_nrl": {
    "le": "2026-11-15T11:00:04+00:00",
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-15T22:52:35+00:00",
+   "competitions_ouvertes": 70,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 250,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-15T17:45:12+00:00",
    "competitions_ouvertes": 70,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 348,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-10T07:32:14+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 349,
    "capital": 10000
   }
  ],
