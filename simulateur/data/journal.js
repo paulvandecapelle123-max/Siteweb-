@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-15T02:42:55+00:00",
- "credits_odds_api": 264,
+ "maj": "2026-11-15T11:00:04+00:00",
+ "credits_odds_api": 258,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -162,10 +162,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "handball_germany_bundesliga": {
-   "le": "2026-11-10T23:26:09+00:00",
+   "le": "2026-11-15T11:00:04+00:00",
    "sport": "Handball",
    "competition": "Handball-Bundesliga",
-   "matchs": 8
+   "matchs": 3
   },
   "icehockey_liiga": {
    "le": "2026-11-14T11:32:23+00:00",
@@ -216,7 +216,7 @@ window.JOURNAL = {
    "matchs": 5
   },
   "soccer_austria_bundesliga": {
-   "le": "2026-11-10T23:26:09+00:00",
+   "le": "2026-11-15T11:00:04+00:00",
    "sport": "Football",
    "competition": "Austrian Football Bundesliga",
    "matchs": 6
@@ -600,16 +600,16 @@ window.JOURNAL = {
    "matchs": 3
   },
   "soccer_england_efl_trophy": {
-   "le": "2026-11-10T17:53:54+00:00",
+   "le": "2026-11-15T11:00:04+00:00",
    "sport": "Football",
    "competition": "EFL Trophy",
-   "matchs": 19
+   "matchs": 1
   },
   "tennis_wta_finals": {
-   "le": "2026-11-13T01:07:50+00:00",
+   "le": "2026-11-15T11:00:04+00:00",
    "sport": "Tennis",
    "competition": "WTA Finals",
-   "matchs": 3
+   "matchs": 1
   },
   "soccer_france_coupe_de_france": {
    "le": "2026-11-12T19:58:25+00:00",
@@ -622,10 +622,30 @@ window.JOURNAL = {
    "sport": "Tennis",
    "competition": "ATP Finals",
    "matchs": 4
+  },
+  "rugbyleague_nrl": {
+   "le": "2026-11-15T11:00:04+00:00",
+   "sport": "Rugby à XIII",
+   "competition": "NRL",
+   "matchs": 2
   }
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-15T11:00:04+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 258,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-15T02:42:55+00:00",
    "competitions_ouvertes": 69,
@@ -4811,20 +4831,6 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 350,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-10T04:33:22+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 351,
-   "capital": 10000
   }
  ],
  "surveillance": [],
@@ -4876,6 +4882,10 @@ window.JOURNAL = {
   "Tennis": {
    "ok": 1,
    "ko": 0
+  },
+  "Rugby League": {
+   "ok": 1,
+   "ko": 0
   }
  },
  "scores_testes": [
@@ -4889,7 +4899,8 @@ window.JOURNAL = {
   "icehockey_liiga",
   "mma_mixed_martial_arts",
   "soccer_argentina_primera_division",
-  "tennis_atp_shanghai_masters"
+  "tennis_atp_shanghai_masters",
+  "rugbyleague_nrl"
  ],
  "disciplines_ignorees": [],
  "fenetre_decision_heures": 1.5
