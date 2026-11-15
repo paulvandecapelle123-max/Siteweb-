@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-14T22:29:12+00:00",
- "credits_odds_api": 267,
+ "maj": "2026-11-15T02:42:55+00:00",
+ "credits_odds_api": 264,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -210,7 +210,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_australia_aleague": {
-   "le": "2026-11-10T17:53:54+00:00",
+   "le": "2026-11-15T02:42:55+00:00",
    "sport": "Football",
    "competition": "A-League",
    "matchs": 5
@@ -222,7 +222,7 @@ window.JOURNAL = {
    "matchs": 6
   },
   "soccer_belgium_first_div": {
-   "le": "2026-11-10T17:53:54+00:00",
+   "le": "2026-11-15T02:42:55+00:00",
    "sport": "Football",
    "competition": "Belgium First Div",
    "matchs": 9
@@ -510,10 +510,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_ahl": {
-   "le": "2026-11-10T17:53:54+00:00",
+   "le": "2026-11-15T02:42:55+00:00",
    "sport": "Hockey sur glace",
    "competition": "AHL",
-   "matchs": 12
+   "matchs": 15
   },
   "tennis_wta_wuhan_open": {
    "le": "2026-10-18T06:54:44+00:00",
@@ -626,6 +626,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-15T02:42:55+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 264,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-14T22:29:12+00:00",
    "competitions_ouvertes": 70,
@@ -4810,20 +4824,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 351,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-10T02:33:01+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 352,
    "capital": 10000
   }
  ],
