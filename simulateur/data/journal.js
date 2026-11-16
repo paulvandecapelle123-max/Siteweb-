@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-15T22:52:35+00:00",
- "credits_odds_api": 250,
+ "maj": "2026-11-16T02:46:43+00:00",
+ "credits_odds_api": 247,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -264,19 +264,19 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_denmark_superliga": {
-   "le": "2026-11-11T15:16:51+00:00",
+   "le": "2026-11-16T02:46:43+00:00",
    "sport": "Football",
    "competition": "Denmark Superliga",
    "matchs": 6
   },
   "soccer_efl_champ": {
-   "le": "2026-11-11T15:16:51+00:00",
+   "le": "2026-11-16T02:46:43+00:00",
    "sport": "Football",
    "competition": "Championship",
    "matchs": 12
   },
   "soccer_england_efl_cup": {
-   "le": "2026-11-11T15:16:51+00:00",
+   "le": "2026-11-16T02:46:43+00:00",
    "sport": "Football",
    "competition": "EFL Cup",
    "matchs": 9
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-16T02:46:43+00:00",
+   "competitions_ouvertes": 71,
+   "competitions_scannees": 3,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 3,
+   "credits_restants": 247,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-15T22:52:35+00:00",
    "competitions_ouvertes": 70,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 347,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-10T08:32:01+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 348,
    "capital": 10000
   }
  ],
