@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-16T22:09:49+00:00",
- "credits_odds_api": 234,
+ "maj": "2026-11-17T04:31:47+00:00",
+ "credits_odds_api": 229,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -342,19 +342,19 @@ window.JOURNAL = {
    "matchs": 20
   },
   "soccer_greece_super_league": {
-   "le": "2026-11-12T11:21:23+00:00",
+   "le": "2026-11-17T04:31:47+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
    "matchs": 7
   },
   "soccer_italy_serie_a": {
-   "le": "2026-11-12T11:21:23+00:00",
+   "le": "2026-11-17T04:31:47+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
    "matchs": 20
   },
   "soccer_italy_serie_b": {
-   "le": "2026-11-12T11:21:23+00:00",
+   "le": "2026-11-17T04:31:47+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
    "matchs": 10
@@ -378,13 +378,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_mexico_ligamx": {
-   "le": "2026-11-12T19:58:25+00:00",
+   "le": "2026-11-17T04:31:47+00:00",
    "sport": "Football",
    "competition": "Liga MX",
-   "matchs": 1
+   "matchs": 9
   },
   "soccer_netherlands_eredivisie": {
-   "le": "2026-11-12T19:58:25+00:00",
+   "le": "2026-11-17T04:31:47+00:00",
    "sport": "Football",
    "competition": "Dutch Eredivisie",
    "matchs": 9
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-17T04:31:47+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 4,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 229,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-16T22:09:49+00:00",
    "competitions_ouvertes": 70,
@@ -4817,100 +4831,9 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 344,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-10T13:31:59+00:00",
-   "competitions_ouvertes": 75,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 345,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "Georgia Bulldogs",
-   "adversaire": "Jacksonville Dolphins",
-   "proba_marche": 0.9847,
-   "cote": 1.01,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.01,
-   "meilleur_bookmaker": "888sport",
-   "nb_bookmakers": 6,
-   "id": "33d4f6ff93e31ed41af6ed33a1dececb",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-17T00:00:00Z",
-   "domicile": "Georgia Bulldogs",
-   "exterieur": "Jacksonville Dolphins",
-   "repere_le": "2026-11-16T22:09:49+00:00",
-   "cotes_le": "2026-11-16T22:09:49+00:00"
-  },
-  {
-   "favori": "Oklahoma St Cowboys",
-   "adversaire": "Central Arkansas Bears",
-   "proba_marche": 0.9742,
-   "cote": 1.019,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "BetOnline.ag",
-   "nb_bookmakers": 8,
-   "id": "4e13edb27d0b02e773edd81d7d05c6ee",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-17T01:00:00Z",
-   "domicile": "Oklahoma St Cowboys",
-   "exterieur": "Central Arkansas Bears",
-   "repere_le": "2026-11-16T22:09:49+00:00",
-   "cotes_le": "2026-11-16T22:09:49+00:00"
-  },
-  {
-   "favori": "Saint Mary's Gaels",
-   "adversaire": "Portland St Vikings",
-   "proba_marche": 0.9727,
-   "cote": 1.02,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.03,
-   "meilleur_bookmaker": "BetOnline.ag",
-   "nb_bookmakers": 7,
-   "id": "c289d28831e5ae3f18297a49654270d7",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-17T03:00:00Z",
-   "domicile": "Saint Mary's Gaels",
-   "exterieur": "Portland St Vikings",
-   "repere_le": "2026-11-16T22:09:49+00:00",
-   "cotes_le": "2026-11-16T22:09:49+00:00"
-  },
-  {
-   "favori": "UC San Diego Tritons",
-   "adversaire": "Texas Southern Tigers",
-   "proba_marche": 0.9733,
-   "cote": 1.02,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.03,
-   "meilleur_bookmaker": "GTbets",
-   "nb_bookmakers": 7,
-   "id": "4043a36241f122e728a2cb1abab6c500",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-17T03:00:00Z",
-   "domicile": "UC San Diego Tritons",
-   "exterieur": "Texas Southern Tigers",
-   "repere_le": "2026-11-16T22:09:49+00:00",
-   "cotes_le": "2026-11-16T22:09:49+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
