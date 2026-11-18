@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-18T04:27:02+00:00",
- "credits_odds_api": 213,
+ "maj": "2026-11-18T14:05:02+00:00",
+ "credits_odds_api": 206,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -408,7 +408,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_russia_premier_league": {
-   "le": "2026-11-13T22:40:44+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "Premier League - Russia",
    "matchs": 8
@@ -432,25 +432,25 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-11-13T22:40:44+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
-   "matchs": 8
+   "matchs": 9
   },
   "soccer_sweden_superettan": {
-   "le": "2026-11-13T22:40:44+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "Superettan - Sweden",
    "matchs": 3
   },
   "soccer_switzerland_superleague": {
-   "le": "2026-11-14T03:20:58+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "Swiss Superleague",
    "matchs": 6
   },
   "soccer_turkey_super_league": {
-   "le": "2026-11-14T03:20:58+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "Turkey Super League",
    "matchs": 9
@@ -486,7 +486,7 @@ window.JOURNAL = {
    "matchs": 27
   },
   "soccer_usa_mls": {
-   "le": "2026-11-14T03:20:58+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Football",
    "competition": "MLS",
    "matchs": 8
@@ -594,7 +594,7 @@ window.JOURNAL = {
    "matchs": 1
   },
   "cricket_big_bash": {
-   "le": "2026-11-13T22:40:44+00:00",
+   "le": "2026-11-18T14:05:02+00:00",
    "sport": "Cricket",
    "competition": "Big Bash",
    "matchs": 3
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-18T14:05:02+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 206,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-18T04:27:02+00:00",
    "competitions_ouvertes": 70,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 340,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-10T19:29:59+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 341,
    "capital": 10000
   }
  ],
