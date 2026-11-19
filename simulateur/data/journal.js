@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-19T03:33:19+00:00",
- "credits_odds_api": 197,
+ "maj": "2026-11-19T13:16:30+00:00",
+ "credits_odds_api": 190,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -180,16 +180,16 @@ window.JOURNAL = {
    "matchs": 3
   },
   "icehockey_nhl": {
-   "le": "2026-11-14T18:09:38+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 19
+   "matchs": 12
   },
   "icehockey_sweden_allsvenskan": {
-   "le": "2026-11-14T18:09:38+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Hockey sur glace",
    "competition": "HockeyAllsvenskan",
-   "matchs": 5
+   "matchs": 7
   },
   "icehockey_sweden_hockey_league": {
    "le": "2026-11-16T11:29:30+00:00",
@@ -198,19 +198,19 @@ window.JOURNAL = {
    "matchs": 7
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-11-14T22:29:12+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 58
+   "matchs": 57
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-11-14T22:29:12+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 9
+   "matchs": 8
   },
   "soccer_australia_aleague": {
-   "le": "2026-11-15T02:42:55+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Football",
    "competition": "A-League",
    "matchs": 5
@@ -462,7 +462,7 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_conference_league": {
-   "le": "2026-11-14T22:29:12+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Football",
    "competition": "UEFA Europa Conference League",
    "matchs": 18
@@ -510,10 +510,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_ahl": {
-   "le": "2026-11-15T02:42:55+00:00",
+   "le": "2026-11-19T13:16:30+00:00",
    "sport": "Hockey sur glace",
    "competition": "AHL",
-   "matchs": 15
+   "matchs": 9
   },
   "tennis_wta_wuhan_open": {
    "le": "2026-10-18T06:54:44+00:00",
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-19T13:16:30+00:00",
+   "competitions_ouvertes": 69,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 190,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-19T03:33:19+00:00",
    "competitions_ouvertes": 68,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 337,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-10T23:29:26+00:00",
-   "competitions_ouvertes": 74,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 338,
    "capital": 10000
   }
  ],
