@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-19T21:40:10+00:00",
- "credits_odds_api": 184,
+ "maj": "2026-11-20T03:22:34+00:00",
+ "credits_odds_api": 180,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -234,13 +234,13 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_brazil_serie_b": {
-   "le": "2026-11-15T22:52:35+00:00",
+   "le": "2026-11-20T03:22:34+00:00",
    "sport": "Football",
    "competition": "Brazil Série B",
    "matchs": 2
   },
   "soccer_chile_campeonato": {
-   "le": "2026-11-15T17:45:12+00:00",
+   "le": "2026-11-20T03:22:34+00:00",
    "sport": "Football",
    "competition": "Primera División - Chile",
    "matchs": 8
@@ -252,13 +252,13 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_conmebol_copa_libertadores": {
-   "le": "2026-11-15T17:45:12+00:00",
+   "le": "2026-11-20T03:22:34+00:00",
    "sport": "Football",
    "competition": "Copa Libertadores",
    "matchs": 1
   },
   "soccer_conmebol_copa_sudamericana": {
-   "le": "2026-11-15T17:45:12+00:00",
+   "le": "2026-11-20T03:22:34+00:00",
    "sport": "Football",
    "competition": "Copa Sudamericana",
    "matchs": 1
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-20T03:22:34+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 4,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 4,
+   "credits_restants": 180,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-19T21:40:10+00:00",
    "competitions_ouvertes": 67,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 335,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-11T02:32:27+00:00",
-   "competitions_ouvertes": 73,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 336,
    "capital": 10000
   }
  ],
