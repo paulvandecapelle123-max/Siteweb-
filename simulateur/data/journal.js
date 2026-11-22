@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-21T23:22:43+00:00",
- "credits_odds_api": 150,
+ "maj": "2026-11-22T06:55:44+00:00",
+ "credits_odds_api": 144,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -72,10 +72,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "americanfootball_ncaaf": {
-   "le": "2026-11-17T22:55:04+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Football américain",
    "competition": "NCAAF",
-   "matchs": 66
+   "matchs": 23
   },
   "americanfootball_ncaaf_fcs": {
    "le": "2026-11-18T04:27:02+00:00",
@@ -84,10 +84,10 @@ window.JOURNAL = {
    "matchs": 55
   },
   "americanfootball_nfl": {
-   "le": "2026-11-17T22:55:04+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Football américain",
    "competition": "NFL",
-   "matchs": 29
+   "matchs": 28
   },
   "aussierules_aflw": {
    "le": "2026-11-18T04:27:02+00:00",
@@ -108,16 +108,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "basketball_euroleague": {
-   "le": "2026-11-17T22:55:04+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Basket",
    "competition": "Basketball Euroleague",
-   "matchs": 11
+   "matchs": 10
   },
   "basketball_nba": {
-   "le": "2026-11-17T22:55:04+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Basket",
    "competition": "NBA",
-   "matchs": 5
+   "matchs": 7
   },
   "basketball_nba_preseason": {
    "le": "2026-10-16T14:49:38+00:00",
@@ -468,7 +468,7 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_league": {
-   "le": "2026-11-17T14:29:34+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Football",
    "competition": "UEFA Europa League",
    "matchs": 18
@@ -522,10 +522,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_germany_bundesliga_women": {
-   "le": "2026-11-17T22:55:04+00:00",
+   "le": "2026-11-22T06:55:44+00:00",
    "sport": "Football",
    "competition": "Frauen-Bundesliga",
-   "matchs": 1
+   "matchs": 4
   },
   "soccer_fa_cup": {
    "le": "2026-11-20T21:10:06+00:00",
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-22T06:55:44+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 144,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-21T23:22:43+00:00",
    "competitions_ouvertes": 69,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 329,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-11T11:31:05+00:00",
-   "competitions_ouvertes": 70,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 330,
    "capital": 10000
   }
  ],
