@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-22T06:55:44+00:00",
- "credits_odds_api": 144,
+ "maj": "2026-11-22T15:23:05+00:00",
+ "credits_odds_api": 138,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -90,10 +90,10 @@ window.JOURNAL = {
    "matchs": 28
   },
   "aussierules_aflw": {
-   "le": "2026-11-18T04:27:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Football australien",
    "competition": "AFL Women's",
-   "matchs": 2
+   "matchs": 1
   },
   "baseball_mlb": {
    "le": "2026-10-25T19:40:44+00:00",
@@ -360,10 +360,10 @@ window.JOURNAL = {
    "matchs": 19
   },
   "soccer_japan_j_league": {
-   "le": "2026-11-18T04:27:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Football",
    "competition": "J League",
-   "matchs": 10
+   "matchs": 7
   },
   "soccer_korea_kleague1": {
    "le": "2026-11-19T03:33:19+00:00",
@@ -408,7 +408,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_russia_premier_league": {
-   "le": "2026-11-18T14:05:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Football",
    "competition": "Premier League - Russia",
    "matchs": 8
@@ -432,10 +432,10 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-11-18T14:05:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
-   "matchs": 9
+   "matchs": 10
   },
   "soccer_sweden_superettan": {
    "le": "2026-11-18T14:05:02+00:00",
@@ -444,10 +444,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "soccer_switzerland_superleague": {
-   "le": "2026-11-18T14:05:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Football",
    "competition": "Swiss Superleague",
-   "matchs": 6
+   "matchs": 4
   },
   "soccer_turkey_super_league": {
    "le": "2026-11-18T14:05:02+00:00",
@@ -594,7 +594,7 @@ window.JOURNAL = {
    "matchs": 1
   },
   "cricket_big_bash": {
-   "le": "2026-11-18T14:05:02+00:00",
+   "le": "2026-11-22T15:23:05+00:00",
    "sport": "Cricket",
    "competition": "Big Bash",
    "matchs": 3
@@ -632,6 +632,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-22T15:23:05+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 138,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-22T06:55:44+00:00",
    "competitions_ouvertes": 66,
@@ -4816,20 +4830,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 328,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-11T12:38:43+00:00",
-   "competitions_ouvertes": 70,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 329,
    "capital": 10000
   }
  ],
