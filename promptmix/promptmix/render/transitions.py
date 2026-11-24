@@ -209,10 +209,220 @@ def t_coupe(t, A, B, J, c):
     return []
 
 
+# --------------------------------------------------------------------------- techniques avancées
+
+def rhythm_steps(x: np.ndarray, beat_n: float, sr: int = SR, steps_per_beat: int = 4) -> list[int]:
+    """Motif rythmique d'une mesure : indices des doubles-croches (0..15) qui portent une attaque."""
+    from ..analysis.beats import band_envelopes, to_mono
+    bar = int(round(4 * beat_n))
+    seg = x[:bar]
+    if len(seg) < bar // 2 or _rms(seg) < 1e-5:
+        return [0, 4, 8, 12]
+    envs, env_sr = band_envelopes(to_mono(seg).astype(np.float64), sr)
+    env = envs["full"] + envs["low"]
+    vals = []
+    for k in range(4 * steps_per_beat):
+        c = int(k * beat_n / steps_per_beat / sr * env_sr)
+        w = max(2, int(0.012 * env_sr))
+        vals.append(env[max(0, c - w): c + w + 1].max() if c < len(env) else 0.0)
+    vals = np.asarray(vals)
+    steps = [k for k in range(len(vals)) if vals[k] >= 0.35 * vals.max()]
+    return steps if 0 in steps else [0] + steps
+
+
+def _slice(src: np.ndarray, a: int, n: int, edge: int) -> np.ndarray:
+    sl = src[a:a + n].copy()
+    e = min(edge, max(1, len(sl) // 4))
+    sl[:e] *= dsp.ramp(e)[:, None]
+    sl[-e:] *= dsp.ramp(e)[::-1][:, None]
+    return sl
+
+
+def t_loop_morph(t, A, B, J, c):
+    """Boucle qui se transforme : un ½ temps de la fin du sortant est bouclé (½ puis ¼ de temps),
+    puis redéclenché sur le motif rythmique de l'entrant pendant que celui-ci monte en dessous."""
+    steps = rhythm_steps(B.audio, c.beat_n, c.sr)        # rythme de l'entrant (avant modification)
+    aJ, n = _overlap(t, A, B, J, c)
+    n1 = int(round(n / 2 / c.bar_n)) * int(round(c.bar_n)) or n // 2   # phase 1 = première moitié, en mesures entières
+    edge = int(0.002 * c.sr)
+    src_n = int(round(c.beat_n / 2))
+    sl = _slice(A.audio, aJ, src_n, edge)
+    out = np.zeros((n, 2))
+    # phase 1 : boucle de ½ temps puis ¼ de temps
+    half = n1 // 2
+    for a0, a1, ln in ((0, half, src_n), (half, n1, max(1, src_n // 2))):
+        piece = sl[:ln].copy()
+        e = min(edge, ln // 4)
+        piece[-e:] *= dsp.ramp(e)[::-1][:, None]
+        reps = int(np.ceil((a1 - a0) / ln))
+        out[a0:a1] = np.tile(piece, (reps, 1))[: a1 - a0]
+    # phase 2 : le même bout de son rejoue le rythme du morceau entrant
+    step_n = c.beat_n / 4
+    bar = 0
+    while True:
+        base = n1 + bar * c.bar_n
+        if base >= n:
+            break
+        trig = [int(round(base + k * step_n)) for k in steps]
+        for i, p0 in enumerate(trig):
+            if p0 >= n:
+                break
+            nxt = trig[i + 1] if i + 1 < len(trig) else int(round(base + c.bar_n))
+            ln = min(src_n, nxt - p0, n - p0, int(round(step_n)))  # coups courts : le rythme de l'entrant s'entend
+            if ln <= 2 * edge:
+                continue
+            hit = sl[:ln].copy() * np.exp(-np.arange(ln) / (0.6 * ln))[:, None]
+            hit[-edge:] *= dsp.ramp(edge)[::-1][:, None]
+            out[p0:p0 + ln] += hit
+        bar += 1
+    n2 = n - n1
+    out[n1:] *= np.linspace(1.0, 0.35, n2)[:, None]
+    dsp.fade_out(out, n, int(0.01 * c.sr))
+    A.audio[aJ:aJ + n] = out
+    # l'entrant : silencieux en phase 1, puis monte en s'ouvrant (passe-haut qui descend)
+    head = B.audio[:n]
+    head[:n1] = 0
+    rest = head[n1:]
+    rest[:] = dsp.sweep_filter(rest, "hp", 900.0, 20.0, q=0.9)
+    rest *= dsp.ramp(len(rest), "eqp")[:, None]
+    return []
+
+
+def t_tape_stop(t, A, B, J, c):
+    """Arrêt de platine : vitesse (et hauteur) qui tombent à zéro sur 2 temps."""
+    aJ = J - A.t0
+    d = int(round(2 * c.beat_n))
+    start = aJ - d
+    tt = np.arange(d) / d
+    speed = (1 - tt) ** 1.6
+    pos = start + np.cumsum(speed)
+    idx = np.arange(len(A.audio))
+    fx = np.stack([np.interp(pos, idx, A.audio[:, ch]) for ch in range(2)], 1)
+    fx = dsp.sweep_filter(fx, "lp", 18000.0, 400.0, q=0.7, xfade_s=0.0)
+    fx[:CLICK] *= dsp.ramp(CLICK)[:, None]
+    dsp.fade_out(fx, len(fx), int(0.03 * c.sr))
+    _cut_a_at(A, start + CLICK)
+    return [(A.t0 + start, fx)]
+
+
+def t_double_drop(t, A, B, J, c):
+    """Double drop : les deux drops ensemble, basses de l'entrant seulement, le sortant s'efface sur la dernière mesure."""
+    aJ, n = _overlap(t, A, B, J, c)
+    a_seg = A.audio[aJ:aJ + n]
+    a_lo, a_hi = dsp.split_bands(a_seg)
+    xs = int(0.008 * c.sr)
+    g_lo = np.zeros(n)
+    g_lo[:xs] = dsp.ramp(xs)[::-1]
+    g_hi = np.full(n, 0.8)
+    last = min(n, int(round(c.bar_n)))
+    g_hi[n - last:] *= dsp.ramp(last, "eqp")[::-1]
+    a_seg[:] = a_lo * g_lo[:, None] + a_hi * g_hi[:, None]
+    return []
+
+
+def t_eq_3_bandes(t, A, B, J, c):
+    """Mix aux EQ : aigus de l'entrant, puis ses médiums, bass swap au milieu sur un premier temps,
+    puis sortie des médiums et des aigus du sortant."""
+    aJ, n = _overlap(t, A, B, J, c)
+    sw = min(n - 1, int(round((t.swap_bar or t.length_bars // 2) * c.bar_n)))
+    a_seg, b_seg = A.audio[aJ:aJ + n], B.audio[:n]
+    a_lo, a_mi, a_hi = dsp.split_3(a_seg)
+    b_lo, b_mi, b_hi = dsp.split_3(b_seg)
+
+    def env(points):
+        x = np.array([p for p, _ in points], float) * n
+        return np.interp(np.arange(n), x, [v for _, v in points])
+
+    q = sw / n
+    b_hi_g = env([(0, 0), (q / 2, 1), (1, 1)])
+    b_mi_g = env([(0, 0), (q / 2, 0), (q, 1), (1, 1)])
+    a_mi_g = env([(0, 1), (q, 1), (q + (1 - q) / 2, 0), (1, 0)])
+    a_hi_g = env([(0, 1), (q + (1 - q) / 2, 1), (1, 0)])
+    xs = int(0.008 * c.sr)
+    a_lo_g = np.ones(n)
+    a_lo_g[max(0, sw - xs):sw] = dsp.ramp(sw - max(0, sw - xs))[::-1]
+    a_lo_g[sw:] = 0
+    b_lo_g = 1 - a_lo_g
+    a_seg[:] = a_lo * a_lo_g[:, None] + a_mi * a_mi_g[:, None] + a_hi * a_hi_g[:, None]
+    b_seg[:] = b_lo * b_lo_g[:, None] + b_mi * b_mi_g[:, None] + b_hi * b_hi_g[:, None]
+    dsp.fade_out(A.audio, len(A.audio), CLICK)
+    return []
+
+
+GATE_PATTERN = [1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1]
+
+
+def t_trance_gate(t, A, B, J, c):
+    """Sortant haché en doubles-croches (dernière mesure en triples-croches), puis l'entrant démarre."""
+    aJ = J - A.t0
+    n = int(round(t.length_bars * c.bar_n))
+    a0 = max(0, aJ - n)
+    g = np.zeros(aJ - a0)
+    edge = int(0.003 * c.sr)
+    # construction pas à pas : doubles-croches, puis triples-croches sur la dernière mesure
+    pos, step_i = 0.0, 0
+    total = aJ - a0
+    while pos < total:
+        in_last = pos >= total - c.bar_n
+        step = c.beat_n / (8 if in_last else 4)
+        on = (step_i % 2 == 0) if in_last else GATE_PATTERN[step_i % 16]
+        s0, s1 = int(round(pos)), min(total, int(round(pos + step)))
+        if on and s1 - s0 > 2 * edge:
+            g[s0:s1] = 1
+            g[s0:s0 + edge] = dsp.ramp(edge)
+            g[s1 - edge:s1] = dsp.ramp(edge)[::-1]
+        pos += step
+        step_i += 1
+    A.audio[a0:aJ] *= g[:, None]
+    _cut_a_at(A, aJ)
+    return []
+
+
+def snare_hit(sr: int = SR, seed: int = 0) -> np.ndarray:
+    rng = np.random.default_rng(seed)
+    n = int(0.12 * sr)
+    tt = np.arange(n) / sr
+    noise = rng.standard_normal(n)
+    noise = dsp.static_filter(np.stack([noise, noise], 1), "hp", 1200.0, 2, sr)[:, 0]
+    body = np.sin(2 * np.pi * 190 * tt) * np.exp(-tt * 40)
+    x = (0.7 * noise * np.exp(-tt * 28) + 0.6 * body)
+    x[:32] *= dsp.ramp(32)
+    return np.stack([x, x], 1)
+
+
+def t_build_roll(t, A, B, J, c):
+    """Roulement de caisse claire : noires, croches, doubles puis triples-croches, volume croissant, puis drop."""
+    aJ = J - A.t0
+    n = int(round(t.length_bars * c.bar_n))
+    a0 = max(0, aJ - n)
+    seg = A.audio[a0:aJ]
+    seg[:] = dsp.sweep_filter(seg, "hp", 25.0, 500.0, q=1.2)
+    roll = np.zeros((aJ - a0, 2))
+    hit = snare_hit(c.sr)
+    hit /= np.abs(hit).max()
+    level = _rms(seg) * 3.0
+    quarter = (aJ - a0) / 4
+    for qi, div in enumerate((1, 2, 4, 8)):
+        step = c.beat_n / div
+        p = qi * quarter
+        while p < (qi + 1) * quarter - 1:
+            i = int(round(p))
+            vel = 0.35 + 0.65 * (i / max(1, aJ - a0))
+            m = min(len(hit), len(roll) - i)
+            roll[i:i + m] += hit[:m] * vel * level
+            p += step
+    dsp.fade_out(roll, len(roll), CLICK)
+    _cut_a_at(A, aJ)
+    dsp.fade_in(B.audio, 0, int(0.002 * c.sr))
+    return [(A.t0 + a0, roll)]
+
+
 TRANSITIONS = {
     "fondu": t_fondu, "filtre_passe_haut": t_filtre_passe_haut, "filtre_passe_bas": t_filtre_passe_bas,
     "bass_swap": t_bass_swap, "echo_out": t_echo_out, "riser_drop": t_riser_drop, "rewind": t_rewind,
     "loop_roll": t_loop_roll, "blackout": t_blackout, "reverb_out": t_reverb_out, "coupe": t_coupe,
+    "loop_morph": t_loop_morph, "tape_stop": t_tape_stop, "double_drop": t_double_drop,
+    "eq_3_bandes": t_eq_3_bandes, "trance_gate": t_trance_gate, "build_roll": t_build_roll,
 }
 
 
@@ -238,6 +448,11 @@ def apply_ending(kind: str, L: Layer, music_end: int, total_n: int, c: Ctx) -> l
     if kind == "coupe":
         _cut_a_at(L, e)
         return []
+    if kind == "tape_stop":
+        L.audio = L.audio[:e]
+        fx = t_tape_stop(Transition(type="tape_stop", length_bars=1), L, Layer(np.zeros((1, 2)), music_end, -1, -1),
+                         music_end, c)
+        return fx
     fake = Transition(type="reverb_out" if kind == "reverb_out" else "echo_out", length_bars=8)
     tail_n = total_n - music_end
     if kind == "reverb_out":

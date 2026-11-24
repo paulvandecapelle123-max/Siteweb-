@@ -14,27 +14,25 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from .lexique import TECHNIQUES
+
 TransitionType = Literal[
-    "fondu", "filtre_passe_haut", "filtre_passe_bas", "bass_swap", "echo_out",
-    "riser_drop", "rewind", "loop_roll", "blackout", "reverb_out", "coupe",
+    "fondu", "bass_swap", "eq_3_bandes", "double_drop", "filtre_passe_haut", "filtre_passe_bas",
+    "loop_morph", "loop_roll", "trance_gate", "echo_out", "reverb_out", "tape_stop", "rewind",
+    "riser_drop", "build_roll", "blackout", "coupe",
 ]
 
-TRANSITION_DOC = {
-    "fondu": "fondu enchaîné à puissance constante pendant tout le chevauchement",
-    "filtre_passe_haut": "le sortant monte dans un passe-haut résonant pendant que l'entrant s'ouvre (passe-bas qui s'ouvre)",
-    "filtre_passe_bas": "le sortant se ferme dans un passe-bas résonant pendant que l'entrant arrive par les aigus (passe-haut qui descend)",
-    "bass_swap": "les deux morceaux jouent ensemble, l'entrant sans basses ; les basses s'échangent net sur un premier temps de mesure au milieu du chevauchement",
-    "echo_out": "le dernier temps du sortant part dans un delay calé sur le tempo (3/4 de temps), le sortant est coupé, l'entrant démarre ; les échos s'éteignent sur `length_bars` mesures",
-    "riser_drop": "montée de bruit sur les `length_bars` dernières mesures du sortant, coupure nette, l'entrant démarre sur son drop",
-    "rewind": "les 2 derniers temps du sortant sont joués à l'envers en accélérant, puis l'entrant démarre",
-    "loop_roll": "sur les `length_bars` dernières mesures du sortant : boucles de 1/2, 1/4, 1/8 puis 1/16 de temps, puis l'entrant démarre",
-    "blackout": "un temps de silence juste avant l'entrée de l'entrant (idéalement son drop)",
-    "reverb_out": "la dernière mesure du sortant part dans une réverb, le sortant est coupé, la queue de réverb (~`length_bars` mesures) passe sous l'entrant",
-    "coupe": "coupe franche sur le premier temps (fondus anti-clic de 5 ms)",
-}
+# descriptions : source unique = le lexique DJ
+TRANSITION_DOC = {t["id"]: t["dj"] for t in TECHNIQUES if t["id"]}
 
 # types pour lesquels les deux extraits jouent ensemble pendant `length_bars` mesures
-OVERLAP_TYPES = {"fondu", "filtre_passe_haut", "filtre_passe_bas", "bass_swap"}
+OVERLAP_TYPES = {"fondu", "filtre_passe_haut", "filtre_passe_bas", "bass_swap", "eq_3_bandes", "double_drop", "loop_morph"}
+# types joués sur la fin du sortant (sans chevauchement) : l'extrait doit être assez long
+TAIL_EFFECT_TYPES = {"riser_drop", "loop_roll", "trance_gate", "build_roll"}
+# bornes (min, max) de length_bars par type
+LENGTH_BOUNDS = {"loop_roll": (1, 2), "rewind": (1, 1), "tape_stop": (1, 1), "blackout": (1, 1), "coupe": (1, 1),
+                 "trance_gate": (1, 4), "loop_morph": (2, 4), "build_roll": (2, 8), "double_drop": (2, 16),
+                 "bass_swap": (2, 32), "eq_3_bandes": (4, 32)}
 
 
 class Segment(BaseModel):
@@ -54,7 +52,7 @@ class MixPlan(BaseModel):
     target_bpm: float = Field(gt=60, lt=200, description="tempo commun du mix")
     target_duration_s: float = Field(gt=20, lt=3600, description="durée totale souhaitée en secondes")
     intro: Literal["direct", "fondu"] = "direct"
-    ending: Literal["fondu", "reverb_out", "echo_out", "coupe"] = "fondu"
+    ending: Literal["fondu", "reverb_out", "echo_out", "tape_stop", "coupe"] = "fondu"
     segments: list[Segment] = Field(min_length=2, max_length=6)
     transitions: list[Transition] = Field(description="exactement len(segments) - 1 transitions, dans l'ordre")
     explanation: str = Field(default="", description="explication courte du mix, en français, pour le DJ")
@@ -65,7 +63,7 @@ def overlap_bars(t: Transition) -> int:
 
 
 def min_tail_s(ending: str) -> float:
-    return {"fondu": 0.0, "coupe": 0.15, "reverb_out": 2.5, "echo_out": 2.0}[ending]
+    return {"fondu": 0.0, "coupe": 0.15, "tape_stop": 0.3, "reverb_out": 2.5, "echo_out": 2.0}[ending]
 
 
 class PlanError(ValueError):
@@ -95,7 +93,7 @@ def normalize_plan(plan: MixPlan, track_bars: dict[int, int]) -> tuple[MixPlan, 
     def min_len(i: int) -> int:
         ov_in = overlap_bars(p.transitions[i - 1]) if i > 0 else 0
         ov_out = overlap_bars(p.transitions[i]) if i < len(p.transitions) else 0
-        eff = p.transitions[i].length_bars if i < len(p.transitions) and p.transitions[i].type in ("riser_drop", "loop_roll") else 0
+        eff = p.transitions[i].length_bars if i < len(p.transitions) and p.transitions[i].type in TAIL_EFFECT_TYPES else 0
         return max(4, ov_in + max(ov_out, eff) + 1)
 
     for i, s in enumerate(p.segments):
@@ -107,18 +105,14 @@ def normalize_plan(plan: MixPlan, track_bars: dict[int, int]) -> tuple[MixPlan, 
             s.length_bars = nb - s.start_bar
             warnings.append(f"extrait {i + 1} : longueur bornée à {s.length_bars} mesures (fin du morceau)")
     for i, t in enumerate(p.transitions):
-        if t.type == "loop_roll":
-            t.length_bars = min(t.length_bars, 2)
-        if t.type == "rewind":
-            t.length_bars = 1
+        lo, hi = LENGTH_BOUNDS.get(t.type, (1, 32))
+        t.length_bars = max(lo, min(hi, t.length_bars))
         if t.type in OVERLAP_TYPES:
             room = min(p.segments[i].length_bars, p.segments[i + 1].length_bars) - 2
             if t.length_bars > room:
                 t.length_bars = max(1, room)
                 warnings.append(f"transition {i + 1} : chevauchement réduit à {t.length_bars} mesures")
-        if t.type == "bass_swap":
-            if t.length_bars < 2:
-                t.length_bars = 2
+        if t.type in ("bass_swap", "eq_3_bandes"):
             if t.swap_bar is None or not (1 <= t.swap_bar < t.length_bars):
                 t.swap_bar = t.length_bars // 2
 
@@ -127,7 +121,7 @@ def normalize_plan(plan: MixPlan, track_bars: dict[int, int]) -> tuple[MixPlan, 
     want = math.floor((p.target_duration_s - tail_min) / bar_s + 1e-9)
 
     # extraits dont le début est un repère imposé (drop) : on ne déplace jamais leur début
-    pinned = {i + 1 for i, t in enumerate(p.transitions) if t.type not in OVERLAP_TYPES}
+    pinned = {i + 1 for i, t in enumerate(p.transitions) if t.type not in OVERLAP_TYPES or t.type == "double_drop"}
 
     def total() -> int:
         return sum(s.length_bars for s in p.segments) - sum(overlap_bars(t) for t in p.transitions)

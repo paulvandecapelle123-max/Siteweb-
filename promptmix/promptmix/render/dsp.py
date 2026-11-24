@@ -100,6 +100,14 @@ def split_bands(x: np.ndarray, fc: float = 150.0, sr: int = SR) -> tuple[np.ndar
     return low, x - low
 
 
+def split_3(x: np.ndarray, f_lo: float = 150.0, f_hi: float = 2500.0, sr: int = SR):
+    """Graves / médiums / aigus à phase nulle ; la somme redonne exactement x (comme les EQ d'une table de mixage)."""
+    low, rest = split_bands(x, f_lo, sr)
+    sos = signal.butter(4, f_hi, "low", fs=sr, output="sos")
+    mid = signal.sosfiltfilt(sos, rest, axis=0)
+    return low, mid, rest - mid
+
+
 def static_filter(x: np.ndarray, kind: str, fc: float, order: int = 2, sr: int = SR) -> np.ndarray:
     sos = signal.butter(order, fc, "low" if kind == "lp" else "high", fs=sr, output="sos")
     return signal.sosfilt(sos, x, axis=0)

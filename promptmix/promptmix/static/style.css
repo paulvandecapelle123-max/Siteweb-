@@ -58,3 +58,14 @@ table.tracklist { width: 100%; border-collapse: collapse; font-size: 14px; }
 .checks .ko::before { content: "✘ "; color: var(--ko); }
 footer { text-align: center; padding: 20px 16px 40px; }
 @media (max-width: 600px) { .tracklist th:nth-child(3), .tracklist td:nth-child(3), .tracklist th:nth-child(5), .tracklist td:nth-child(5) { display: none; } }
+
+.lexique { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.lexique summary { cursor: pointer; font-weight: 600; }
+.lexique h4 { margin: 14px 0 6px; font-size: 13px; color: var(--accent2); text-transform: uppercase; letter-spacing: .05em; }
+.tech { display: grid; grid-template-columns: 1fr; gap: 2px; padding: 8px 10px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
+.tech:hover { border-color: var(--accent); background: #ff4f7b10; }
+.tech.off { opacity: .55; cursor: default; }
+.tech.off:hover { border-color: transparent; background: none; }
+.tech b { font-size: 14px; }
+.tech .syn { color: var(--muted); font-size: 12px; }
+.tech .simple { font-size: 13px; }

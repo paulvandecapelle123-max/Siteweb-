@@ -45,11 +45,12 @@ promptmix/
 │   │   ├── key.py           tonalité (Krumhansl) + Camelot + lecture des corrections (« Am », « 8A »…)
 │   │   └── analyze.py       analyse complète d'un morceau + résumé envoyé à Claude
 │   ├── plan/                ── 2. PLAN
+│   │   ├── lexique.py       techniques DJ + vocabulaire (FR/EN/argot) : source unique pour Claude, règles locales et interface
 │   │   ├── schema.py        schéma Pydantic MixPlan + normalisation (bornes, durée à l'échantillon)
 │   │   └── planner.py       appel API Claude (sortie structurée) ; repli local sans clé
 │   ├── render/              ── 3. RENDU (numpy/scipy, sans IA)
 │   │   ├── dsp.py           fondus, biquads résonants balayés, split graves, delay, réverb, riser, rewind
-│   │   ├── transitions.py   les 11 transitions + début / fin du mix
+│   │   ├── transitions.py   les 17 techniques + début / fin du mix
 │   │   └── engine.py        extraction, étirement, égalisation LUFS des extraits, placement, mixage
 │   ├── master/              ── 4. MASTER
 │   │   ├── loudness.py      LUFS (BS.1770), true peak ×4, limiteur à anticipation
@@ -81,19 +82,48 @@ aux morceaux, ne déplace jamais un extrait censé entrer sur son drop, et cale 
 
 ### 3. Rendu
 Chaque extrait est découpé sur un premier temps de mesure, étiré au tempo cible par Rubber Band (tonalité
-conservée), mis à -14 LUFS, puis placé à la mesure près sur la ligne de temps. Transitions :
-fondu, filtre passe-haut / passe-bas résonant balayé, bass swap (échange des graves sur le premier temps),
-echo out (delay à 3/4 de temps), riser + coupure nette sur le drop, rewind accéléré, loop roll
-(1/2 → 1/4 → 1/8 → 1/16 de temps), blackout (un temps de silence), réverb, coupe franche.
+conservée), mis à -14 LUFS, puis placé à la mesure près sur la ligne de temps.
 Anti-clic : 5 ms de fondu à chaque coupe, fondu enchaîné sec↔filtré de 60 ms en début et fin de filtre,
 35 ms avant un blackout.
+
+### Techniques DJ (`plan/lexique.py`)
+Le lexique regroupe chaque technique avec les mots que les DJ utilisent (français, anglais, argot), une
+explication simple et quand l'utiliser. Il alimente le prompt de Claude, le planificateur local et le panneau
+« Les techniques DJ que PromptMix comprend » de l'interface.
+
+| Famille | Technique (`type`) | On dit aussi |
+|---|---|---|
+| Enchaînements longs | Fondu (`fondu`) | crossfade, blend, mix long |
+| | Bass swap (`bass_swap`) | échange des basses |
+| | Mix aux EQ 3 bandes (`eq_3_bandes`) | EQ mixing, aigus → médiums → basses |
+| | Double drop (`double_drop`) | drop sur drop, drop swap |
+| Filtres | Passe-haut (`filtre_passe_haut`) | HPF, « le son devient fin » |
+| | Passe-bas (`filtre_passe_bas`) | LPF, « étouffé, comme sous l'eau » |
+| Boucles | Boucle qui se transforme (`loop_morph`) | loop transition, « la boucle prend le rythme du suivant » |
+| | Loop roll (`loop_roll`) | beat repeat, stutter |
+| | Trance gate (`trance_gate`) | gate, son haché, chop |
+| Effets de sortie | Echo out (`echo_out`) | delay, écho |
+| | Réverb (`reverb_out`) | reverb wash |
+| | Tape stop (`tape_stop`) | brake, power down, arrêt de platine |
+| | Rewind (`rewind`) | spinback, backspin, pull up |
+| Montées et coupures | Riser + coupure (`riser_drop`) | white noise, uplifter, build-up |
+| | Roulement de caisse claire (`build_roll`) | snare roll |
+| | Blackout (`blackout`) | silence avant le drop |
+| | Coupe franche (`coupe`) | cut, quick mix, slam |
+
+**Boucle qui se transforme** : un ½ temps de la fin du sortant est mis en boucle (½ puis ¼ de temps), puis
+redéclenché sur le motif rythmique exact de la première mesure de l'entrant (détecté à la double-croche),
+pendant que l'entrant monte en dessous en s'ouvrant ; l'entrant prend ensuite le relais.
+
+Pas encore disponibles (Claude propose l'équivalent le plus proche et le dit) : acapella / mashup de voix
+(nécessite une séparation voix/instruments), scratch.
 
 ### 4. Master
 Gain vers -11 LUFS, limiteur true peak (suréchantillonnage ×4, anticipation 5 ms), export MP3 320 kbps ;
 le true peak est re-mesuré **sur le MP3 décodé** et le plafond est resserré si l'encodeur l'a fait dépasser -1 dBTP.
 
 ### Contrôles automatiques
-- **Tests** : pistes de clics générées à tempo connu (95 à 174 BPM, décalages et premiers temps variés) :
+- **Tests** : chaque synonyme du lexique est reconnu, chaque technique est rendue et contrôlée ; pistes de clics générées à tempo connu (95 à 174 BPM, décalages et premiers temps variés) :
   grille juste à 10 ms près, avec les deux détecteurs ; basse syncopée ; BPM imposé.
 - **Après chaque rendu** : durée (±0,5 s), true peak ≤ -1 dBTP, sonie, et alignement des temps de chaque
   transition (phase mesurée sur les deux extraits, sur des mesures avec grosse caisse, tolérance 20 ms).

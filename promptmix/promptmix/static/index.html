@@ -41,9 +41,13 @@
   <!-- 3. Prompt -->
   <section class="card" id="step-prompt">
     <h2><span class="num">3</span> Ton mix, en français</h2>
-    <p class="hint">Ordre, durée totale, ambiance, types de transitions : fondu, filtre passe-haut / passe-bas,
-      bass swap, echo out, riser + coupure sur le drop, rewind, loop roll, blackout, fin dans une réverb.</p>
+    <p class="hint">Ordre, durée totale, ambiance, techniques. Parle comme un DJ (« bass swap », « brake »,
+      « double drop »…) ou avec tes mots (« le son devient étouffé », « la boucle prend le rythme du suivant »).</p>
     <textarea id="prompt" rows="5"></textarea>
+    <details class="lexique">
+      <summary>Les techniques DJ que PromptMix comprend <span class="muted">(clique pour l'ajouter à ta demande)</span></summary>
+      <div id="lexique"></div>
+    </details>
     <div class="row">
       <button id="btn-mix" disabled>Mixer</button>
       <span id="planner-info" class="muted"></span>

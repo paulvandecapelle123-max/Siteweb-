@@ -7,11 +7,7 @@ let cfg = {};
 let pollTimer = null;
 let original = {};   // valeurs détectées par piste, pour repérer les corrections
 
-const TRANSITION_FR = {
-  fondu: "Fondu", filtre_passe_haut: "Filtre passe-haut", filtre_passe_bas: "Filtre passe-bas",
-  bass_swap: "Bass swap", echo_out: "Echo out", riser_drop: "Riser + coupure sur le drop", rewind: "Rewind",
-  loop_roll: "Loop roll", blackout: "Blackout", reverb_out: "Fin dans une réverb", coupe: "Coupe franche",
-};
+let TRANSITION_FR = { fondu: "Fondu", coupe: "Coupe franche" };   // complété par /api/lexique
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -217,6 +213,23 @@ function renderResult(job) {
   $("#warnings").textContent = r.warnings.length ? "Ajustements : " + r.warnings.join(" ; ") : "";
 }
 
+// ------------------------------------------------------------------ lexique DJ
+function renderLexique(lex) {
+  const fams = [];
+  lex.techniques.forEach((t) => { if (!fams.includes(t.famille)) fams.push(t.famille); if (t.id) TRANSITION_FR[t.id] = t.nom; });
+  TRANSITION_FR.reverb_out = "Fin dans une réverb"; TRANSITION_FR.tape_stop = "Tape stop";
+  $("#lexique").innerHTML = fams.map((f) => `<h4>${esc(f)}</h4>` + lex.techniques.filter((t) => t.famille === f).map((t) =>
+    `<div class="tech ${t.id ? "" : "off"}" data-nom="${esc(t.nom)}" title="${esc(t.dj)}&#10;Quand : ${esc(t.quand)}">
+      <b>${esc(t.nom)}</b><span class="syn">aussi : ${esc(t.synonymes.join(", "))}${t.mesures ? " · " + esc(t.mesures) : ""}</span>
+      <span class="simple">${esc(t.simple)}</span></div>`).join("")).join("");
+  document.querySelectorAll(".tech:not(.off)").forEach((el) => el.onclick = () => {
+    const p = $("#prompt");
+    const base = p.value.trim().replace(/[.\s]*$/, "");
+    p.value = `${base}${base ? ", puis " : ""}${el.dataset.nom.toLowerCase()}.`;
+    p.focus();
+  });
+}
+
 // ------------------------------------------------------------------ init
 (async () => {
   try {
@@ -224,5 +237,6 @@ function renderResult(job) {
     $("#prompt").value = cfg.example_prompt;
     $("#retention").textContent = cfg.retention_hours;
     $("#planner-info").textContent = cfg.claude ? `Plan par Claude (${cfg.model})` : "Aucune clé ANTHROPIC_API_KEY : plan par règles locales";
+    renderLexique(await api("/api/lexique"));
   } catch { /* serveur indisponible */ }
 })();

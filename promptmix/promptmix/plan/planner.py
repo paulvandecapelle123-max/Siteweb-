@@ -12,7 +12,8 @@ import re
 
 from ..analysis.analyze import TrackAnalysis
 from ..config import MODEL
-from .schema import TRANSITION_DOC, MixPlan, Segment, Transition
+from .lexique import TECHNIQUES, doc_for_prompt
+from .schema import MixPlan, Segment, Transition
 
 log = logging.getLogger(__name__)
 
@@ -35,19 +36,23 @@ ou déborde sur le début de l'entrant (échos, queue de réverb).
 Bonnes pratiques :
 - Choisis des extraits qui respectent les phrases musicales (8, 16, 32 mesures) et commencent sur un repère \
 fiable : un début de drop ou une reprise de la grosse caisse après un break.
-- riser_drop et blackout : l'extrait entrant doit commencer pile sur un drop (`debuts_de_drop`).
-- bass_swap et fondus longs : fais entrer le morceau suivant sur une intro ou une partie sans basse lourde, \
-pendant que le sortant joue une partie stable ; 8 à 16 mesures de chevauchement.
-- Filtres : 4 à 16 mesures. echo_out / reverb_out : 2 à 8 mesures de queue. loop_roll : 1 mesure (2 max).
+- riser_drop, build_roll, blackout, coupe : l'extrait entrant commence pile sur un drop (`debuts_de_drop`).
+- double_drop : l'extrait entrant commence sur son drop ET les `length_bars` dernières mesures du sortant \
+commencent sur un drop du sortant (choisis start_bar et length_bars du sortant en conséquence).
+- bass_swap, eq_3_bandes et fondus longs : fais entrer le morceau suivant sur une intro ou une partie sans basse \
+lourde, pendant que le sortant joue une partie stable ; 8 à 32 mesures.
+- loop_morph : 2 à 4 mesures ; idéal quand les deux morceaux ont des rythmes différents.
 - `target_bpm` : en général le tempo du premier morceau ou une valeur intermédiaire ; évite d'étirer un morceau \
 de plus de ±8 % (au-delà le son se dégrade) sauf demande explicite.
 - Tiens compte des tonalités (roue Camelot : même nombre, ±1, ou A↔B même nombre sont compatibles) pour \
-choisir l'ordre et les passages où deux morceaux jouent ensemble.
-- Respecte en priorité les demandes explicites du DJ (ordre, durée, ambiance, types de transitions).
-- `explanation` : 2 à 4 phrases en français qui expliquent tes choix au DJ.
+choisir l'ordre et les passages où deux morceaux jouent ensemble (double_drop, fondus longs).
+- Le DJ parle comme un DJ : interprète son vocabulaire (liste ci-dessous) et ses images (« le son devient fin », \
+« comme sous l'eau », « ça bégaie », « la boucle prend le rythme du suivant »). S'il ne nomme aucune technique, \
+choisis celles qui servent l'ambiance demandée et varie-les.
+- Respecte en priorité les demandes explicites du DJ (ordre, durée, ambiance, techniques).
+- `explanation` : 2 à 4 phrases en français qui expliquent tes choix au DJ, en nommant les techniques.
 
-Transitions disponibles :
-""" + "\n".join(f"- {k} : {v}" for k, v in TRANSITION_DOC.items())
+""" + doc_for_prompt()
 
 
 class PlannerError(RuntimeError):
@@ -99,19 +104,9 @@ def plan_with_claude(prompt: str, analyses: list[TrackAnalysis]) -> MixPlan:
 
 # --------------------------------------------------------------------------- repli local (sans API)
 
-KEYWORDS = [
-    ("bass_swap", r"bass ?swap|[ée]change (des|de) basses"),
-    ("echo_out", r"[ée]cho"),
-    ("riser_drop", r"riser"),
-    ("rewind", r"rewind|[àa] l'envers|rembobin"),
-    ("loop_roll", r"loop ?roll|boucle"),
-    ("blackout", r"blackout|silence"),
-    ("reverb_out", r"r[ée]verb"),
-    ("filtre_passe_haut", r"passe[- ]haut|high ?pass|hpf"),
-    ("filtre_passe_bas", r"passe[- ]bas|low ?pass|lpf"),
-    ("fondu", r"fondu|crossfade"),
-    ("coupe", r"coupe (franche|s[èe]che)|cut"),
-]
+# reconnaissance des techniques dans le prompt (planificateur local) : générée depuis le lexique.
+# Ordre : les motifs les plus spécifiques d'abord (« boucle qui devient le rythme… » avant « boucle »).
+KEYWORDS = [(t["id"], t["regex"]) for t in TECHNIQUES if t["id"]]
 
 
 def parse_duration_s(prompt: str) -> float | None:
@@ -154,18 +149,29 @@ def plan_locally(prompt: str, analyses: list[TrackAnalysis]) -> MixPlan:
                 ending, text = "reverb_out", text.replace(sent, " ")
             elif re.search(r"[ée]cho", sent):
                 ending, text = "echo_out", text.replace(sent, " ")
+            elif re.search(r"tape ?stop|brake|ralenti", sent):
+                ending, text = "tape_stop", text.replace(sent, " ")
             elif re.search(r"coupe", sent):
                 ending, text = "coupe", text.replace(sent, " ")
             elif re.search(r"fondu|fade", sent):
                 ending, text = "fondu", text.replace(sent, " ")
     # transitions dans l'ordre où elles apparaissent dans le texte
-    found = sorted((m.start(), t) for t, rx in KEYWORDS for m in [re.search(rx, text)] if m)
-    wanted = [t for _, t in found] or ["bass_swap", "filtre_passe_haut"]
+    matches = sorted(((m.start(), -(m.end() - m.start()), m.end(), t) for t, rx in KEYWORDS
+                      for m in re.finditer(rx, text)), key=lambda r: (r[0], r[1]))
+    wanted, last_end = [], -1
+    for start, _, end, t in matches:   # une même expression ne compte qu'une fois (la plus longue)
+        if start >= last_end:
+            if not wanted or wanted[-1] != t:   # « étouffé, comme sous l'eau » = une seule technique
+                wanted.append(t)
+            last_end = end
+    wanted = wanted or ["bass_swap", "filtre_passe_haut"]
+    unavailable = [t["nom"] for t in TECHNIQUES if not t["id"] and re.search(t["regex"], text)]
     transitions = []
     for k in range(n - 1):
         t = wanted[k % len(wanted)]
-        length = {"fondu": 8, "bass_swap": 8, "filtre_passe_haut": 8, "filtre_passe_bas": 8, "echo_out": 4,
-                  "riser_drop": 8, "loop_roll": 1, "reverb_out": 4}.get(t, 1)
+        length = {"fondu": 8, "bass_swap": 8, "eq_3_bandes": 16, "double_drop": 8, "filtre_passe_haut": 8,
+                  "filtre_passe_bas": 8, "echo_out": 4, "riser_drop": 8, "build_roll": 4, "loop_roll": 1,
+                  "loop_morph": 2, "trance_gate": 2, "reverb_out": 4}.get(t, 1)
         transitions.append(Transition(type=t, length_bars=length))
     bar_s = 240.0 / bpm
     per = max(16, int(duration / bar_s / n) // 4 * 4)
@@ -179,14 +185,16 @@ def plan_locally(prompt: str, analyses: list[TrackAnalysis]) -> MixPlan:
             else max(0, drops[0] - 8)
         if k == 0:
             start = max(0, drops[0] - 16)
-        on_drop = incoming in ("riser_drop", "blackout", "coupe", "rewind", "loop_roll", "echo_out")
+        on_drop = incoming in ("riser_drop", "build_roll", "blackout", "coupe", "rewind", "loop_roll", "echo_out",
+                               "tape_stop", "trance_gate", "double_drop")
         if not on_drop:  # sinon on garde le drop comme début, quitte à raccourcir l'extrait
             start = min(start, max(0, a.grid.n_bars - per))
         segments.append(Segment(track_id=tid, start_bar=start, length_bars=min(per, a.grid.n_bars - start),
                                 reason="choix automatique (planificateur local)"))
     return MixPlan(target_bpm=round(bpm, 2), target_duration_s=duration, intro="fondu", ending=ending,
                    segments=segments, transitions=transitions,
-                   explanation="Plan généré localement (aucune clé API Claude configurée) : ordre, durée, tempo "
+                   explanation=("Non disponible pour l'instant : " + ", ".join(unavailable) + ". " if unavailable else "") +
+                   "Plan généré localement (aucune clé API Claude configurée) : ordre, durée, tempo "
                                "et transitions déduits des mots-clés de ta demande.")
 
 

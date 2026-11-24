@@ -136,6 +136,13 @@ def api_config() -> dict:
             "retention_hours": config.RETENTION_SECONDS // 3600}
 
 
+@app.get("/api/lexique")
+def api_lexique() -> dict:
+    from .plan.lexique import GLOSSAIRE, TECHNIQUES
+    keep = ("id", "famille", "nom", "synonymes", "dj", "simple", "quand", "mesures")
+    return {"techniques": [{k: t[k] for k in keep} for t in TECHNIQUES], "glossaire": GLOSSAIRE}
+
+
 async def _store_upload(up: UploadFile, dest: Path) -> int:
     name = up.filename or ""
     if not name.lower().endswith(".mp3"):
