@@ -8,7 +8,12 @@
 </head>
 <body>
 <header>
-  <h1>Prompt<span>Mix</span></h1>
+  <div class="head-row">
+    <h1>Prompt<span>Mix</span></h1>
+    <nav class="account" id="account" hidden>
+      <a class="pill" id="account-pill" href="/credits"></a>
+    </nav>
+  </div>
   <p class="tagline">Dépose 2 ou 3 MP3, décris ton mix en français, récupère le mix et sa tracklist.</p>
 </header>
 
@@ -50,6 +55,7 @@
     </details>
     <div class="row">
       <button id="btn-mix" disabled>Mixer</button>
+      <span id="quote" class="quote" hidden></span>
       <span id="planner-info" class="muted"></span>
     </div>
     <div id="mix-progress" class="progress" hidden><div class="bar"></div><span class="label"></span></div>

@@ -55,6 +55,7 @@ promptmix/
 │   ├── master/              ── 4. MASTER
 │   │   ├── loudness.py      LUFS (BS.1770), true peak ×4, limiteur à anticipation
 │   │   └── export.py        -11 LUFS, limiteur, MP3 320 kbps, re-mesure du true peak sur le MP3 décodé
+│   ├── billing/             comptes (auth.py), registre des crédits SQLite (db.py), Stripe (payments.py)
 │   ├── verify.py            contrôles après rendu
 │   ├── pipeline.py          orchestration analyse → plan → rendu → master → contrôles
 │   ├── server.py            FastAPI : dépôt, tâches en arrière-plan, téléchargements, purge 24 h
@@ -128,6 +129,31 @@ le true peak est re-mesuré **sur le MP3 décodé** et le plafond est resserré 
 - **Après chaque rendu** : durée (±0,5 s), true peak ≤ -1 dBTP, sonie, et alignement des temps de chaque
   transition (phase mesurée sur les deux extraits, sur des mesures avec grosse caisse, tolérance 20 ms).
   Les résultats s'affichent dans l'interface et dans `result.json`.
+
+## Crédits et paiement par carte (Stripe)
+
+Activés par `PROMPTMIX_BILLING=on` (sinon : mode local gratuit, sans compte).
+
+- **Compte** : e-mail + mot de passe (haché scrypt), session par cookie httpOnly. 1 crédit offert à l'inscription.
+- **Prix d'un mix** : 1 crédit par tranche de 10 minutes, affiché avant de lancer ; la durée du mix est plafonnée
+  à ce qui a été payé ; si le mix échoue, les crédits sont rendus automatiquement.
+- **Page `/credits`** : solde, historique, packs (par défaut 5 mix 6,99 € · 15 mix 17,99 € · 40 mix 39,99 €,
+  modifiables dans `config.py` ou `PROMPTMIX_PACKS`), cases CGV et renonciation au droit de rétractation
+  (contenu numérique fourni immédiatement), puis paiement sur la page sécurisée de Stripe.
+- **Encaissement** : Stripe confirme le paiement au serveur (webhook signé) et les crédits sont ajoutés ;
+  une référence unique par paiement empêche tout double crédit. Le serveur ne voit jamais les numéros de carte.
+- **Modèle de CGV** : `/cgv` (à compléter : identité du vendeur, médiateur…).
+
+### Brancher Stripe (et ton compte bancaire)
+1. Crée un compte sur stripe.com et complète le profil d'activité. Ajoute ton **IBAN** dans
+   *Paramètres → Virements* : Stripe y vire automatiquement l'argent encaissé.
+2. Commence en **mode test** : *Développeurs → Clés API* → `STRIPE_SECRET_KEY=sk_test_...`.
+3. *Développeurs → Webhooks → Ajouter un endpoint* : URL `https://<ton-appli>/api/stripe/webhook`,
+   événements `checkout.session.completed` et `checkout.session.async_payment_succeeded` →
+   copie le secret de signature dans `STRIPE_WEBHOOK_SECRET=whsec_...`.
+4. Règle `PROMPTMIX_PUBLIC_URL=https://<ton-appli>` et `PROMPTMIX_BILLING=on`.
+5. Teste un achat avec la carte de test `4242 4242 4242 4242` (date future, n'importe quel code).
+6. Quand tout marche : active le compte Stripe, remplace par les clés **live** (`sk_live_...`) et recrée le webhook en mode live.
 
 ## Règles
 - Uniquement des fichiers déposés par l'utilisateur ; aucun téléchargement depuis un site.

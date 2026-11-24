@@ -18,7 +18,39 @@ function setProgress(el, frac, label) {
   el.querySelector(".bar").style.width = `${Math.round(frac * 100)}%`;
   el.querySelector(".label").textContent = `${Math.round(frac * 100)} % — ${label || ""}`;
 }
-function showError(el, msg) { el.textContent = msg; el.hidden = !msg; }
+function showError(el, msg) {
+  el.textContent = msg;
+  el.hidden = !msg;
+  // erreurs de compte ou de crédits : lien direct vers la page Crédits
+  if (msg && cfg.billing && /cr[ée]dit|connecte/i.test(msg)) {
+    el.insertAdjacentHTML("beforeend", ' <a href="/credits">Aller à la page Crédits →</a>');
+  }
+}
+
+// ------------------------------------------------------------------ compte et crédits
+let me = null;
+async function refreshAccount() {
+  if (!cfg.billing) return;
+  me = await api("/api/me");
+  $("#account").hidden = false;
+  $("#account-pill").innerHTML = me.logged_in ? `<b>${me.credits}</b> crédit(s) · Acheter` : "Se connecter / créer un compte";
+  updateQuote();
+}
+let quoteTimer = null;
+function updateQuote() {
+  if (!cfg.billing) return;
+  clearTimeout(quoteTimer);
+  quoteTimer = setTimeout(async () => {
+    const q = await api("/api/quote", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: $("#prompt").value }) });
+    const el = $("#quote");
+    el.hidden = false;
+    const enough = me && me.logged_in && me.credits >= q.credits;
+    el.innerHTML = `Ce mix coûte <b>${q.credits} crédit${q.credits > 1 ? "s" : ""}</b> (jusqu'à ${q.max_duration_s / 60} min)` +
+      (me && me.logged_in ? ` · solde : ${me.credits}` + (enough ? "" : ' · <a href="/credits">acheter des crédits</a>') : ' · <a href="/credits">connecte-toi</a>');
+  }, 300);
+}
+$("#prompt").addEventListener("input", updateQuote);
 
 async function api(url, opts = {}) {
   const r = await fetch(url, opts);
@@ -100,6 +132,7 @@ function poll() {
 
 function onJob(job) {
   if (job.status === "analyse") setProgress($("#analysis-progress"), job.progress, job.message);
+  if (job.status === "erreur" || job.status === "termine") refreshAccount();
   if (job.status === "erreur") {
     const target = job.tracks.length ? $("#mix-error") : $("#upload-error");
     showError(target, job.error);
@@ -180,6 +213,7 @@ $("#btn-mix").onclick = async () => {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt, corrections: corrections() }),
     });
+    refreshAccount();
     poll();
   } catch (e) {
     showError($("#mix-error"), e.message);
@@ -238,5 +272,6 @@ function renderLexique(lex) {
     $("#retention").textContent = cfg.retention_hours;
     $("#planner-info").textContent = cfg.claude ? `Plan par Claude (${cfg.model})` : "Aucune clé ANTHROPIC_API_KEY : plan par règles locales";
     renderLexique(await api("/api/lexique"));
+    await refreshAccount();
   } catch { /* serveur indisponible */ }
 })();

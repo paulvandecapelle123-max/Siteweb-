@@ -15,13 +15,14 @@ $("#year").textContent = new Date().getFullYear();
 
 // ------------------------------------------------------------- boutons vers l'appli
 document.querySelectorAll(".js-app").forEach((a) => {
-  if (APP_URL) { a.href = APP_URL; return; }
+  if (APP_URL) { a.href = APP_URL + (a.dataset.path || ""); return; }
   a.classList.add("soon");
   a.textContent = a.classList.contains("small") ? "Bientôt" : "Bientôt disponible";
   a.removeAttribute("href");
   a.setAttribute("aria-disabled", "true");
 });
 if (!APP_URL) document.querySelectorAll(".js-app-note").forEach((n) => (n.hidden = false));
+document.querySelectorAll(".js-cgv").forEach((a) => { if (APP_URL) { a.href = APP_URL + "/cgv"; a.hidden = false; } });
 
 // ------------------------------------------------------------- visuel : deux platines qui se croisent
 (function decks() {

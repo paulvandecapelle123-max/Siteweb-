@@ -60,7 +60,7 @@ def apply_corrections(job_dir: Path, tracks: list[dict], analyses: list[dict], c
 
 
 def mix_job(job_dir: Path, tracks: list[dict], analyses: list[dict], prompt: str, corrections: dict,
-            progress: Progress) -> dict:
+            progress: Progress, max_duration_s: float | None = None) -> dict:
     t_start = time.time()
     progress(0.01, "Décodage des fichiers")
     audios = {t["track_id"]: decode(t["path"]) for t in tracks}
@@ -70,7 +70,14 @@ def mix_job(job_dir: Path, tracks: list[dict], analyses: list[dict], prompt: str
     progress(0.04, "Plan de mix (Claude)")
     plan, planner_name = make_plan(prompt, ans)
     (job_dir / "plan_brut.json").write_text(plan.model_dump_json(indent=1))
+    paid_limit_note = None
+    if max_duration_s and plan.target_duration_s > max_duration_s:
+        paid_limit_note = (f"durée ramenée de {fmt_time(plan.target_duration_s)} à {fmt_time(max_duration_s)} "
+                           f"(crédits utilisés pour ce mix)")
+        plan.target_duration_s = float(max_duration_s)
     plan, tail_s, warnings = normalize_plan(plan, {a.track_id: a.grid.n_bars for a in ans})
+    if paid_limit_note:
+        warnings.insert(0, paid_limit_note)
     (job_dir / "plan.json").write_text(plan.model_dump_json(indent=1))
 
     def sub(lo, hi):

@@ -69,3 +69,40 @@ footer { text-align: center; padding: 20px 16px 40px; }
 .tech b { font-size: 14px; }
 .tech .syn { color: var(--muted); font-size: 12px; }
 .tech .simple { font-size: 13px; }
+
+/* ---------------------------------------------------------------- barre du haut, compte, crédits */
+.topbar { display: flex; align-items: center; gap: 18px; max-width: 900px; margin: auto; padding: 18px 16px 0; }
+.topbar .brand { font-weight: 800; font-size: 24px; color: var(--text); text-decoration: none; letter-spacing: -1px; }
+.topbar .brand span { color: var(--accent); }
+.topbar nav { display: flex; gap: 16px; margin-left: auto; align-items: center; }
+.topbar nav a { color: var(--muted); text-decoration: none; }
+.topbar nav a.active, .topbar nav a:hover { color: var(--text); }
+.pill { background: #2a2f3a; border-radius: 999px; padding: 5px 12px; font-size: 13px; color: var(--text) !important; }
+.pill b { color: var(--accent2); }
+.flash { padding: 12px 14px; border-radius: 10px; margin: 16px 0 0; }
+.flash.ok { background: #3ddc8422; color: var(--ok); }
+.flash.ko { background: #ff5c5c22; color: var(--ko); }
+.tabs { display: flex; gap: 8px; margin: 8px 0 14px; }
+.tab { background: #2a2f3a; font-weight: 500; padding: 8px 14px; font-size: 14px; }
+.tab.active { background: var(--accent); }
+.auth-form { display: flex; flex-direction: column; gap: 12px; max-width: 380px; }
+.auth-form label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted); }
+.auth-form input { background: #0f1115; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font: inherit; }
+.balance-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.balance { text-align: right; }
+.balance b { display: block; font-size: 44px; line-height: 1; color: var(--accent2); }
+.balance span { color: var(--muted); font-size: 13px; }
+.packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.pack { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.pack.best { border-color: var(--accent); }
+.pack h3 { margin: 0; text-transform: none; letter-spacing: 0; color: var(--text); font-size: 17px; }
+.pack .price { font-size: 26px; font-weight: 800; margin: 4px 0 0; }
+.pack .muted { margin: 0 0 10px; }
+.pack button { margin-top: auto; }
+.badge { position: absolute; top: -10px; right: 12px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 2px 8px; }
+td.plus { color: var(--ok); font-weight: 700; } td.minus { color: var(--muted); }
+.quote { font-size: 14px; color: var(--muted); }
+.quote b { color: var(--text); }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.account .pill { text-decoration: none; }
+a { color: var(--accent2); }

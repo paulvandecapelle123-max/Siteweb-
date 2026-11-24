@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crédits — PromptMix</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">Prompt<span>Mix</span></a>
+  <nav><a href="/">Mixer</a><a href="/credits" class="active">Crédits</a></nav>
+</header>
+
+<main>
+  <p id="flash" class="flash" hidden></p>
+
+  <!-- connexion / inscription -->
+  <section class="card" id="auth" hidden>
+    <h2>Ton compte</h2>
+    <p class="hint">Crée ton compte : <b>ton premier mix est offert</b>. Ensuite, achète des crédits par carte bancaire.</p>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-mode="register" type="button">Créer un compte</button>
+      <button class="tab" data-mode="login" type="button">J'ai déjà un compte</button>
+    </div>
+    <form id="auth-form" class="auth-form">
+      <label>E-mail<input type="email" id="email" autocomplete="email" required></label>
+      <label>Mot de passe <small class="muted">(8 caractères minimum)</small>
+        <input type="password" id="password" autocomplete="new-password" minlength="8" required></label>
+      <button type="submit" id="auth-submit">Créer mon compte</button>
+      <p id="auth-error" class="error" hidden></p>
+    </form>
+  </section>
+
+  <!-- solde -->
+  <section class="card" id="account" hidden>
+    <div class="balance-row">
+      <div>
+        <h2>Tes crédits</h2>
+        <p class="muted" id="who"></p>
+      </div>
+      <div class="balance"><b id="balance">0</b><span>crédit(s)</span></div>
+    </div>
+    <p class="hint">1 crédit = 1 mix jusqu'à 10 minutes (2 crédits jusqu'à 20 minutes…). Le prix s'affiche avant chaque mix.
+      Si un mix échoue, tes crédits sont rendus automatiquement.</p>
+    <div class="row"><a class="button" href="/">Faire un mix</a><button class="secondary" id="logout" type="button">Se déconnecter</button></div>
+  </section>
+
+  <!-- packs -->
+  <section class="card" id="buy" hidden>
+    <h2>Acheter des crédits</h2>
+    <div class="packs" id="packs"></div>
+    <label class="rights"><input type="checkbox" id="cgv">
+      <span>J'accepte les <a href="/cgv" target="_blank">conditions générales de vente</a>.</span></label>
+    <label class="rights"><input type="checkbox" id="waiver">
+      <span>Je demande que mes crédits soient disponibles immédiatement après le paiement et je reconnais
+        perdre mon droit de rétractation dès qu'ils sont crédités sur mon compte.</span></label>
+    <p class="hint">Paiement sécurisé par <b>Stripe</b> : carte bancaire, Apple Pay ou Google Pay.
+      PromptMix ne voit jamais ton numéro de carte.</p>
+    <p id="buy-error" class="error" hidden></p>
+  </section>
+
+  <section class="card" id="history-card" hidden>
+    <h2>Historique</h2>
+    <table class="tracklist"><thead><tr><th>Date</th><th>Opération</th><th>Crédits</th></tr></thead><tbody id="history"></tbody></table>
+  </section>
+
+  <section class="card" id="off" hidden>
+    <h2>Mode local</h2>
+    <p>La facturation est désactivée sur ce serveur (<code>PROMPTMIX_BILLING</code>) : les mix sont gratuits et sans compte.</p>
+    <a class="button" href="/">Faire un mix</a>
+  </section>
+</main>
+<script src="/static/credits.js"></script>
+</body>
+</html>

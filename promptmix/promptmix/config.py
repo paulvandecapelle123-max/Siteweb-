@@ -26,3 +26,19 @@ BEAT_ALIGN_TOLERANCE_S = 0.020
 MODEL = os.environ.get("PROMPTMIX_MODEL", "claude-opus-5-5")
 BEAT_ENGINE = os.environ.get("PROMPTMIX_BEAT_ENGINE", "auto")
 DATA_DIR = Path(os.environ.get("PROMPTMIX_DATA_DIR", Path(__file__).resolve().parent.parent / "data"))
+
+# --------------------------------------------------------------------------- crédits et paiement
+# PROMPTMIX_BILLING=on : compte obligatoire, chaque mix consomme des crédits achetés par carte (Stripe).
+# Sans cette variable (développement local), tout est gratuit et sans compte.
+BILLING = os.environ.get("PROMPTMIX_BILLING", "off").lower() in ("1", "on", "true", "oui")
+PUBLIC_URL = os.environ.get("PROMPTMIX_PUBLIC_URL", "http://localhost:8000").rstrip("/")
+SITE_URL = os.environ.get("PROMPTMIX_SITE_URL", "").rstrip("/")          # site vitrine (liens CGV)
+WELCOME_CREDITS = int(os.environ.get("PROMPTMIX_WELCOME_CREDITS", "1"))  # premier mix offert
+SECONDS_PER_CREDIT = 600                                                 # 1 crédit = un mix jusqu'à 10 min
+# STRIPE_SECRET_KEY et STRIPE_WEBHOOK_SECRET : dans l'environnement uniquement, jamais dans le code.
+# Packs proposés (prix en centimes d'euro). Modifiables sans toucher au code via PROMPTMIX_PACKS (JSON).
+DEFAULT_PACKS = [
+    {"id": "pack5", "name": "Pack 5 mix", "credits": 5, "price_cents": 699},
+    {"id": "pack15", "name": "Pack 15 mix", "credits": 15, "price_cents": 1799},
+    {"id": "pack40", "name": "Pack 40 mix", "credits": 40, "price_cents": 3999},
+]
