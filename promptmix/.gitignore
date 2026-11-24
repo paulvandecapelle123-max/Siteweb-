@@ -1,0 +1,4 @@
+data/
+.env
+*.mp3
+.pytest_cache/

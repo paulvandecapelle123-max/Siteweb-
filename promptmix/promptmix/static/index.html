@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PromptMix</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Prompt<span>Mix</span></h1>
+  <p class="tagline">Dépose 2 ou 3 MP3, décris ton mix en français, récupère le mix et sa tracklist.</p>
+</header>
+
+<main>
+  <!-- 1. Dépôt -->
+  <section class="card" id="step-upload">
+    <h2><span class="num">1</span> Tes morceaux</h2>
+    <label id="dropzone" class="dropzone" for="file-input">
+      <input type="file" id="file-input" accept=".mp3,audio/mpeg" multiple hidden>
+      <strong>Glisse tes fichiers MP3 ici</strong>
+      <span>ou clique pour choisir — 2 ou 3 fichiers, MP3 uniquement, 50 Mo max chacun</span>
+    </label>
+    <ul id="file-list" class="file-list"></ul>
+    <label class="rights">
+      <input type="checkbox" id="rights">
+      <span><strong>J'ai les droits sur ces fichiers.</strong> PromptMix ne télécharge rien depuis YouTube ou d'autres sites ;
+      les fichiers sont supprimés <span id="retention">24</span> h après le rendu.</span>
+    </label>
+    <button id="btn-analyze" class="secondary" disabled>Analyser les morceaux</button>
+    <p id="upload-error" class="error" hidden></p>
+  </section>
+
+  <!-- 2. Analyse -->
+  <section class="card" id="step-analysis" hidden>
+    <h2><span class="num">2</span> Analyse <small>corrige le BPM ou la tonalité si besoin (ex. version « sped up »)</small></h2>
+    <div id="analysis-progress" class="progress"><div class="bar"></div><span class="label"></span></div>
+    <div id="tracks"></div>
+  </section>
+
+  <!-- 3. Prompt -->
+  <section class="card" id="step-prompt">
+    <h2><span class="num">3</span> Ton mix, en français</h2>
+    <p class="hint">Ordre, durée totale, ambiance, types de transitions : fondu, filtre passe-haut / passe-bas,
+      bass swap, echo out, riser + coupure sur le drop, rewind, loop roll, blackout, fin dans une réverb.</p>
+    <textarea id="prompt" rows="5"></textarea>
+    <div class="row">
+      <button id="btn-mix" disabled>Mixer</button>
+      <span id="planner-info" class="muted"></span>
+    </div>
+    <div id="mix-progress" class="progress" hidden><div class="bar"></div><span class="label"></span></div>
+    <p id="mix-error" class="error" hidden></p>
+  </section>
+
+  <!-- 4. Résultat -->
+  <section class="card" id="step-result" hidden>
+    <h2><span class="num">4</span> Ton mix</h2>
+    <audio id="player" controls preload="metadata"></audio>
+    <div class="row">
+      <a id="dl-mix" class="button" href="#">Télécharger le MP3 (320 kbps)</a>
+      <a id="dl-tracklist" class="button secondary" href="#">Tracklist (.txt)</a>
+    </div>
+    <p id="explanation" class="explanation"></p>
+    <h3>Tracklist</h3>
+    <table class="tracklist"><thead><tr><th>Début</th><th>Artiste – Titre</th><th>BPM d'origine</th><th>Tonalité</th><th>Sortie</th></tr></thead>
+      <tbody id="tracklist"></tbody></table>
+    <h3>Transitions</h3>
+    <ul id="transitions" class="transitions"></ul>
+    <h3>Contrôles automatiques</h3>
+    <ul id="checks" class="checks"></ul>
+    <p id="warnings" class="muted"></p>
+  </section>
+</main>
+
+<footer class="muted">PromptMix — prototype local. Plan de mix par Claude, rendu audio déterministe (numpy/scipy, Rubber Band).</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

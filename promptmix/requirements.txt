@@ -1,0 +1,19 @@
+# Serveur
+fastapi>=0.115
+uvicorn>=0.30
+python-multipart>=0.0.9
+# Audio / DSP
+numpy>=2.0
+scipy>=1.13
+soundfile>=0.12
+pyloudnorm>=0.1.1
+mutagen>=1.47
+# Plan de mix (API Claude)
+anthropic>=2.0
+pydantic>=2.7
+# Détection temps / mesures (réseau de neurones, téléchargé au 1er lancement, ~80 Mo)
+# Optionnel : sans lui, PromptMix utilise son détecteur DSP intégré.
+beat_this>=0.1  # tire torch (CPU suffit)
+# Tests
+pytest>=8
+httpx>=0.27
