@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PromptMix — Décris ton mix, on le mixe</title>
+  <meta name="description" content="Dépose 2 ou 3 MP3, décris ton mix en français comme un DJ (bass swap, double drop, brake…) et récupère un mix calé au temps près, masterisé, avec sa tracklist.">
+  <meta property="og:title" content="PromptMix — Décris ton mix, on le mixe">
+  <meta property="og:description" content="Dépose tes MP3, écris ton mix en français, récupère un mix calé au temps près avec sa tracklist.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b0d12">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="/">Prompt<span>Mix</span></a>
+  <nav>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#techniques">Techniques</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn small js-app" href="#tarifs">Essayer</a>
+</header>
+
+<main>
+  <!-- ======================================================== HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Mix automatique pour DJ</p>
+      <h1>Décris ton mix.<br><span class="grad">PromptMix le mixe.</span></h1>
+      <p class="lead">Dépose 2 ou 3 MP3, écris en français ce que tu veux — l'ordre, la durée, l'ambiance,
+        tes transitions — et récupère un mix calé au temps près, masterisé, avec sa tracklist minutée.</p>
+      <div class="cta">
+        <a class="btn js-app" href="#tarifs">Essayer PromptMix</a>
+        <a class="btn ghost" href="#techniques">Voir les techniques</a>
+      </div>
+      <p class="note js-app-note" hidden>Ouverture prochaine : le premier mix sera offert.</p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <canvas id="decks" width="640" height="420"></canvas>
+      <div class="prompt-bubble">
+        <span class="typing" id="typing"></span><span class="caret"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== COMMENT -->
+  <section id="comment" class="section">
+    <h2>Comment ça marche</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <h3>Dépose tes morceaux</h3>
+        <p>2 ou 3 fichiers MP3. PromptMix trouve le BPM, la grille des temps et des mesures, la tonalité
+          (notation Camelot) et la structure : intro, break, montée, drop. Tu peux corriger le BPM ou la tonalité.</p>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <h3>Écris ton mix</h3>
+        <p>Comme tu parlerais à un DJ : « 5 minutes, ça monte doucement, bass swap sur 8 mesures, puis riser
+          et coupure sur le drop ». Pas besoin d'être DJ : « le son devient étouffé, comme sous l'eau » marche aussi.</p>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <h3>Récupère ton mix</h3>
+        <p>Un MP3 320 kbps, les tempos calés sans changer la tonalité, et la tracklist « artiste – titre »
+          avec l'heure de passage de chaque morceau.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ======================================================== EXEMPLES -->
+  <section class="section" id="exemples">
+    <h2>Parle comme un DJ… ou avec tes mots</h2>
+    <p class="section-lead">Clique sur une demande pour voir ce que PromptMix en fait.</p>
+    <div class="examples">
+      <div class="example-tabs" id="example-tabs" role="tablist"></div>
+      <div class="example-view">
+        <blockquote id="example-prompt"></blockquote>
+        <div class="timeline" id="example-timeline"></div>
+        <ul class="example-steps" id="example-steps"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== TECHNIQUES -->
+  <section id="techniques" class="section">
+    <h2>Les techniques que PromptMix maîtrise</h2>
+    <p class="section-lead">Chaque technique se demande avec le mot des DJ, en français, en anglais ou en argot.
+      Essaie : <button class="link" data-q="brake">brake</button>, <button class="link" data-q="sous l'eau">sous l'eau</button>,
+      <button class="link" data-q="boucle">boucle</button>, <button class="link" data-q="drop">drop</button>.</p>
+    <div class="tech-tools">
+      <input type="search" id="tech-search" placeholder="Cherche un mot : bass swap, stutter, spinback…" aria-label="Chercher une technique">
+      <div class="chips" id="tech-chips"></div>
+    </div>
+    <div class="tech-grid" id="tech-grid"></div>
+    <p class="muted" id="tech-empty" hidden>Aucune technique ne correspond. Décris-la avec tes mots dans ta demande :
+      PromptMix proposera la plus proche.</p>
+  </section>
+
+  <!-- ======================================================== QUALITE -->
+  <section class="section">
+    <h2>Un son prêt à passer en soirée</h2>
+    <div class="stats">
+      <div class="stat"><b>±10 ms</b><span>précision de la grille des temps, vérifiée sur chaque transition</span></div>
+      <div class="stat"><b>-11 LUFS</b><span>volume fort et homogène, comme un mix de club</span></div>
+      <div class="stat"><b>≤ -1 dBTP</b><span>aucune saturation, même après la compression MP3</span></div>
+      <div class="stat"><b>320 kbps</b><span>MP3 haute qualité, tracklist incluse</span></div>
+    </div>
+    <ul class="checks">
+      <li>Tempos calés sans changer la tonalité (étirement Rubber Band)</li>
+      <li>Chaque morceau entre sur un premier temps de mesure, idéalement sur un drop</li>
+      <li>Aucun clic : fondus de quelques millisecondes à chaque coupe</li>
+      <li>Durée demandée respectée à la demi-seconde près</li>
+      <li>Basse syncopée repérée : la grille reste sur la grosse caisse</li>
+      <li>Tonalités compatibles privilégiées (roue Camelot)</li>
+    </ul>
+  </section>
+
+  <!-- ======================================================== TARIFS -->
+  <section id="tarifs" class="section">
+    <h2>Tarifs</h2>
+    <p class="section-lead">Tu paies au mix, pas à la chanson : le prix s'affiche avant de lancer le mix.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Découverte</h3>
+        <p class="price">Offert</p>
+        <ul><li>Ton premier mix</li><li>Toutes les techniques</li><li>MP3 320 kbps + tracklist</li></ul>
+      </div>
+      <div class="plan featured">
+        <h3>Packs de crédits</h3>
+        <p class="price">1 crédit = 1 mix</p>
+        <ul><li>Sans abonnement, sans date limite</li><li>Le prix s'affiche avant chaque mix</li><li>Paiement sécurisé par carte</li></ul>
+      </div>
+      <div class="plan">
+        <h3>Abonnement</h3>
+        <p class="price">Pour les réguliers</p>
+        <ul><li>Un quota de mix chaque mois</li><li>Moins cher par mix</li><li>Sans engagement</li></ul>
+      </div>
+    </div>
+    <p class="muted center">Prix annoncés à l'ouverture.</p>
+  </section>
+
+  <!-- ======================================================== DROITS -->
+  <section class="section split">
+    <div>
+      <h2>Tes fichiers, tes droits</h2>
+      <ul class="checks">
+        <li>PromptMix ne travaille qu'avec les fichiers que tu déposes : aucun téléchargement depuis YouTube ou ailleurs.</li>
+        <li>Tu confirmes avoir les droits sur tes fichiers avant chaque envoi.</li>
+        <li>Tes fichiers et ton mix sont supprimés 24 h après le rendu.</li>
+        <li>Ta musique n'est jamais envoyée à l'IA : seuls le titre, le tempo, la tonalité et la structure des morceaux servent à préparer le plan du mix.</li>
+      </ul>
+    </div>
+    <div class="how-box">
+      <h3>Qui fait quoi ?</h3>
+      <p><b>L'IA (Claude)</b> lit ta demande et l'analyse des morceaux, puis écrit le plan : quels passages, dans quel ordre, quelles transitions, à quelle mesure.</p>
+      <p><b>Le moteur audio</b> exécute ce plan de façon exacte, sans IA : calage des tempos, effets, volume, master.
+        Résultat : le même plan donne toujours le même mix.</p>
+    </div>
+  </section>
+
+  <!-- ======================================================== FAQ -->
+  <section id="faq" class="section">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Quels fichiers puis-je déposer ?</summary>
+      <p>2 ou 3 fichiers MP3, jusqu'à 50 Mo chacun. Les noms d'artiste et de titre sont lus dans les tags du fichier, sinon dans son nom (« Artiste - Titre.mp3 »).</p></details>
+    <details><summary>Faut-il être DJ ?</summary>
+      <p>Non. Tu peux utiliser les mots des DJ ou décrire ce que tu veux entendre avec tes mots. Si tu ne précises rien, PromptMix choisit des transitions adaptées à l'ambiance demandée.</p></details>
+    <details><summary>Combien de temps faut-il attendre ?</summary>
+      <p>Environ une minute pour un mix de 5 minutes. Une barre de progression te montre où en est le mix.</p></details>
+    <details><summary>Le BPM détecté est faux, je fais comment ?</summary>
+      <p>Tu peux le corriger avant de mixer, y compris pour les versions « sped up » ou en demi-tempo (boutons ÷2 et ×2). La tonalité se corrige aussi (« Am », « 8A », « La mineur »…).</p></details>
+    <details><summary>Quels styles de musique marchent le mieux ?</summary>
+      <p>Les musiques au tempo régulier en mesures de 4 temps : house, techno, EDM, drum'n'bass, hip-hop, afro, pop dance… Les enregistrements live au tempo qui varie ne sont pas encore pris en charge.</p></details>
+    <details><summary>Je peux faire un mashup acapella ou du scratch ?</summary>
+      <p>Pas encore : il faut d'abord séparer la voix des instruments. Si tu le demandes, PromptMix te le dit et propose la technique la plus proche.</p></details>
+    <details><summary>Puis-je publier mon mix ?</summary>
+      <p>Le mix contient les morceaux que tu as déposés : pour le diffuser ou le publier, tu dois disposer des droits ou licences nécessaires sur ces morceaux.</p></details>
+  </section>
+
+  <section class="section final-cta">
+    <h2>Ton prochain mix tient en une phrase.</h2>
+    <a class="btn js-app" href="#tarifs">Essayer PromptMix</a>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> PromptMix</span>
+  <a href="/mentions-legales.html">Mentions légales</a>
+  <a href="/confidentialite.html">Confidentialité</a>
+</footer>
+
+<script src="/main.js"></script>
+</body>
+</html>
