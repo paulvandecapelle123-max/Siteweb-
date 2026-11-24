@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-23T12:54:16+00:00",
- "credits_odds_api": 123,
+ "maj": "2026-11-24T00:56:09+00:00",
+ "credits_odds_api": 115,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -162,7 +162,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "handball_germany_bundesliga": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Handball",
    "competition": "Handball-Bundesliga",
    "matchs": 9
@@ -204,25 +204,25 @@ window.JOURNAL = {
    "matchs": 43
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-11-19T13:16:30+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
-   "matchs": 8
+   "matchs": 4
   },
   "soccer_australia_aleague": {
-   "le": "2026-11-19T13:16:30+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football",
    "competition": "A-League",
    "matchs": 5
   },
   "soccer_austria_bundesliga": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football",
    "competition": "Austrian Football Bundesliga",
-   "matchs": 7
+   "matchs": 6
   },
   "soccer_belgium_first_div": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football",
    "competition": "Belgium First Div",
    "matchs": 9
@@ -462,7 +462,7 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_uefa_europa_conference_league": {
-   "le": "2026-11-19T13:16:30+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football",
    "competition": "UEFA Europa Conference League",
    "matchs": 18
@@ -576,10 +576,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "aussierules_afl": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Football australien",
    "competition": "AFL",
-   "matchs": 9
+   "matchs": 18
   },
   "basketball_wncaab": {
    "le": "2026-11-23T02:49:40+00:00",
@@ -624,10 +624,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "rugbyleague_nrl": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T00:56:09+00:00",
    "sport": "Rugby à XIII",
    "competition": "NRL",
-   "matchs": 9
+   "matchs": 18
   },
   "soccer_italy_coppa_italia": {
    "le": "2026-11-23T12:54:16+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-24T00:56:09+00:00",
+   "competitions_ouvertes": 67,
+   "competitions_scannees": 8,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 8,
+   "credits_restants": 115,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-23T12:54:16+00:00",
    "competitions_ouvertes": 69,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 324,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-11T18:36:01+00:00",
-   "competitions_ouvertes": 68,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 325,
    "capital": 10000
   }
  ],
