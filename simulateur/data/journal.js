@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-24T00:56:09+00:00",
- "credits_odds_api": 115,
+ "maj": "2026-11-24T10:59:18+00:00",
+ "credits_odds_api": 108,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -192,10 +192,10 @@ window.JOURNAL = {
    "matchs": 6
   },
   "icehockey_sweden_hockey_league": {
-   "le": "2026-11-20T12:58:17+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Hockey sur glace",
    "competition": "SHL",
-   "matchs": 7
+   "matchs": 8
   },
   "mma_mixed_martial_arts": {
    "le": "2026-11-23T12:54:16+00:00",
@@ -228,19 +228,19 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_brazil_campeonato": {
-   "le": "2026-11-19T21:40:10+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Brazil Série A",
-   "matchs": 10
+   "matchs": 11
   },
   "soccer_brazil_serie_b": {
-   "le": "2026-11-20T03:22:34+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Brazil Série B",
    "matchs": 2
   },
   "soccer_chile_campeonato": {
-   "le": "2026-11-20T03:22:34+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Primera División - Chile",
    "matchs": 8
@@ -252,7 +252,7 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_conmebol_copa_libertadores": {
-   "le": "2026-11-20T03:22:34+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Copa Libertadores",
    "matchs": 1
@@ -264,16 +264,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_denmark_superliga": {
-   "le": "2026-11-20T12:58:17+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Denmark Superliga",
    "matchs": 6
   },
   "soccer_efl_champ": {
-   "le": "2026-11-20T12:58:17+00:00",
+   "le": "2026-11-24T10:59:18+00:00",
    "sport": "Football",
    "competition": "Championship",
-   "matchs": 12
+   "matchs": 24
   },
   "soccer_england_efl_cup": {
    "le": "2026-11-20T12:58:17+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-24T10:59:18+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 108,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-24T00:56:09+00:00",
    "competitions_ouvertes": 67,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 323,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-11T20:31:54+00:00",
-   "competitions_ouvertes": 66,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 324,
    "capital": 10000
   }
  ],
