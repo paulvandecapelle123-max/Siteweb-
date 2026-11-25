@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-24T21:16:17+00:00",
- "credits_odds_api": 101,
+ "maj": "2026-11-25T04:19:54+00:00",
+ "credits_odds_api": 96,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -318,13 +318,13 @@ window.JOURNAL = {
    "matchs": 4
   },
   "soccer_germany_bundesliga": {
-   "le": "2026-11-21T02:21:11+00:00",
+   "le": "2026-11-25T04:19:54+00:00",
    "sport": "Football",
    "competition": "Bundesliga - Germany",
-   "matchs": 17
+   "matchs": 18
   },
   "soccer_germany_bundesliga2": {
-   "le": "2026-11-21T02:21:11+00:00",
+   "le": "2026-11-25T04:19:54+00:00",
    "sport": "Football",
    "competition": "Bundesliga 2 - Germany",
    "matchs": 9
@@ -414,7 +414,7 @@ window.JOURNAL = {
    "matchs": 8
   },
   "soccer_saudi_arabia_pro_league": {
-   "le": "2026-11-20T21:10:06+00:00",
+   "le": "2026-11-25T04:19:54+00:00",
    "sport": "Football",
    "competition": "Saudi Pro League",
    "matchs": 1
@@ -480,7 +480,7 @@ window.JOURNAL = {
    "matchs": 15
   },
   "soccer_uefa_nations_league": {
-   "le": "2026-11-20T21:10:06+00:00",
+   "le": "2026-11-25T04:19:54+00:00",
    "sport": "Football",
    "competition": "UEFA Nations League",
    "matchs": 4
@@ -540,10 +540,10 @@ window.JOURNAL = {
    "matchs": 2
   },
   "basketball_ncaab": {
-   "le": "2026-11-21T02:21:11+00:00",
+   "le": "2026-11-25T04:19:54+00:00",
    "sport": "Basket",
    "competition": "NCAAB",
-   "matchs": 74
+   "matchs": 65
   },
   "soccer_uefa_champs_league_women": {
    "le": "2026-11-16T11:29:30+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-25T04:19:54+00:00",
+   "competitions_ouvertes": 67,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 2,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 96,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-24T21:16:17+00:00",
    "competitions_ouvertes": 68,
@@ -4823,23 +4837,48 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 321,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-11T23:30:44+00:00",
-   "competitions_ouvertes": 66,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 322,
-   "capital": 10000
   }
  ],
- "surveillance": [],
+ "surveillance": [
+  {
+   "favori": "South Dakota Coyotes",
+   "adversaire": "Arkansas-Pine Bluff Golden Lions",
+   "proba_marche": 0.9758,
+   "cote": 1.017,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "888sport",
+   "nb_bookmakers": 3,
+   "id": "d493eae11aafe56f0c7dd6ba33cd5c7a",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-25T19:00:00Z",
+   "domicile": "South Dakota Coyotes",
+   "exterieur": "Arkansas-Pine Bluff Golden Lions",
+   "repere_le": "2026-11-25T04:19:54+00:00",
+   "cotes_le": "2026-11-25T04:19:54+00:00"
+  },
+  {
+   "favori": "Wisconsin Badgers",
+   "adversaire": "Northeastern Huskies",
+   "proba_marche": 0.9794,
+   "cote": 1.015,
+   "cote_ou": "moyenne des bookmakers",
+   "meilleure_cote": 1.02,
+   "meilleur_bookmaker": "BetOnline.ag",
+   "nb_bookmakers": 4,
+   "id": "6dcd15264ad340b012628f9c0f020f8e",
+   "sport_key": "basketball_ncaab",
+   "sport": "Basket",
+   "competition": "NCAAB",
+   "debut": "2026-11-26T00:00:00Z",
+   "domicile": "Wisconsin Badgers",
+   "exterieur": "Northeastern Huskies",
+   "repere_le": "2026-11-25T04:19:54+00:00",
+   "cotes_le": "2026-11-25T04:19:54+00:00"
+  }
+ ],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
