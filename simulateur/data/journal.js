@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-25T04:19:54+00:00",
- "credits_odds_api": 96,
+ "maj": "2026-11-25T15:40:04+00:00",
+ "credits_odds_api": 88,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -330,34 +330,34 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_germany_dfb_pokal": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "DFB-Pokal",
    "matchs": 8
   },
   "soccer_germany_liga3": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "3. Liga - Germany",
-   "matchs": 19
+   "matchs": 20
   },
   "soccer_greece_super_league": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "Super League - Greece",
-   "matchs": 10
+   "matchs": 7
   },
   "soccer_italy_serie_a": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "Serie A - Italy",
    "matchs": 20
   },
   "soccer_italy_serie_b": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "Serie B - Italy",
-   "matchs": 19
+   "matchs": 14
   },
   "soccer_japan_j_league": {
    "le": "2026-11-22T15:23:05+00:00",
@@ -378,16 +378,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_mexico_ligamx": {
-   "le": "2026-11-21T11:11:12+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "Liga MX",
-   "matchs": 6
+   "matchs": 5
   },
   "soccer_netherlands_eredivisie": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "Dutch Eredivisie",
-   "matchs": 13
+   "matchs": 10
   },
   "soccer_norway_eliteserien": {
    "le": "2026-11-21T23:22:43+00:00",
@@ -600,10 +600,10 @@ window.JOURNAL = {
    "matchs": 3
   },
   "soccer_england_efl_trophy": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-25T15:40:04+00:00",
    "sport": "Football",
    "competition": "EFL Trophy",
-   "matchs": 3
+   "matchs": 1
   },
   "tennis_wta_finals": {
    "le": "2026-11-15T11:00:04+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-25T15:40:04+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 8,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 8,
+   "credits_restants": 88,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-25T04:19:54+00:00",
    "competitions_ouvertes": 67,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 320,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-12T00:46:14+00:00",
-   "competitions_ouvertes": 67,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 321,
    "capital": 10000
   }
  ],
