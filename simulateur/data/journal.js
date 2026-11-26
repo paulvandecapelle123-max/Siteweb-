@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-26T09:35:09+00:00",
- "credits_odds_api": 76,
+ "maj": "2026-11-26T19:39:17+00:00",
+ "credits_odds_api": 69,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -138,13 +138,13 @@ window.JOURNAL = {
    "matchs": 1
   },
   "boxing_boxing": {
-   "le": "2026-11-22T21:49:43+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Boxe",
    "competition": "Boxing",
-   "matchs": 32
+   "matchs": 36
   },
   "cricket_international_t20": {
-   "le": "2026-11-22T21:49:43+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Cricket",
    "competition": "International Twenty20",
    "matchs": 1
@@ -360,10 +360,10 @@ window.JOURNAL = {
    "matchs": 14
   },
   "soccer_japan_j_league": {
-   "le": "2026-11-22T15:23:05+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Football",
    "competition": "J League",
-   "matchs": 7
+   "matchs": 10
   },
   "soccer_korea_kleague1": {
    "le": "2026-11-23T12:54:16+00:00",
@@ -408,7 +408,7 @@ window.JOURNAL = {
    "matchs": 9
   },
   "soccer_russia_premier_league": {
-   "le": "2026-11-22T15:23:05+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Football",
    "competition": "Premier League - Russia",
    "matchs": 8
@@ -432,10 +432,10 @@ window.JOURNAL = {
    "matchs": 12
   },
   "soccer_sweden_allsvenskan": {
-   "le": "2026-11-22T15:23:05+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Football",
    "competition": "Allsvenskan - Sweden",
-   "matchs": 10
+   "matchs": 8
   },
   "soccer_sweden_superettan": {
    "le": "2026-11-24T21:16:17+00:00",
@@ -444,16 +444,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_switzerland_superleague": {
-   "le": "2026-11-22T15:23:05+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Football",
    "competition": "Swiss Superleague",
-   "matchs": 4
+   "matchs": 6
   },
   "soccer_turkey_super_league": {
-   "le": "2026-11-22T21:49:43+00:00",
+   "le": "2026-11-26T19:39:17+00:00",
    "sport": "Football",
    "competition": "Turkey Super League",
-   "matchs": 8
+   "matchs": 9
   },
   "soccer_uefa_champs_league": {
    "le": "2026-11-23T12:54:16+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-26T19:39:17+00:00",
+   "competitions_ouvertes": 66,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 69,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-26T09:35:09+00:00",
    "competitions_ouvertes": 65,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 317,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-12T05:35:36+00:00",
-   "competitions_ouvertes": 67,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 318,
    "capital": 10000
   }
  ],
