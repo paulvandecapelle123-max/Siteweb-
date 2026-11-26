@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-25T15:40:04+00:00",
- "credits_odds_api": 88,
+ "maj": "2026-11-26T00:25:15+00:00",
+ "credits_odds_api": 82,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -390,19 +390,19 @@ window.JOURNAL = {
    "matchs": 10
   },
   "soccer_norway_eliteserien": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "Eliteserien - Norway",
-   "matchs": 7
+   "matchs": 8
   },
   "soccer_poland_ekstraklasa": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "Ekstraklasa - Poland",
    "matchs": 9
   },
   "soccer_portugal_primeira_liga": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "Primeira Liga - Portugal",
    "matchs": 9
@@ -420,16 +420,16 @@ window.JOURNAL = {
    "matchs": 1
   },
   "soccer_spain_segunda_division": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "La Liga 2 - Spain",
-   "matchs": 12
+   "matchs": 11
   },
   "soccer_spl": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "Premiership - Scotland",
-   "matchs": 8
+   "matchs": 12
   },
   "soccer_sweden_allsvenskan": {
    "le": "2026-11-22T15:23:05+00:00",
@@ -474,10 +474,10 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_spain_la_liga": {
-   "le": "2026-11-21T23:22:43+00:00",
+   "le": "2026-11-26T00:25:15+00:00",
    "sport": "Football",
    "competition": "La Liga - Spain",
-   "matchs": 15
+   "matchs": 22
   },
   "soccer_uefa_nations_league": {
    "le": "2026-11-25T04:19:54+00:00",
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-26T00:25:15+00:00",
+   "competitions_ouvertes": 65,
+   "competitions_scannees": 6,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 2,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 6,
+   "credits_restants": 82,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-25T15:40:04+00:00",
    "competitions_ouvertes": 68,
@@ -4823,62 +4837,9 @@ window.JOURNAL = {
    "credits_utilises": 1,
    "credits_restants": 319,
    "capital": 10000
-  },
-  {
-   "date": "2026-10-12T02:35:23+00:00",
-   "competitions_ouvertes": 67,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 320,
-   "capital": 10000
   }
  ],
- "surveillance": [
-  {
-   "favori": "South Dakota Coyotes",
-   "adversaire": "Arkansas-Pine Bluff Golden Lions",
-   "proba_marche": 0.9758,
-   "cote": 1.017,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "888sport",
-   "nb_bookmakers": 3,
-   "id": "d493eae11aafe56f0c7dd6ba33cd5c7a",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-25T19:00:00Z",
-   "domicile": "South Dakota Coyotes",
-   "exterieur": "Arkansas-Pine Bluff Golden Lions",
-   "repere_le": "2026-11-25T04:19:54+00:00",
-   "cotes_le": "2026-11-25T04:19:54+00:00"
-  },
-  {
-   "favori": "Wisconsin Badgers",
-   "adversaire": "Northeastern Huskies",
-   "proba_marche": 0.9794,
-   "cote": 1.015,
-   "cote_ou": "moyenne des bookmakers",
-   "meilleure_cote": 1.02,
-   "meilleur_bookmaker": "BetOnline.ag",
-   "nb_bookmakers": 4,
-   "id": "6dcd15264ad340b012628f9c0f020f8e",
-   "sport_key": "basketball_ncaab",
-   "sport": "Basket",
-   "competition": "NCAAB",
-   "debut": "2026-11-26T00:00:00Z",
-   "domicile": "Wisconsin Badgers",
-   "exterieur": "Northeastern Huskies",
-   "repere_le": "2026-11-25T04:19:54+00:00",
-   "cotes_le": "2026-11-25T04:19:54+00:00"
-  }
- ],
+ "surveillance": [],
  "scores_le": {
   "basketball_ncaab": "2026-11-08T07:25:52+00:00"
  },
