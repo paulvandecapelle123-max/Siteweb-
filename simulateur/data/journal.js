@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-27T02:53:03+00:00",
- "credits_odds_api": 64,
+ "maj": "2026-11-27T12:30:38+00:00",
+ "credits_odds_api": 57,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -156,10 +156,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "cricket_test_match": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Cricket",
    "competition": "Test Matches",
-   "matchs": 2
+   "matchs": 1
   },
   "handball_germany_bundesliga": {
    "le": "2026-11-24T00:56:09+00:00",
@@ -174,22 +174,22 @@ window.JOURNAL = {
    "matchs": 6
   },
   "icehockey_mestis": {
-   "le": "2026-11-23T02:49:40+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "Mestis",
-   "matchs": 1
+   "matchs": 4
   },
   "icehockey_nhl": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "NHL",
-   "matchs": 7
+   "matchs": 15
   },
   "icehockey_sweden_allsvenskan": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "HockeyAllsvenskan",
-   "matchs": 6
+   "matchs": 7
   },
   "icehockey_sweden_hockey_league": {
    "le": "2026-11-24T10:59:18+00:00",
@@ -198,10 +198,10 @@ window.JOURNAL = {
    "matchs": 8
   },
   "mma_mixed_martial_arts": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "MMA",
    "competition": "MMA",
-   "matchs": 43
+   "matchs": 69
   },
   "soccer_argentina_primera_division": {
    "le": "2026-11-24T00:56:09+00:00",
@@ -510,10 +510,10 @@ window.JOURNAL = {
    "matchs": 1
   },
   "icehockey_ahl": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Hockey sur glace",
    "competition": "AHL",
-   "matchs": 11
+   "matchs": 20
   },
   "tennis_wta_wuhan_open": {
    "le": "2026-10-18T06:54:44+00:00",
@@ -630,7 +630,7 @@ window.JOURNAL = {
    "matchs": 18
   },
   "soccer_italy_coppa_italia": {
-   "le": "2026-11-23T12:54:16+00:00",
+   "le": "2026-11-27T12:30:38+00:00",
    "sport": "Football",
    "competition": "Coppa Italia",
    "matchs": 3
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-27T12:30:38+00:00",
+   "competitions_ouvertes": 64,
+   "competitions_scannees": 7,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 7,
+   "credits_restants": 57,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-27T02:53:03+00:00",
    "competitions_ouvertes": 65,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 315,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-12T08:40:13+00:00",
-   "competitions_ouvertes": 68,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 316,
    "capital": 10000
   }
  ],
