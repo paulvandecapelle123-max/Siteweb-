@@ -1,8 +1,8 @@
 // Généré par simulateur/tools/live.py — argent fictif.
 window.JOURNAL = {
  "capital_depart": 10000,
- "maj": "2026-11-27T21:59:41+00:00",
- "credits_odds_api": 51,
+ "maj": "2026-11-28T03:55:56+00:00",
+ "credits_odds_api": 46,
  "paris": [
   {
    "favori": "Miami (OH) RedHawks",
@@ -150,7 +150,7 @@ window.JOURNAL = {
    "matchs": 1
   },
   "cricket_odi": {
-   "le": "2026-11-15T22:52:35+00:00",
+   "le": "2026-11-28T03:55:56+00:00",
    "sport": "Cricket",
    "competition": "One Day Internationals",
    "matchs": 1
@@ -204,22 +204,22 @@ window.JOURNAL = {
    "matchs": 69
   },
   "soccer_argentina_primera_division": {
-   "le": "2026-11-24T00:56:09+00:00",
+   "le": "2026-11-28T03:55:56+00:00",
    "sport": "Football",
    "competition": "Primera División - Argentina",
    "matchs": 4
   },
   "soccer_australia_aleague": {
-   "le": "2026-11-24T00:56:09+00:00",
+   "le": "2026-11-28T03:55:56+00:00",
    "sport": "Football",
    "competition": "A-League",
-   "matchs": 5
+   "matchs": 4
   },
   "soccer_austria_bundesliga": {
-   "le": "2026-11-24T00:56:09+00:00",
+   "le": "2026-11-28T03:55:56+00:00",
    "sport": "Football",
    "competition": "Austrian Football Bundesliga",
-   "matchs": 6
+   "matchs": 5
   },
   "soccer_belgium_first_div": {
    "le": "2026-11-24T00:56:09+00:00",
@@ -624,7 +624,7 @@ window.JOURNAL = {
    "matchs": 2
   },
   "rugbyleague_nrl": {
-   "le": "2026-11-24T00:56:09+00:00",
+   "le": "2026-11-28T03:55:56+00:00",
    "sport": "Rugby à XIII",
    "competition": "NRL",
    "matchs": 18
@@ -638,6 +638,20 @@ window.JOURNAL = {
  },
  "sans_scores": [],
  "executions": [
+  {
+   "date": "2026-11-28T03:55:56+00:00",
+   "competitions_ouvertes": 68,
+   "competitions_scannees": 5,
+   "nouveaux_surveilles": 0,
+   "candidats": 0,
+   "paris_places": 0,
+   "manques": 0,
+   "paris_regles": 0,
+   "ecartes_verifies": 0,
+   "credits_utilises": 5,
+   "credits_restants": 46,
+   "capital": 10005.6
+  },
   {
    "date": "2026-11-27T21:59:41+00:00",
    "competitions_ouvertes": 67,
@@ -4822,20 +4836,6 @@ window.JOURNAL = {
    "ecartes_verifies": 0,
    "credits_utilises": 1,
    "credits_restants": 313,
-   "capital": 10000
-  },
-  {
-   "date": "2026-10-12T11:37:15+00:00",
-   "competitions_ouvertes": 67,
-   "competitions_scannees": 1,
-   "nouveaux_surveilles": 0,
-   "candidats": 0,
-   "paris_places": 0,
-   "manques": 0,
-   "paris_regles": 0,
-   "ecartes_verifies": 0,
-   "credits_utilises": 1,
-   "credits_restants": 314,
    "capital": 10000
   }
  ],
